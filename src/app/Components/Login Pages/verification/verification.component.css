@@ -1,4 +1,3 @@
-/* RIGHT SIDE CAROUSEL */
 .full-height-box {
   width: 90%;
   margin: 35px;
@@ -67,4 +66,44 @@
 .nav-line.active-line {
   opacity: 1;
   background-color: #fff;
+}
+
+/* Toggle style */
+.toggle-container {
+  background: #ffffff;
+  border: 2px solid #d9d9d9;
+  border-radius: 8px;
+  overflow: hidden;
+  display: inline-flex;
+}
+
+.toggle-btn {
+  padding: 8px 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+  color: #1997ce;
+}
+
+.toggle-btn.active {
+  background: #1997ce;
+  color: white;
+  border-radius: 6px;
+}
+
+.toggle-btn:not(.active) {
+  color: #333;
+}
+
+/* Rounded corners on active */
+.toggle-btn:first-child.active {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.toggle-btn:last-child.active {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }

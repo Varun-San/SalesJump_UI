@@ -7,16 +7,16 @@
     >
       <div>
         <img
-          src="Assets/ForgotPassword/ForgotPassword.png"
+          src="Assets/Verification/Password Reset.png"
           alt="image"
           style="height: 110px; width: auto"
         />
       </div>
       <div>
-        <h4>Forgot Password?</h4>
+        <h4>Password Reset</h4>
       </div>
       <div>
-        <p class="text-muted">No Worries, We'll guide you to reset</p>
+        <p class="text-muted">We sent a code to ****&#64;gmail.com</p>
       </div>
       <div class="toggle-container d-flex">
         <button
@@ -63,14 +63,26 @@
               class="btn w-100 mt-3"
               style="background-color: #1997ce; color: white"
             >
-              Reset Password
+              Confirm
             </button>
-            <div class="text-end mt-4">
+
+            <div class="d-flex justify-content-between mt-3">
+              <a
+                [routerLink]="'/home'"
+                style="text-decoration: none; color: #000000"
+              >
+                Didn't recieve email?
+              </a>
               <a
                 [routerLink]="'/home'"
                 style="text-decoration: none; color: #000000"
               >
                 Back to Login
+              </a>
+            </div>
+            <div class="text-start mt-2">
+              <a [routerLink]="'/home'" style="color: #1997ce">
+                Click here to resend
               </a>
             </div>
           </div>
