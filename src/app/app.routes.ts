@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { SampleComponent } from './Components/Login Pages/sample/sample.component';
 import { ForgotPasswordComponent } from './Components/Login Pages/forgot-password/forgot-password.component';
 import { VerificationComponent } from './Components/Login Pages/verification/verification.component';
+import { NewPasswordComponent } from './Components/Login Pages/new-password/new-password.component';
+import { AlldoneComponent } from './Components/Login Pages/alldone/alldone.component';
 
 export const routes: Routes = [
   {
@@ -11,18 +13,28 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    //login Route
+    //Home-Page
     path: 'home',
     component: SampleComponent,
   },
   {
-    //login Route
+    //Forgot-Password
     path: 'forgotpassword',
     component: ForgotPasswordComponent,
   },
   {
-    //login Route
+    //Verification
     path: 'verification',
     component: VerificationComponent,
+  },
+  {
+    //New-Password
+    path: 'newpassword',
+    component: NewPasswordComponent,
+  },
+  {
+    //All-Done
+    path: 'password_alldone',
+    component: AlldoneComponent,
   },
 ];

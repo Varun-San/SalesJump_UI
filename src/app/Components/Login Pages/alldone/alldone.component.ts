@@ -1,24 +1,16 @@
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  QueryList,
-  ViewChildren,
-} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-verification',
+  selector: 'app-alldone',
   imports: [ButtonModule, CommonModule, FormsModule, RouterLink],
-  templateUrl: './verification.component.html',
-  styleUrl: './verification.component.css',
+  templateUrl: './alldone.component.html',
+  styleUrl: './alldone.component.css',
 })
-export class VerificationComponent implements OnInit, OnDestroy {
-  // Slides logic Start
+export class AlldoneComponent implements OnInit, OnDestroy {
   slides = [
     {
       image: 'Assets/LoginPageImages/leadforce.png',
@@ -66,37 +58,4 @@ export class VerificationComponent implements OnInit, OnDestroy {
   goToSlide(index: number) {
     this.currentSlide = index;
   }
-  // Slides logic End
-
-  // Toggle mode (mobile/email) Start
-  mode: 'mobile' | 'email' = 'mobile';
-
-  toggleMode() {
-    this.mode = this.mode === 'mobile' ? 'email' : 'mobile';
-  }
-  // Toggle mode (mobile/email) End
-
-  // OTP Auto-focus Logic Start
-  otpArray = Array(4);
-  @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef>;
-
-  onOtpInputChange(event: any, index: number) {
-    const input = event.target;
-    const value = input.value;
-
-    if (value && index < this.otpArray.length - 1) {
-      this.otpInputs.get(index + 1)?.nativeElement.focus();
-    }
-    if (value.length > 1) {
-      input.value = value.charAt(0);
-    }
-  }
-
-  onOtpKeyDown(event: any, index: number) {
-    const input = event.target;
-    if (event.key === 'Backspace' && !input.value && index > 0) {
-      this.otpInputs.get(index - 1)?.nativeElement.focus();
-    }
-  }
-  // OTP Auto-focus Logic End
 }
