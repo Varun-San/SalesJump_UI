@@ -1,0 +1,16 @@
+.borderr {
+  border-right: 2px solid #dee2e6;
+  border-bottom: 2px solid #dee2e6;
+}
+.active2 {
+  text-decoration: none;
+  color: #405189;
+  position: relative; /* Important! */
+}
+.active2::after {
+  content: ">";
+  position: absolute;
+  color: #405189;
+  font-size: 30px;
+  transform: translateY(-50%);
+}

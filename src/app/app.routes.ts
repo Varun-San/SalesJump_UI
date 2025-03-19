@@ -4,6 +4,9 @@ import { ForgotPasswordComponent } from './Components/Login Pages/forgot-passwor
 import { VerificationComponent } from './Components/Login Pages/verification/verification.component';
 import { NewPasswordComponent } from './Components/Login Pages/new-password/new-password.component';
 import { AlldoneComponent } from './Components/Login Pages/alldone/alldone.component';
+import { ConfigurationComponent } from './Components/Setup/Configuration/configuration.component';
+import { UserWiseSettingsComponent } from './Components/Setup/Configuration/User Wise Settings/user-wise-settings.component';
+import { GeneralSettingsComponent } from './Components/Setup/Configuration/General Settings/general-settings.component';
 
 export const routes: Routes = [
   {
@@ -36,5 +39,20 @@ export const routes: Routes = [
     //All-Done
     path: 'password_alldone',
     component: AlldoneComponent,
+  },
+  // Setup --> Configuration --> General Settings
+  {
+    path: 'configuration',
+    component: ConfigurationComponent,
+    children: [
+      {
+        path: 'general-settings',
+        component: GeneralSettingsComponent,
+      },
+      {
+        path: 'user-settings',
+        component: UserWiseSettingsComponent,
+      },
+    ],
   },
 ];
