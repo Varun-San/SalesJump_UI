@@ -1,0 +1,30 @@
+#layout_nav {
+  background-color: #032c3e;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 65px;
+  flex-direction: column;
+  padding-left: 20px;
+  gap: 100px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional, for shadow */
+  /* padding-right: 20px; */
+}
+#layout_nav > ul {
+  display: flex;
+  gap: 15px;
+}
+/* Adjust the padding or margin of the content to prevent overlap */
+
+.navbar-nav {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Optional: Style the router-links as active */
+.router-link-active {
+  font-weight: bold;
+  color: #007bff;
+}

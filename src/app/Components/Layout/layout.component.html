@@ -1,0 +1,121 @@
+<nav class="navbar navbar-light" id="layout_nav">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a
+        class="navbar-brand d-flex justify-content-center"
+        [routerLink]="['/home']"
+        routerLinkActive="router-link-active"
+      >
+        <img
+          src="Assets/LayoutIcons/Logo.png"
+          alt="logo"
+          width="27"
+          height="27"
+        />
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link text-white fw-bold"
+        routerLink="#"
+        routerLinkActive="router-link-active"
+      >
+        <img
+          src="Assets/LayoutIcons/Home.png"
+          alt="home"
+          width="27"
+          height="27"
+        />
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link text-white fw-bold"
+        routerLink="#"
+        routerLinkActive="router-link-active"
+      >
+        <img
+          src="Assets/LayoutIcons/Master.png"
+          alt="Master"
+          width="27"
+          height="27"
+        />
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link text-white fw-bold"
+        routerLink="#"
+        routerLinkActive="router-link-active"
+      >
+        <img
+          src="Assets/LayoutIcons/Entry.png"
+          alt="Entry"
+          width="27"
+          height="27"
+        />
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link text-white fw-bold"
+        routerLink="#"
+        routerLinkActive="router-link-active"
+      >
+        <img
+          src="Assets/LayoutIcons/Upload.png"
+          alt="Upload"
+          width="27"
+          height="27"
+        />
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link text-white fw-bold"
+        routerLink="#"
+        routerLinkActive="router-link-active"
+      >
+        <img
+          src="Assets/LayoutIcons/Approval.png"
+          alt="Approval"
+          width="27"
+          height="27"
+        />
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link text-white fw-bold"
+        routerLink="#"
+        routerLinkActive="router-link-active"
+      >
+        <img
+          src="Assets/LayoutIcons/Reports.png"
+          alt="Reports"
+          width="27"
+          height="27"
+        />
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link text-white fw-bold"
+        routerLink="#"
+        routerLinkActive="router-link-active"
+      >
+        <img
+          src="Assets/LayoutIcons/Settings.png"
+          alt="Settings"
+          width="27"
+          height="27"
+        />
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- The main content that follows the nav bar -->
+<div class="container-fluid" id="main-content">
+  <router-outlet></router-outlet>
+</div>
