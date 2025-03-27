@@ -1,9 +1,8 @@
-<nav class="navbar navbar-light" id="layout_nav">
+<nav class="navbar navbar-light" id="layout_nav_side">
   <ul class="navbar-nav">
     <li class="nav-item">
       <a
         class="navbar-brand d-flex justify-content-center"
-        [routerLink]="['/home']"
         routerLinkActive="router-link-active"
       >
         <img
@@ -14,11 +13,14 @@
         />
       </a>
     </li>
+
     <li class="nav-item">
       <a
         class="nav-link text-white fw-bold"
-        routerLink="#"
+        [routerLink]="['/home']"
         routerLinkActive="router-link-active"
+        matTooltip="Home"
+        matTooltipPosition="right"
       >
         <img
           src="Assets/LayoutIcons/Home.png"
@@ -28,11 +30,14 @@
         />
       </a>
     </li>
+
     <li class="nav-item">
       <a
         class="nav-link text-white fw-bold"
         routerLink="#"
         routerLinkActive="router-link-active"
+        matTooltip="Master"
+        matTooltipPosition="right"
       >
         <img
           src="Assets/LayoutIcons/Master.png"
@@ -42,11 +47,14 @@
         />
       </a>
     </li>
+
     <li class="nav-item">
       <a
         class="nav-link text-white fw-bold"
         routerLink="#"
         routerLinkActive="router-link-active"
+        matTooltip="Entry"
+        matTooltipPosition="right"
       >
         <img
           src="Assets/LayoutIcons/Entry.png"
@@ -56,11 +64,14 @@
         />
       </a>
     </li>
+
     <li class="nav-item">
       <a
         class="nav-link text-white fw-bold"
         routerLink="#"
         routerLinkActive="router-link-active"
+        matTooltip="Upload"
+        matTooltipPosition="right"
       >
         <img
           src="Assets/LayoutIcons/Upload.png"
@@ -70,11 +81,14 @@
         />
       </a>
     </li>
+
     <li class="nav-item">
       <a
         class="nav-link text-white fw-bold"
         routerLink="#"
         routerLinkActive="router-link-active"
+        matTooltip="Approval"
+        matTooltipPosition="right"
       >
         <img
           src="Assets/LayoutIcons/Approval.png"
@@ -84,11 +98,14 @@
         />
       </a>
     </li>
+
     <li class="nav-item">
       <a
         class="nav-link text-white fw-bold"
         routerLink="#"
         routerLinkActive="router-link-active"
+        matTooltip="Reports"
+        matTooltipPosition="right"
       >
         <img
           src="Assets/LayoutIcons/Reports.png"
@@ -98,14 +115,17 @@
         />
       </a>
     </li>
+
     <li class="nav-item">
       <a
         class="nav-link text-white fw-bold"
-        routerLink="#"
+        routerLink="configuration"
         routerLinkActive="router-link-active"
+        matTooltip="Settings"
+        matTooltipPosition="right"
       >
         <img
-          src="Assets/LayoutIcons/Settings.png"
+          src="Assets/LayoutIcons/Settings.svg"
           alt="Settings"
           width="27"
           height="27"
@@ -113,6 +133,62 @@
       </a>
     </li>
   </ul>
+</nav>
+
+<!-- Breadcrumb Header -->
+<nav class="navbar" style="margin-left: 65px; width: 96%">
+  <div class="container-fluid">
+    <!-- Breadcrumb Navigation -->
+    <div>
+      <ng-container *ngIf="getHeaderText() as breadcrumbs">
+        <ng-container *ngFor="let breadcrumb of breadcrumbs; let last = last">
+          <a
+            [routerLink]="breadcrumb.route"
+            class="text-dark text-decoration-none"
+          >
+            {{ breadcrumb.label }}
+          </a>
+          <span *ngIf="!last"> / </span>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <!-- Search Bar & Profile Icon -->
+    <div class="d-flex align-items-center">
+      <form class="d-flex me-2">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          matTooltip="Search"
+        />
+        <a
+          class="nav-link text-white fw-bold mt-1"
+          routerLink="configuration"
+          routerLinkActive="router-link-active"
+          matTooltip="Notification"
+        >
+          <img
+            src="Assets/LayoutIcons/Notification.png"
+            alt="Notification"
+            width="30"
+            height="30"
+        /></a>
+      </form>
+
+      <!-- Profile Icon -->
+      <a href="#" matTooltip="Profile">
+        <img
+          src="Assets/LayoutIcons/Profile.png"
+          alt="Profile"
+          width="35"
+          height="35"
+          class="squared"
+        />
+      </a>
+    </div>
+  </div>
 </nav>
 
 <!-- The main content that follows the nav bar -->

@@ -1,4 +1,4 @@
-#layout_nav {
+#layout_nav_side {
   background-color: #032c3e;
   position: fixed;
   top: 0;
@@ -12,12 +12,12 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional, for shadow */
   /* padding-right: 20px; */
 }
-#layout_nav > ul {
+#layout_nav_side > ul {
   display: flex;
   gap: 15px;
 }
-/* Adjust the padding or margin of the content to prevent overlap */
 
+/* Adjust the padding or margin of the content to prevent overlap */
 .navbar-nav {
   list-style: none;
   padding-left: 0;
