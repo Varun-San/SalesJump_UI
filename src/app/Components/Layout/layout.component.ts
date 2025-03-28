@@ -13,6 +13,36 @@ import { CommonModule } from '@angular/common';
 export class LayoutComponent {
   constructor(private router: Router) {}
 
+  menuItems = [
+    { label: 'Home', route: '/home', icon: 'Assets/LayoutIcons/Home.svg' },
+    {
+      label: 'Master',
+      route: '/master',
+      icon: 'Assets/LayoutIcons/Master.svg',
+    },
+    { label: 'Entry', route: '/entry', icon: 'Assets/LayoutIcons/Entry.svg' },
+    {
+      label: 'Upload',
+      route: '/upload',
+      icon: 'Assets/LayoutIcons/Upload.svg',
+    },
+    {
+      label: 'Approval',
+      route: '/approval',
+      icon: 'Assets/LayoutIcons/Approval.svg',
+    },
+    {
+      label: 'Reports',
+      route: '/reports',
+      icon: 'Assets/LayoutIcons/Reports.svg',
+    },
+    {
+      label: 'Settings',
+      route: '/configuration',
+      icon: 'Assets/LayoutIcons/Settings.svg',
+    },
+  ];
+
   getHeaderText(): { label: string; route: string }[] | null {
     const currentRoute = this.router.url;
 

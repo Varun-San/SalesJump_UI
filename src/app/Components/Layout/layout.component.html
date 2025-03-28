@@ -1,135 +1,27 @@
 <nav class="navbar navbar-light" id="layout_nav_side">
   <ul class="navbar-nav">
+    <!-- Logo -->
     <li class="nav-item">
-      <a
-        class="navbar-brand d-flex justify-content-center"
-        routerLinkActive="router-link-active"
-      >
+      <a class="navbar-brand" routerLink="/">
         <img
-          src="Assets/LayoutIcons/Logo.png"
+          src="Assets/LayoutIcons/Logo.svg"
           alt="logo"
-          width="27"
-          height="27"
+          width="24"
+          height="24"
         />
       </a>
     </li>
 
-    <li class="nav-item">
+    <!-- Dynamic Menu Items -->
+    <li class="nav-item" *ngFor="let item of menuItems">
       <a
         class="nav-link text-white fw-bold"
-        [routerLink]="['/home']"
+        [routerLink]="item.route"
         routerLinkActive="router-link-active"
-        matTooltip="Home"
+        matTooltip="{{ item.label }}"
         matTooltipPosition="right"
       >
-        <img
-          src="Assets/LayoutIcons/Home.png"
-          alt="home"
-          width="27"
-          height="27"
-        />
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <a
-        class="nav-link text-white fw-bold"
-        routerLink="#"
-        routerLinkActive="router-link-active"
-        matTooltip="Master"
-        matTooltipPosition="right"
-      >
-        <img
-          src="Assets/LayoutIcons/Master.png"
-          alt="Master"
-          width="27"
-          height="27"
-        />
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <a
-        class="nav-link text-white fw-bold"
-        routerLink="#"
-        routerLinkActive="router-link-active"
-        matTooltip="Entry"
-        matTooltipPosition="right"
-      >
-        <img
-          src="Assets/LayoutIcons/Entry.png"
-          alt="Entry"
-          width="27"
-          height="27"
-        />
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <a
-        class="nav-link text-white fw-bold"
-        routerLink="#"
-        routerLinkActive="router-link-active"
-        matTooltip="Upload"
-        matTooltipPosition="right"
-      >
-        <img
-          src="Assets/LayoutIcons/Upload.png"
-          alt="Upload"
-          width="27"
-          height="27"
-        />
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <a
-        class="nav-link text-white fw-bold"
-        routerLink="#"
-        routerLinkActive="router-link-active"
-        matTooltip="Approval"
-        matTooltipPosition="right"
-      >
-        <img
-          src="Assets/LayoutIcons/Approval.png"
-          alt="Approval"
-          width="27"
-          height="27"
-        />
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <a
-        class="nav-link text-white fw-bold"
-        routerLink="#"
-        routerLinkActive="router-link-active"
-        matTooltip="Reports"
-        matTooltipPosition="right"
-      >
-        <img
-          src="Assets/LayoutIcons/Reports.png"
-          alt="Reports"
-          width="27"
-          height="27"
-        />
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <a
-        class="nav-link text-white fw-bold"
-        routerLink="configuration"
-        routerLinkActive="router-link-active"
-        matTooltip="Settings"
-        matTooltipPosition="right"
-      >
-        <img
-          src="Assets/LayoutIcons/Settings.svg"
-          alt="Settings"
-          width="27"
-          height="27"
-        />
+        <img [src]="item.icon" [alt]="item.label" width="24" height="24" />
       </a>
     </li>
   </ul>
@@ -170,7 +62,7 @@
           matTooltip="Notification"
         >
           <img
-            src="Assets/LayoutIcons/Notification.png"
+            src="Assets/LayoutIcons/Notification.svg"
             alt="Notification"
             width="30"
             height="30"
@@ -180,7 +72,7 @@
       <!-- Profile Icon -->
       <a href="#" matTooltip="Profile">
         <img
-          src="Assets/LayoutIcons/Profile.png"
+          src="Assets/LayoutIcons/Profile Picture_1.svg"
           alt="Profile"
           width="35"
           height="35"

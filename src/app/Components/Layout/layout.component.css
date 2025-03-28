@@ -1,3 +1,4 @@
+/* Sidebar Navigation */
 #layout_nav_side {
   background-color: #032c3e;
   position: fixed;
@@ -5,26 +6,75 @@
   left: 0;
   height: 100vh;
   width: 65px;
-  flex-direction: column;
-  padding-left: 20px;
-  gap: 100px;
-  z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional, for shadow */
-  /* padding-right: 20px; */
-}
-#layout_nav_side > ul {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#layout_nav_side ul {
+  display: flex;
+  flex-direction: column;
   gap: 15px;
+  padding: 0;
+  width: 100%;
 }
 
-/* Adjust the padding or margin of the content to prevent overlap */
-.navbar-nav {
-  list-style: none;
-  padding-left: 0;
+/* Nav Items */
+.nav-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-/* Optional: Style the router-links as active */
+.nav-link {
+  text-align: center;
+  padding: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Active Link Styling */
 .router-link-active {
-  font-weight: bold;
-  color: #007bff;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+/* Icon Hover Effect */
+.nav-link:hover img {
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease-in-out;
+}
+
+/* Breadcrumb Styling */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: black;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Search Bar & Profile */
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-container input {
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.navbar-brand {
+  margin-right: 0 !important;
 }
