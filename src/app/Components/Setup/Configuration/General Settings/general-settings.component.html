@@ -71,333 +71,268 @@
       <div [ngSwitch]="activeTab">
         <!-- Basic -->
         <div *ngSwitchCase="'Basic'">
-          <!-- 1st -->
-          <div class="row">
-            <div class="col-lg-6">
-              <h6>Door To Door</h6>
-              <p class="text-muted m-0">Enable Door to Door</p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
+          <ng-container *ngFor="let setting of Basic_Settings">
+            <div class="row">
+              <div class="col-lg-6 mt-2">
+                <h6>{{ setting.title }}</h6>
+                <p class="text-muted m-0">{{ setting.description }}</p>
               </div>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 2nd -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Brand Availabilty</h6>
-              <p class="text-muted m-0">Brand Availabilty / Manager Preview</p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch mt-2">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
+
+              <!-- Toggle Switch -->
+              <div
+                class="col-lg-6 text-end toogle_switch mt-2"
+                *ngIf="!setting.hasRadio && !setting.hasDropdown"
+              >
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" />
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="border_bottom_solid_div"></div>
-          <div class="row">
-            <div class="col-lg-12 text-end mt-2">
-              <mat-radio-group aria-label="Select an option">
-                <mat-radio-button value="1">Brand Wise</mat-radio-button>
-                <mat-radio-button value="2">Product wise</mat-radio-button>
-              </mat-radio-group>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 3rd -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Self / Joint Work</h6>
-              <p class="text-muted m-0">Enable Join Work</p>
-            </div>
-            <div class="col-lg-6 mt-2 text-end toogle_switch">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
+
+              <!-- Radio Buttons (Brand Availability) -->
+              <div class="col-lg-6 text-end mt-2" *ngIf="setting.hasRadio">
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1">Brand Wise</mat-radio-button>
+                  <mat-radio-button value="2">Product Wise</mat-radio-button>
+                </mat-radio-group>
               </div>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 4th -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Edit Calls</h6>
-              <p class="text-muted m-0">Allow to edit Submitted calls</p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
-              </div>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 5th -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Day End Remarks</h6>
-              <p class="text-muted m-0">
-                Enable Remarks to add any Feedback for the day
-              </p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
-              </div>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 6th -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Day Start Time</h6>
-              <p class="text-muted m-0">
-                Capture Start time of work in the field activity
-              </p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
-              </div>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 7th -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Day End Time</h6>
-              <p class="text-muted m-0">
-                Capture End time of work in the field activity
-              </p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
-              </div>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 8th -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Missed Date Entry</h6>
-              <p class="text-muted m-0">
-                Capture Start time of work in the field activity
-              </p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
-              </div>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 9th -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Remarks with audio</h6>
-              <p class="text-muted m-0">
-                Enable Audio Remarks in call submission
-              </p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
-              </div>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 10th -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Product Survey</h6>
-              <p class="text-muted m-0">
-                Enable Option to add competitor details (Secondary option)
-              </p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
-              </div>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 11th -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Choose Currency type</h6>
-              <p class="text-muted m-0">Allow to Change Currency type</p>
-            </div>
-            <div class="col-lg-6 d-flex justify-content-end mt-2">
-              <div class="col-5 text-end">
-                <select
-                  class="form-select"
-                  [(ngModel)]="selectedCurrency"
-                  aria-label="Currency Select"
-                >
-                  <option
-                    *ngFor="let currency of currencies"
-                    [ngValue]="currency"
+
+              <!-- Dropdown (Choose Currency Type) -->
+              <div
+                class="col-lg-6 d-flex justify-content-end mt-2"
+                *ngIf="setting.hasDropdown"
+              >
+                <div class="col-5 text-end">
+                  <select
+                    class="form-select"
+                    [(ngModel)]="selectedCurrency"
+                    aria-label="Currency Select"
                   >
-                    {{ currency.symbol }} - {{ currency.name }}
-                  </option>
-                </select>
+                    <option
+                      *ngFor="let currency of currencies"
+                      [ngValue]="currency"
+                    >
+                      {{ currency.symbol }} - {{ currency.name }}
+                    </option>
+                  </select>
+                </div>
               </div>
+
+              <div class="border_bottom_dashed_div"></div>
             </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 12th -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Custom Form</h6>
-              <p class="text-muted m-0">Create Custom Form</p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
-              </div>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 13th -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Payment Collection</h6>
-              <p class="text-muted m-0">
-                Enables payment collection option (Secondary Option)
-              </p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
-              </div>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 14th -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Mobile Number digit length</h6>
-              <p class="text-muted m-0">
-                Define no of digits required in mobile no field
-              </p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
-              </div>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
+          </ng-container>
         </div>
+
         <!-- Mobile App Settings -->
         <div *ngSwitchCase="'Mobile App Settings'">
-          <!-- 1st -->
-          <div class="row">
-            <div class="col-lg-6">
-              <h6>Product Detialing</h6>
-              <p class="text-muted m-0">
-                Product Detialing for digital promotion to customer ( video,
-                images, pdf )
-              </p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch mt-2">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
+          <ng-container *ngFor="let setting of Mobile_App_Settings">
+            <div class="row">
+              <div class="col-lg-6 mt-2">
+                <h6>{{ setting.title }}</h6>
+                <p class="text-muted m-0">{{ setting.description }}</p>
+              </div>
+
+              <!-- Toggle Switch -->
+              <div
+                class="col-lg-6 text-end toogle_switch mt-2"
+                *ngIf="!setting.isInputField"
+              >
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    [(ngModel)]="setting.isEnabled"
+                    (change)="
+                      onGeoTaggingChange(setting.title, setting.isEnabled)
+                    "
+                  />
+                </div>
+              </div>
+
+              <!-- Input Field -->
+              <div
+                class="col-lg-6 mt-2 d-flex justify-content-end align-items-center gap-2"
+                *ngIf="setting.isInputField"
+              >
+                <div class="col-5">
+                  <input
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="setting.inputValue"
+                    [disabled]="!setting.isEditing"
+                  />
+                </div>
+                <a href="#" (click)="setting.isEditing = !setting.isEditing">
+                  <img
+                    src="Assets/GeneralSettings/pencil.svg"
+                    alt="Edit"
+                    height="17"
+                    width="17"
+                  />
+                </a>
               </div>
             </div>
+
             <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 2nd -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Battery Status Need</h6>
-              <p class="text-muted m-0">Show's User Mobile battery Status</p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch mt-2">
-              <div class="form-check form-switch mt-2">
-                <input class="form-check-input" type="checkbox" />
+          </ng-container>
+
+          <!-- Dependent Settings (Only Show When 'Geo Tagging' is Enabled) -->
+          <ng-container *ngIf="isGeoTaggingEnabled">
+            <ng-container *ngFor="let setting of Dependent_Geo_Settings">
+              <div class="row ms-2">
+                <div class="col-lg-6 mt-2">
+                  <h6>{{ setting.title }}</h6>
+                  <p class="text-muted m-0">{{ setting.description }}</p>
+                </div>
+
+                <!-- Input Field for Geo-Fencing Radius -->
+                <div
+                  class="col-lg-6 mt-2 d-flex justify-content-end align-items-center gap-2"
+                  *ngIf="setting.isInputField"
+                >
+                  <div class="col-5">
+                    <input
+                      class="form-control"
+                      type="text"
+                      [(ngModel)]="setting.inputValue"
+                      [disabled]="!setting.isEditing"
+                    />
+                  </div>
+                  <a href="#" (click)="setting.isEditing = !setting.isEditing">
+                    <img
+                      src="Assets/GeneralSettings/pencil.svg"
+                      alt="Edit"
+                      height="17"
+                      width="17"
+                    />
+                  </a>
+                </div>
+
+                <div class="border_bottom_solid_div ms-2"></div>
               </div>
-            </div>
-            <div class="border_bottom_dashed_div"></div>
-          </div>
-          <!-- 3rd -->
-          <div class="row">
-            <div class="col-lg-6 mt-2">
-              <h6>Geo Tagging</h6>
-              <p class="text-muted m-0">Geo Tagging Option enable in App</p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch">
-              <div class="form-check form-switch mt-2">
-                <input class="form-check-input" type="checkbox" />
-              </div>
-            </div>
-          </div>
-          <div class="border_bottom_solid_div"></div>
-          <div class="row ms-2">
-            <div class="col-lg-6 mt-2">
-              <h6>Geo-Fencing Radius (in KM)</h6>
-              <p class="text-muted m-0">
-                Radius around which fencing will work
-              </p>
-            </div>
-            <div
-              class="col-lg-6 mt-2 d-flex justify-content-end align-items-center gap-2"
-            >
-              <div class="col-5 form-check">
-                <input class="form-control" type="text" disabled />
-              </div>
-              <a href="#"
-                ><img
-                  src="Assets/GeneralSettings/pencil.svg"
-                  alt=""
-                  height="17"
-                  width="17"
-              /></a>
-            </div>
-          </div>
-          <div class="border_bottom_solid_div ms-4"></div>
-          <div class="row ms-2">
-            <div class="col-lg-6 mt-2">
-              <h6>Geo-Fencing Retailer Tag</h6>
-              <p class="text-muted m-0">
-                User Cannot able to Submit order, if the Retailer is not tagged.
-              </p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch mt-2">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
-              </div>
-            </div>
-          </div>
-          <div class="border_bottom_solid_div ms-4"></div>
-          <div class="row ms-2">
-            <div class="col-lg-6 mt-2">
-              <h6>Show map in Retailer selection</h6>
-              <p class="text-muted m-0">
-                This setup is used to show map in Retailer selection
-              </p>
-            </div>
-            <div class="col-lg-6 text-end toogle_switch mt-2">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="border_bottom_dashed_div"></div>
-          </div>
+            </ng-container>
+          </ng-container>
         </div>
+
         <!-- Retailer & Secondary  -->
         <div *ngSwitchCase="'Retailer & Secondary'">
-          <h4>Retailer & Secondary</h4>
-          <p>Details about retailer & secondary sales...</p>
+          <ng-container *ngFor="let section of Retailer_Secondary">
+            <div class="row">
+              <div class="col-lg-6 mt-2">
+                <h6>{{ section.title }}</h6>
+                <p class="text-muted m-0">{{ section.description }}</p>
+              </div>
+
+              <!-- Toggle Switch -->
+              <div
+                class="col-lg-6 text-end toogle_switch"
+                *ngIf="!section.isInputField"
+              >
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" />
+                </div>
+              </div>
+
+              <!-- Input Field (Editable) -->
+              <div
+                class="col-lg-6 mt-2 d-flex justify-content-end align-items-center"
+                *ngIf="section.isInputField"
+              >
+                <div class="col-5">
+                  <input
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="section.inputValue"
+                  />
+                </div>
+              </div>
+              <div class="border_bottom_dashed_div"></div>
+            </div>
+          </ng-container>
         </div>
+
         <!-- Distributor & Primary -->
         <div *ngSwitchCase="'Distributor & Primary'">
-          <h4>Distributor & Primary</h4>
-          <p>Manage your distributor and primary details...</p>
+          <ng-container *ngFor="let dependent_primary of Distributor_Primary">
+            <div class="row">
+              <div class="col-lg-6 mt-2">
+                <h6>{{ dependent_primary.title }}</h6>
+                <p class="text-muted m-0">
+                  {{ dependent_primary.description }}
+                </p>
+              </div>
+              <div class="col-lg-6 text-end toogle_switch mt-2">
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    [(ngModel)]="dependent_primary.isEnabled"
+                    (change)="
+                      onPrimaryOrderChange(
+                        dependent_primary.title,
+                        dependent_primary.isEnabled
+                      )
+                    "
+                  />
+                </div>
+              </div>
+              <div class="border_bottom_dashed_div"></div>
+            </div>
+
+            <!-- ✅ Show dependent settings INSIDE the same parent block -->
+            <ng-container
+              *ngIf="
+                dependent_primary.title === 'Primary Order' &&
+                isPrimaryOrderEnabled
+              "
+            >
+              <ng-container
+                *ngFor="let D_Primary_Order of Dependent_Primary_Order"
+              >
+                <div class="row ms-2">
+                  <div class="col-lg-6 mt-2">
+                    <h6>{{ D_Primary_Order.title }}</h6>
+                    <p class="text-muted m-0">
+                      {{ D_Primary_Order.description }}
+                    </p>
+                  </div>
+                  <div class="col-lg-6 text-end toogle_switch mt-2">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" />
+                    </div>
+                  </div>
+                  <div class="border_bottom_solid_div ms-2"></div>
+                </div>
+              </ng-container>
+            </ng-container>
+
+            <ng-container
+              *ngIf="
+                dependent_primary.title === 'Add New Distributor' &&
+                isNewDistributorEnabled
+              "
+            >
+              <ng-container
+                *ngFor="let D_New_Distributor of Dependent_New_Distributor"
+              >
+                <div class="row ms-2">
+                  <div class="col-lg-6 mt-2">
+                    <h6>{{ D_New_Distributor.title }}</h6>
+                    <p class="text-muted m-0">
+                      {{ D_New_Distributor.description }}
+                    </p>
+                  </div>
+                  <div class="col-lg-6 text-end toogle_switch mt-2">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" />
+                    </div>
+                  </div>
+                  <div class="border_bottom_solid_div ms-2"></div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
         </div>
+
         <!-- Tour Plan -->
         <div *ngSwitchCase="'Tour Plan'">
           <h4>Tour Plan</h4>

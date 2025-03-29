@@ -64,3 +64,27 @@
 .mat-mdc-radio-button ~ .mat-mdc-radio-button {
   margin-left: 16px;
 }
+
+/* border */
+.border_bottom {
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+/* Dashed border */
+.border_bottom_dashed_div {
+  border-bottom: 1px dashed grey;
+  border-image: repeating-linear-gradient(
+      90deg,
+      grey,
+      grey 5px,
+      transparent 5px,
+      transparent 10px
+    )
+    1;
+}
+
+/* Solid border */
+.border_bottom_solid_div {
+  border-bottom: 1px solid grey;
+}
