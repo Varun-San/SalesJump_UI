@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { faSearch, faClock } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { MatRadioModule } from '@angular/material/radio';
@@ -28,7 +28,6 @@ import { FormControl, FormsModule, NgModel } from '@angular/forms';
 })
 export class GeneralSettingsComponent {
   faSearch = faSearch;
-  faclock = faClock
 
   tabs = [
     'Basic',
@@ -54,9 +53,9 @@ export class GeneralSettingsComponent {
 
   disableSelect = new FormControl(false);
 
-  //? ------------- SECTION MODULES -------------
+  //! ------------- SECTION MODULES -------------
 
-  //! Basic_Settings
+  // Basic_Settings
 
   Basic_Settings = [
     { title: 'Door To Door', description: 'Enable Door to Door' },
@@ -119,7 +118,7 @@ export class GeneralSettingsComponent {
 
   //? ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  //! Mobile_App_Settings
+  // Mobile_App_Settings
 
   isGeoTaggingEnabled: boolean = false;
 
@@ -183,7 +182,7 @@ export class GeneralSettingsComponent {
 
   //? ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  //! Retailer_Secondary
+  // Retailer_Secondary
 
   Retailer_Secondary = [
     { title: 'CL Qty', description: 'Enable Option in Secondary order entry' },
@@ -227,7 +226,7 @@ export class GeneralSettingsComponent {
 
   //? ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  //! Distributor_Primary
+  // Distributor_Primary
 
   Distributor_Primary = [
     {
@@ -267,128 +266,4 @@ export class GeneralSettingsComponent {
       this.isNewDistributorEnabled = isEnabled;
     }
   }
-
-  //? ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  //! Tour plan
-
-  isTourPlan_Enabled: boolean = false;
-
-  Tour_Plan = [
-    {
-      title: 'TP Mandatory',
-      description: 'TP Mandatory & remainder',
-      isEnabled: false,
-    },
-    {
-      title: 'TP Deviation',
-      description: 'Enable TP deviation option on day plan screen',
-      isEnabled: false,
-    },
-    {
-      title: 'TP Retailer Selection',
-      description: 'Enable Retailer selection as mandatory while planning TP',
-      isEnabled: false,
-    },
-    {
-      title: 'TP Manager Approval',
-      description: 'Enable Send to Approval process after user completes TP',
-      isEnabled: false,
-    },
-  ];
-
-  Tourplan_Mandatory = [
-    {
-      title: 'TP Mandatory date',
-      description: 'TP Entry mandatory to do my day plan',
-      isInputField: true,
-      inputValue: '27',
-      isEditing: false,
-    },
-    {
-      title: 'TP Remainder date',
-      description: 'Reminder for TP entry',
-      isInputField: true,
-      inputValue: '21',
-      isEditing: false,
-    },
-  ];
-
-  onTourPlanMandatory(title: string, isEnabled: boolean) {
-    if (title.trim() === 'TP Mandatory') {
-      this.isTourPlan_Enabled = isEnabled;
-      console.log('TP Mandatory toggled:', this.isTourPlan_Enabled);
-    }
-  }
-
-  //? ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  // ! In Shop
-
-  isInshop_Enabled: boolean = false; // Default should be false
-
-  InShop = [
-    {
-      title: 'Inshop Sales',
-      description: 'Enable Sales done inside shop',
-      isEnabled: false,
-    },
-  ];
-
-  Inshop_Mandatory = [
-    {
-      title: 'Inshop Activity Type',
-      description: 'Choose one from available configuration',
-    },
-  ];
-
-  shopItems = [{ option: 'Inshop Activity' }];
-  selectedItems = this.shopItems[0]; // Initialize correctly
-
-  onInShop(title: string, isEnabled: boolean) {
-    console.log('TP Mandatory toggled:', isEnabled);
-    if (title.trim() === 'Inshop Sales') {
-      this.isInshop_Enabled = isEnabled; // Properly update state
-    }
-  }
-
-  //? ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  //! Attendance And Leave
-
-  Attendance_Leave = [
-    {
-      title: 'Leave Auto Approval',
-      description: 'This will Approve all Leave automatically',
-    },
-    {
-      title: 'Attendance Edit',
-      description: 'Allows user to edit attendance',
-    },
-    {
-      title: 'Leave Eligibility',
-      description: 'Set Leave Eligibility',
-    },
-  ];
-
-  //? ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  //! Reports
-
-  Reports = [
-    {
-      title: 'Distributor Wise Secondary Order detail Report',
-      description: 'Enable order reports',
-    },
-    {
-      title: 'EOD Report Needed',
-      description: 'Enable daily call reports',
-    },
-    {
-      title: 'Set Time For EOD Report',
-      description: 'Time for EOD Call Reports',
-      hasEODTimer: true,
-      isEditing: false,
-    },
-  ];
 }
