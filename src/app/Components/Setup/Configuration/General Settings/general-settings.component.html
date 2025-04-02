@@ -69,7 +69,7 @@
   <div class="col-9">
     <div class="tab-content p-3 border border-top-0">
       <div [ngSwitch]="activeTab">
-        <!-- Basic -->
+        <!-- !Basic -->
         <div *ngSwitchCase="'Basic'">
           <ng-container *ngFor="let setting of Basic_Settings">
             <div class="row">
@@ -122,7 +122,7 @@
           </ng-container>
         </div>
 
-        <!-- Mobile App Settings -->
+        <!-- !Mobile App Settings -->
         <div *ngSwitchCase="'Mobile App Settings'">
           <ng-container *ngFor="let setting of Mobile_App_Settings">
             <div class="row">
@@ -213,7 +213,7 @@
           </ng-container>
         </div>
 
-        <!-- Retailer & Secondary  -->
+        <!-- !Retailer & Secondary  -->
         <div *ngSwitchCase="'Retailer & Secondary'">
           <ng-container *ngFor="let section of Retailer_Secondary">
             <div class="row">
@@ -250,7 +250,7 @@
           </ng-container>
         </div>
 
-        <!-- Distributor & Primary -->
+        <!-- !Distributor & Primary -->
         <div *ngSwitchCase="'Distributor & Primary'">
           <ng-container *ngFor="let dependent_primary of Distributor_Primary">
             <div class="row">
@@ -333,14 +333,126 @@
           </ng-container>
         </div>
 
-        <!-- Tour Plan -->
+        <!-- !Tour Plan -->
         <div *ngSwitchCase="'Tour Plan'">
-          <h4>Tour Plan</h4>
-          <p>Manage your distributor and primary details...</p>
+          <ng-container *ngFor="let TourPlan of Tour_Plan">
+            <div class="row">
+              <div class="col-lg-6 mt-2">
+                <h6>{{ TourPlan.title }}</h6>
+                <p class="text-muted m-0">{{ TourPlan.description }}</p>
+              </div>
+              <div class="col-lg-6 text-end toogle_switch">
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    [(ngModel)]="TourPlan.isEnabled"
+                    (change)="
+                      onTourPlanMandatory(TourPlan.title, TourPlan.isEnabled)
+                    "
+                  />
+                </div>
+              </div>
+              <div class="border_bottom_dashed_div"></div>
+            </div>
+
+            <ng-container
+              *ngIf="TourPlan.title === 'TP Mandatory' && isTourPlan_Enabled"
+            >
+              <ng-container
+                *ngFor="let TourPlanMandatory of Tourplan_Mandatory"
+              >
+                <div class="row ms-2">
+                  <div class="col-lg-6 mt-2">
+                    <h6>{{ TourPlanMandatory.title }}</h6>
+                    <p class="text-muted m-0">
+                      {{ TourPlanMandatory.description }}
+                    </p>
+                  </div>
+                  <div
+                    class="col-lg-6 mt-2 d-flex justify-content-end align-items-center gap-2"
+                    *ngIf="TourPlanMandatory.isInputField"
+                  >
+                    <div class="col-5">
+                      <input
+                        class="form-control"
+                        type="text"
+                        [(ngModel)]="TourPlanMandatory.inputValue"
+                        [disabled]="!TourPlanMandatory.isEditing"
+                      />
+                    </div>
+                    <a
+                      href="#"
+                      (click)="
+                        TourPlanMandatory.isEditing =
+                          !TourPlanMandatory.isEditing
+                      "
+                    >
+                      <img
+                        src="Assets/GeneralSettings/pencil.svg"
+                        alt="Edit"
+                        height="17"
+                        width="17"
+                      />
+                    </a>
+                  </div>
+                  <div class="border_bottom_solid_div ms-2"></div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
         </div>
-        <!-- In Shop -->
+        <!-- !In Shop -->
         <div *ngSwitchCase="'Inshop'">
-          <h4>Inshop</h4>
+          <ng-container *ngFor="let Inshop of InShop">
+            <div class="row">
+              <div class="col-lg-6 mt-2">
+                <h6>{{ Inshop.title }}</h6>
+                <p class="text-muted m-0">{{ Inshop.description }}</p>
+              </div>
+              <div class="col-lg-6 text-end toogle_switch">
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    [(ngModel)]="Inshop.isEnabled"
+                    (change)="onInShop(Inshop.title, Inshop.isEnabled)"
+                  />
+                </div>
+              </div>
+              <div class="border_bottom_dashed_div"></div>
+            </div>
+
+            <ng-container *ngIf="isInshop_Enabled">
+              <ng-container *ngFor="let InshopDependent of Inshop_Mandatory">
+                <div class="row ms-2">
+                  <div class="col-lg-6 mt-2">
+                    <h6>{{ InshopDependent.title }}</h6>
+                    <p class="text-muted m-0">
+                      {{ InshopDependent.description }}
+                    </p>
+                  </div>
+                  <div class="col-lg-6 d-flex justify-content-end mt-2">
+                    <div class="col-lg-5 text-end">
+                      <select
+                        class="form-select"
+                        [(ngModel)]="selectedItems"
+                        aria-label="Currency Select"
+                      >
+                        <option
+                          *ngFor="let ShopItems of shopItems"
+                          [ngValue]="ShopItems"
+                        >
+                          {{ ShopItems.option }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="border_bottom_solid_div ms-2"></div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
         </div>
         <!-- Expense -->
         <div *ngSwitchCase="'Expense'">
@@ -356,21 +468,119 @@
         </div>
         <!-- Caption -->
         <div *ngSwitchCase="'Caption'">
-          <h4>Caption</h4>
+          <ng-container *ngFor="let caption of Caption; let i = index">
+            <div class="row align-items-center">
+              <div class="col-lg-6 mt-2">
+                <h6>{{ caption.title }}</h6>
+                <p class="text-muted m-0">{{ caption.description }}</p>
+              </div>
+              <div class="col-lg-6 text-end toogle_switch">
+                <div
+                  class="d-flex align-items-center justify-content-end gap-2"
+                >
+                  <input
+                    class="form-control"
+                    type="text"
+                    [disabled]="!caption.isEditing"
+                    [(ngModel)]="caption.tempValue"
+                  />
+                  <span *ngIf="!caption.isEditing">
+                    <a href="javascript:void(0);" (click)="enableEditing(i)">
+                      <img
+                        src="Assets/GeneralSettings/pencil.svg"
+                        alt="Edit"
+                        height="17"
+                        width="17"
+                      />
+                    </a>
+                  </span>
+                  <span *ngIf="caption.isEditing" class="d-flex gap-2">
+                    <a href="javascript:void(0);" (click)="saveCaption(i)">
+                      <img
+                        src="Assets/GeneralSettings/Caption/Tick.svg"
+                        alt="Edit"
+                        height="17"
+                        width="17"
+                    /></a>
+                    <a href="javascript:void(0);" (click)="cancelEditing(i)">
+                      <img
+                        src="Assets/GeneralSettings/Caption/Cross.svg"
+                        alt="Edit"
+                        height="17"
+                        width="17"
+                      />
+                    </a>
+                  </span>
+                </div>
+              </div>
+              <div class="border_bottom_dashed_div"></div>
+            </div>
+          </ng-container>
         </div>
-        <!-- Attendance & Leave -->
+
+        <!-- !Attendance & Leave -->
         <div *ngSwitchCase="'Attendance & Leave'">
-          <h4>Caption</h4>
+          <ng-container *ngFor="let AttendanceLeave of Attendance_Leave">
+            <div class="row">
+              <div class="col-lg-6 mt-2">
+                <h6>{{ AttendanceLeave.title }}</h6>
+                <p class="text-muted m-0">{{ AttendanceLeave.description }}</p>
+              </div>
+              <div class="col-lg-6 text-end toogle_switch">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" />
+                </div>
+              </div>
+              <div class="border_bottom_dashed_div"></div>
+            </div>
+          </ng-container>
         </div>
-        <!-- Reports -->
+        <!-- !Reports -->
         <div *ngSwitchCase="'Reports'">
-          <h4>Reports</h4>
+          <ng-container *ngFor="let reports of Reports">
+            <div class="row">
+              <div class="col-lg-6 mt-2">
+                <h6>{{ reports.title }}</h6>
+                <p class="text-muted m-0">{{ reports.description }}</p>
+              </div>
+              <div
+                class="col-lg-6 text-end toogle_switch"
+                *ngIf="!reports.hasEODTimer"
+              >
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" />
+                </div>
+              </div>
+
+              <div
+                class="col-lg-6 mt-2 d-flex justify-content-end align-items-center"
+                *ngIf="reports.hasEODTimer"
+              >
+                <div class="col-5">
+                  <div class="d-flex align-items-center">
+                    <input
+                      class="form-control"
+                      type="text"
+                      [disabled]="!reports.isEditing"
+                    />
+                    <a href="">
+                      <img
+                        src="Assets/GeneralSettings/Caption/Frame 11.svg"
+                        alt="Timer"
+                      />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="border_bottom_dashed_div"></div>
+            </div>
+          </ng-container>
         </div>
-        <!-- Route -->
+        <!-- !Route -->
         <div *ngSwitchCase="'Route'">
           <h4>Route</h4>
         </div>
-        <!-- Default -->
+        <!-- !Default -->
         <div *ngSwitchDefault>
           <h4>Welcome</h4>
           <p>Select a tab to view content.</p>
