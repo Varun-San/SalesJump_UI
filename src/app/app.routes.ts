@@ -8,6 +8,7 @@ import { ConfigurationComponent } from './Components/Setup/Configuration/configu
 import { UserWiseSettingsComponent } from './Components/Setup/Configuration/User Wise Settings/user-wise-settings.component';
 import { GeneralSettingsComponent } from './Components/Setup/Configuration/General Settings/general-settings.component';
 import { LayoutComponent } from './Components/Layout/layout.component';
+import { MastersComponent } from './Components/Masters/masters.component';
 
 export const routes: Routes = [
   {
@@ -59,6 +60,10 @@ export const routes: Routes = [
             component: UserWiseSettingsComponent,
           },
         ],
+      },
+      {
+        path: 'master',
+        component: MastersComponent,
       },
     ],
   },

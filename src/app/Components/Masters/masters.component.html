@@ -1,0 +1,35 @@
+<div class="row page_left">
+  <div class="col-6 border">
+    <!-- Search bar -->
+    <div class="col-12 mt-3">
+      <div class="position-relative">
+        <fa-icon [icon]="faSearch" class="search-icon"> </fa-icon>
+        <input type="text" class="form-control ps-5" placeholder="Search" />
+      </div>
+    </div>
+
+    <!-- Master List -->
+    <div class="col-3">
+      <ul class="nav flex-column nav-tabs" id="nav_tab_vertical">
+        <li class="nav-item" *ngFor="let tab of tabs">
+          <a
+            class="nav-link d-flex justify-content-between align-items-center border cursor-pointer"
+            [class.active]="tab === activeTab"
+            (click)="setActiveTab(tab)"
+            href="javascript:void(0)"
+          >
+            {{ tab }}
+            <img
+              *ngIf="tab === activeTab"
+              src="Assets/GeneralSettings/Down Arrow Outline.svg"
+              alt="Arrow Icon"
+              style="width: 16px; height: 16px; margin-left: 8px"
+            />
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Sidebar: Vertical Tabs (Left Side) -->
+  </div>
+</div>

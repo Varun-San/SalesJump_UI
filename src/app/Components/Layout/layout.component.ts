@@ -15,32 +15,12 @@ export class LayoutComponent {
 
   menuItems = [
     { label: 'Home', route: '/home', icon: 'Assets/LayoutIcons/Home.svg' },
-    {
-      label: 'Master',
-      route: '/master',
-      icon: 'Assets/LayoutIcons/Master.svg',
-    },
+    { label: 'Master', route: '/master', icon: 'Assets/LayoutIcons/Master.svg' },
     { label: 'Entry', route: '/entry', icon: 'Assets/LayoutIcons/Entry.svg' },
-    {
-      label: 'Upload',
-      route: '/upload',
-      icon: 'Assets/LayoutIcons/Upload.svg',
-    },
-    {
-      label: 'Approval',
-      route: '/approval',
-      icon: 'Assets/LayoutIcons/Approval.svg',
-    },
-    {
-      label: 'Reports',
-      route: '/reports',
-      icon: 'Assets/LayoutIcons/Reports.svg',
-    },
-    {
-      label: 'Settings',
-      route: '/configuration',
-      icon: 'Assets/LayoutIcons/Settings.svg',
-    },
+    { label: 'Upload', route: '/upload', icon: 'Assets/LayoutIcons/Upload.svg' },
+    { label: 'Approval', route: '/approval', icon: 'Assets/LayoutIcons/Approval.svg' },
+    { label: 'Reports', route: '/reports', icon: 'Assets/LayoutIcons/Reports.svg' },
+    { label: 'Settings', route: '/configuration', icon: 'Assets/LayoutIcons/Settings.svg' },
   ];
 
   getHeaderText(): { label: string; route: string }[] | null {
@@ -63,6 +43,8 @@ export class LayoutComponent {
         { label: 'Setup', route: '/setup' },
         { label: 'Configuration', route: '/configuration' },
       ];
+    } else if (currentRoute.includes('/master')) {
+      return [{ label: 'Master', route: '/master' }];
     } else {
       return null; // No header displayed
     }
