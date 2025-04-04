@@ -1,19 +1,17 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router'; // Import Router
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatCommonModule } from '@angular/material/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-masters',
-  standalone: true,
+  selector: 'app-master-side-bar',
   imports: [FontAwesomeModule, CommonModule, MatChipsModule, RouterLink],
-  templateUrl: './masters.component.html',
-  styleUrl: './masters.component.css',
+  templateUrl: './master-side-bar.component.html',
+  styleUrl: './master-side-bar.component.css',
 })
-export class MastersComponent {
+export class MasterSideBarComponent {
   showOptions = false; // Initially hidden
   hoveredItem: string | null = null; // Track hovered item
   faSearch = faSearch;

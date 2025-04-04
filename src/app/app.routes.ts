@@ -9,6 +9,7 @@ import { UserWiseSettingsComponent } from './Components/Setup/Configuration/User
 import { GeneralSettingsComponent } from './Components/Setup/Configuration/General Settings/general-settings.component';
 import { LayoutComponent } from './Components/Layout/layout.component';
 import { MastersComponent } from './Components/Masters/masters.component';
+import { BasicDetailsComponent } from './Components/Masters/Basic-details/basic-details.component';
 
 export const routes: Routes = [
   {
@@ -64,6 +65,18 @@ export const routes: Routes = [
       {
         path: 'master',
         component: MastersComponent,
+      },
+      {
+        path: 'basic_details',
+        component: BasicDetailsComponent,
+        // children: [
+        //   { path: 'company', component: CompanyComponent },
+        //   { path: 'division', component: DivisionComponent },
+        //   { path: 'designation', component: DesignationComponent },
+        //   { path: 'head-quarters', component: HeadQuartersComponent },
+        //   { path: 'work-type', component: WorkTypeComponent },
+        //   { path: 'ho-user', component: HOUserComponent },
+        // ],
       },
     ],
   },

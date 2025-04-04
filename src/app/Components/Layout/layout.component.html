@@ -13,16 +13,31 @@
     </li>
 
     <!-- Dynamic Menu Items -->
-    <li class="nav-item" *ngFor="let item of menuItems">
+    <!-- Sidebar Nav -->
+    <li
+      class="nav-item"
+      *ngFor="let item of menuItems"
+      (mouseenter)="hoveredItem = item.label"
+      (mouseleave)="hoveredItem = null"
+    >
       <a
         class="nav-link text-white fw-bold"
         [routerLink]="item.route"
         routerLinkActive="router-link-active"
         matTooltip="{{ item.label }}"
-        matTooltipPosition="right"
       >
         <img [src]="item.icon" [alt]="item.label" width="24" height="24" />
       </a>
+
+      <!-- Show MasterComponent on hover -->
+      <div
+        class="hover-popup"
+        *ngIf="hoveredItem === 'Master'"
+        (mouseenter)="hoveredItem = 'Master'"
+        (mouseleave)="hoveredItem = null"
+      >
+        <app-master-side-bar></app-master-side-bar>
+      </div>
     </li>
   </ul>
 </nav>
