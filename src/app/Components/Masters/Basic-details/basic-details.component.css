@@ -1,3 +1,58 @@
 .page_left {
   margin-left: 55px;
 }
+.nav-tabs .nav-link.active {
+  border: none !important;
+  background-color: transparent !important;
+  border-bottom: 2px solid #1997ce !important;
+}
+.page_left {
+  margin-left: 55px;
+}
+.border_right {
+  border-right: 1px solid black;
+}
+.nav-link {
+  color: rgb(112, 112, 112);
+}
+
+/* ✅ Styles for vertical (sidebar) tabs */
+#nav_tab_vertical .nav-link.active {
+  background-color: #e6f7ff !important;
+  color: #1997ce;
+  /* font-weight: bold; */
+  /* border-left: 3px solid #1997ce !important; */
+  border-bottom: none !important;
+}
+
+/* ✅ Styles for horizontal (top) tabs */
+#nav_tab_horizontal .nav-link.active {
+  border-bottom: 2px solid #1997ce !important;
+  /* background-color: #ddeff8 !important; */
+  color: #000000;
+}
+
+/* search icon */
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #949494; /* Adjust color as needed */
+  pointer-events: none; /* Prevent click events */
+}
+
+.bordered-icon-button {
+  border: 1px solid #ccc;
+  border-radius: 4px; /* optional: rounded corners */
+  padding: 4px; /* optional: spacing inside the button */
+}
+
+/*  */
+.filter-btn {
+  width: 120px;
+  height: 40px;
+  border-radius: 12px;
+  padding: 0;
+  font-weight: 500;
+}

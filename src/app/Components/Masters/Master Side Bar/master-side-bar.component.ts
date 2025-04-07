@@ -20,7 +20,7 @@ export class MasterSideBarComponent {
 
   // Master list with routes
   list = [
-    { name: 'Basic Details', route: '/masters' },
+    { name: 'Basic Details', route: '/master' },
     { name: 'Geography', route: '/masters' },
     { name: 'Merchandising', route: '/masters' },
     { name: 'Product', route: '/masters' },
@@ -66,7 +66,7 @@ export class MasterSideBarComponent {
   //! Basic Details Options--
   activeChip_Basic: string = 'Company';
   BasicDetails_label = [
-    { name: 'Company', route: 'basic_details' },
+    { name: 'Company', route: '/master/basic_details' },
     { name: 'Division', route: 'division' },
     { name: 'Designation', route: 'designation' },
     { name: 'Head Quarters', route: 'head-quarters' },

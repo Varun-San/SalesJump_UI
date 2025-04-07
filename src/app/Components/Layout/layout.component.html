@@ -38,6 +38,16 @@
       >
         <app-master-side-bar></app-master-side-bar>
       </div>
+      <!-- Show ConfigurationComponent on Hover  -->
+      <div
+        class="hover-popup"
+        *ngIf="hoveredItem === 'Settings'"
+        (mouseenter)="hoveredItem = 'Settings'"
+        (mouseleave)="hoveredItem = null"
+        style="top: 350px"
+      >
+        <app-settings-side-bar></app-settings-side-bar>
+      </div>
     </li>
   </ul>
 </nav>
@@ -63,13 +73,10 @@
     <!-- Search Bar & Profile Icon -->
     <div class="d-flex align-items-center">
       <form class="d-flex me-2">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          matTooltip="Search"
-        />
+        <div class="position-relative" style="margin-top: 10px;">
+          <fa-icon [icon]="faSearch" class="search-icon"> </fa-icon>
+          <input type="text" class="form-control ps-5" placeholder="Search" />
+        </div>
         <a
           class="nav-link text-white fw-bold mt-1"
           routerLink="configuration"

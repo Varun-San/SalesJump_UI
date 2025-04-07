@@ -1,3 +1,326 @@
 <div class="row page_left">
-  <h1>Basic Details </h1>
+  <div class="col-12">
+    <ul class="nav nav-tabs" id="nav_tab_horizontal">
+      <li class="nav-item" *ngFor="let tab of tabs">
+        <a
+          class="nav-link"
+          style="cursor: default !important"
+          [class.active]="tab === activeTab"
+          (click)="setActiveTab(tab)"
+          href="javascript:void(0)"
+        >
+          {{ tab }}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-12">
+    <div class="tab-content p-3">
+      <div [ngSwitch]="activeTab">
+        <!-- !Company -->
+        <div *ngSwitchCase="'Company'">
+          <!-- Search bar -->
+          <div class="col-12 d-flex align-items-center justify-content-between">
+            <div class="position-relative col-3">
+              <fa-icon [icon]="faSearch" class="search-icon"> </fa-icon>
+              <input
+                type="text"
+                class="form-control ps-5"
+                placeholder="Search"
+              />
+            </div>
+            <div>
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu"
+                class="bordered-icon-button"
+              >
+                <mat-icon>more_horiz</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>Option 1</button>
+                <button mat-menu-item>Option 2</button>
+                <button mat-menu-item>Option 3</button>
+              </mat-menu>
+            </div>
+          </div>
+          <!-- Table -->
+          <div class="col-12 mt-4">
+            <table class="table table-bordered align-middle mt-4">
+              <thead class="table-light">
+                <tr>
+                  <th>Company Name</th>
+                  <th>Alias Name</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>Status</th>
+                  <th class="text-center">
+                    <div>
+                      <img
+                        src="Assets/AdminMasters/Dashboard.svg"
+                        alt="Dashboard"
+                        height="25px "
+                        width="25px"
+                      />
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Your rows here -->
+                <tr>
+                  <td>Sales Jump</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Delhi</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button
+                      mat-icon-button
+                      [matMenuTriggerFor]="menuTable"
+                      aria-label="Example icon-button with a menu"
+                    >
+                      <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menuTable="matMenu">
+                      <button mat-menu-item>Edit Details</button>
+                    </mat-menu>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Saneforce</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button
+                      mat-icon-button
+                      [matMenuTriggerFor]="menuTable"
+                      aria-label="Example icon-button with a menu"
+                    >
+                      <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menuTable="matMenu">
+                      <button mat-menu-item>Edit Details</button>
+                    </mat-menu>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Twozo</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button
+                      mat-icon-button
+                      [matMenuTriggerFor]="menuTable"
+                      aria-label="Example icon-button with a menu"
+                    >
+                      <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menuTable="matMenu">
+                      <button mat-menu-item>Edit Details</button>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="9" class="text-start fw-bold">
+                    Total Records: 3
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        <!-- !Division -->
+        <div *ngSwitchCase="'Division'">
+          <div class="col-12 d-flex align-items-center justify-content-between">
+            <div class="col-6 d-flex align-items-center gap-5">
+              <div class="position-relative col-6">
+                <fa-icon [icon]="faSearch" class="search-icon"> </fa-icon>
+                <input
+                  type="text"
+                  class="form-control ps-5"
+                  placeholder="Search"
+                />
+              </div>
+              <div class="col-2">
+                <button
+                  mat-raised-button
+                  class="filter-btn d-flex align-items-center justify-content-center text-black"
+                >
+                  <img
+                    src="Assets/AdminMasters/bars-filter.svg"
+                    alt="Filter Icon"
+                    height="16"
+                    width="16"
+                    class="me-2"
+                  />
+                  Filter
+                </button>
+              </div>
+              <div class="vr" style="height: 40px"></div>
+              <p class="text-muted m-0">No filter</p>
+            </div>
+            <div class="col-6 d-flex gap-3 align-items-center text-end">
+              <div class="col-10">
+                <button
+                  mat-icon-button
+                  [matMenuTriggerFor]="menu"
+                  aria-label="Example icon-button with a menu"
+                  class="bordered-icon-button"
+                >
+                  <mat-icon>more_horiz</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>Option 1</button>
+                  <button mat-menu-item>Option 2</button>
+                  <button mat-menu-item>Option 3</button>
+                </mat-menu>
+              </div>
+              <div class="col-3">
+                <button
+                  mat-raised-button
+                  class="filter-btn d-flex align-items-center justify-content-center text-black"
+                  style="background-color: #1997ce"
+                >
+                  <img
+                    src="Assets/AdminMasters/Add.svg"
+                    alt="Filter Icon"
+                    height="16"
+                    width="16"
+                    class="me-2"
+                  />
+                  Division
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Table -->
+          <div class="col-12 mt-4">
+            <table class="table table-bordered align-middle mt-4">
+              <thead class="table-light">
+                <tr>
+                  <th>Division Code</th>
+                  <th>Division Name</th>
+                  <th>Product Wise Count</th>
+                  <th>User Wise Count</th>
+                  <th>Status</th>
+                  <th class="text-center">
+                    <div class="form-check">
+                      <img
+                        src="Assets/AdminMasters/Dashboard.svg"
+                        alt="Dashboard"
+                        height="25px "
+                        width="25px"
+                      />
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Your rows here -->
+                <tr>
+                  <td>Sales Jump</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Delhi</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button
+                      mat-icon-button
+                      [matMenuTriggerFor]="menuTable"
+                      aria-label="Example icon-button with a menu"
+                    >
+                      <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menuTable="matMenu">
+                      <button mat-menu-item>Edit Details</button>
+                    </mat-menu>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Saneforce</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button
+                      mat-icon-button
+                      [matMenuTriggerFor]="menuTable"
+                      aria-label="Example icon-button with a menu"
+                    >
+                      <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menuTable="matMenu">
+                      <button mat-menu-item>Edit Details</button>
+                    </mat-menu>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Twozo</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button
+                      mat-icon-button
+                      [matMenuTriggerFor]="menuTable"
+                      aria-label="Example icon-button with a menu"
+                    >
+                      <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menuTable="matMenu">
+                      <button mat-menu-item>Edit Details</button>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="9" class="text-start fw-bold">
+                    Total Records: 3
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        <!-- !Designation -->
+        <div *ngSwitchCase="'Designation'">
+          <h4>Designation</h4>
+        </div>
+
+        <!-- !Head Quarters -->
+        <div *ngSwitchCase="'Head Quarters'">
+          <h4>Head Quarters</h4>
+        </div>
+
+        <!-- !Work Type -->
+        <div *ngSwitchCase="'Work Type'">
+          <h4>Work Type</h4>
+        </div>
+
+        <!-- !HO User -->
+        <div *ngSwitchCase="'HO User'">
+          <h4>HO User</h4>
+        </div>
+
+        <!-- !Default -->
+        <div *ngSwitchDefault>
+          <h4>Welcome</h4>
+          <p>Select a tab to view content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

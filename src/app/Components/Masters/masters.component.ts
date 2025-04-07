@@ -9,7 +9,13 @@ import { MatCommonModule } from '@angular/material/core';
 @Component({
   selector: 'app-masters',
   standalone: true,
-  imports: [FontAwesomeModule, CommonModule, MatChipsModule, RouterLink],
+  imports: [
+    FontAwesomeModule,
+    CommonModule,
+    MatChipsModule,
+    RouterLink,
+    RouterOutlet,
+  ],
   templateUrl: './masters.component.html',
   styleUrl: './masters.component.css',
 })

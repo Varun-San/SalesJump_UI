@@ -65,18 +65,12 @@ export const routes: Routes = [
       {
         path: 'master',
         component: MastersComponent,
-      },
-      {
-        path: 'basic_details',
-        component: BasicDetailsComponent,
-        // children: [
-        //   { path: 'company', component: CompanyComponent },
-        //   { path: 'division', component: DivisionComponent },
-        //   { path: 'designation', component: DesignationComponent },
-        //   { path: 'head-quarters', component: HeadQuartersComponent },
-        //   { path: 'work-type', component: WorkTypeComponent },
-        //   { path: 'ho-user', component: HOUserComponent },
-        // ],
+        children: [
+          {
+            path: 'basic_details',
+            component: BasicDetailsComponent,
+          },
+        ],
       },
     ],
   },

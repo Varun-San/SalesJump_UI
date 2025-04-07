@@ -95,3 +95,13 @@
   transition: all 0.2s ease-in-out;
   border: 1px solid #e0e0e0;
 }
+
+/* search icon */
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 45%;
+  transform: translateY(-50%);
+  color: #a0a0a0; /* Adjust color as needed */
+  pointer-events: none; /* Prevent click events */
+}
