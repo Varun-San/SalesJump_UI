@@ -10,6 +10,14 @@ import { GeneralSettingsComponent } from './Components/Setup/Configuration/Gener
 import { LayoutComponent } from './Components/Layout/layout.component';
 import { MastersComponent } from './Components/Masters/masters.component';
 import { BasicDetailsComponent } from './Components/Masters/Basic-details/basic-details.component';
+import { Component } from '@angular/core';
+import { CompanyComponent } from './Components/Masters/Basic-details/Company/company.component';
+import { DivisionComponent } from './Components/Masters/Basic-details/Division/division.component';
+import { DesignationComponent } from './Components/Masters/Basic-details/Designation/designation.component';
+import { HeadQuartersComponent } from './Components/Masters/Basic-details/Head Quarters/head-quarters.component';
+import { WorkTypeComponent } from './Components/Masters/Basic-details/Work Type/work-type.component';
+import { HoUserComponent } from './Components/Masters/Basic-details/HO Users/ho-user.component';
+import { AddDivisionComponent } from './Components/Masters/Basic-details/Add Division/add-division.component';
 
 export const routes: Routes = [
   {
@@ -69,6 +77,36 @@ export const routes: Routes = [
           {
             path: 'basic_details',
             component: BasicDetailsComponent,
+            children: [
+              {
+                path: 'company',
+                component: CompanyComponent,
+              },
+              {
+                path: 'division',
+                component: DivisionComponent,
+              },
+              {
+                path: 'designation',
+                component: DesignationComponent,
+              },
+              {
+                path: 'head-quarters',
+                component: HeadQuartersComponent,
+              },
+              {
+                path: 'work-type',
+                component: WorkTypeComponent,
+              },
+              {
+                path: 'ho-user',
+                component: HoUserComponent,
+              },
+              {
+                path: 'add-division',
+                component: AddDivisionComponent,
+              },
+            ],
           },
         ],
       },

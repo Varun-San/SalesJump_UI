@@ -63,19 +63,78 @@ export class LayoutComponent {
   getHeaderText(): { label: string; route: string }[] | null {
     const currentRoute = this.router.url;
 
+    const basicDetailsSubRoutes = [
+      'company',
+      'division',
+      'designation',
+      'head-quarters',
+      'work-type',
+      'ho-user',
+    ];
+
+    const matchedSubRoute = basicDetailsSubRoutes.find((sub) =>
+      currentRoute.includes(`/master/basic_details/${sub}`)
+    );
+
+    // ✅ Match main sub-routes
+    if (matchedSubRoute) {
+      const formattedLabel = matchedSubRoute
+        .replace(/-/g, ' ')
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+
+      return [
+        { label: 'Master', route: '/master' },
+        { label: 'Basic Details', route: '/master/basic_details' },
+        {
+          label: formattedLabel,
+          route: `/master/basic_details/${matchedSubRoute}`,
+        },
+      ];
+    }
+
+    // ✅ Match add-division (custom route)
+    if (currentRoute.includes('/master/basic_details/add-division')) {
+      return [
+        { label: 'Master', route: '/master' },
+        { label: 'Basic Details', route: '/master/basic_details' },
+        { label: 'Add Division', route: '/master/basic_details/add-division' },
+      ];
+    }
+
+    // ✅ Exact match for just /basic_details
+    if (currentRoute === '/master/basic_details') {
+      return [
+        { label: 'Master', route: '/master' },
+        {
+          label: 'Basic Details',
+          route: `/master/basic_details/${basicDetailsSubRoutes[0]}`,
+        },
+      ];
+    }
+
+    // ✅ Master root
+    if (currentRoute.includes('/master')) {
+      return [{ label: 'Master', route: '/master' }];
+    }
+
+    // ✅ Config routes
     if (currentRoute.includes('/general-settings')) {
       return [
         { label: 'Setup', route: '/setup' },
         { label: 'Configuration', route: '/configuration' },
         { label: 'General Settings', route: '/configuration/general-settings' },
       ];
-    } else if (currentRoute.includes('/user-settings')) {
+    }
+
+    if (currentRoute.includes('/user-settings')) {
       return [
         { label: 'Setup', route: '/setup' },
         { label: 'Configuration', route: '/configuration' },
         { label: 'User Settings', route: '/configuration/user-settings' },
       ];
-    } else if (
+    }
+
+    if (
       currentRoute.includes('/configuration') &&
       !currentRoute.includes('/general-settings') &&
       !currentRoute.includes('/user-settings')
@@ -84,15 +143,8 @@ export class LayoutComponent {
         { label: 'Setup', route: '/setup' },
         { label: 'Configuration', route: '/configuration' },
       ];
-    } else if (currentRoute.includes('/master/basic_details')) {
-      return [
-        { label: 'Master', route: '/master' },
-        { label: 'Basic Details', route: '/master/basic_details' },
-      ];
-    } else if (currentRoute.includes('/master')) {
-      return [{ label: 'Master', route: '/master' }];
-    } else {
-      return null; // No header displayed
     }
+
+    return null;
   }
 }

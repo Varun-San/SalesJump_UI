@@ -26,18 +26,38 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './basic-details.component.css',
 })
 export class BasicDetailsComponent {
-  header_Label = [
-    { name: 'Company' },
-    { name: 'Division' },
-    { name: 'Designation' },
-    { name: 'Head Quarters' },
-    { name: 'Work Type' },
-    { name: 'HO User' },
+  // ! TABS CONTROL FOR THE NAV
+  tabItems = [
+    {
+      label: 'Company',
+      path: '/master/basic_details/company',
+    },
+    {
+      label: 'Division',
+      path: '/master/basic_details/division',
+    },
+    {
+      label: 'Designation',
+      path: '/master/basic_details/designation',
+    },
+    {
+      label: 'Head Quarters',
+      path: '/master/basic_details/head-quarters',
+    },
+    {
+      label: 'Work Type',
+      path: '/master/basic_details/work-type',
+    },
+    {
+      label: 'HO User',
+      path: '/master/basic_details/ho-user',
+    },
   ];
+
+  // ?~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   showOptions = false; // Initially hidden
   hoveredItem: string | null = null; // Track hovered item
-  faSearch = faSearch;
 
   constructor(private router: Router) {} // Inject Router
 

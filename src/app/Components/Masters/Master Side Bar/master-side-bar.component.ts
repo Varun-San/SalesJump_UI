@@ -66,12 +66,12 @@ export class MasterSideBarComponent {
   //! Basic Details Options--
   activeChip_Basic: string = 'Company';
   BasicDetails_label = [
-    { name: 'Company', route: '/master/basic_details' },
-    { name: 'Division', route: 'division' },
-    { name: 'Designation', route: 'designation' },
-    { name: 'Head Quarters', route: 'head-quarters' },
-    { name: 'Work Type', route: 'work-type' },
-    { name: 'HO User', route: 'ho-user' },
+    { name: 'Company', route: '/master/basic_details/company' },
+    { name: 'Division', route: '/master/basic_details/division' },
+    { name: 'Designation', route: '/master/basic_details/designation' },
+    { name: 'Head Quarters', route: '/master/basic_details/head-quarters' },
+    { name: 'Work Type', route: '/master/basic_details/work-type' },
+    { name: 'HO User', route: '/master/basic_details/ho-user' },
   ];
 
   //! Geography
