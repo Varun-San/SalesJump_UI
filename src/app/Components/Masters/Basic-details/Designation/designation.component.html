@@ -1,1 +1,178 @@
-<h1 class="page_left">designation works!</h1>
+<div class="row page_left">
+    <div class="col-12 mt-3">
+        <div class="col-12 d-flex align-items-center justify-content-between">
+            <div class="col-9 d-flex align-items-center gap-5">
+                <div class="position-relative col-3">
+                    <fa-icon [icon]="faSearch" class="search-icon"> </fa-icon>
+                    <input type="text" class="form-control ps-5" placeholder="Search" />
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Filter Button -->
+                    <button mat-raised-button
+                        class="filter-btn d-flex align-items-center justify-content-center text-black"
+                        (click)="toggleFilterPopup()">
+                        <img src="Assets/AdminMasters/bars-filter.svg" alt="Filter Icon" height="16" width="16"
+                            class="me-2" />
+                        Filter
+                    </button>
+
+                    <!-- Filter Popup Panel -->
+                    <div class="bg-white border rounded p-3 shadow" style="position: absolute; top: 45px; z-index: 1050"
+                        *ngIf="showFilterPopup">
+                        <label class="form-label fw-semibold">Status</label>
+                        <select class="form-select mb-3" [(ngModel)]="tempFilters.status">
+                            <option value="" disabled>Select status</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+
+                        <label class="form-label fw-semibold">Role</label>
+                        <select class="form-select mb-3" [(ngModel)]="tempFilters.role">
+                            <option value="" disabled>Select role</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Executive">Executive</option>
+                        </select>
+
+                        <div class="d-flex justify-content-end gap-2 mt-2">
+                            <button class="btn btn-outline-secondary btn-sm" (click)="cancelFilter()">Cancel</button>
+                            <button class="btn btn-primary btn-sm" (click)="applyFilters()">Apply</button>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="vr" style="height: 40px"></div>
+
+                    <!-- Selected Filter Tags -->
+                    <div class="d-flex flex-wrap align-items-center gap-2">
+                        <ng-container *ngIf="activeFilters.status">
+                            <div class="border rounded-pill px-3 py-1 d-flex align-items-center gap-2">
+                                <span>Status</span>
+                                <span class="fw-semibold">{{ activeFilters.status }}</span>
+                                <button type="button" class="btn-close btn-close-sm red-close" aria-label="Close"
+                                    (click)="clearFilter('status')"></button>
+                            </div>
+                        </ng-container>
+
+
+                        <ng-container *ngIf="activeFilters.role">
+                            <div class="border rounded-pill px-3 py-1 d-flex align-items-center gap-2">
+                                <span>Role</span>
+                                <span class="fw-semibold">{{ activeFilters.role }}</span>
+                                <button type="button" class="btn-close btn-close-sm red-close" aria-label="Close"
+                                    (click)="clearFilter('role')"></button>
+                            </div>
+                        </ng-container>
+
+                        <p *ngIf="!activeFilters.status && !activeFilters.role" class="text-muted m-0">
+                            No filter
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-3 d-flex gap-3 align-items-center text-end">
+                <div class="col-7">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+                        class="bordered-icon-button">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>Option 1</button>
+                        <button mat-menu-item>Option 2</button>
+                        <button mat-menu-item>Option 3</button>
+                    </mat-menu>
+                </div>
+                <div class="col-5">
+                    <button mat-raised-button
+                        class="filter-btn d-flex align-items-center justify-content-center text-black"
+                        style="background-color: #1997ce" [routerLink]="['/master/basic_details/add-designation']"
+                        routerLinkActive="router-link-active">
+                        <img src="Assets/AdminMasters/Add.svg" alt="Filter Icon" height="16" width="16" class="me-2" />
+                        Designation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Table -->
+    <div class="col-12 mt-3">
+        <table class="table table-bordered align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Designation Name</th>
+                    <th>Short Name</th>
+                    <th>Product Wise Count</th>
+                    <th>User Wise Count</th>
+                    <th>Status</th>
+                    <th class="text-center">
+                        <div>
+                            <img src="Assets/AdminMasters/Dashboard.svg" alt="Dashboard" height="25px " width="25px" />
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Your rows here -->
+                <tr>
+                    <td>Sales Jump</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Delhi</td>
+                    <td>Active</td>
+                    <td class="text-center">
+                        <button mat-icon-button [matMenuTriggerFor]="menuTable"
+                            aria-label="Example icon-button with a menu">
+                            <mat-icon>more_horiz</mat-icon>
+                        </button>
+
+                        <mat-menu #menuTable="matMenu" class="custom-menu">
+                            <ng-container *ngFor="let option of menuOptions">
+                                <button mat-menu-item>{{ option.label }}</button>
+                            </ng-container>
+                        </mat-menu>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Saneforce</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Active</td>
+                    <td class="text-center">
+                        <button mat-icon-button [matMenuTriggerFor]="menuTable"
+                            aria-label="Example icon-button with a menu">
+                            <mat-icon>more_horiz</mat-icon>
+                        </button>
+                        <mat-menu #menuTable="matMenu">
+                            <button mat-menu-item>Edit Details</button>
+                        </mat-menu>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Twozo</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Active</td>
+                    <td class="text-center">
+                        <button mat-icon-button [matMenuTriggerFor]="menuTable"
+                            aria-label="Example icon-button with a menu">
+                            <mat-icon>more_horiz</mat-icon>
+                        </button>
+
+                        <mat-menu #menuTable="matMenu" class="custom-menu">
+                            <ng-container *ngFor="let option of menuOptions">
+                                <button mat-menu-item>{{ option.label }}</button>
+                            </ng-container>
+                        </mat-menu>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="9" class="text-start fw-bold">Total Records: 3</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

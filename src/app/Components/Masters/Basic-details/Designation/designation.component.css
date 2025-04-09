@@ -1,3 +1,28 @@
 .page_left {
-    margin-left: 55px;
-  }
+  margin-left: 55px;
+}
+/* search icon */
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #949494; /* Adjust color as needed */
+  pointer-events: none; /* Prevent click events */
+}
+
+/* border for icon menu */
+.bordered-icon-button {
+  border: 1px solid #ccc;
+  border-radius: 4px; /* optional: rounded corners */
+  padding: 4px; /* optional: spacing inside the button */
+}
+
+/* Css for Menu options */
+::ng-deep .custom-menu .mat-menu-item {
+  border-bottom: 1px solid #eee;
+}
+
+::ng-deep .custom-menu .mat-menu-item:last-child {
+  border-bottom: none;
+}

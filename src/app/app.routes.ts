@@ -18,6 +18,7 @@ import { HeadQuartersComponent } from './Components/Masters/Basic-details/Head Q
 import { WorkTypeComponent } from './Components/Masters/Basic-details/Work Type/work-type.component';
 import { HoUserComponent } from './Components/Masters/Basic-details/HO Users/ho-user.component';
 import { AddDivisionComponent } from './Components/Masters/Basic-details/Add Division/add-division.component';
+import { AddDesignationComponent } from './Components/Masters/Basic-details/Add Designation/add-designation.component';
 
 export const routes: Routes = [
   {
@@ -105,6 +106,10 @@ export const routes: Routes = [
               {
                 path: 'add-division',
                 component: AddDivisionComponent,
+              },
+              {
+                path: 'add-designation',
+                component: AddDesignationComponent,
               },
             ],
           },
