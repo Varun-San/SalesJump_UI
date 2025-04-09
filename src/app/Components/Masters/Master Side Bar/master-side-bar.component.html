@@ -13,19 +13,11 @@
       <div class="col-4">
         <ul class="nav flex-column nav-tabs" id="nav_tab_vertical">
           <li class="nav-item" *ngFor="let tab of tabs">
-            <a
-              class="nav-link d-flex justify-content-between align-items-center border cursor-pointer"
-              [class.active]="tab === activeTab"
-              (click)="setActiveTab(tab)"
-              href="javascript:void(0)"
-            >
+            <a class="nav-link d-flex justify-content-between align-items-center border cursor-pointer"
+              [class.active]="tab === activeTab" (click)="setActiveTab(tab)" href="javascript:void(0)">
               {{ tab }}
-              <img
-                *ngIf="tab === activeTab"
-                src="Assets/GeneralSettings/Down Arrow Outline.svg"
-                alt="Arrow Icon"
-                style="width: 16px; height: 16px; margin-left: 8px"
-              />
+              <img *ngIf="tab === activeTab" src="Assets/GeneralSettings/Down Arrow Outline.svg" alt="Arrow Icon"
+                style="width: 16px; height: 16px; margin-left: 8px" />
             </a>
           </li>
         </ul>
@@ -38,12 +30,9 @@
             <div *ngSwitchCase="'Basic Details'">
               <h4>Basic Details</h4>
               <mat-chip-set>
-                <mat-chip
-                  *ngFor="let basic of BasicDetails_label"
-                  [ngClass]="{ 'active-chip': activeChip_Basic === basic.name }"
-                  (click)="activeChip_Basic = basic.name"
-                  routerLink="{{ basic.route }}"
-                >
+                <mat-chip *ngFor="let basic of BasicDetails_label"
+                  [ngClass]="{ 'active-chip': activeChip_Basic === basic.name }" (click)="activeChip_Basic = basic.name"
+                  routerLink="{{ basic.route }}">
                   {{ basic.name }}
                 </mat-chip>
               </mat-chip-set>
@@ -52,13 +41,9 @@
             <div *ngSwitchCase="'Geography'">
               <h4>Geography</h4>
               <mat-chip-set>
-                <mat-chip
-                  *ngFor="let Geo of Geography_label"
-                  [ngClass]="{
+                <mat-chip *ngFor="let Geo of Geography_label" [ngClass]="{
                     'active-chip': activeChip_Geography === Geo.name
-                  }"
-                  (click)="activeChip_Geography = Geo.name"
-                >
+                  }" (click)="activeChip_Geography = Geo.name">
                   {{ Geo.name }}
                 </mat-chip>
               </mat-chip-set>
@@ -71,13 +56,9 @@
             <div *ngSwitchCase="'Product'">
               <h4>Product</h4>
               <mat-chip-set>
-                <mat-chip
-                  *ngFor="let Pro of Product_label"
-                  [ngClass]="{
+                <mat-chip *ngFor="let Pro of Product_label" [ngClass]="{
                     'active-chip': activeChip_Product === Pro.name
-                  }"
-                  (click)="activeChip_Product = Pro.name"
-                >
+                  }" (click)="activeChip_Product = Pro.name">
                   {{ Pro.name }}
                 </mat-chip>
               </mat-chip-set>

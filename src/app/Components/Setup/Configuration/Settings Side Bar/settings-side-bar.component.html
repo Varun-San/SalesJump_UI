@@ -13,19 +13,11 @@
       <div class="col-4">
         <ul class="nav flex-column nav-tabs" id="nav_tab_vertical">
           <li class="nav-item" *ngFor="let tab of tabs">
-            <a
-              class="nav-link d-flex justify-content-between align-items-center border cursor-pointer"
-              [class.active]="tab === activeTab"
-              (click)="setActiveTab(tab)"
-              href="javascript:void(0)"
-            >
+            <a class="nav-link d-flex justify-content-between align-items-center border cursor-pointer"
+              [class.active]="tab === activeTab" (click)="setActiveTab(tab)" href="javascript:void(0)">
               {{ tab }}
-              <img
-                *ngIf="tab === activeTab"
-                src="Assets/GeneralSettings/Down Arrow Outline.svg"
-                alt="Arrow Icon"
-                style="width: 16px; height: 16px; margin-left: 8px"
-              />
+              <img *ngIf="tab === activeTab" src="Assets/GeneralSettings/Down Arrow Outline.svg" alt="Arrow Icon"
+                style="width: 16px; height: 16px; margin-left: 8px" />
             </a>
           </li>
         </ul>
@@ -37,14 +29,9 @@
             <!-- !Configuration -->
             <div *ngSwitchCase="'Configuration'">
               <mat-chip-set>
-                <mat-chip
-                  *ngFor="let config of Configuration_Label"
-                  [ngClass]="{
+                <mat-chip *ngFor="let config of Configuration_Label" [ngClass]="{
                     'active-chip': activeChip_Configuration === config.name
-                  }"
-                  (click)="activeChip_Configuration = config.name"
-                  routerLink="{{ config.route }}"
-                >
+                  }" (click)="activeChip_Configuration = config.name" routerLink="{{ config.route }}">
                   {{ config.name }}
                 </mat-chip>
               </mat-chip-set>

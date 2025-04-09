@@ -1,16 +1,9 @@
 <div class="row">
   <!-- Left: Forgot Password Section -->
   <div class="col-5">
-    <div
-      class="col-12 d-flex flex-column justify-content-center align-items-center"
-      style="margin-top: 210px"
-    >
+    <div class="col-12 d-flex flex-column justify-content-center align-items-center" style="margin-top: 210px">
       <div>
-        <img
-          src="Assets/AllDone/Tick.png"
-          alt="image"
-          style="height: 110px; width: auto"
-        />
+        <img src="Assets/AllDone/Tick.png" alt="image" style="height: 110px; width: auto" />
       </div>
       <div class="mt-2">
         <h4>All done !</h4>
@@ -21,23 +14,15 @@
       <div class="container">
         <div class="row justify-content-center border-none">
           <div class="col-md-9">
-            <button
-              type="submit"
-              class="btn w-100 mt-3"
-              style="background-color: #1997ce; color: white"
-              [routerLink]="'/home'"
-            >
+            <button type="submit" class="btn w-100 mt-3" style="background-color: #1997ce; color: white"
+              [routerLink]="'/home'">
               Back to login
             </button>
           </div>
         </div>
       </div>
       <div style="margin-top: 170px">
-        <img
-          src="Assets/ForgotPassword/Frame.png"
-          alt="image"
-          style="height: 50px; width: auto"
-        />
+        <img src="Assets/ForgotPassword/Frame.png" alt="image" style="height: 50px; width: auto" />
       </div>
     </div>
   </div>
@@ -47,11 +32,8 @@
     <div class="full-height-box">
       <!-- Carousel Slides -->
       <div class="carousel-slides">
-        <div
-          class="carousel-slide d-flex flex-column"
-          *ngFor="let slide of slides; let i = index"
-          [ngClass]="{ 'active-slide': i === currentSlide }"
-        >
+        <div class="carousel-slide d-flex flex-column" *ngFor="let slide of slides; let i = index"
+          [ngClass]="{ 'active-slide': i === currentSlide }">
           <img [src]="slide.image" alt="slide image" class="img-fluid mb-3" />
           <h5>{{ slide.title }}</h5>
           <p class="fs-">{{ slide.description }}</p>
@@ -60,12 +42,8 @@
 
       <!-- Navigation lines -->
       <div class="navigation-lines">
-        <div
-          class="nav-line"
-          *ngFor="let line of slides; let i = index"
-          [ngClass]="{ 'active-line': i === currentSlide }"
-          (click)="goToSlide(i)"
-        ></div>
+        <div class="nav-line" *ngFor="let line of slides; let i = index"
+          [ngClass]="{ 'active-line': i === currentSlide }" (click)="goToSlide(i)"></div>
       </div>
     </div>
   </div>

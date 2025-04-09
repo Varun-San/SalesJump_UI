@@ -3,49 +3,27 @@
     <!-- Logo -->
     <li class="nav-item">
       <a class="navbar-brand" routerLink="/">
-        <img
-          src="Assets/LayoutIcons/Logo.svg"
-          alt="logo"
-          width="24"
-          height="24"
-        />
+        <img src="Assets/LayoutIcons/Logo.svg" alt="logo" width="24" height="24" />
       </a>
     </li>
 
     <!-- Dynamic Menu Items -->
     <!-- Sidebar Nav -->
-    <li
-      class="nav-item"
-      *ngFor="let item of menuItems"
-      (mouseenter)="hoveredItem = item.label"
-      (mouseleave)="hoveredItem = null"
-    >
-      <a
-        class="nav-link text-white fw-bold"
-        [routerLink]="item.route"
-        routerLinkActive="router-link-active"
-        matTooltip="{{ item.label }}"
-      >
+    <li class="nav-item" *ngFor="let item of menuItems" (mouseenter)="hoveredItem = item.label"
+      (mouseleave)="hoveredItem = null">
+      <a class="nav-link text-white fw-bold" [routerLink]="item.route" routerLinkActive="router-link-active"
+        matTooltip="{{ item.label }}">
         <img [src]="item.icon" [alt]="item.label" width="24" height="24" />
       </a>
 
       <!-- Show MasterComponent on hover -->
-      <div
-        class="hover-popup"
-        *ngIf="hoveredItem === 'Master'"
-        (mouseenter)="hoveredItem = 'Master'"
-        (mouseleave)="hoveredItem = null"
-      >
+      <div class="hover-popup" *ngIf="hoveredItem === 'Master'" (mouseenter)="hoveredItem = 'Master'"
+        (mouseleave)="hoveredItem = null">
         <app-master-side-bar></app-master-side-bar>
       </div>
       <!-- Show ConfigurationComponent on Hover  -->
-      <div
-        class="hover-popup"
-        *ngIf="hoveredItem === 'Settings'"
-        (mouseenter)="hoveredItem = 'Settings'"
-        (mouseleave)="hoveredItem = null"
-        style="top: 350px"
-      >
+      <div class="hover-popup" *ngIf="hoveredItem === 'Settings'" (mouseenter)="hoveredItem = 'Settings'"
+        (mouseleave)="hoveredItem = null" style="top: 350px">
         <app-settings-side-bar></app-settings-side-bar>
       </div>
     </li>
@@ -59,10 +37,7 @@
     <div>
       <ng-container *ngIf="getHeaderText() as breadcrumbs">
         <ng-container *ngFor="let breadcrumb of breadcrumbs; let last = last">
-          <a
-            [routerLink]="breadcrumb.route"
-            class="text-dark text-decoration-none"
-          >
+          <a [routerLink]="breadcrumb.route" class="text-dark text-decoration-none">
             {{ breadcrumb.label }}
           </a>
           <span *ngIf="!last"> / </span>
@@ -77,29 +52,14 @@
           <fa-icon [icon]="faSearch" class="search-icon"> </fa-icon>
           <input type="text" class="form-control ps-5" placeholder="Search" />
         </div>
-        <a
-          class="nav-link text-white fw-bold mt-1"
-          routerLink="configuration"
-          routerLinkActive="router-link-active"
-          matTooltip="Notification"
-        >
-          <img
-            src="Assets/LayoutIcons/Notification.svg"
-            alt="Notification"
-            width="30"
-            height="30"
-        /></a>
+        <a class="nav-link text-white fw-bold mt-1" routerLink="configuration" routerLinkActive="router-link-active"
+          matTooltip="Notification">
+          <img src="Assets/LayoutIcons/Notification.svg" alt="Notification" width="30" height="30" /></a>
       </form>
 
       <!-- Profile Icon -->
       <a href="#" matTooltip="Profile">
-        <img
-          src="Assets/LayoutIcons/Profile Picture_1.svg"
-          alt="Profile"
-          width="35"
-          height="35"
-          class="squared"
-        />
+        <img src="Assets/LayoutIcons/Profile Picture_1.svg" alt="Profile" width="35" height="35" class="squared" />
       </a>
     </div>
   </div>

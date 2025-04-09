@@ -1,22 +1,14 @@
 <div class="row page_left">
   <ul class="nav nav-tabs" id="nav_tab_horizontal">
     <li class="nav-item">
-      <a
-        class="nav-link"
-        [routerLink]="['/configuration/general-settings']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
+      <a class="nav-link" [routerLink]="['/configuration/general-settings']" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
         General Settings
       </a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        [routerLink]="['/configuration/user-settings']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
+      <a class="nav-link" [routerLink]="['/configuration/user-settings']" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
         User Wise Settings
       </a>
     </li>
@@ -31,12 +23,7 @@
         <span class="input-group-text">
           <fa-icon [icon]="faSearch"></fa-icon>
         </span>
-        <input
-          class="form-control"
-          type="search"
-          placeholder="Search Settings"
-          aria-label="Search"
-        />
+        <input class="form-control" type="search" placeholder="Search Settings" aria-label="Search" />
       </div>
     </div>
   </div>
@@ -47,19 +34,11 @@
   <div class="col-2">
     <ul class="nav flex-column nav-tabs" id="nav_tab_vertical">
       <li class="nav-item" *ngFor="let tab of tabs">
-        <a
-          class="nav-link d-flex justify-content-between align-items-center border"
-          [class.active]="tab === activeTab"
-          (click)="setActiveTab(tab)"
-          href="javascript:void(0)"
-        >
+        <a class="nav-link d-flex justify-content-between align-items-center border" [class.active]="tab === activeTab"
+          (click)="setActiveTab(tab)" href="javascript:void(0)">
           {{ tab }}
-          <img
-            *ngIf="tab === activeTab"
-            src="Assets/GeneralSettings/Down Arrow Outline.svg"
-            alt=""
-            style="width: 16px; height: 16px; margin-left: 8px"
-          />
+          <img *ngIf="tab === activeTab" src="Assets/GeneralSettings/Down Arrow Outline.svg" alt=""
+            style="width: 16px; height: 16px; margin-left: 8px" />
         </a>
       </li>
     </ul>
@@ -79,10 +58,7 @@
               </div>
 
               <!-- Toggle Switch -->
-              <div
-                class="col-lg-6 text-end toogle_switch mt-2"
-                *ngIf="!setting.hasRadio && !setting.hasDropdown"
-              >
+              <div class="col-lg-6 text-end toogle_switch mt-2" *ngIf="!setting.hasRadio && !setting.hasDropdown">
                 <div class="form-check form-switch">
                   <input class="form-check-input" type="checkbox" />
                 </div>
@@ -97,20 +73,10 @@
               </div>
 
               <!-- Dropdown (Choose Currency Type) -->
-              <div
-                class="col-lg-6 d-flex justify-content-end mt-2"
-                *ngIf="setting.hasDropdown"
-              >
+              <div class="col-lg-6 d-flex justify-content-end mt-2" *ngIf="setting.hasDropdown">
                 <div class="col-5 text-end">
-                  <select
-                    class="form-select"
-                    [(ngModel)]="selectedCurrency"
-                    aria-label="Currency Select"
-                  >
-                    <option
-                      *ngFor="let currency of currencies"
-                      [ngValue]="currency"
-                    >
+                  <select class="form-select" [(ngModel)]="selectedCurrency" aria-label="Currency Select">
+                    <option *ngFor="let currency of currencies" [ngValue]="currency">
                       {{ currency.symbol }} - {{ currency.name }}
                     </option>
                   </select>
@@ -132,42 +98,23 @@
               </div>
 
               <!-- Toggle Switch -->
-              <div
-                class="col-lg-6 text-end toogle_switch mt-2"
-                *ngIf="!setting.isInputField"
-              >
+              <div class="col-lg-6 text-end toogle_switch mt-2" *ngIf="!setting.isInputField">
                 <div class="form-check form-switch">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    [(ngModel)]="setting.isEnabled"
-                    (change)="
+                  <input class="form-check-input" type="checkbox" [(ngModel)]="setting.isEnabled" (change)="
                       onGeoTaggingChange(setting.title, setting.isEnabled)
-                    "
-                  />
+                    " />
                 </div>
               </div>
 
               <!-- Input Field -->
-              <div
-                class="col-lg-6 mt-2 d-flex justify-content-end align-items-center gap-2"
-                *ngIf="setting.isInputField"
-              >
+              <div class="col-lg-6 mt-2 d-flex justify-content-end align-items-center gap-2"
+                *ngIf="setting.isInputField">
                 <div class="col-5">
-                  <input
-                    class="form-control"
-                    type="text"
-                    [(ngModel)]="setting.inputValue"
-                    [disabled]="!setting.isEditing"
-                  />
+                  <input class="form-control" type="text" [(ngModel)]="setting.inputValue"
+                    [disabled]="!setting.isEditing" />
                 </div>
                 <a href="#" (click)="setting.isEditing = !setting.isEditing">
-                  <img
-                    src="Assets/GeneralSettings/pencil.svg"
-                    alt="Edit"
-                    height="17"
-                    width="17"
-                  />
+                  <img src="Assets/GeneralSettings/pencil.svg" alt="Edit" height="17" width="17" />
                 </a>
               </div>
             </div>
@@ -185,25 +132,14 @@
                 </div>
 
                 <!-- Input Field for Geo-Fencing Radius -->
-                <div
-                  class="col-lg-6 mt-2 d-flex justify-content-end align-items-center gap-2"
-                  *ngIf="setting.isInputField"
-                >
+                <div class="col-lg-6 mt-2 d-flex justify-content-end align-items-center gap-2"
+                  *ngIf="setting.isInputField">
                   <div class="col-5">
-                    <input
-                      class="form-control"
-                      type="text"
-                      [(ngModel)]="setting.inputValue"
-                      [disabled]="!setting.isEditing"
-                    />
+                    <input class="form-control" type="text" [(ngModel)]="setting.inputValue"
+                      [disabled]="!setting.isEditing" />
                   </div>
                   <a href="#" (click)="setting.isEditing = !setting.isEditing">
-                    <img
-                      src="Assets/GeneralSettings/pencil.svg"
-                      alt="Edit"
-                      height="17"
-                      width="17"
-                    />
+                    <img src="Assets/GeneralSettings/pencil.svg" alt="Edit" height="17" width="17" />
                   </a>
                 </div>
 
@@ -223,26 +159,16 @@
               </div>
 
               <!-- Toggle Switch -->
-              <div
-                class="col-lg-6 text-end toogle_switch"
-                *ngIf="!section.isInputField"
-              >
+              <div class="col-lg-6 text-end toogle_switch" *ngIf="!section.isInputField">
                 <div class="form-check form-switch">
                   <input class="form-check-input" type="checkbox" />
                 </div>
               </div>
 
               <!-- Input Field (Editable) -->
-              <div
-                class="col-lg-6 mt-2 d-flex justify-content-end align-items-center"
-                *ngIf="section.isInputField"
-              >
+              <div class="col-lg-6 mt-2 d-flex justify-content-end align-items-center" *ngIf="section.isInputField">
                 <div class="col-5">
-                  <input
-                    class="form-control"
-                    type="text"
-                    [(ngModel)]="section.inputValue"
-                  />
+                  <input class="form-control" type="text" [(ngModel)]="section.inputValue" />
                 </div>
               </div>
               <div class="border_bottom_dashed_div"></div>
@@ -262,32 +188,23 @@
               </div>
               <div class="col-lg-6 text-end toogle_switch mt-2">
                 <div class="form-check form-switch">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    [(ngModel)]="dependent_primary.isEnabled"
-                    (change)="
+                  <input class="form-check-input" type="checkbox" [(ngModel)]="dependent_primary.isEnabled" (change)="
                       onPrimaryOrderChange(
                         dependent_primary.title,
                         dependent_primary.isEnabled
                       )
-                    "
-                  />
+                    " />
                 </div>
               </div>
               <div class="border_bottom_dashed_div"></div>
             </div>
 
             <!-- ✅ Show dependent settings INSIDE the same parent block -->
-            <ng-container
-              *ngIf="
+            <ng-container *ngIf="
                 dependent_primary.title === 'Primary Order' &&
                 isPrimaryOrderEnabled
-              "
-            >
-              <ng-container
-                *ngFor="let D_Primary_Order of Dependent_Primary_Order"
-              >
+              ">
+              <ng-container *ngFor="let D_Primary_Order of Dependent_Primary_Order">
                 <div class="row ms-2">
                   <div class="col-lg-6 mt-2">
                     <h6>{{ D_Primary_Order.title }}</h6>
@@ -305,15 +222,11 @@
               </ng-container>
             </ng-container>
 
-            <ng-container
-              *ngIf="
+            <ng-container *ngIf="
                 dependent_primary.title === 'Add New Distributor' &&
                 isNewDistributorEnabled
-              "
-            >
-              <ng-container
-                *ngFor="let D_New_Distributor of Dependent_New_Distributor"
-              >
+              ">
+              <ng-container *ngFor="let D_New_Distributor of Dependent_New_Distributor">
                 <div class="row ms-2">
                   <div class="col-lg-6 mt-2">
                     <h6>{{ D_New_Distributor.title }}</h6>
@@ -343,25 +256,16 @@
               </div>
               <div class="col-lg-6 text-end toogle_switch">
                 <div class="form-check form-switch">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    [(ngModel)]="TourPlan.isEnabled"
-                    (change)="
+                  <input class="form-check-input" type="checkbox" [(ngModel)]="TourPlan.isEnabled" (change)="
                       onTourPlanMandatory(TourPlan.title, TourPlan.isEnabled)
-                    "
-                  />
+                    " />
                 </div>
               </div>
               <div class="border_bottom_dashed_div"></div>
             </div>
 
-            <ng-container
-              *ngIf="TourPlan.title === 'TP Mandatory' && isTourPlan_Enabled"
-            >
-              <ng-container
-                *ngFor="let TourPlanMandatory of Tourplan_Mandatory"
-              >
+            <ng-container *ngIf="TourPlan.title === 'TP Mandatory' && isTourPlan_Enabled">
+              <ng-container *ngFor="let TourPlanMandatory of Tourplan_Mandatory">
                 <div class="row ms-2">
                   <div class="col-lg-6 mt-2">
                     <h6>{{ TourPlanMandatory.title }}</h6>
@@ -369,31 +273,17 @@
                       {{ TourPlanMandatory.description }}
                     </p>
                   </div>
-                  <div
-                    class="col-lg-6 mt-2 d-flex justify-content-end align-items-center gap-2"
-                    *ngIf="TourPlanMandatory.isInputField"
-                  >
+                  <div class="col-lg-6 mt-2 d-flex justify-content-end align-items-center gap-2"
+                    *ngIf="TourPlanMandatory.isInputField">
                     <div class="col-5">
-                      <input
-                        class="form-control"
-                        type="text"
-                        [(ngModel)]="TourPlanMandatory.inputValue"
-                        [disabled]="!TourPlanMandatory.isEditing"
-                      />
+                      <input class="form-control" type="text" [(ngModel)]="TourPlanMandatory.inputValue"
+                        [disabled]="!TourPlanMandatory.isEditing" />
                     </div>
-                    <a
-                      href="#"
-                      (click)="
+                    <a href="#" (click)="
                         TourPlanMandatory.isEditing =
                           !TourPlanMandatory.isEditing
-                      "
-                    >
-                      <img
-                        src="Assets/GeneralSettings/pencil.svg"
-                        alt="Edit"
-                        height="17"
-                        width="17"
-                      />
+                      ">
+                      <img src="Assets/GeneralSettings/pencil.svg" alt="Edit" height="17" width="17" />
                     </a>
                   </div>
                   <div class="border_bottom_solid_div ms-2"></div>
@@ -412,12 +302,8 @@
               </div>
               <div class="col-lg-6 text-end toogle_switch">
                 <div class="form-check form-switch">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    [(ngModel)]="Inshop.isEnabled"
-                    (change)="onInShop(Inshop.title, Inshop.isEnabled)"
-                  />
+                  <input class="form-check-input" type="checkbox" [(ngModel)]="Inshop.isEnabled"
+                    (change)="onInShop(Inshop.title, Inshop.isEnabled)" />
                 </div>
               </div>
               <div class="border_bottom_dashed_div"></div>
@@ -434,15 +320,8 @@
                   </div>
                   <div class="col-lg-6 d-flex justify-content-end mt-2">
                     <div class="col-lg-5 text-end">
-                      <select
-                        class="form-select"
-                        [(ngModel)]="selectedItems"
-                        aria-label="Currency Select"
-                      >
-                        <option
-                          *ngFor="let ShopItems of shopItems"
-                          [ngValue]="ShopItems"
-                        >
+                      <select class="form-select" [(ngModel)]="selectedItems" aria-label="Currency Select">
+                        <option *ngFor="let ShopItems of shopItems" [ngValue]="ShopItems">
                           {{ ShopItems.option }}
                         </option>
                       </select>
@@ -475,40 +354,19 @@
                 <p class="text-muted m-0">{{ caption.description }}</p>
               </div>
               <div class="col-lg-6 text-end toogle_switch">
-                <div
-                  class="d-flex align-items-center justify-content-end gap-2"
-                >
-                  <input
-                    class="form-control"
-                    type="text"
-                    [disabled]="!caption.isEditing"
-                    [(ngModel)]="caption.tempValue"
-                  />
+                <div class="d-flex align-items-center justify-content-end gap-2">
+                  <input class="form-control" type="text" [disabled]="!caption.isEditing"
+                    [(ngModel)]="caption.tempValue" />
                   <span *ngIf="!caption.isEditing">
                     <a href="javascript:void(0);" (click)="enableEditing(i)">
-                      <img
-                        src="Assets/GeneralSettings/pencil.svg"
-                        alt="Edit"
-                        height="17"
-                        width="17"
-                      />
+                      <img src="Assets/GeneralSettings/pencil.svg" alt="Edit" height="17" width="17" />
                     </a>
                   </span>
                   <span *ngIf="caption.isEditing" class="d-flex gap-2">
                     <a href="javascript:void(0);" (click)="saveCaption(i)">
-                      <img
-                        src="Assets/GeneralSettings/Caption/Tick.svg"
-                        alt="Edit"
-                        height="17"
-                        width="17"
-                    /></a>
+                      <img src="Assets/GeneralSettings/Caption/Tick.svg" alt="Edit" height="17" width="17" /></a>
                     <a href="javascript:void(0);" (click)="cancelEditing(i)">
-                      <img
-                        src="Assets/GeneralSettings/Caption/Cross.svg"
-                        alt="Edit"
-                        height="17"
-                        width="17"
-                      />
+                      <img src="Assets/GeneralSettings/Caption/Cross.svg" alt="Edit" height="17" width="17" />
                     </a>
                   </span>
                 </div>
@@ -543,31 +401,18 @@
                 <h6>{{ reports.title }}</h6>
                 <p class="text-muted m-0">{{ reports.description }}</p>
               </div>
-              <div
-                class="col-lg-6 text-end toogle_switch"
-                *ngIf="!reports.hasEODTimer"
-              >
+              <div class="col-lg-6 text-end toogle_switch" *ngIf="!reports.hasEODTimer">
                 <div class="form-check form-switch">
                   <input class="form-check-input" type="checkbox" />
                 </div>
               </div>
 
-              <div
-                class="col-lg-6 mt-2 d-flex justify-content-end align-items-center"
-                *ngIf="reports.hasEODTimer"
-              >
+              <div class="col-lg-6 mt-2 d-flex justify-content-end align-items-center" *ngIf="reports.hasEODTimer">
                 <div class="col-5">
                   <div class="d-flex align-items-center">
-                    <input
-                      class="form-control"
-                      type="text"
-                      [disabled]="!reports.isEditing"
-                    />
+                    <input class="form-control" type="text" [disabled]="!reports.isEditing" />
                     <a href="">
-                      <img
-                        src="Assets/GeneralSettings/Caption/Frame 11.svg"
-                        alt="Timer"
-                      />
+                      <img src="Assets/GeneralSettings/Caption/Frame 11.svg" alt="Timer" />
                     </a>
                   </div>
                 </div>
