@@ -1,25 +1,32 @@
-<div class="row">
+<div class="row d-flex align-items-center">
   <!-- Left: Login Section -->
   <div class="col-5">
-    <div class="col-12 d-flex flex-column justify-content-center align-items-center" style="margin-top: 120px">
+    <div class="col-12 d-flex flex-column justify-content-center align-items-center">
       <div>
-        <img src="IMAGES/Logo.png" alt="image" style="height: 110px; width: auto" />
+        <img src="IMAGES/Logo.png" alt="image" style="height: 110px; width: auto; margin: 10px; padding: 15px" />
       </div>
       <div>
-        <h4>Welcome to Sales Jump!!</h4>
+        <p style="color: #2e3032; letter-spacing: 2px;font-size: 24px;font-weight: 500; margin-bottom: 0px;">
+          Welcome to Sales Jump!!
+        </p>
       </div>
-      <div class="container mt-5">
+      <div class="container">
         <div class="row justify-content-center border-none">
           <div class="col-md-9">
-            <div class="card p-4">
+            <div class="p-4">
               <form>
                 <div class="mb-3">
-                  <label for="username" class="form-label">Username</label>
-                  <input type="text" class="form-control" id="username" placeholder="Enter your username" />
+                  <label for="username" class="form-label labels">User Name</label>
+                  <input type="text" class="form-control" id="username" />
                 </div>
                 <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="password" placeholder="Enter your password" />
+                  <label for="password" class="form-label labels">Password</label>
+                  <div class="password-wrapper">
+                    <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" />
+                    <img
+                      [src]="showPassword ? 'Assets/LoginPageImages/Show_Password.svg' : 'Assets/LoginPageImages/Hide_Password.svg'"
+                      alt="Toggle Password" (click)="togglePassword()" />
+                  </div>
                 </div>
                 <div class="text-end mb-4">
                   <a [routerLink]="'/forgotpassword'" style="text-decoration: none; color: #1997ce">
@@ -27,7 +34,7 @@
                   </a>
                 </div>
                 <button type="submit" [routerLink]="'/master/basic_details/company'" class="btn w-100"
-                  style="background-color: #1997ce; color: white">
+                  style="background-color: #1997ce; color: white; padding: 9px; font-size: 16px;">
                   Login
                 </button>
               </form>

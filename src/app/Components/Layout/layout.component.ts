@@ -101,6 +101,18 @@ export class LayoutComponent {
       ];
     }
 
+    // ✅ Match add-designation (custom route)
+    if (currentRoute.includes('/master/basic_details/add-designation')) {
+      return [
+        { label: 'Master', route: '/master' },
+        { label: 'Basic Details', route: '/master/basic_details' },
+        {
+          label: 'Add Designation',
+          route: '/master/basic_details/add-designation',
+        },
+      ];
+    }
+
     // ✅ Exact match for just /basic_details
     if (currentRoute === '/master/basic_details') {
       return [

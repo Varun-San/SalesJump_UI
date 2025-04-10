@@ -40,6 +40,14 @@ export class SampleComponent implements OnInit, OnDestroy {
       description: 'Automate your Pharma business sales with SAN SFA!',
     },
   ];
+
+  //! Toggle password
+  showPassword = false;
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
+
   currentSlide = 0;
   interval: any;
 
