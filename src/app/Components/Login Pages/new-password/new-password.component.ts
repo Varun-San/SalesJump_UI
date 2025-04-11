@@ -38,6 +38,18 @@ export class NewPasswordComponent implements OnInit, OnDestroy {
       description: 'Automate your Pharma business sales with SAN SFA!',
     },
   ];
+
+  //! Toggle password
+  showPassword_new = false;
+  showPassword_confirm = false;
+
+  togglePassword_new() {
+    this.showPassword_new = !this.showPassword_new;
+  }
+  togglePassword_confirm() {
+    this.showPassword_confirm = !this.showPassword_confirm;
+  }
+
   currentSlide = 0;
   interval: any;
 
