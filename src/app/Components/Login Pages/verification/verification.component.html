@@ -1,7 +1,7 @@
-<div class="row">
+<div class="row d-flex align-items-center">
   <!-- Left: Forgot Password Section -->
   <div class="col-5">
-    <div class="col-12 d-flex flex-column justify-content-center align-items-center" style="margin-top: 120px">
+    <div class="col-12 d-flex flex-column justify-content-center align-items-center">
       <div>
         <img src="Assets/Verification/Password Reset.png" alt="image" style="height: 110px; width: auto" />
       </div>
@@ -14,13 +14,13 @@
 
       <div class="container">
         <div class="row justify-content-center border-none">
-          <div class="col-md-9">
+          <div class="col-md-8">
             <div class="d-flex justify-content-center gap-4">
               <input #otpInput type="text" class="form-control text-center" maxlength="1" pattern="[0-9]*"
                 style="width: 50px; height: 50px" (input)="onOtpInputChange($event, i)"
                 (keydown)="onOtpKeyDown($event, i)" *ngFor="let item of otpArray; let i = index" />
             </div>
-            <button type="submit" class="btn w-100 mt-3" style="background-color: #1997ce; color: white"
+            <button type="submit" class="btn w-100 mt-3" style="background-color: #1997ce; color: white; padding: 9px"
               [routerLink]="'/newpassword'">
               Confirm
             </button>
@@ -41,8 +41,8 @@
           </div>
         </div>
       </div>
-      <div style="margin-top: 150px">
-        <img src="Assets/ForgotPassword/Frame.png" alt="image" style="height: 50px; width: auto" />
+      <div class="col-12 text-center">
+        <img src="Assets/ForgotPassword/Frame.png" alt="image" class="bottom-img" />
       </div>
     </div>
   </div>
@@ -56,7 +56,7 @@
           [ngClass]="{ 'active-slide': i === currentSlide }">
           <img [src]="slide.image" alt="slide image" class="img-fluid mb-3" />
           <h5>{{ slide.title }}</h5>
-          <p class="fs-">{{ slide.description }}</p>
+          <p class="fs-5">{{ slide.description }}</p>
         </div>
       </div>
 

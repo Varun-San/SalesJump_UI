@@ -21,8 +21,8 @@
           </div>
         </div>
       </div>
-      <div style="margin-top: 170px">
-        <img src="Assets/ForgotPassword/Frame.png" alt="image" style="height: 50px; width: auto" />
+      <div class="col-12 text-center">
+        <img src="Assets/ForgotPassword/Frame.png" alt="image" class="bottom-img" />
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
           [ngClass]="{ 'active-slide': i === currentSlide }">
           <img [src]="slide.image" alt="slide image" class="img-fluid mb-3" />
           <h5>{{ slide.title }}</h5>
-          <p class="fs-">{{ slide.description }}</p>
+          <p class="fs-5">{{ slide.description }}</p>
         </div>
       </div>
 

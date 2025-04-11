@@ -45,3 +45,11 @@ body {
 .img-down {
   top: 350px;
 }
+
+.bottom-img {
+  height: 50px;
+  width: auto;
+  top: 660px;
+  position: absolute;
+  left: 255px;
+}
