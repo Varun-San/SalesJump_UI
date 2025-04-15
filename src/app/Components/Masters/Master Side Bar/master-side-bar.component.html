@@ -1,5 +1,5 @@
-<div class="row page_left" style="display: block">
-  <div class="col-12 border">
+<div class="row" style="display: block">
+  <div class="col-10">
     <!-- Search bar -->
     <div class="col-12 mt-3">
       <div class="position-relative">
@@ -10,10 +10,10 @@
     <!-- Master List -->
     <!-- Sidebar: Vertical Tabs (Left Side) -->
     <div class="row">
-      <div class="col-4">
-        <ul class="nav flex-column nav-tabs" id="nav_tab_vertical">
+      <div class="col-4 border_right">
+        <ul class="nav flex-column nav-tabs " id="nav_tab_vertical">
           <li class="nav-item" *ngFor="let tab of tabs">
-            <a class="nav-link d-flex justify-content-between align-items-center border cursor-pointer"
+            <a class="nav-link d-flex justify-content-between align-items-center border cursor-pointer border_bottom"
               [class.active]="tab === activeTab" (click)="setActiveTab(tab)" href="javascript:void(0)">
               {{ tab }}
               <img *ngIf="tab === activeTab" src="Assets/GeneralSettings/Down Arrow Outline.svg" alt="Arrow Icon"

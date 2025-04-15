@@ -4,14 +4,23 @@
   left: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: #000000; /* Adjust color as needed */
-  pointer-events: none; /* Prevent click events */
+  color: #909090;
+  pointer-events: none;
 }
 /* Additional */
 .cursor-pointer {
   cursor: pointer;
   color: #000000;
   transition: color 0.2s ease-in-out;
+}
+
+.border_right {
+  margin-top: 10px;
+  height: 85vh;
+  border-right: 1px solid #d9d9d9;
+}
+.border_bottom {
+  border-bottom: 1px solid #d9d9d9 !important;
 }
 
 .cursor-pointer:hover {
@@ -84,4 +93,12 @@
 
 ::ng-deep .mat-mdc-chip-option .mat-mdc-chip-checkmark {
   display: none !important;
+}
+
+::ng-deep .border {
+  border: none !important;
+}
+
+::ng-deep .nav-tabs {
+  border-bottom: none !important;
 }

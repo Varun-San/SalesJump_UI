@@ -28,6 +28,10 @@ export class LayoutComponent {
 
   faSearch = faSearch;
 
+  togglePopup(item: string): void {
+    this.hoveredItem = this.hoveredItem === item ? null : item;
+  }
+
   menuItems = [
     { label: 'Home', route: '/home', icon: 'Assets/LayoutIcons/Home.svg' },
     {
