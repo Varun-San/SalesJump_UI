@@ -1,0 +1,93 @@
+.page_left {
+  margin-left: 55px;
+}
+
+#Add-Division {
+  position: absolute;
+  top: 60px;
+  left: 52%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: 1510px;
+  height: 90vh;
+}
+
+hr {
+  border-top: 2px solid #000000;
+}
+
+/* ! STYLE */
+.nav-tabs .nav-link.active {
+  border: none !important;
+  background-color: transparent !important;
+  border-bottom: 2px solid #1997ce !important;
+}
+
+.master-highlight {
+  background-color: #1997ce;
+}
+
+.nav-link {
+  color: black;
+}
+
+/* ✅ Styles for vertical (sidebar) tabs */
+#nav_tab_vertical .nav-link.active {
+  background-color: #e6f7ff !important;
+  color: #1997ce;
+  /* font-weight: bold; */
+  /* border-left: 3px solid #1997ce !important; */
+  border-bottom: none !important;
+}
+
+.nav-tabs .nav-link {
+  margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+  border: var(--bs-nav-tabs-border-width) solid transparent;
+  border-top-left-radius: var(--bs-nav-tabs-border-radius);
+  /* border-top-right-radius: var(--bs-nav-tabs-border-radius); */
+}
+.toogle_switch {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+/* Border for Bottom in content area */
+.border_bottom_dashed_div {
+  border-bottom: 1px dashed grey;
+  border-image: repeating-linear-gradient(
+      90deg,
+      grey,
+      grey 5px,
+      transparent 5px,
+      transparent 10px
+    )
+    1;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+/* ✅ Special style for toggle inside the "Enable All Master" row */
+.master-highlight .form-check-input {
+  background-color: #ffffff;
+  --bs-form-switch-bg: url("/Assets/Designation/Vector.svg") !important;
+}
+
+/* Checked state for special toggle */
+.master-highlight .form-check-input:checked {
+  background-color: #ffffff;
+  background-position: right center;
+  border-color: transparent !important;
+}
+::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: #d9f2ee !important;
+  color: #000000 !important;
+  border-radius: 8px !important;
+}
+::ng-deep .form-check-input:focus {
+  outline: 0;
+  box-shadow: none !important;
+}
+::ng-deep .mat-mdc-snack-bar-container {
+  z-index: 9999 !important; /* Ensure it's above cards, modals, etc. */
+  position: relative !important; /* Just in case it's overridden */
+}

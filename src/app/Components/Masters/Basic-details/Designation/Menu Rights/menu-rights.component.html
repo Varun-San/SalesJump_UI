@@ -1,0 +1,59 @@
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isDesignationMenuRights" class="card p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">
+            Menu Rights for <span style="color: #1997ce">Field Officer</span>
+        </h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+    <div class="row mt-3">
+        <!-- Sidebar: Vertical Tabs (Left Side) -->
+        <div class="col-2">
+            <ul class="nav flex-column nav-tabs" id="nav_tab_vertical">
+                <li class="nav-item" *ngFor="let tab of tabs">
+                    <a class="nav-link d-flex justify-content-between align-items-center border"
+                        [class.active]="tab === activeTab" (click)="setActiveTab(tab)" href="javascript:void(0)">
+                        {{ tab }}
+                        <img *ngIf="tab === activeTab" src="Assets/GeneralSettings/Down Arrow Outline.svg" alt=""
+                            style="width: 16px; height: 16px" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Content Area (Right Side) -->
+        <div class="col-9">
+            <div class="tab-content p-3 border border-top-0">
+                <div [ngSwitch]="activeTab">
+                    <!-- !Basic -->
+                    <div *ngSwitchCase="'Master'">
+                        <ng-container *ngFor="let item of menu_rights; let i = index">
+                            <div class="row" [ngClass]="{ 'master-highlight': item.title === 'Enable All Master' }">
+                                <div class="col-lg-6 mt-2 p-3">
+                                    <h6>{{ item.title }}</h6>
+                                </div>
+
+                                <!-- Toggle Switch -->
+                                <div class="col-lg-6 text-end toogle_switch mt-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" [(ngModel)]="item.checked"
+                                            (change)="onToggleChange(item)" />
+                                    </div>
+                                </div>
+
+                                <div class="border_bottom_dashed_div"></div>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <!-- !Default -->
+                    <div *ngSwitchDefault>
+                        <h4>Welcome</h4>
+                        <p>Select a tab to view content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

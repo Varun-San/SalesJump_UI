@@ -71,7 +71,7 @@
 
             </div>
             <div class="col-3 d-flex gap-3 align-items-center text-end">
-                <div class="col-7">
+                <div class="col-6">
                     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
                         class="bordered-icon-button">
                         <mat-icon>more_horiz</mat-icon>
@@ -82,7 +82,7 @@
                         <button mat-menu-item>Option 3</button>
                     </mat-menu>
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                     <button mat-raised-button
                         class="filter-btn d-flex align-items-center justify-content-center text-black"
                         style="background-color: #1997ce" [routerLink]="['/master/basic_details/add-designation']"
@@ -127,7 +127,13 @@
 
                         <mat-menu #menuTable="matMenu" class="custom-menu">
                             <ng-container *ngFor="let option of menuOptions">
-                                <button mat-menu-item>{{ option.label }}</button>
+                                <button mat-menu-item *ngIf="option.route" [routerLink]="option.route">
+                                    {{ option.label }}
+                                </button>
+
+                                <button mat-menu-item *ngIf="!option.route" (click)="onMenuAction(option.label)">
+                                    {{ option.label }}
+                                </button>
                             </ng-container>
                         </mat-menu>
                     </td>
@@ -143,8 +149,17 @@
                             aria-label="Example icon-button with a menu">
                             <mat-icon>more_horiz</mat-icon>
                         </button>
-                        <mat-menu #menuTable="matMenu">
-                            <button mat-menu-item>Edit Details</button>
+
+                        <mat-menu #menuTable="matMenu" class="custom-menu">
+                            <ng-container *ngFor="let option of menuOptions">
+                                <button mat-menu-item *ngIf="option.route" [routerLink]="option.route">
+                                    {{ option.label }}
+                                </button>
+
+                                <button mat-menu-item *ngIf="!option.route" (click)="onMenuAction(option.label)">
+                                    {{ option.label }}
+                                </button>
+                            </ng-container>
                         </mat-menu>
                     </td>
                 </tr>
@@ -162,7 +177,13 @@
 
                         <mat-menu #menuTable="matMenu" class="custom-menu">
                             <ng-container *ngFor="let option of menuOptions">
-                                <button mat-menu-item>{{ option.label }}</button>
+                                <button mat-menu-item *ngIf="option.route" [routerLink]="option.route">
+                                    {{ option.label }}
+                                </button>
+
+                                <button mat-menu-item *ngIf="!option.route" (click)="onMenuAction(option.label)">
+                                    {{ option.label }}
+                                </button>
                             </ng-container>
                         </mat-menu>
                     </td>
@@ -176,3 +197,4 @@
         </table>
     </div>
 </div>
+<router-outlet></router-outlet>

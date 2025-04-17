@@ -19,6 +19,7 @@ import { WorkTypeComponent } from './Components/Masters/Basic-details/Work Type/
 import { HoUserComponent } from './Components/Masters/Basic-details/HO Users/ho-user.component';
 import { AddDivisionComponent } from './Components/Masters/Basic-details/Add Division/add-division.component';
 import { AddDesignationComponent } from './Components/Masters/Basic-details/Add Designation/add-designation.component';
+import { MenuRightsComponent } from './Components/Masters/Basic-details/Designation/Menu Rights/menu-rights.component';
 
 export const routes: Routes = [
   {
@@ -90,6 +91,12 @@ export const routes: Routes = [
               {
                 path: 'designation',
                 component: DesignationComponent,
+                children: [
+                  {
+                    path: 'menu-rights',
+                    component: MenuRightsComponent,
+                  },
+                ],
               },
               {
                 path: 'head-quarters',

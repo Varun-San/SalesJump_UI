@@ -41,12 +41,6 @@
   border-radius: 5px;
 }
 
-/* Icon Hover Effect */
-.nav-link:hover img {
-  filter: brightness(0) invert(1);
-  transition: filter 0.3s ease-in-out;
-}
-
 /* Breadcrumb Styling */
 .breadcrumb {
   display: flex;
@@ -61,7 +55,7 @@
 }
 
 .breadcrumb a:hover {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 
 /* Search Bar & Profile */

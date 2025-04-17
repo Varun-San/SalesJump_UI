@@ -15,7 +15,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     RouterModule,
     MatTooltipModule,
     CommonModule,
-    MastersComponent,
     MasterSideBarComponent,
     SettingsSideBarComponent,
     FontAwesomeModule,
@@ -66,6 +65,24 @@ export class LayoutComponent {
 
   getHeaderText(): { label: string; route: string }[] | null {
     const currentRoute = this.router.url;
+
+    // ✅ Match custom nested route: /menu-rights
+    if (
+      currentRoute.includes('/master/basic_details/designation/menu-rights')
+    ) {
+      return [
+        { label: 'Master', route: '/master' },
+        { label: 'Basic Details', route: '/master/basic_details' },
+        {
+          label: 'Designation',
+          route: '/master/basic_details/designation',
+        },
+        {
+          label: 'Menu Rights',
+          route: '/master/basic_details/designation/menu-rights',
+        },
+      ];
+    }
 
     const basicDetailsSubRoutes = [
       'company',
@@ -160,7 +177,6 @@ export class LayoutComponent {
         { label: 'Configuration', route: '/configuration' },
       ];
     }
-
     return null;
   }
 }

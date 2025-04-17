@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-designation',
@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     FormsModule,
     RouterLink,
+    RouterOutlet,
   ],
   templateUrl: './designation.component.html',
   styleUrl: './designation.component.css',
@@ -30,10 +31,19 @@ export class DesignationComponent {
 
   //! Menu options
   menuOptions = [
-    { label: 'Edit Details' },
-    { label: 'Deactivate' },
-    { label: 'Menu Rights' },
+    { label: 'Edit Details', route: '/master/basic_details/designation/edit' },
+    { label: 'Deactivate', route: null }, // You can add a click handler for this
+    {
+      label: 'Menu Rights',
+      route: '/master/basic_details/designation/menu-rights',
+    },
   ];
+  onMenuAction(action: string) {
+    if (action === 'Deactivate') {
+      // Call deactivate logic
+      console.log('Deactivating...');
+    }
+  }
 
   // Temporary selections (before Apply)
   tempFilters = {

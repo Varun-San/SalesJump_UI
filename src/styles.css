@@ -53,3 +53,16 @@ body {
   position: absolute;
   left: 255px;
 }
+
+/* TOGGLE BUTTON STYLE */
+.form-switch .form-check-input {
+  --bs-form-switch-bg: url("/Assets/Designation/VectorWhite.svg") !important;
+  background-color: #909090;
+}
+
+.form-switch .form-check-input:checked {
+  background-color: #1997ce;
+  background-position: right center;
+  --bs-form-switch-bg: url("/Assets/Designation/VectorWhite.svg") !important;
+  border-color: transparent !important;
+}
