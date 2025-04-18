@@ -84,6 +84,7 @@ hr {
   border-radius: 8px !important;
 }
 ::ng-deep .form-check-input:focus {
+  border-color: transparent;
   outline: 0;
   box-shadow: none !important;
 }

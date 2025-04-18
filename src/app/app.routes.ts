@@ -20,6 +20,7 @@ import { HoUserComponent } from './Components/Masters/Basic-details/HO Users/ho-
 import { AddDivisionComponent } from './Components/Masters/Basic-details/Add Division/add-division.component';
 import { AddDesignationComponent } from './Components/Masters/Basic-details/Add Designation/add-designation.component';
 import { MenuRightsComponent } from './Components/Masters/Basic-details/Designation/Menu Rights/menu-rights.component';
+import { AddHeadQuartersComponent } from './Components/Masters/Basic-details/Add Head Quarters/add-head-quarters.component';
 
 export const routes: Routes = [
   {
@@ -117,6 +118,10 @@ export const routes: Routes = [
               {
                 path: 'add-designation',
                 component: AddDesignationComponent,
+              },
+              {
+                path: 'add-headquarters',
+                component: AddHeadQuartersComponent,
               },
             ],
           },

@@ -5,7 +5,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { MatChipsModule } from '@angular/material/chips';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-settings-side-bar',

@@ -1,15 +1,14 @@
 <div class="row page_left">
     <div class="col-12 mt-3">
         <div class="col-12 d-flex align-items-center justify-content-between">
-            <div class="col-9 d-flex align-items-center gap-5">
+            <div class="col-9 d-flex align-items-center gap-3">
                 <div class="position-relative col-3">
                     <fa-icon [icon]="faSearch" class="search-icon"> </fa-icon>
                     <input type="text" class="form-control ps-5" placeholder="Search" />
                 </div>
                 <div class="d-flex align-items-center gap-3">
                     <!-- Filter Button -->
-                    <button mat-raised-button
-                        class="filter-btn d-flex align-items-center justify-content-center text-black"
+                    <button class="btn border filter-btn d-flex align-items-center justify-content-center text-black"
                         (click)="toggleFilterPopup()">
                         <img src="Assets/AdminMasters/bars-filter.svg" alt="Filter Icon" height="16" width="16"
                             class="me-2" />
@@ -71,7 +70,7 @@
 
             </div>
             <div class="col-3 d-flex gap-3 align-items-center text-end">
-                <div class="col-6">
+                <div class="col-7">
                     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
                         class="bordered-icon-button">
                         <mat-icon>more_horiz</mat-icon>
@@ -83,10 +82,9 @@
                     </mat-menu>
                 </div>
                 <div class="col-6">
-                    <button mat-raised-button
-                        class="filter-btn d-flex align-items-center justify-content-center text-black"
-                        style="background-color: #1997ce" [routerLink]="['/master/basic_details/add-designation']"
-                        routerLinkActive="router-link-active">
+                    <button class="btn filter-btn d-flex align-items-center justify-content-center text-black"
+                        style="background-color: #1997ce; color: white !important"
+                        [routerLink]="['/master/basic_details/add-designation']" routerLinkActive="router-link-active">
                         <img src="Assets/AdminMasters/Add.svg" alt="Filter Icon" height="16" width="16" class="me-2" />
                         Designation
                     </button>

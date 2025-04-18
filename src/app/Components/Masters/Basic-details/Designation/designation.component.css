@@ -26,3 +26,14 @@
 ::ng-deep .custom-menu .mat-menu-item:last-child {
   border-bottom: none;
 }
+
+::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: #d9f2ee !important;
+  color: #000000 !important;
+  border-radius: 8px !important;
+}
+
+::ng-deep .mat-mdc-snack-bar-container {
+  z-index: 9999 !important; /* Ensure it's above cards, modals, etc. */
+  position: relative !important; /* Just in case it's overridden */
+}

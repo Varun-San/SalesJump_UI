@@ -35,28 +35,28 @@ export class LayoutComponent {
     { label: 'Home', route: '/home', icon: 'Assets/LayoutIcons/Home.svg' },
     {
       label: 'Master',
-      route: '/master',
+      route: '#',
       icon: 'Assets/LayoutIcons/Master.svg',
     },
     { label: 'Entry', route: '/entry', icon: 'Assets/LayoutIcons/Entry.svg' },
     {
       label: 'Upload',
-      route: '/upload',
+      route: '#',
       icon: 'Assets/LayoutIcons/Upload.svg',
     },
     {
       label: 'Approval',
-      route: '/approval',
+      route: '#',
       icon: 'Assets/LayoutIcons/Approval.svg',
     },
     {
       label: 'Reports',
-      route: '/reports',
+      route: '#',
       icon: 'Assets/LayoutIcons/Reports.svg',
     },
     {
       label: 'Settings',
-      route: '/configuration',
+      route: '#',
       icon: 'Assets/LayoutIcons/Settings.svg',
     },
   ];
@@ -71,7 +71,7 @@ export class LayoutComponent {
       currentRoute.includes('/master/basic_details/designation/menu-rights')
     ) {
       return [
-        { label: 'Master', route: '/master' },
+        { label: 'Master', route: '#' },
         { label: 'Basic Details', route: '/master/basic_details' },
         {
           label: 'Designation',
@@ -104,7 +104,7 @@ export class LayoutComponent {
         .replace(/\b\w/g, (c) => c.toUpperCase());
 
       return [
-        { label: 'Master', route: '/master' },
+        { label: 'Master', route: '#' },
         { label: 'Basic Details', route: '/master/basic_details' },
         {
           label: formattedLabel,
@@ -116,20 +116,20 @@ export class LayoutComponent {
     // ✅ Match add-division (custom route)
     if (currentRoute.includes('/master/basic_details/add-division')) {
       return [
-        { label: 'Master', route: '/master' },
+        { label: 'Master', route: '#' },
         { label: 'Basic Details', route: '/master/basic_details' },
         { label: 'Add Division', route: '/master/basic_details/add-division' },
       ];
     }
 
-    // ✅ Match add-designation (custom route)
-    if (currentRoute.includes('/master/basic_details/add-designation')) {
+    // ✅ Match add-headquarters (custom route)
+    if (currentRoute.includes('/master/basic_details/add-headquarters')) {
       return [
-        { label: 'Master', route: '/master' },
+        { label: 'Master', route: '#' },
         { label: 'Basic Details', route: '/master/basic_details' },
         {
-          label: 'Add Designation',
-          route: '/master/basic_details/add-designation',
+          label: 'Add Division',
+          route: '/master/basic_details/add-headquarters',
         },
       ];
     }
@@ -137,7 +137,7 @@ export class LayoutComponent {
     // ✅ Exact match for just /basic_details
     if (currentRoute === '/master/basic_details') {
       return [
-        { label: 'Master', route: '/master' },
+        { label: 'Master', route: '#' },
         {
           label: 'Basic Details',
           route: `/master/basic_details/${basicDetailsSubRoutes[0]}`,
@@ -153,16 +153,16 @@ export class LayoutComponent {
     // ✅ Config routes
     if (currentRoute.includes('/general-settings')) {
       return [
-        { label: 'Setup', route: '/setup' },
-        { label: 'Configuration', route: '/configuration' },
+        { label: 'Setup', route: '#' },
+        { label: 'Configuration', route: '#' },
         { label: 'General Settings', route: '/configuration/general-settings' },
       ];
     }
 
     if (currentRoute.includes('/user-settings')) {
       return [
-        { label: 'Setup', route: '/setup' },
-        { label: 'Configuration', route: '/configuration' },
+        { label: 'Setup', route: '#' },
+        { label: 'Configuration', route: '#' },
         { label: 'User Settings', route: '/configuration/user-settings' },
       ];
     }

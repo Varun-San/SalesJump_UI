@@ -66,3 +66,19 @@ body {
   --bs-form-switch-bg: url("/Assets/Designation/VectorWhite.svg") !important;
   border-color: transparent !important;
 }
+
+.form-check-input:focus {
+  border-color: transparent !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* search icon */
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #909090;
+  pointer-events: none;
+}

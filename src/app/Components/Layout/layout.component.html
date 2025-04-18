@@ -36,27 +36,29 @@
     <!-- Breadcrumb Navigation -->
     <div>
       <ng-container *ngIf="getHeaderText() as breadcrumbs">
-        <ng-container *ngFor="let breadcrumb of breadcrumbs; let first = first; let last = last">
+        <ng-container *ngFor="
+            let breadcrumb of breadcrumbs;
+            let first = first;
+            let last = last
+          ">
           <span *ngIf="first" class="breadcrumb_style">&lt;&nbsp;</span>
-    
-          <a
-            [routerLink]="breadcrumb.route"
-            class="text-decoration-none breadcrumb_style"
-            [ngClass]="{ 'active-breadcrumb': last, 'inactive-breadcrumb': !last }"
-          >
+
+          <a [routerLink]="breadcrumb.route" class="text-decoration-none breadcrumb_style" [ngClass]="{
+              'active-breadcrumb': last,
+              'inactive-breadcrumb': !last
+            }">
             {{ breadcrumb.label }}
           </a>
-    
+
           <span *ngIf="!last" class="breadcrumb_style"> / </span>
         </ng-container>
       </ng-container>
     </div>
-    
 
     <!-- Search Bar & Profile Icon -->
     <div class="d-flex align-items-center">
       <form class="d-flex me-2">
-        <div class="position-relative" style="margin-top: 10px;">
+        <div class="position-relative" style="margin-top: 10px">
           <fa-icon [icon]="faSearch" class="search-icon"> </fa-icon>
           <input type="text" class="form-control ps-5" placeholder="Search" />
         </div>

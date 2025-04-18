@@ -1,0 +1,7 @@
+<google-map class="page_left" height="550px" width="100%" [center]="center" [zoom]="zoom" (mapClick)="onMapClick($event)">
+</google-map>
+
+<p *ngIf="clickedLocation">
+    📍 Latitude: {{ clickedLocation.lat }}<br />
+    📍 Longitude: {{ clickedLocation.lng }}
+</p>
