@@ -82,3 +82,8 @@ body {
   color: #909090;
   pointer-events: none;
 }
+
+/* Map */
+.leaflet-control-attribution {
+  display: none !important;
+}

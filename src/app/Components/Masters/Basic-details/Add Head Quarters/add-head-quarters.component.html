@@ -1,1 +1,53 @@
-<p>add-head-quarters works!</p>
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isAddHeadquartersRoute" class="card shadow p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">Add Head Quarters</h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+
+    <div class="card-body p-0 mt-1">
+        <div class="row col-12">
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Head Quarters Name<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="headQuartersName" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div>
+                    <label class="form-label">Head Quarters Type <span class="text-danger">*</span></label>
+                    <select class="form-select" [(ngModel)]="selectedType">
+                        <option value="" disabled selected>Select a value</option>
+                        <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row col-12">
+            <div class="col-4">
+                <div class="mb-4">
+                    <label class="form-label">Latitude</label>
+                    <input type="number" class="form-control" [(ngModel)]="latitude" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div>
+                    <label class="form-label">Longitude</label>
+                    <input type="number" class="form-control" [(ngModel)]="longitude" />
+                </div>
+            </div>
+        </div>
+        <div class="row col-12">
+            <app-leaflet-map (locationSelected)="onMapLocationSelected($event)"></app-leaflet-map>
+        </div>
+    </div>
+
+    <div class="card-footer bg-white border-0 p-0 mt-3 mb-3 d-flex justify-content-end gap-2">
+        <button class="btn btn-outline-secondary" (click)="closeCard()">
+            Cancel
+        </button>
+        <button class="btn btn-success" (click)="saveDivision()">Save</button>
+    </div>
+</div>

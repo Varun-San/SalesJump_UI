@@ -27,3 +27,22 @@ thead > tr > td {
   font-weight: 600;
   color: #2e3032;
 }
+
+.status-indicator .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-indicator.active .dot {
+  background-color: #28a745; /* Green */
+}
+
+.status-indicator.inactive .dot {
+  background-color: #dc3545; /* Red */
+}
+
+.status-indicator.pending .dot {
+  background-color: #ffc107; /* Yellow */
+}

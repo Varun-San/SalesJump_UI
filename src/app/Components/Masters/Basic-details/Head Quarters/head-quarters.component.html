@@ -73,7 +73,7 @@
                 <div class="col-6">
                     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
                         class="bordered-icon-button">
-                        <mat-icon>more_horiz</mat-icon>
+                        <img src="Assets/Menu.svg" alt="menu">
                     </button>
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item>Option 1</button>
@@ -109,51 +109,47 @@
                     </td>
                 </tr>
             </thead>
-            <tbody>
-                <!-- Your rows here -->
-                <tr>
-                    <td>Sales Jump</td>
-                    <td>Text</td>
-                    <td>Text</td>
-                    <td>Delhi</td>
-                    <td>Active</td>
-                    <td class="text-center">
-                        <button mat-icon-button [matMenuTriggerFor]="menuTable"
-                            aria-label="Example icon-button with a menu">
-                            <mat-icon>more_horiz</mat-icon>
-                        </button>
+            <!-- Show table if data exists -->
+            <tbody *ngIf="headQuartersList.length > 0  else noData">
+                <tr *ngFor="let hq of headQuartersList">
+                    <td>{{hq.id}}</td>
+                    <td>{{ hq.name }}</td>
+                    <td>{{ hq.type }}</td>
+                    <td>
+                        <img src="Assets/AddHeadQuarters/Map.svg" alt=""> <a
+                            style="color: #1997CE; text-decoration: none;"
+                            [href]="'https://www.google.com/maps?q=' + hq.latitude + ',' + hq.longitude" target="_blank"
+                            rel="noopener noreferrer">
+                            {{ hq.latitude }},{{ hq.longitude }}
+                        </a>
                     </td>
-                </tr>
-                <tr>
-                    <td>Saneforce</td>
-                    <td>Text</td>
-                    <td>Text</td>
-                    <td>Text</td>
-                    <td>Active</td>
-                    <td class="text-center">
-                        <button mat-icon-button [matMenuTriggerFor]="menuTable"
-                            aria-label="Example icon-button with a menu">
-                            <mat-icon>more_horiz</mat-icon>
-                        </button>
+                    <td>
+                        <span class="status-indicator" [ngClass]="hq.status.toLowerCase()">
+                            <span class="dot"></span>
+                            {{ hq.status }}
+                        </span>
                     </td>
-                </tr>
-                <tr>
-                    <td>Twozo</td>
-                    <td>Text</td>
-                    <td>Text</td>
-                    <td>Text</td>
-                    <td>Active</td>
                     <td class="text-center">
-                        <button mat-icon-button [matMenuTriggerFor]="menuTable"
-                            aria-label="Example icon-button with a menu">
-                            <mat-icon>more_horiz</mat-icon>
+                        <!-- Updated menu trigger -->
+                        <button mat-icon-button [matMenuTriggerFor]="menuTable" (click)="openMenu(hq)">
+                            <img src="Assets/Menu.svg" alt="menu" />
                         </button>
+
                     </td>
                 </tr>
             </tbody>
+
+            <!-- Fallback when no data is available -->
+            <ng-template #noData>
+                <tbody>
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">No head quarters available.</td>
+                    </tr>
+                </tbody>
+            </ng-template>
             <tfoot>
                 <tr>
-                    <td colspan="9" class="text-start fw-bold">Total Records: 3</td>
+                    <td colspan="9" class="text-start fw-bold">Total Records: {{ headQuartersList.length }}</td>
                 </tr>
             </tfoot>
         </table>

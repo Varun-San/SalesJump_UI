@@ -1,0 +1,49 @@
+::ng-deep .leaflet-control-container {
+  position: absolute;
+  top: 380px;
+  right: 80px;
+}
+
+::ng-deep .leaflet-bar a {
+  background-color: #14baa1;
+  border-bottom: 1px solid #ccc;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  margin: 10px;
+}
+
+::ng-deep .leaflet-bar a:hover,
+::ng-deep .leaflet-bar a:focus {
+  background-color: white;
+  color: #14baa1;
+}
+
+::ng-deep .leaflet-bar a:hover.leaflet-control-zoom-out {
+  background-color: #ffffff !important;
+  color: #BA1446;
+}
+
+::ng-deep .leaflet-touch .leaflet-bar {
+  background-color: #ffffff;
+  border: none;
+  background-clip: padding-box;
+}
+
+::ng-deep .leaflet-bar a.leaflet-disabled {
+  cursor: default;
+  background-color: #14baa1;
+  color: #ffffff;
+}
+
+::ng-deep .leaflet-bar a.leaflet-control-zoom-out {
+  background-color: #BA1446 !important;
+}
+
+::ng-deep .leaflet-touch .leaflet-bar a {
+  border-radius: 5px !important;
+}
