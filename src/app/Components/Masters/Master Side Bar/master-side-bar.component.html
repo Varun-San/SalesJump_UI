@@ -43,7 +43,7 @@
               <mat-chip-set>
                 <mat-chip *ngFor="let Geo of Geography_label" [ngClass]="{
                     'active-chip': activeChip_Geography === Geo.name
-                  }" (click)="activeChip_Geography = Geo.name">
+                  }" (click)="activeChip_Geography = Geo.name" routerLink="{{ Geo.route }}">
                   {{ Geo.name }}
                 </mat-chip>
               </mat-chip-set>

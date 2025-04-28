@@ -23,13 +23,19 @@ import { MenuRightsComponent } from './Components/Masters/Basic-details/Designat
 import { AddHeadQuartersComponent } from './Components/Masters/Basic-details/Add Head Quarters/add-head-quarters.component';
 import { AddHoUserComponent } from './Components/Masters/Basic-details/Add Ho User/add-ho-user.component';
 import { CurrencyComponent } from './Components/Masters/Basic-details/Currency/currency.component';
+import { GeographyComponent } from './Components/Masters/Geography/geography.component';
+import { AreaComponent } from './Components/Masters/Geography/Area/area.component';
+import { ZoneComponent } from './Components/Masters/Geography/Zone/zone.component';
+import { TerritoryComponent } from './Components/Masters/Geography/Territory/territory.component';
+import { DistrictComponent } from './Components/Masters/Geography/District/district.component';
+import { TownComponent } from './Components/Masters/Geography/Town/town.component';
 
 export const routes: Routes = [
   {
     // Default route
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full',
+    pathMatch: 'full', // Ensure that the redirect is only happening at the root
   },
   {
     // Home-Page
@@ -132,6 +138,32 @@ export const routes: Routes = [
               {
                 path: 'add-ho-user',
                 component: AddHoUserComponent,
+              },
+            ],
+          },
+          {
+            path: 'geography',
+            component: GeographyComponent,
+            children: [
+              {
+                path: 'area',
+                component: AreaComponent,
+              },
+              {
+                path: 'zone',
+                component: ZoneComponent,
+              },
+              {
+                path: 'territory',
+                component: TerritoryComponent,
+              },
+              {
+                path: 'district',
+                component: DistrictComponent,
+              },
+              {
+                path: 'town',
+                component: TownComponent,
               },
             ],
           },

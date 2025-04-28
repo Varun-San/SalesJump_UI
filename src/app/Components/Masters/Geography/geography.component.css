@@ -1,0 +1,38 @@
+.nav-tabs .nav-link.active {
+    border: none !important;
+    background-color: transparent !important;
+    border-bottom: 2px solid #1997ce !important;
+  }
+  .page_left {
+    margin-left: 55px;
+  }
+  .border_right {
+    border-right: 1px solid black;
+  }
+  
+  .nav-link {
+    color: black;
+  }
+  
+  /* ✅ Styles for vertical (sidebar) tabs */
+  #nav_tab_vertical .nav-link.active {
+    background-color: #e6f7ff !important;
+    color: #1997ce;
+    /* font-weight: bold; */
+    /* border-left: 3px solid #1997ce !important; */
+    border-bottom: none !important;
+  }
+  
+  /* ✅ Styles for horizontal (top) tabs */
+  #nav_tab_horizontal .nav-link.active {
+    border-bottom: 2px solid #1997ce !important;
+    /* background-color: #ddeff8 !important; */
+    color: #1997ce;
+  }
+  
+  .nav-tabs .nav-link {
+    margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+    border: var(--bs-nav-tabs-border-width) solid transparent;
+    border-top-left-radius: var(--bs-nav-tabs-border-radius);
+    /* border-top-right-radius: var(--bs-nav-tabs-border-radius); */
+  }

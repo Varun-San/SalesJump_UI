@@ -35,7 +35,7 @@ export class LayoutComponent {
     { label: 'Home', route: '/home', icon: 'Assets/LayoutIcons/Home.svg' },
     {
       label: 'Master',
-      route: '#',
+      route: 'master/',
       icon: 'Assets/LayoutIcons/Master.svg',
     },
     { label: 'Entry', route: '/entry', icon: 'Assets/LayoutIcons/Entry.svg' },
@@ -56,7 +56,7 @@ export class LayoutComponent {
     },
     {
       label: 'Settings',
-      route: '#',
+      route: 'configuration',
       icon: 'Assets/LayoutIcons/Settings.svg',
     },
   ];
@@ -168,10 +168,10 @@ export class LayoutComponent {
       ];
     }
 
-    // ✅ Master root
-    if (currentRoute.includes('/master')) {
-      return [{ label: 'Master', route: '/master' }];
-    }
+    // // ✅ Master root
+    // if (currentRoute.includes('/master')) {
+    //   return [{ label: 'Master', route: '/master' }];
+    // }
 
     // ✅ Config routes
     if (currentRoute.includes('/general-settings')) {
@@ -200,6 +200,50 @@ export class LayoutComponent {
         { label: 'Configuration', route: '/configuration' },
       ];
     }
+
+    // ✅ Exact match for just /Geography
+    if (currentRoute === '/master/geography') {
+      return [
+        { label: 'Master', route: '#' },
+        {
+          label: 'Geography',
+          route: `/master/geography`,
+        },
+      ];
+    }
+    const geographyRoutes = ['area', 'zone', 'territory', 'district', 'town'];
+
+    // ✅ Match main geography sub-routes
+    const matchedGeoSubRoute = geographyRoutes.find((sub) =>
+      currentRoute.includes(`/master/geography/${sub}`)
+    );
+
+    if (matchedGeoSubRoute) {
+      const formattedLabel = matchedGeoSubRoute
+        .replace(/-/g, ' ')
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+
+      return [
+        { label: 'Master', route: '#' },
+        { label: 'Geography', route: '/master/geography' },
+        {
+          label: formattedLabel,
+          route: `/master/geography/${matchedGeoSubRoute}`,
+        },
+      ];
+    }
+
+    // ✅ Exact match for /master/geography
+    if (currentRoute === '/master/geography') {
+      return [
+        { label: 'Master', route: '#' },
+        {
+          label: 'Geography',
+          route: `/master/geography/${geographyRoutes[0]}`, // 👈 first sub route: 'area'
+        },
+      ];
+    }
+
     return null;
   }
 }

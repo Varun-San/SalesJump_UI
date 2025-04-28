@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router'; // Import Router
 
 @Component({
   selector: 'app-configuration',
@@ -8,4 +9,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './configuration.component.html',
   styleUrl: './configuration.component.css',
 })
-export class ConfigurationComponent {}
+export class ConfigurationComponent {
+  constructor(private router: Router, private route: ActivatedRoute) {}
+}

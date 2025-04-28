@@ -78,11 +78,11 @@ export class MasterSideBarComponent {
   //! Geography
   activeChip_Geography: string = 'Area';
   Geography_label = [
-    { name: 'Area', route: '#' },
-    { name: 'Zone', route: '#' },
-    { name: 'Territory', route: '#' },
-    { name: 'District', route: '#' },
-    { name: 'Town', route: '#' },
+    { name: 'Area', route: '/master/geography/area' },
+    { name: 'Zone', route: '/master/geography/zone' },
+    { name: 'Territory', route: '/master/geography/territory' },
+    { name: 'District', route: '/master/geography/district' },
+    { name: 'Town', route: '/master/geography/town' },
   ];
 
   //! Product

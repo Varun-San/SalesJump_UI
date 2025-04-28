@@ -5,6 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCommonModule } from '@angular/material/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-masters',
@@ -20,11 +21,10 @@ import { MatCommonModule } from '@angular/material/core';
   styleUrl: './masters.component.css',
 })
 export class MastersComponent {
+  constructor(private router: Router, private route: ActivatedRoute) {}
   showOptions = false; // Initially hidden
   hoveredItem: string | null = null; // Track hovered item
   faSearch = faSearch;
-
-  constructor(private router: Router) {} // Inject Router
 
   // Master list with routes
   list = [
