@@ -72,6 +72,7 @@ export class MasterSideBarComponent {
     { name: 'Head Quarters', route: '/master/basic_details/head-quarters' },
     { name: 'Work Type', route: '/master/basic_details/work-type' },
     { name: 'HO User', route: '/master/basic_details/ho-user' },
+    { name: 'Currency', route: '/master/basic_details/currency' },
   ];
 
   //! Geography

@@ -91,6 +91,7 @@ export class LayoutComponent {
       'head-quarters',
       'work-type',
       'ho-user',
+      'currency',
     ];
 
     const matchedSubRoute = basicDetailsSubRoutes.find((sub) =>
@@ -121,6 +122,17 @@ export class LayoutComponent {
         { label: 'Add Division', route: '/master/basic_details/add-division' },
       ];
     }
+    // ✅ Match add-designation (custom route)
+    if (currentRoute.includes('/master/basic_details/add-designation')) {
+      return [
+        { label: 'Master', route: '#' },
+        { label: 'Basic Details', route: '/master/basic_details' },
+        {
+          label: 'Add Designation',
+          route: '/master/basic_details/add-designation',
+        },
+      ];
+    }
 
     // ✅ Match add-headquarters (custom route)
     if (currentRoute.includes('/master/basic_details/add-headquarters')) {
@@ -128,8 +140,19 @@ export class LayoutComponent {
         { label: 'Master', route: '#' },
         { label: 'Basic Details', route: '/master/basic_details' },
         {
-          label: 'Add Division',
+          label: 'Add Headquarters',
           route: '/master/basic_details/add-headquarters',
+        },
+      ];
+    }
+    // ✅ Match add-ho-user (custom route)
+    if (currentRoute.includes('/master/basic_details/add-ho-user')) {
+      return [
+        { label: 'Master', route: '#' },
+        { label: 'Basic Details', route: '/master/basic_details' },
+        {
+          label: 'Add Ho User',
+          route: '/master/basic_details/add-ho-user',
         },
       ];
     }

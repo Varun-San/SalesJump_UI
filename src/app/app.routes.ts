@@ -21,6 +21,8 @@ import { AddDivisionComponent } from './Components/Masters/Basic-details/Add Div
 import { AddDesignationComponent } from './Components/Masters/Basic-details/Add Designation/add-designation.component';
 import { MenuRightsComponent } from './Components/Masters/Basic-details/Designation/Menu Rights/menu-rights.component';
 import { AddHeadQuartersComponent } from './Components/Masters/Basic-details/Add Head Quarters/add-head-quarters.component';
+import { AddHoUserComponent } from './Components/Masters/Basic-details/Add Ho User/add-ho-user.component';
+import { CurrencyComponent } from './Components/Masters/Basic-details/Currency/currency.component';
 
 export const routes: Routes = [
   {
@@ -86,6 +88,10 @@ export const routes: Routes = [
                 component: CompanyComponent,
               },
               {
+                path: 'currency',
+                component: CurrencyComponent,
+              },
+              {
                 path: 'division',
                 component: DivisionComponent,
               },
@@ -122,6 +128,10 @@ export const routes: Routes = [
               {
                 path: 'add-headquarters',
                 component: AddHeadQuartersComponent,
+              },
+              {
+                path: 'add-ho-user',
+                component: AddHoUserComponent,
               },
             ],
           },

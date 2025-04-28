@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { Path } from 'leaflet';
 
 @Component({
   selector: 'app-basic-details',
@@ -52,6 +53,10 @@ export class BasicDetailsComponent {
       label: 'HO User',
       path: '/master/basic_details/ho-user',
     },
+    {
+      label: 'Currency',
+      path: '/master/basic_details/currency',
+    },
   ];
 
   // ?~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -76,6 +81,7 @@ export class BasicDetailsComponent {
     'Head Quarters',
     'Work Type',
     'HO User',
+    'currency',
   ];
 
   activeTab = this.tabs[0]; // Default active tab
