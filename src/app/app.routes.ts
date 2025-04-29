@@ -30,6 +30,7 @@ import { TerritoryComponent } from './Components/Masters/Geography/Territory/ter
 import { DistrictComponent } from './Components/Masters/Geography/District/district.component';
 import { TownComponent } from './Components/Masters/Geography/Town/town.component';
 import { AddWorkTypeComponent } from './Components/Masters/Basic-details/Add Work Type/add-work-type.component';
+import { AddCurrencyComponent } from './Components/Masters/Basic-details/Add Currency/add-currency.component';
 
 export const routes: Routes = [
   {
@@ -97,6 +98,12 @@ export const routes: Routes = [
               {
                 path: 'currency',
                 component: CurrencyComponent,
+                children: [
+                  {
+                    path: 'add-currency',
+                    component: AddCurrencyComponent,
+                  },
+                ],
               },
               {
                 path: 'division',

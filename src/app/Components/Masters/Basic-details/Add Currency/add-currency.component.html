@@ -1,0 +1,68 @@
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isAddCurrencyRoute" class="card shadow p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">Add Currency</h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+
+    <div class="card-body p-0 mt-1">
+        <div class="row col-12">
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Currency Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="currencyName" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Country <span class="text-danger">*</span></label>
+                    <ng-select [(ngModel)]="country" [items]="countryList" bindLabel="name" placeholder="Select Country"
+                        [searchable]="true" (change)="onCountryChange()">
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Symbol <span class="text-danger">*</span></label>
+                    <ng-select [(ngModel)]="symbol" [items]="symbolList" placeholder="Select Symbol"
+                        [searchable]="true">
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Value equivalent to base currency <span
+                            class="text-danger">*</span></label>
+                    <ng-select [(ngModel)]="equalToBaseCurrency">
+                        <option *ngFor="let country of countryList" [ngValue]="exchangeRates[country.name]">
+                            {{ country.name }} - {{ exchangeRates[country.name] | number:'1.2-2' }}
+                        </option>
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="">
+                    <label class="form-label">Effective From <span class="text-danger">*</span></label>
+                    <mat-form-field appearance="outline" class=" w-100">
+                        <input matInput [matDatepicker]="cal" [(ngModel)]="effectiveFrom">
+                        <!-- Custom calendar icon, click opens the datepicker -->
+                        <img src="Assets/AddCurrency/Calendar.svg" alt="Calendar Icon" (click)="cal.open()"
+                            class="calendar-icon" />
+                        <mat-datepicker #cal></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer bg-white border-0 p-0 mt-3 d-flex justify-content-end gap-2">
+            <button class="btn btn-outline-secondary" (click)="closeCard()">
+                Cancel
+            </button>
+            <button class="btn btn-success" (click)="saveDivision()">Save</button>
+        </div>
+    </div>
+</div>
