@@ -108,7 +108,6 @@
                     </td>
                 </tr>
             </thead>
-
             <tbody *ngIf="HoUserList.length > 0; else noData">
                 <tr *ngFor="let hq of HoUserList">
                     <td>{{ hq.Name }}</td>
@@ -139,10 +138,6 @@
                     </td>
                 </tr>
             </tbody>
-
-
-
-
             <ng-template #noData>
                 <tbody>
                     <tr>
@@ -150,7 +145,6 @@
                     </tr>
                 </tbody>
             </ng-template>
-
             <tfoot>
                 <tr>
                     <td colspan="5" class="text-start fw-bold">

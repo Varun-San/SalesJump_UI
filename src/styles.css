@@ -119,3 +119,17 @@ body {
 label {
   color: #909090
 }
+
+/* Table spacing */
+
+table td,
+table th {
+  white-space: nowrap;
+  /* prevents text wrap */
+}
+
+table th,
+table td {
+  max-width: 200px;
+  width: 100px;
+}

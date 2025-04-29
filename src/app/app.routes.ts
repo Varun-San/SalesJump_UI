@@ -29,6 +29,7 @@ import { ZoneComponent } from './Components/Masters/Geography/Zone/zone.componen
 import { TerritoryComponent } from './Components/Masters/Geography/Territory/territory.component';
 import { DistrictComponent } from './Components/Masters/Geography/District/district.component';
 import { TownComponent } from './Components/Masters/Geography/Town/town.component';
+import { AddWorkTypeComponent } from './Components/Masters/Basic-details/Add Work Type/add-work-type.component';
 
 export const routes: Routes = [
   {
@@ -138,6 +139,10 @@ export const routes: Routes = [
               {
                 path: 'add-ho-user',
                 component: AddHoUserComponent,
+              },
+              {
+                path: 'add-work-type',
+                component: AddWorkTypeComponent,
               },
             ],
           },

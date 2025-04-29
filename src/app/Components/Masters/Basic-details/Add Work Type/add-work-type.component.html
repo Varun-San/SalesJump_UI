@@ -1,0 +1,58 @@
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isAddworktypeRoute" class="card shadow p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">Add Work Type</h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+
+    <div class="card-body p-0 mt-1">
+        <div class="row col-12">
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Work Type <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="workType" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Work Type Short Name<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="workTypeShortName" />
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Place Involved <span class="text-danger">*</span></label>
+                    <select class="form-select" [(ngModel)]="placeInvolved">
+                        <option>Base Level</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Work Type for <span class="text-danger">*</span></label>
+                    <select class="form-select" [(ngModel)]="workTypeFor">
+                        <option>Base Level</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Expense KM Needed <span class="text-danger">*</span></label>
+                    <select class="form-select" [(ngModel)]="expenseKmNeeded">
+                        <option>Base Level</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer bg-white border-0 p-0 mt-3 d-flex justify-content-end gap-2">
+        <button class="btn btn-outline-secondary" (click)="closeCard()">
+            Cancel
+        </button>
+        <button class="btn btn-success" (click)="saveDivision()">Save</button>
+    </div>
+</div>

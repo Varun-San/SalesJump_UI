@@ -114,6 +114,18 @@ export class LayoutComponent {
       ];
     }
 
+    // ✅ Match add-work-type (custom route)
+    if (currentRoute.includes('/master/basic_details/add-work-type')) {
+      return [
+        { label: 'Master', route: '#' },
+        { label: 'Basic Details', route: '/master/basic_details' },
+        {
+          label: 'Add Work Type',
+          route: '/master/basic_details/add-work-type',
+        },
+      ];
+    }
+
     // ✅ Match add-division (custom route)
     if (currentRoute.includes('/master/basic_details/add-division')) {
       return [
