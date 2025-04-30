@@ -3,9 +3,11 @@
   background-color: transparent !important;
   border-bottom: 2px solid #1997ce !important;
 }
+
 .page_left {
   margin-left: 55px;
 }
+
 .border_right {
   border-right: 1px solid black;
 }
@@ -32,7 +34,7 @@
 
 .nav-tabs .nav-link {
   margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
-  border: var(--bs-nav-tabs-border-width) solid transparent;
+  border: none;
   border-top-left-radius: var(--bs-nav-tabs-border-radius);
   /* border-top-right-radius: var(--bs-nav-tabs-border-radius); */
 }

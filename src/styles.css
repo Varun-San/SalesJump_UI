@@ -133,3 +133,14 @@ table td {
   max-width: 200px;
   width: 100px;
 }
+
+/* Style for menu items */
+.mat-mdc-menu-panel {
+  background-color: white !important;
+}
+
+.mat-mdc-menu-item:not([disabled]):hover {
+  background-color: #1997cf !important;
+  color: white !important;
+  border-radius: 10px;
+}
