@@ -58,7 +58,7 @@
               <mat-chip-set>
                 <mat-chip *ngFor="let Pro of Product_label" [ngClass]="{
                     'active-chip': activeChip_Product === Pro.name
-                  }" (click)="activeChip_Product = Pro.name">
+                  }" (click)="activeChip_Product = Pro.name" routerLink="{{ Pro.route }}">
                   {{ Pro.name }}
                 </mat-chip>
               </mat-chip-set>

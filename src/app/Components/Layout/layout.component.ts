@@ -229,7 +229,7 @@ export class LayoutComponent {
       ];
     }
 
-    // ✅ Exact match for just /Geography
+    //! ✅ Exact match for just /Geography
     if (currentRoute === '/master/geography') {
       return [
         { label: 'Master', route: '#' },
@@ -267,7 +267,60 @@ export class LayoutComponent {
         { label: 'Master', route: '#' },
         {
           label: 'Geography',
-          route: `/master/geography/${geographyRoutes[0]}`, // 👈 first sub route: 'area'
+          route: `/master/geography/${geographyRoutes[0]}`,
+        },
+      ];
+    }
+
+    //! ✅ Exact match for just /Product
+    if (currentRoute === '/master/product') {
+      return [
+        { label: 'Master', route: '#' },
+        {
+          label: 'Product',
+          route: `/master/product`,
+        },
+      ];
+    }
+
+    const productRoutes = [
+      'product-details',
+      'category',
+      'brand',
+      'uom',
+      'tax-allocation',
+      'rate-entry',
+      'pop-material',
+      'rate-card',
+    ];
+
+    // ✅ Match main product sub-routes
+    const matchedProductSubRoute = productRoutes.find((sub) =>
+      currentRoute.includes(`/master/product/${sub}`)
+    );
+
+    if (matchedProductSubRoute) {
+      const formattedLabel = matchedProductSubRoute
+        .replace(/-/g, ' ')
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+
+      return [
+        { label: 'Master', route: '#' },
+        { label: 'Product', route: '/master/product' },
+        {
+          label: formattedLabel,
+          route: `/master/product/${matchedProductSubRoute}`,
+        },
+      ];
+    }
+
+    // ✅ Exact match for /master/product
+    if (currentRoute === '/master/product') {
+      return [
+        { label: 'Master', route: '#' },
+        {
+          label: 'Product',
+          route: `/master/product/${productRoutes[0]}`,
         },
       ];
     }

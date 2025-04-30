@@ -88,14 +88,13 @@ export class MasterSideBarComponent {
   //! Product
   activeChip_Product: string = 'Product detail';
   Product_label = [
-    { name: 'Product detail', route: '#' },
-    { name: 'Category', route: '#' },
-    { name: 'Brand', route: '#' },
-    { name: 'UOM', route: '#' },
-    { name: 'Tax Allocation', route: '#' },
-    { name: 'Rate Entry Statewise', route: '#' },
-    { name: 'POP Material', route: '#' },
-    { name: 'Rate Card Fixation', route: '#' },
-    { name: 'Fixed Rate Card', route: '#' },
+    { name: 'Product detail', route: '/master/product/product-details' },
+    { name: 'Category', route: '/master/product/category' },
+    { name: 'Brand', route: '/master/product/brand' },
+    { name: 'UOM', route: '/master/product/uom' },
+    { name: 'Tax Allocation', route: '/master/product/tax-allocation' },
+    { name: 'Rate Entry Statewise', route: '/master/product/rate-entry' },
+    { name: 'POP Material', route: '/master/product/pop-material' },
+    { name: 'Rate Card Fixation', route: '/master/product/rate-card' },
   ];
 }

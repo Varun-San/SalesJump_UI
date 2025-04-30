@@ -31,6 +31,15 @@ import { DistrictComponent } from './Components/Masters/Geography/District/distr
 import { TownComponent } from './Components/Masters/Geography/Town/town.component';
 import { AddWorkTypeComponent } from './Components/Masters/Basic-details/Add Work Type/add-work-type.component';
 import { AddCurrencyComponent } from './Components/Masters/Basic-details/Add Currency/add-currency.component';
+import { ProductComponent } from './Components/Masters/Product/product.component';
+import { ProductDetailsComponent } from './Components/Masters/Product/Product Details/product-details.component';
+import { CategoryComponent } from './Components/Masters/Product/Category/category.component';
+import { BrandComponent } from './Components/Masters/Product/Brand/brand.component';
+import { UomComponent } from './Components/Masters/Product/Uom/uom.component';
+import { TaxAllocationComponent } from './Components/Masters/Product/Tax Allocation/tax-allocation.component';
+import { RateEntryComponent } from './Components/Masters/Product/Rate Entry/rate-entry.component';
+import { PopMaterialComponent } from './Components/Masters/Product/Pop Material/pop-material.component';
+import { RateCardComponent } from './Components/Masters/Product/Rate Card/rate-card.component';
 
 export const routes: Routes = [
   {
@@ -176,6 +185,44 @@ export const routes: Routes = [
               {
                 path: 'town',
                 component: TownComponent,
+              },
+            ],
+          },
+          {
+            path: 'product',
+            component: ProductComponent,
+            children: [
+              {
+                path: 'product-details',
+                component: ProductDetailsComponent,
+              },
+              {
+                path: 'category',
+                component: CategoryComponent,
+              },
+              {
+                path: 'brand',
+                component: BrandComponent,
+              },
+              {
+                path: 'uom',
+                component: UomComponent,
+              },
+              {
+                path: 'tax-allocation',
+                component: TaxAllocationComponent,
+              },
+              {
+                path: 'rate-entry',
+                component: RateEntryComponent,
+              },
+              {
+                path: 'pop-material',
+                component: PopMaterialComponent,
+              },
+              {
+                path: 'rate-card',
+                component: RateCardComponent,
               },
             ],
           },

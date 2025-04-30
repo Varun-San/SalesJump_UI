@@ -9,7 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-geography',
+  selector: 'app-product',
   imports: [
     RouterModule,
     CommonModule,
@@ -20,31 +20,43 @@ import { MatButtonModule } from '@angular/material/button';
     MatMenuModule,
     MatIconModule,
   ],
-  templateUrl: './geography.component.html',
-  styleUrl: './geography.component.css',
+  templateUrl: './product.component.html',
+  styleUrl: './product.component.css',
 })
-export class GeographyComponent {
+export class ProductComponent {
   // ! TABS CONTROL FOR THE NAV
   tabItems = [
     {
-      label: 'Area',
-      path: '/master/geography/area',
+      label: 'Product Details',
+      path: '/master/product/product-details',
     },
     {
-      label: 'Zone',
-      path: '/master/geography/zone',
+      label: 'Category',
+      path: '/master/product/category',
     },
     {
-      label: 'Territory',
-      path: '/master/geography/territory',
+      label: 'Brand',
+      path: '/master/product/brand',
     },
     {
-      label: 'District',
-      path: '/master/geography/district',
+      label: 'UOM',
+      path: '/master/product/uom',
     },
     {
-      label: 'Town',
-      path: '/master/geography/town',
+      label: 'Tax Allocation',
+      path: '/master/product/tax-allocation',
+    },
+    {
+      label: 'Rate Entry',
+      path: '/master/product/rate-entry',
+    },
+    {
+      label: 'POP Material',
+      path: '/master/product/pop-material',
+    },
+    {
+      label: 'Rate Card',
+      path: '/master/product/rate-card',
     },
   ];
 
@@ -63,7 +75,16 @@ export class GeographyComponent {
   // Tabs
 
   // Master list merged into tabs
-  tabs = ['Area', 'Zone', 'Territory', 'District', 'Town'];
+  tabs = [
+    'Product Details',
+    'Category',
+    'Brand',
+    'UOM',
+    'Tax Allocation',
+    'Rate Entry',
+    'POP Material',
+    'Rate Card',
+  ];
 
   activeTab = this.tabs[0]; // Default active tab
 
