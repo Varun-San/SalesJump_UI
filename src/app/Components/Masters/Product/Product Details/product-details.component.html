@@ -69,7 +69,7 @@
 
             <!-- Add HO User Button Section -->
             <div class="col-3 d-flex gap-3 align-items-center text-end">
-                <div class="col-7">
+                <div class="col-8">
                     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu Button"
                         class="bordered-icon-button">
                         <img src="Assets/Menu.svg" alt="menu">
@@ -83,9 +83,10 @@
                 <div class="col-5">
                     <button class="btn filter-btn d-flex align-items-center justify-content-center text-black"
                         style="background-color: #1997ce; color: white !important"
-                        [routerLink]="['/master/basic_details/add-work-type']" routerLinkActive="router-link-active">
+                        [routerLink]="['/master/product/product-details/add-product']"
+                        routerLinkActive="router-link-active">
                         <img src="Assets/AdminMasters/Add.svg" alt="Add Icon" height="16" width="16" class="me-2" />
-                        Work Type
+                        Product
                     </button>
                 </div>
             </div>
@@ -112,25 +113,33 @@
                 </tr>
             </thead>
 
-            <tbody *ngIf="workTypeList.length > 0; else noData">
-                <tr *ngFor="let work of workTypeList">
-                    <td>{{ work.workTypeCode }}</td>
-                    <td>{{ work.workType }}</td>
-                    <td>{{ work.workTypeShortName }}</td>
-                    <td>{{ work.level }}</td>
+            <tbody *ngIf="productList.length > 0; else noData">
+                <tr *ngFor="let product of productList">
+                    <td>{{ product.prdtCode }}</td>
+                    <td>{{ product.prdtErpCode }}</td>
+                    <td>
+                        <!-- Check if product.prdtImage exists, then display it -->
+                        <img *ngIf="product.prdtImage" src='Assets/Add Product Details/image.png' alt="Product"
+                            width="50" height="50" class="img-thumbnail" />
+                    </td>
+                    <td>{{ product.prdtName }}</td>
+                    <td>{{ product.prdtBaseUom }}</td>
+                    <td>{{ product.prdtDescription }}</td>
                     <td>
                         <span class="status-indicator">
-                            <span class="dot" [ngClass]="work.status === 'Active' ? 'dot-green' : 'dot-red'"></span>
-                            {{ work.status }}
+                            <span class="dot" [ngClass]="product.status === 'Active' ? 'dot-green' : 'dot-red'"></span>
+                            {{ product.status }}
                         </span>
                     </td>
                     <td class="text-center">
-                        <button mat-icon-button [matMenuTriggerFor]="menuTable" (click)="openMenu(work)">
+                        <!-- Pass 'product' to openMenu() -->
+                        <button mat-icon-button [matMenuTriggerFor]="menuTable" (click)="openMenu(product)">
                             <img src="Assets/Menu.svg" alt="menu" />
                         </button>
                     </td>
                 </tr>
             </tbody>
+
 
             <ng-template #noData>
                 <tbody>
@@ -143,7 +152,7 @@
             <tfoot>
                 <tr>
                     <td colspan="9" class="text-start fw-bold">
-                        Total Records: {{ workTypeList.length }}
+                        Total Records: {{ productList.length }}
                     </td>
                 </tr>
             </tfoot>
@@ -162,3 +171,4 @@
         </button>
     </ng-container>
 </mat-menu>
+<router-outlet></router-outlet>

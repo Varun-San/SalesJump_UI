@@ -39,9 +39,21 @@ hr {
   --bs-btn-active-bg: #1997ce !important;
 }
 
+@media screen and (max-width: 1609px) {
 
+  #Add-Division {
+    position: absolute;
+    top: 60px;
+    left: 52%;
+    transform: translateX(-50%);
+    z-index: 9000;
+    width: 1510px;
+    height: auto;
+    overflow: visible !important;
+  }
+}
 
-@media screen and (min-width: 1366px) and (max-width: 1600px) {
+@media screen and (min-width: 1610px) {
   #Add-Division {
     position: absolute;
     top: 60px;
@@ -49,7 +61,7 @@ hr {
     transform: translateX(-50%);
     z-index: 9000;
     width: 1440px;
-    height: 112 vh;
+    height: 90vh;
     overflow: visible !important;
   }
 }

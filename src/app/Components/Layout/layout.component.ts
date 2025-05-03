@@ -66,6 +66,22 @@ export class LayoutComponent {
   getHeaderText(): { label: string; route: string }[] | null {
     const currentRoute = this.router.url;
 
+    // ✅ Match Custom Nested Route: /add-product
+    if (currentRoute.includes('/master/product/product-details/add-product')) {
+      return [
+        { label: 'Master', route: '#' },
+        { label: 'Product', route: '/master/product' },
+        {
+          label: 'Product Details',
+          route: '/master/product/product-details',
+        },
+        {
+          label: 'Add Product',
+          route: '/master/product/product-details/add-product',
+        },
+      ];
+    }
+
     // ✅ Match custom nested route: /add-currency
     if (currentRoute.includes('/master/basic_details/currency/add-currency')) {
       return [

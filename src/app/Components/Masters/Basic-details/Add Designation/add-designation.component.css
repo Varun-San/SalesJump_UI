@@ -16,8 +16,21 @@ hr {
   border-top: 2px solid #000000;
 }
 
+@media screen and (max-width: 1609px) {
 
-@media screen and (min-width: 1366px) and (max-width: 1600px) {
+  #Add-Division {
+    position: absolute;
+    top: 60px;
+    left: 52%;
+    transform: translateX(-50%);
+    z-index: 9000;
+    width: 1510px;
+    height: 90vh;
+    overflow: visible !important;
+  }
+}
+
+@media screen and (min-width: 1610px) {
   #Add-Division {
     position: absolute;
     top: 60px;

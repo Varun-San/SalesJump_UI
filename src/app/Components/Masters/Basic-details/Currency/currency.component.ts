@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-currency',
@@ -81,5 +82,4 @@ export class CurrencyComponent {
         this.selectedHQ.status === 'Active' ? 'Inactive' : 'Active';
     }
   }
-  
 }

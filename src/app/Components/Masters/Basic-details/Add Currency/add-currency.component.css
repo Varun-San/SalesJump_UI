@@ -8,7 +8,7 @@
     left: 52%;
     transform: translateX(-50%);
     z-index: 9000;
-    width: 1510px;
+    width: 1550px;
     height: 90vh;
     overflow: visible !important;
 }
@@ -161,8 +161,49 @@ label {
     left: 8px;
 }
 
-@media screen and (min-width: 1366px) and (max-width: 1600px) {
-    #Add-Division    {
+/* ? Calender Styles */
+
+::ng-deep .mat-calendar-header {
+    padding: 0px !important;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar {
+    width: 300px !important;
+    height: 320px !important;
+}
+
+::ng-deep .mat-datepicker-content {
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3) !important;
+    background-color: #fcfcfc !important;
+    color: #1997ce !important;
+}
+
+::ng-deep .mat-calendar-body-selected {
+    background-color: #1997ce !important;
+    color: white !important;
+}
+
+::ng-deep .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+    border-color: #1997ce !important;
+    background-color: white !important;
+}
+
+@media screen and (max-width: 1609px) {
+
+    #Add-Division {
+        position: absolute;
+        top: 60px;
+        left: 52%;
+        transform: translateX(-50%);
+        z-index: 9000;
+        width: 1510px;
+        height: 90vh;
+        overflow: visible !important;
+    }
+}
+
+@media screen and (min-width: 1610px) {
+    #Add-Division {
         position: absolute;
         top: 60px;
         left: 52%;

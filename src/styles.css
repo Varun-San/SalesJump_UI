@@ -144,3 +144,24 @@ table td {
   color: white !important;
   border-radius: 10px;
 }
+
+/*! Calender Styles */
+::ng-deep .mat-calendar-header {
+  padding: 0px !important;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar {
+  width: 300px !important;
+  height: 320px !important;
+}
+
+::ng-deep .mat-datepicker-content {
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3) !important;
+  background-color: #fcfcfc !important;
+  color: #1997ce !important;
+}
+
+::ng-deep .mat-calendar-body-selected {
+  background-color: #1997ce !important;
+  color: white !important;
+}

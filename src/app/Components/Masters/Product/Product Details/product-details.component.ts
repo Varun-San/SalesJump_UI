@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -22,6 +22,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FormsModule,
     RouterLink,
     MatTooltipModule,
+    RouterOutlet,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
@@ -38,32 +39,36 @@ export class ProductDetailsComponent {
   tempFilters = { status: '', role: '' };
   activeFilters = { status: '', role: '' };
 
-  workTypeList: {
-    workTypeCode: string;
-    workType: string;
-    workTypeShortName: string;
-    level: string;
+  productList: {
+    prdtCode: string;
+    prdtErpCode: string;
+    prdtImage: string;
+    prdtName: string;
+    prdtBaseUom: string;
+    prdtDescription: string;
     status: string;
   }[] = [];
 
   ngOnInit() {
-    const stored = sessionStorage.getItem('add-Work-Type');
+    const stored = sessionStorage.getItem('product-data');
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
         const dataArray = Array.isArray(parsed) ? parsed : [parsed];
 
-        this.workTypeList = dataArray.map((work: any, index: number) => ({
-          workTypeCode: `WT-${100 + index}`,
-          workType: work.workType || '',
-          workTypeShortName: work.workTypeShortName || '',
-          level: work.placeInvolved || '',
-          status: 'Active',
+        this.productList = dataArray.map((product: any) => ({
+          prdtCode: product.prdtCode || '',
+          prdtErpCode: product.prdtErpCode || '',
+          prdtImage: product.prdtImage || '', // Just file name (e.g., "Screenshot (243).png")
+          prdtName: product.prdtName || '',
+          prdtBaseUom: product.prdtBaseUom || '',
+          prdtDescription: product.prdtDescription || '',
+          status: 'Active', // Default status
         }));
 
-        console.log(this.workTypeList);
+        console.log('Loaded Products:', this.productList);
       } catch (e) {
-        console.warn('Invalid data in sessionStorage for work type');
+        console.warn('Invalid data in sessionStorage for product-data');
       }
     }
   }
@@ -92,6 +97,7 @@ export class ProductDetailsComponent {
   openMenu(hq: any) {
     this.selectedHQ = hq;
   }
+
   onMenuAction(action: string) {
     if (!this.selectedHQ) return;
 
@@ -99,5 +105,6 @@ export class ProductDetailsComponent {
       this.selectedHQ.status =
         this.selectedHQ.status === 'Active' ? 'Inactive' : 'Active';
     }
+    this.selectedHQ = null;
   }
 }

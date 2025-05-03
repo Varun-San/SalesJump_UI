@@ -40,6 +40,7 @@ import { TaxAllocationComponent } from './Components/Masters/Product/Tax Allocat
 import { RateEntryComponent } from './Components/Masters/Product/Rate Entry/rate-entry.component';
 import { PopMaterialComponent } from './Components/Masters/Product/Pop Material/pop-material.component';
 import { RateCardComponent } from './Components/Masters/Product/Rate Card/rate-card.component';
+import { AddProductComponent } from './Components/Masters/Product/Add Product/add-product.component';
 
 export const routes: Routes = [
   {
@@ -195,6 +196,12 @@ export const routes: Routes = [
               {
                 path: 'product-details',
                 component: ProductDetailsComponent,
+                children: [
+                  {
+                    path: 'add-product',
+                    component: AddProductComponent,
+                  },
+                ],
               },
               {
                 path: 'category',
