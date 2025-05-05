@@ -105,58 +105,30 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Your rows here -->
-        <tr>
-          <td>Sales Jump</td>
-          <td>Text</td>
-          <td>Text</td>
-          <td>Delhi</td>
-          <td>Active</td>
+        <tr *ngFor="let division of divisionList; let i = index">
+          <td>{{ division.divisionPrefix }}</td>
+          <td>{{ division.divisionName }}</td>
+          <td>{{ division.productWiseCount }}</td>
+          <td>{{ division.userWiseCount }}</td>
+          <td>{{ division.status }}</td>
           <td class="text-center">
-            <button mat-icon-button [matMenuTriggerFor]="menuTable" aria-label="Example icon-button with a menu">
+            <button mat-icon-button [matMenuTriggerFor]="menuTable" aria-label="Options">
               <img src="Assets/Menu.svg" alt="menu">
             </button>
             <mat-menu #menuTable="matMenu">
-              <button mat-menu-item>Edit Details</button>
-            </mat-menu>
-          </td>
-        </tr>
-        <tr>
-          <td>Saneforce</td>
-          <td>Text</td>
-          <td>Text</td>
-          <td>Text</td>
-          <td>Active</td>
-          <td class="text-center">
-            <button mat-icon-button [matMenuTriggerFor]="menuTable" aria-label="Example icon-button with a menu">
-              <img src="Assets/Menu.svg" alt="menu">
-            </button>
-            <mat-menu #menuTable="matMenu">
-              <button mat-menu-item>Edit Details</button>
-            </mat-menu>
-          </td>
-        </tr>
-        <tr>
-          <td>Twozo</td>
-          <td>Text</td>
-          <td>Text</td>
-          <td>Text</td>
-          <td>Active</td>
-          <td class="text-center">
-            <button mat-icon-button [matMenuTriggerFor]="menuTable" aria-label="Example icon-button with a menu">
-              <img src="Assets/Menu.svg" alt="menu">
-            </button>
-            <mat-menu #menuTable="matMenu">
-              <button mat-menu-item>Edit Details</button>
+              <button mat-menu-item (click)="editDivision(division, i)">Edit Details</button>
             </mat-menu>
           </td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="9" class="text-start fw-bold">Total Records: 3</td>
+          <td colspan="6" class="text-start fw-bold">
+            Total Records: {{ divisionList.length }}
+          </td>
         </tr>
       </tfoot>
+
     </table>
   </div>
 </div>

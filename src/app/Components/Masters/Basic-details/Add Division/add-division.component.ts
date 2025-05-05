@@ -10,10 +10,27 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './add-division.component.css',
 })
 export class AddDivisionComponent {
+  editMode: boolean = false;
+  editIndex: number | null = null;
+
   divisionPrefix = '';
   divisionName = '';
+  productWiseCount = '';
+  userWiseCount = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    const nav = history.state;
+
+    if (nav && nav.division) {
+      this.editMode = true;
+      this.editIndex = nav.index;
+
+      this.divisionPrefix = nav.division.divisionPrefix || '';
+      this.divisionName = nav.division.divisionName || '';
+      this.productWiseCount = nav.division.productWiseCount || '';
+      this.userWiseCount = nav.division.userWiseCount || '';
+    }
+  }
 
   get isAddDivisionRoute(): boolean {
     return this.router.url.includes('/master/basic_details/add-division');
@@ -24,14 +41,46 @@ export class AddDivisionComponent {
   }
 
   saveDivision() {
-    if (!this.divisionPrefix || !this.divisionName) {
+    if (
+      !this.divisionPrefix ||
+      !this.divisionName ||
+      !this.productWiseCount ||
+      !this.userWiseCount
+    ) {
       alert('Please fill all required fields.');
       return;
     }
 
-    console.log('Saving division:', this.divisionPrefix, this.divisionName);
-    // Save logic here...
+    const divisionData = {
+      divisionName: this.divisionName,
+      divisionPrefix: this.divisionPrefix,
+      productWiseCount: this.productWiseCount,
+      userWiseCount: this.userWiseCount,
+      status: 'Active',
+    };
 
-    this.closeCard(); // Close card after saving
+    const existingData = sessionStorage.getItem('add-division');
+    let divisions = [];
+
+    try {
+      divisions = existingData ? JSON.parse(existingData) : [];
+    } catch {
+      divisions = [];
+    }
+
+    if (this.editMode && this.editIndex !== null) {
+      divisions[this.editIndex] = divisionData;
+    } else {
+      divisions.push(divisionData);
+    }
+
+    sessionStorage.setItem('add-division', JSON.stringify(divisions));
+
+    console.log(
+      this.editMode ? 'Updated Division:' : 'Added Division:',
+      divisionData
+    );
+
+    this.closeCard();
   }
 }

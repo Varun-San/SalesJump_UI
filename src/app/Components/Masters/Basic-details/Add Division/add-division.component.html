@@ -21,6 +21,18 @@
           <input type="text" class="form-control" [(ngModel)]="divisionName" />
         </div>
       </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label class="form-label">Product Wise Count <span class="text-danger">*</span></label>
+          <input type="number" class="form-control" [(ngModel)]="productWiseCount" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label class="form-label">User Wise Count <span class="text-danger">*</span></label>
+          <input type="number" class="form-control" [(ngModel)]="userWiseCount" />
+        </div>
+      </div>
     </div>
   </div>
 
@@ -28,6 +40,7 @@
     <button class="btn btn-outline-secondary" (click)="closeCard()">
       Cancel
     </button>
-    <button class="btn btn-success" (click)="saveDivision()">Save</button>
+    <button class="btn btn-success" (click)="saveDivision()">{{ editMode ? 'Update Division' : 'Save Division'
+      }}</button>
   </div>
 </div>
