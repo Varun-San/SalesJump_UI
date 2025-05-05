@@ -104,7 +104,7 @@
           </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="divisionList.length > 0; else noData">
         <tr *ngFor="let division of divisionList; let i = index">
           <td>{{ division.divisionPrefix }}</td>
           <td>{{ division.divisionName }}</td>
@@ -121,6 +121,13 @@
           </td>
         </tr>
       </tbody>
+      <ng-template #noData>
+        <tbody>
+          <tr>
+            <td colspan="6" class="text-center text-muted">No Division Available.</td>
+          </tr>
+        </tbody>
+      </ng-template>
       <tfoot>
         <tr>
           <td colspan="6" class="text-start fw-bold">
