@@ -41,6 +41,7 @@ import { RateEntryComponent } from './Components/Masters/Product/Rate Entry/rate
 import { PopMaterialComponent } from './Components/Masters/Product/Pop Material/pop-material.component';
 import { RateCardComponent } from './Components/Masters/Product/Rate Card/rate-card.component';
 import { AddProductComponent } from './Components/Masters/Product/Add Product/add-product.component';
+import { AddCategoryComponent } from './Components/Masters/Product/Add Category/add-category.component';
 
 export const routes: Routes = [
   {
@@ -206,6 +207,12 @@ export const routes: Routes = [
               {
                 path: 'category',
                 component: CategoryComponent,
+                children: [
+                  {
+                    path: 'add-category',
+                    component: AddCategoryComponent,
+                  },
+                ],
               },
               {
                 path: 'brand',
