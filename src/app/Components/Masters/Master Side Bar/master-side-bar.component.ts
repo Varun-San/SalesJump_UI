@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router'; // Import Router
+import {
+  Router,
+  RouterLink,
+  RouterOutlet,
+  ActivatedRoute,
+} from '@angular/router'; // Import Router
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { MatChipsModule } from '@angular/material/chips';
@@ -12,12 +17,49 @@ import { CommonModule } from '@angular/common';
   styleUrl: './master-side-bar.component.css',
 })
 export class MasterSideBarComponent {
-  showOptions = false; // Initially hidden
-  hoveredItem: string | null = null; // Track hovered item
+  showOptions = false;
+  hoveredItem: string | null = null;
   faSearch = faSearch;
 
-  constructor(private router: Router) {} // Inject Router
+// ! FOR ACTIVE CHIPS
+  constructor(private router: Router, private ActiveRoute: ActivatedRoute) {}
 
+  getActiveChip(chipList: { name: string; route: string }[]): string | null {
+    const currentUrl = this.router.url;
+    const match = chipList.find((chip) => currentUrl.includes(chip.route));
+    return match ? match.name : null;
+  }
+
+  ngOnInit() {
+    const currentUrl = this.router.url;
+    this.activeChip_Basic = this.getActiveChip(this.BasicDetails_label) || '';
+    this.activeChip_Geography = this.getActiveChip(this.Geography_label) || '';
+    this.activeChip_Product = this.getActiveChip(this.Product_label) || '';
+    this.activeTab = this.getActiveTabFromUrl(currentUrl) || this.tabs[0];
+  }
+
+  tabUrlMap: { [key: string]: string } = {
+    'Basic Details': 'basic_details',
+    'Geography': 'geography',
+    'Merchandising': 'merchandising',
+    'Product': 'product',
+    'Employee': 'employee',
+    'Retailer': 'retailer',
+    'Super Stockist': 'super-stockist',
+    'Route': 'route',
+    'Tax': 'tax',
+    'HO Creation': 'ho-creation',
+    'Competitor': 'competitor',
+    'Van Sales': 'van-sales',
+  };
+  getActiveTabFromUrl(url: string): string | null {
+    for (const [tab, pathFragment] of Object.entries(this.tabUrlMap)) {
+      if (url.includes(pathFragment)) {
+        return tab;
+      }
+    }
+    return null;
+  }
   // Master list with routes
   list = [
     { name: 'Basic Details', route: '/master' },
@@ -57,6 +99,7 @@ export class MasterSideBarComponent {
     'Van Sales',
   ];
 
+  
   activeTab = this.tabs[0]; // Default active tab
 
   setActiveTab(tab: string) {
@@ -64,7 +107,7 @@ export class MasterSideBarComponent {
   }
 
   //! Basic Details Options--
-  activeChip_Basic: string = 'Company';
+  activeChip_Basic: string = '';
   BasicDetails_label = [
     { name: 'Company', route: '/master/basic_details/company' },
     { name: 'Division', route: '/master/basic_details/division' },
@@ -76,7 +119,7 @@ export class MasterSideBarComponent {
   ];
 
   //! Geography
-  activeChip_Geography: string = 'Area';
+  activeChip_Geography: string = '';
   Geography_label = [
     { name: 'Area', route: '/master/geography/area' },
     { name: 'Zone', route: '/master/geography/zone' },
@@ -86,7 +129,7 @@ export class MasterSideBarComponent {
   ];
 
   //! Product
-  activeChip_Product: string = 'Product detail';
+  activeChip_Product: string = '';
   Product_label = [
     { name: 'Product detail', route: '/master/product/product-details' },
     { name: 'Category', route: '/master/product/category' },
