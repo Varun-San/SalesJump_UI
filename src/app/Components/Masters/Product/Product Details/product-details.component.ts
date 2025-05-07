@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -32,9 +32,41 @@ export class ProductDetailsComponent {
   showFilterPopup = false;
 
   menuOptions = [
-    { label: 'Edit Details', route: null },
-    { label: 'Deactivate', route: null },
+    { label: 'Edit Details', action: 'edit' },
+    { label: 'Deactivate', action: 'deactivate' },
   ];
+
+  handleMenuAction(action: string) {
+    // Ensure selectedProductDetails exists before performing any action
+    if (!this.selectedProductDetails) return;
+
+    switch (action) {
+      case 'edit':
+        // Call editProductDetails with selected ProductDetails data
+        this.editProductDetails(
+          this.selectedProductDetails.productDetails,
+          this.selectedProductDetails.index
+        );
+        break;
+
+      case 'deactivate':
+        // Deactivate or Activate the Product status
+        this.onMenuAction('Deactivate'); // or 'Activate' depending on your logic
+        break;
+
+      default:
+        console.warn('Unknown action:', action);
+    }
+  }
+  constructor(private router: Router) {}
+
+  editProductDetails(productDetails: any, index: number) {
+    this.router.navigate(['/master/product/product-details/add-product'], {
+      state: { product: productDetails, index },
+    });
+  }
+
+  selectedProductDetails: { productDetails: any; index: number } | null = null;
 
   tempFilters = { status: '', role: '' };
   activeFilters = { status: '', role: '' };
@@ -47,6 +79,18 @@ export class ProductDetailsComponent {
     prdtBaseUom: string;
     prdtDescription: string;
     status: string;
+    prdtShortName: string;
+    prdtUom: string;
+    prdtConvFactor: '';
+    prdtCategory: '';
+    prdtGroup: '';
+    prdtBrand: '';
+    prdtHSNCode: '';
+    PrdtType: '';
+    prdtPackSize: '';
+    prdtOrderConvQty: '';
+    prdtTarget: '';
+    prdtUnitWeight: '';
   }[] = [];
 
   ngOnInit() {
@@ -59,11 +103,23 @@ export class ProductDetailsComponent {
         this.productList = dataArray.map((product: any) => ({
           prdtCode: product.prdtCode || '',
           prdtErpCode: product.prdtErpCode || '',
-          prdtImage: product.prdtImage || '', // Just file name (e.g., "Screenshot (243).png")
+          prdtImage: product.prdtImage || '',
           prdtName: product.prdtName || '',
+          prdtShortName: product.prdtShortName || '',
           prdtBaseUom: product.prdtBaseUom || '',
+          prdtUom: product.prdtUom || '',
+          prdtConvFactor: product.prdtConvFactor || '',
+          prdtCategory: product.prdtCategory || '',
+          prdtGroup: product.prdtGroup || '',
+          prdtBrand: product.prdtBrand || '',
+          prdtHSNCode: product.prdtHSNCode || '',
+          PrdtType: product.PrdtType || '',
           prdtDescription: product.prdtDescription || '',
-          status: 'Active', // Default status
+          prdtPackSize: product.prdtPackSize || '',
+          prdtOrderConvQty: product.prdtOrderConvQty || '',
+          prdtTarget: product.prdtTarget || '',
+          prdtUnitWeight: product.prdtUnitWeight || '',
+          status: product.status || 'Active',
         }));
 
         console.log('Loaded Products:', this.productList);
@@ -94,17 +150,33 @@ export class ProductDetailsComponent {
 
   selectedHQ: any = null;
 
-  openMenu(hq: any) {
-    this.selectedHQ = hq;
+  openMenu(product: any, index?: number) {
+    const i = index ?? this.productList.findIndex((p) => p === product);
+    this.selectedProductDetails = { productDetails: product, index: i };
+  }
+  loadCategories() {
+    const data = sessionStorage.getItem('product-data');
+    this.productList = data ? JSON.parse(data) : [];
   }
 
   onMenuAction(action: string) {
-    if (!this.selectedHQ) return;
+    if (!this.selectedProductDetails) return;
 
-    if (action === 'Deactivate') {
-      this.selectedHQ.status =
-        this.selectedHQ.status === 'Active' ? 'Inactive' : 'Active';
+    const data = sessionStorage.getItem('product-data');
+    let categories = data ? JSON.parse(data) : [];
+
+    const index = this.selectedProductDetails.index;
+
+    if (action === 'Deactivate' && categories[index]) {
+      const currentStatus = categories[index].status || 'Active'; // default to Active if missing
+      categories[index].status =
+        currentStatus === 'Active' ? 'Inactive' : 'Active';
+
+      sessionStorage.setItem('product-data', JSON.stringify(categories));
+
+      this.loadCategories();
     }
-    this.selectedHQ = null;
+
+    this.selectedProductDetails = null;
   }
 }

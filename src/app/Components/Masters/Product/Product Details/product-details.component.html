@@ -114,7 +114,9 @@
             </thead>
 
             <tbody *ngIf="productList.length > 0; else noData">
-                <tr *ngFor="let product of productList">
+                <tr *ngFor="let product of productList; let i = index"
+                    (click)="selectedProductDetails = { productDetails: product, index: i }">
+
                     <td>{{ product.prdtCode }}</td>
                     <td>{{ product.prdtErpCode }}</td>
                     <td>
@@ -132,8 +134,7 @@
                         </span>
                     </td>
                     <td class="text-center">
-                        <!-- Pass 'product' to openMenu() -->
-                        <button mat-icon-button [matMenuTriggerFor]="menuTable" (click)="openMenu(product)">
+                        <button mat-icon-button [matMenuTriggerFor]="menuTable" (click)="openMenu(product, i)">
                             <img src="Assets/Menu.svg" alt="menu" />
                         </button>
                     </td>
@@ -163,10 +164,7 @@
 <!-- Mat-Menu for Table -->
 <mat-menu #menuTable="matMenu" class="custom-menu bg-white">
     <ng-container *ngFor="let option of menuOptions">
-        <button mat-menu-item *ngIf="option.route" [routerLink]="option.route">
-            {{ option.label }}
-        </button>
-        <button mat-menu-item *ngIf="!option.route" (click)="onMenuAction(option.label)">
+        <button mat-menu-item (click)="handleMenuAction(option.action)" [disabled]="!selectedProductDetails">
             {{ option.label }}
         </button>
     </ng-container>

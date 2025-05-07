@@ -10,8 +10,47 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './add-product.component.css',
 })
 export class AddProductComponent {
-  constructor(private router: Router) {}
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EDIT MODE HANDLING <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+  editMode: boolean = false;
+  editIndex: number | null = null;
+
+  constructor(private router: Router) {
+    const nav = history.state;
+    if (nav && nav.product) {
+      this.editMode = true;
+      this.editIndex = nav.index;
+  
+      const prod = nav.product;
+  
+      // Assign all form fields from prod as you're already doing
+      this.prdtCode = prod.prdtCode || '';
+      this.prdtName = prod.prdtName || '';
+      this.prdtShortName = prod.prdtShortName || '';
+      this.prdtBaseUom = prod.prdtBaseUom || '';
+      this.prdtUom = prod.prdtUom || '';
+      this.prdtConvFactor = prod.prdtConvFactor || '';
+      this.prdtCategory = prod.prdtCategory || '';
+      this.prdtGroup = prod.prdtGroup || '';
+      this.prdtBrand = prod.prdtBrand || '';
+      this.prdtHSNCode = prod.prdtHSNCode || '';
+      this.PrdtType = prod.PrdtType || '';
+      this.prdtDescription = prod.prdtDescription || '';
+      this.prdtPackSize = prod.prdtPackSize || '';
+      this.prdtOrderConvQty = prod.prdtOrderConvQty || '';
+      this.prdtErpCode = prod.prdtErpCode || '';
+      this.prdtTarget = prod.prdtTarget || '';
+      this.prdtUnitWeight = prod.prdtUnitWeight || '';
+      this.prdtImage = prod.prdtImage || '';
+      this.imagePreviews = prod.imageBase64 || [];
+  
+      this.rows =
+        prod.rows && Array.isArray(prod.rows)
+          ? prod.rows
+          : [{ tax: '', state: '' }];
+    }
+  }
+  
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CHECKING THE IS ADDPRODUCT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   get isAddProductRoute(): boolean {
@@ -141,19 +180,20 @@ export class AddProductComponent {
     let productArray: any[] = [];
 
     try {
-      const parsed = JSON.parse(existingData || '[]');
-      productArray = Array.isArray(parsed) ? parsed : [parsed];
-    } catch (e) {
-      console.warn('Failed to parse sessionStorage data. Resetting...');
+      productArray = existingData ? JSON.parse(existingData) : [];
+    } catch {
       productArray = [];
     }
 
-    productArray.push(product);
+    if (this.editMode && this.editIndex !== null) {
+      productArray[this.editIndex] = product;
+      console.log('Updated product at index', this.editIndex);
+    } else {
+      productArray.push(product);
+      console.log('Added new product');
+    }
+
     sessionStorage.setItem('product-data', JSON.stringify(productArray));
-
-    console.log('Saved product:', product);
-    console.log('All products:', productArray);
-
     this.closeCard();
   }
 }
