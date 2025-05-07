@@ -26,10 +26,39 @@ import { Router } from '@angular/router';
   styleUrl: './division.component.css',
 })
 export class DivisionComponent {
-  constructor(private router: Router) {}
   faSearch = faSearch;
-  //! Filter Option
   showFilterPopup = false;
+
+  menuOptions = [
+    { label: 'Edit Details', action: 'edit' },
+    { label: 'Deactivate', action: 'deactivate' },
+  ];
+
+  handleMenuAction(action: string) {
+    // Ensure selectedDivision exists before performing any action
+    if (!this.selectedDivision) return;
+
+    switch (action) {
+      case 'edit':
+        // Call editDivision with selected division data
+        this.editDivision(
+          this.selectedDivision.division,
+          this.selectedDivision.index
+        );
+        break;
+
+      case 'deactivate':
+        // Deactivate or Activate the division status
+        this.onMenuAction('deactivate'); // Or 'activate' depending on your logic
+        break;
+
+      default:
+        console.warn('Unknown action:', action);
+    }
+  }
+
+  tempFilters = { status: '', role: '' };
+  activeFilters = { status: '', role: '' };
 
   divisionList: {
     divisionName: string;
@@ -39,48 +68,19 @@ export class DivisionComponent {
     status: string;
   }[] = [];
 
+  selectedDivision: { division: any; index: number } | null = null;
+
+  constructor(private router: Router) {}
+
   editDivision(division: any, index: number) {
     this.router.navigate(['master/basic_details/add-division'], {
       state: { division, index },
     });
   }
+
   ngOnInit() {
     this.loadDivisions();
   }
-
-  loadDivisions() {
-    const stored = sessionStorage.getItem('add-division');
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        const dataArray = Array.isArray(parsed) ? parsed : [parsed];
-
-        this.divisionList = dataArray.map((div: any, index: number) => ({
-          divisionName: div.divisionName || '',
-          divisionPrefix: div.divisionPrefix || '',
-          productWiseCount: div.productWiseCount || 0,
-          userWiseCount: div.userWiseCount || 0,
-          status: 'Active',
-        }));
-
-        console.log('Loaded Division List:', this.divisionList);
-      } catch (e) {
-        console.warn('Invalid data in sessionStorage for division');
-      }
-    }
-  }
-
-  // Temporary selections (before Apply)
-  tempFilters = {
-    status: '',
-    role: '',
-  };
-
-  // Final applied filters
-  activeFilters = {
-    status: '',
-    role: '',
-  };
 
   toggleFilterPopup() {
     this.showFilterPopup = !this.showFilterPopup;
@@ -99,5 +99,39 @@ export class DivisionComponent {
   clearFilter(type: 'status' | 'role') {
     this.activeFilters[type] = '';
     this.tempFilters[type] = '';
+  }
+
+  selectedHQ: any = null;
+
+  openMenu(hq: any) {
+    this.selectedHQ = hq;
+  }
+
+  // This will load the updated division list from sessionStorage
+  loadDivisions() {
+    const data = sessionStorage.getItem('add-division');
+    this.divisionList = data ? JSON.parse(data) : [];
+  }
+
+  // Handle the Deactivate/Activate action
+  onMenuAction(action: string) {
+    if (!this.selectedDivision) return;
+
+    const data = sessionStorage.getItem('add-division');
+    let divisions = data ? JSON.parse(data) : [];
+
+    const index = this.selectedDivision.index;
+
+    if (action === 'deactivate' && divisions[index]) {
+      const currentStatus = divisions[index].status || 'Active'; // Default to 'Active' if missing
+      divisions[index].status =
+        currentStatus === 'Active' ? 'Inactive' : 'Active';
+
+      sessionStorage.setItem('add-division', JSON.stringify(divisions));
+
+      this.loadDivisions(); // Refresh the division list after the update
+    }
+
+    this.selectedDivision = null; // Reset the selected division
   }
 }

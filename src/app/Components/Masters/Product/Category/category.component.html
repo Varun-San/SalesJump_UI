@@ -111,11 +111,12 @@
             </thead>
 
             <tbody *ngIf="categoryList.length > 0; else noData">
-                <tr *ngFor="let category of categoryList">
+                <tr *ngFor="let category of categoryList; let i = index"
+                    (click)="selectedCategory = { category: category, index: i }">
                     <td>{{ category.category_Code }}</td>
                     <td>{{ category.category_Name }}</td>
                     <td>{{ category.category_Divisions }}</td>
-                    <td>{{ category.category_No_Of_Prdts }}</td>
+                    <td style="color: #1997ce; font-weight: 500;">{{ category.category_No_of_Prdts }}</td>
                     <td>
                         <span class="status-indicator">
                             <span class="dot" [ngClass]="category.status === 'Active' ? 'dot-green' : 'dot-red'"></span>
@@ -152,10 +153,7 @@
 <!-- Mat-Menu for Table -->
 <mat-menu #menuTable="matMenu" class="custom-menu bg-white">
     <ng-container *ngFor="let option of menuOptions">
-        <button mat-menu-item *ngIf="option.route" [routerLink]="option.route">
-            {{ option.label }}
-        </button>
-        <button mat-menu-item *ngIf="!option.route" (click)="onMenuAction(option.label)">
+        <button mat-menu-item (click)="handleMenuAction(option.action)" [disabled]="!selectedCategory">
             {{ option.label }}
         </button>
     </ng-container>

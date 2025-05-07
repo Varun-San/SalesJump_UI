@@ -105,19 +105,20 @@
         </tr>
       </thead>
       <tbody *ngIf="divisionList.length > 0; else noData">
-        <tr *ngFor="let division of divisionList; let i = index">
+        <tr *ngFor="let division of divisionList;  let i = index"
+          (click)="selectedDivision = { division: division, index: i }">
           <td>{{ division.divisionPrefix }}</td>
           <td>{{ division.divisionName }}</td>
           <td>{{ division.productWiseCount }}</td>
           <td>{{ division.userWiseCount }}</td>
-          <td>{{ division.status }}</td>
+          <td><span class="status-indicator">
+              <span class="dot" [ngClass]="division.status === 'Active' ? 'dot-green' : 'dot-red'"></span>
+              {{ division.status }}
+            </span></td>
           <td class="text-center">
             <button mat-icon-button [matMenuTriggerFor]="menuTable" aria-label="Options">
               <img src="Assets/Menu.svg" alt="menu">
             </button>
-            <mat-menu #menuTable="matMenu">
-              <button mat-menu-item (click)="editDivision(division, i)">Edit Details</button>
-            </mat-menu>
           </td>
         </tr>
       </tbody>
@@ -139,6 +140,17 @@
     </table>
   </div>
 </div>
+
+
+<mat-menu #menuTable="matMenu" class="custom-menu bg-white">
+  <ng-container *ngFor="let option of menuOptions">
+    <!-- Disable the menu item if no category is selected -->
+    <button mat-menu-item (click)="handleMenuAction(option.action)" [disabled]="!selectedDivision ">
+      {{ option.label }}
+    </button>
+  </ng-container>
+</mat-menu>
+
 
 <!-- ! Menu Option -->
 <mat-menu #menu="matMenu">

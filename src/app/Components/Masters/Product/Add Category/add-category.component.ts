@@ -10,22 +10,39 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './add-category.component.css',
 })
 export class AddCategoryComponent {
+  editMode: boolean = false;
+  editIndex: number | null = null;
+
   category_Code = '';
   category_Name = '';
   category_No_Of_Prdts = '';
   category_Divisions = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    const nav = history.state;
+
+    if (nav && nav.category) {
+      this.editMode = true;
+      this.editIndex = nav.index;
+
+      this.category_Code = nav.category.category_Code || '';
+      this.category_Name = nav.category.category_Name || '';
+      this.category_No_Of_Prdts = nav.category.category_No_of_Prdts || '';
+      this.category_Divisions = nav.category.category_Divisions || '';
+    }
+  }
 
   get isAddCategory(): boolean {
     return this.router.url.includes('master/product/category/add-category');
   }
 
   closeCard() {
-    this.router.navigate(['/master/product/category']); // go back to main tab
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/product/category']);
+    });
   }
 
-  saveDivision() {
+  saveCategory() {
     if (
       !this.category_Code ||
       !this.category_Name ||
@@ -36,14 +53,7 @@ export class AddCategoryComponent {
       return;
     }
 
-    console.log('Saving Add Category:', {
-      category_Code: this.category_Code,
-      category_Name: this.category_Name,
-      category_No_of_Prdts: this.category_No_Of_Prdts,
-      category_Divisions: this.category_Divisions,
-    });
-
-    const add_Category = {
+    const categoryData = {
       category_Code: this.category_Code,
       category_Name: this.category_Name,
       category_No_of_Prdts: this.category_No_Of_Prdts,
@@ -51,22 +61,26 @@ export class AddCategoryComponent {
     };
 
     const existingData = sessionStorage.getItem('add_Category');
-    let add_Category_Array: any[] = [];
+    let categories: any[] = [];
 
     try {
-      const parsed = JSON.parse(existingData || '[]');
-      // If parsed is an array, use it; otherwise convert to array
-      add_Category_Array = Array.isArray(parsed) ? parsed : [parsed];
-    } catch (e) {
-      console.warn('Failed to parse sessionStorage data. Resetting...');
-      add_Category_Array = [];
+      categories = existingData ? JSON.parse(existingData) : [];
+    } catch {
+      categories = [];
     }
 
-    add_Category_Array.push(add_Category);
+    if (this.editMode && this.editIndex !== null) {
+      categories[this.editIndex] = categoryData;
+    } else {
+      categories.push(categoryData);
+    }
 
-    sessionStorage.setItem('Add-Category', JSON.stringify(add_Category_Array));
+    sessionStorage.setItem('add_Category', JSON.stringify(categories));
 
-    console.log('Saving Add Category:', add_Category_Array);
+    console.log(
+      this.editMode ? 'Updated Category:' : 'Added Category:',
+      categoryData
+    );
 
     this.closeCard();
   }

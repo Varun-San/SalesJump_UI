@@ -1,7 +1,8 @@
 <!-- Floating Card (only shows on add-division route) -->
 <div *ngIf="isAddCategory" class="card shadow p-4" id="Add-Division">
     <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
-        <h5 class="mb-0 me-2">Add Category</h5>
+        <h5 class="mb-0 me-2">{{ editMode ? 'Edit Category' : 'Add Category'
+            }}</h5>
         <div class="flex-grow-1">
             <hr class="mt-3 mb-0" />
         </div>
@@ -18,7 +19,7 @@
             <div class="col-4">
                 <div class="mb-3">
                     <label class="form-label">No of Products <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" [(ngModel)]="category_No_Of_Prdts" />
+                    <input type="number" class="form-control" [(ngModel)]="category_No_Of_Prdts" />
                 </div>
             </div>
             <div class="col-4">
@@ -42,6 +43,7 @@
         <button class="btn btn-outline-secondary" (click)="closeCard()">
             Cancel
         </button>
-        <button class="btn btn-success" (click)="saveDivision()">Save</button>
+        <button class="btn btn-success" (click)="saveCategory()">{{ editMode ? 'Update Category' : 'Save Category'
+            }}</button>
     </div>
 </div>

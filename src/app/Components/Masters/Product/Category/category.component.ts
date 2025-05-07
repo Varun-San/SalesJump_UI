@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -32,9 +32,32 @@ export class CategoryComponent {
   showFilterPopup = false;
 
   menuOptions = [
-    { label: 'Edit Details', route: null },
-    { label: 'Deactivate', route: null },
+    { label: 'Edit Details', action: 'edit' },
+    { label: 'Deactivate', action: 'deactivate' },
   ];
+
+  handleMenuAction(action: string) {
+    // Ensure selectedCategory exists before performing any action
+    if (!this.selectedCategory) return;
+
+    switch (action) {
+      case 'edit':
+        // Call editCategory with selected category data
+        this.editCategory(
+          this.selectedCategory.category,
+          this.selectedCategory.index
+        );
+        break;
+
+      case 'deactivate':
+        // Deactivate or Activate the category status
+        this.onMenuAction('Deactivate'); // or 'Activate' depending on your logic
+        break;
+
+      default:
+        console.warn('Unknown action:', action);
+    }
+  }
 
   tempFilters = { status: '', role: '' };
   activeFilters = { status: '', role: '' };
@@ -43,9 +66,19 @@ export class CategoryComponent {
     category_Code: string;
     category_Name: string;
     category_Divisions: string;
-    category_No_Of_Prdts: string;
+    category_No_of_Prdts: string;
     status: string;
   }[] = [];
+
+  selectedCategory: { category: any; index: number } | null = null;
+
+  constructor(private router: Router) {}
+
+  editCategory(category: any, index: number) {
+    this.router.navigate(['/master/product/category/add-category'], {
+      state: { category, index },
+    });
+  }
 
   ngOnInit() {
     const stored = sessionStorage.getItem('add_Category');
@@ -58,7 +91,7 @@ export class CategoryComponent {
           category_Code: category.category_Code || '',
           category_Name: category.category_Name || '',
           category_Divisions: category.category_Divisions || '',
-          category_No_Of_Prdts: category.category_No_Of_Prdts || '',
+          category_No_of_Prdts: category.category_No_of_Prdts || '',
           status: 'Active', // Default status
         }));
 
@@ -94,13 +127,29 @@ export class CategoryComponent {
     this.selectedHQ = hq;
   }
 
-  onMenuAction(action: string) {
-    if (!this.selectedHQ) return;
+  loadCategories() {
+    const data = sessionStorage.getItem('add_Category');
+    this.categoryList = data ? JSON.parse(data) : [];
+  }
 
-    if (action === 'Deactivate') {
-      this.selectedHQ.status =
-        this.selectedHQ.status === 'Active' ? 'Inactive' : 'Active';
+  onMenuAction(action: string) {
+    if (!this.selectedCategory) return;
+
+    const data = sessionStorage.getItem('add_Category');
+    let categories = data ? JSON.parse(data) : [];
+
+    const index = this.selectedCategory.index;
+
+    if (action === 'Deactivate' && categories[index]) {
+      const currentStatus = categories[index].status || 'Active'; // default to Active if missing
+      categories[index].status =
+        currentStatus === 'Active' ? 'Inactive' : 'Active';
+
+      sessionStorage.setItem('add_Category', JSON.stringify(categories));
+
+      this.loadCategories();
     }
-    this.selectedHQ = null;
+
+    this.selectedCategory = null;
   }
 }
