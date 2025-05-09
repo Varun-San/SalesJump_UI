@@ -76,9 +76,9 @@
                         <img src="Assets/Menu.svg" alt="menu">
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button mat-menu-item>Option 1</button>
-                        <button mat-menu-item>Option 2</button>
-                        <button mat-menu-item>Option 3</button>
+                        <button mat-menu-item (click)="onMenuAction('edit')">Edit Details</button>
+                        <button mat-menu-item (click)="onMenuAction('deactivate')">Deactivate</button>
+                        <button mat-menu-item (click)="onMenuAction('menu-rights')">Menu Rights</button>
                     </mat-menu>
                 </div>
                 <div class="col-6">
@@ -111,7 +111,7 @@
             </thead>
             <!-- Show table if data exists -->
             <tbody *ngIf="headQuartersList.length > 0  else noData">
-                <tr *ngFor="let hq of headQuartersList">
+                <tr *ngFor="let hq of headQuartersList; let index = index">
                     <td>{{hq.id}}</td>
                     <td>{{ hq.name }}</td>
                     <td>{{ hq.type }}</td>
@@ -131,10 +131,9 @@
                     </td>
                     <td class="text-center">
                         <!-- Updated menu trigger -->
-                        <button mat-icon-button [matMenuTriggerFor]="menuTable" (click)="openMenu(hq)">
+                        <button mat-icon-button [matMenuTriggerFor]="menuTable" (click)="openMenu(hq, index)">
                             <img src="Assets/Menu.svg" alt="menu" />
                         </button>
-
                     </td>
                 </tr>
             </tbody>
@@ -157,14 +156,13 @@
 </div>
 
 <!-- Mat - Menu -->
+<!-- Mat - Menu -->
 <mat-menu #menuTable="matMenu" class="custom-menu bg-white">
     <ng-container *ngFor="let option of menuOptions" style="border-bottom: 1px solid black;">
-        <button mat-menu-item *ngIf="option.route" [routerLink]="option.route">
-            {{ option.label }}
-        </button>
-
-        <button mat-menu-item *ngIf="!option.route" (click)="onMenuAction(option.label)">
+        <button mat-menu-item *ngIf="option.action" (click)="onMenuAction(option.action)">
             {{ option.label }}
         </button>
     </ng-container>
 </mat-menu>
+
+<router-outlet></router-outlet>

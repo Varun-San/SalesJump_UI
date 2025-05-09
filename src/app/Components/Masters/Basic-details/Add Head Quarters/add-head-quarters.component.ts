@@ -1,25 +1,43 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { LeafletMapComponent } from './Map/leaflet-map.component';
+import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
+import { LeafletMapComponent } from './Map/leaflet-map.component';
 
 @Component({
   selector: 'app-add-head-quarters',
+  standalone: true,
   imports: [CommonModule, RouterModule, FormsModule, LeafletMapComponent],
   templateUrl: './add-head-quarters.component.html',
-  styleUrl: './add-head-quarters.component.css',
+  styleUrls: ['./add-head-quarters.component.css'],
 })
 export class AddHeadQuartersComponent {
-  constructor(private router: Router, private cdRef: ChangeDetectorRef) {}
   headQuartersName = '';
   selectedType = '';
   latitude = '';
   longitude = '';
 
+  editMode = false;
+  editIndex: number | null = null;
+
   //! Dropdown options
   types = ['Head Quarters A', 'Head Quarters B', 'Head Quarters C'];
+
+  constructor(private router: Router, private cdRef: ChangeDetectorRef) {
+    const nav = history.state; // Access the state passed via router
+
+    if (nav && nav.hq) {
+      this.editMode = true;
+      this.editIndex = nav.index; // Get the index for editing purposes
+
+      // Populate the fields with the headquarters data
+      this.headQuartersName = nav.hq.name || '';
+      this.selectedType = nav.hq.type || '';
+      this.latitude = nav.hq.latitude || '';
+      this.longitude = nav.hq.longitude || '';
+    }
+  }
 
   get isAddHeadquartersRoute(): boolean {
     return this.router.url.includes('/master/basic_details/add-headquarters');
@@ -35,7 +53,7 @@ export class AddHeadQuartersComponent {
     this.router.navigate(['/master/basic_details/head-quarters']);
   }
 
-  saveDivision() {
+  saveHeadquarters() {
     if (
       !this.headQuartersName ||
       !this.selectedType ||
@@ -58,21 +76,30 @@ export class AddHeadQuartersComponent {
 
     try {
       const parsed = JSON.parse(existingData || '[]');
-      // If parsed is an array, use it; otherwise convert to array
       headQuartersArray = Array.isArray(parsed) ? parsed : [parsed];
     } catch (e) {
       console.warn('Failed to parse sessionStorage data. Resetting...');
       headQuartersArray = [];
     }
 
-    headQuartersArray.push(newHQ);
+    if (this.editMode && this.editIndex !== null) {
+      // Update the headquarters at the provided index
+      headQuartersArray[this.editIndex] = newHQ;
+    } else {
+      // Add the new headquarters
+      headQuartersArray.push(newHQ);
+    }
 
+    // Store the updated data back in sessionStorage
     sessionStorage.setItem(
       'headQuartersData',
       JSON.stringify(headQuartersArray)
     );
 
-    console.log('Saving Head Quarters:', headQuartersArray);
+    console.log(
+      this.editMode ? 'Updated Head Quarters:' : 'Added Head Quarters:',
+      newHQ
+    );
 
     this.closeCard();
   }
