@@ -44,6 +44,7 @@ import { AddProductComponent } from './Components/Masters/Product/Add Product/ad
 import { AddCategoryComponent } from './Components/Masters/Product/Add Category/add-category.component';
 import { AddBrandComponent } from './Components/Masters/Product/Add Brand/add-brand.component';
 import { AddUomComponent } from './Components/Masters/Product/Add Uom/add-uom.component';
+import { AddCompanyComponent } from './Components/Masters/Basic-details/Add Company/add-company.component';
 
 export const routes: Routes = [
   {
@@ -163,6 +164,10 @@ export const routes: Routes = [
               {
                 path: 'add-work-type',
                 component: AddWorkTypeComponent,
+              },
+              {
+                path: 'add-company',
+                component: AddCompanyComponent,
               },
             ],
           },

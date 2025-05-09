@@ -1,26 +1,42 @@
 <div class="row page_left">
+  <!-- Top Section -->
   <div class="col-12 mt-3">
     <div class="col-12 d-flex align-items-center justify-content-between">
-      <div class="position-relative col-3">
-        <fa-icon [icon]="faSearch" class="search-icon"> </fa-icon>
-        <input type="text" class="form-control ps-5" placeholder="Search" />
+      <!-- Search -->
+      <div class="col-9 d-flex align-items-center gap-3">
+        <div class="position-relative col-4">
+          <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
+          <input type="text" class="form-control ps-5" placeholder="Search" />
+        </div>
       </div>
-      <div>
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
-          class="bordered-icon-button">
-          <img src="Assets/Menu.svg" alt="menu">
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>Option 1</button>
-          <button mat-menu-item>Option 2</button>
-          <button mat-menu-item>Option 3</button>
-        </mat-menu>
+
+      <!-- Actions -->
+      <div class="col-3 d-flex gap-3 align-items-center text-end">
+        <div class="col-7">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu Button" class="bordered-icon-button">
+            <img src="Assets/Menu.svg" alt="menu" />
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Option 1</button>
+            <button mat-menu-item>Option 2</button>
+            <button mat-menu-item>Option 3</button>
+          </mat-menu>
+        </div>
+        <div class="col-5">
+          <button class="btn filter-btn d-flex align-items-center justify-content-center text-black"
+            style="background-color: #1997ce; color: white !important"
+            [routerLink]="['/master/basic_details/add-company']" routerLinkActive="router-link-active">
+            <img src="Assets/AdminMasters/Add.svg" alt="Add Icon" height="16" width="16" class="me-2" />
+            Company
+          </button>
+        </div>
       </div>
     </div>
   </div>
-  <!-- Table -->
-  <div class="col-12 ">
-    <table class="table table-bordered align-middle mt-3">
+
+  <!-- Table Section -->
+  <div class="col-12 mt-3">
+    <table class="table table-bordered">
       <thead class="table-light">
         <tr>
           <th>Company Name</th>
@@ -30,64 +46,69 @@
           <th>Status</th>
           <th class="text-center">
             <div>
-              <img src="Assets/AdminMasters/Dashboard.svg" alt="Dashboard" height="25px " width="25px" />
+              <img src="Assets/AdminMasters/Dashboard.svg" alt="Dashboard" height="25" width="25" />
             </div>
           </th>
         </tr>
       </thead>
-      <tbody>
-        <!-- Your rows here -->
-        <tr>
-          <td>Sales Jump</td>
-          <td>Text</td>
-          <td>Text</td>
-          <td>Delhi</td>
-          <td>Active</td>
-          <td class="text-center">
-            <button mat-icon-button [matMenuTriggerFor]="menuTable" aria-label="Example icon-button with a menu">
-              <img src="Assets/Menu.svg" alt="menu">
-            </button>
-            <mat-menu #menuTable="matMenu">
-              <button mat-menu-item>Edit Details</button>
-            </mat-menu>
+      <tbody *ngIf="companyList.length > 0; else noData">
+        <tr *ngFor="let company of companyList; let i = index" (click)="selectedCompany = { company, index: i }">
+          <td>{{ company.company_Name }}</td>
+          <td>{{ company.alias_Name }}</td>
+          <td>{{ company.company_City }}</td>
+          <td>
+            <ng-container *ngIf="Array.isArray(company.company_State) && company.company_State.length > 0">
+              <span>{{ company.company_State[0] }}</span>
+              <ng-container *ngIf="company.company_State.length > 1">
+                ,
+                <span class="remaining-count" [matTooltip]="company.company_State.slice(1).join(', ')"
+                  matTooltipPosition="above" matTooltipClass="tooltip-custom">
+                  +{{ company.company_State.length - 1 }} more
+                </span>
+              </ng-container>
+            </ng-container>
           </td>
-        </tr>
-        <tr>
-          <td>Saneforce</td>
-          <td>Text</td>
-          <td>Text</td>
-          <td>Text</td>
-          <td>Active</td>
-          <td class="text-center">
-            <button mat-icon-button [matMenuTriggerFor]="menuTable" aria-label="Example icon-button with a menu">
-              <img src="Assets/Menu.svg" alt="menu">
-            </button>
-            <mat-menu #menuTable="matMenu">
-              <button mat-menu-item>Edit Details</button>
-            </mat-menu>
+          <td>
+            <span class="status-indicator">
+              <span class="dot"
+                [ngClass]="{'dot-green': company.company_Status === 'Active', 'dot-red': company.company_Status === 'Inactive'}"></span>
+              {{ company.company_Status }}
+            </span>
           </td>
-        </tr>
-        <tr>
-          <td>Twozo</td>
-          <td>Text</td>
-          <td>Text</td>
-          <td>Text</td>
-          <td>Active</td>
           <td class="text-center">
-            <button mat-icon-button [matMenuTriggerFor]="menuTable" aria-label="Example icon-button with a menu">
-              <img src="Assets/Menu.svg" alt="menu">
+            <button mat-icon-button [matMenuTriggerFor]="menuTable" (click)="openMenu(company)">
+              <img src="Assets/Menu.svg" alt="menu" />
             </button>
-            <mat-menu #menuTable="matMenu">
-              <button mat-menu-item>Edit Details</button>
-            </mat-menu>
           </td>
         </tr>
       </tbody>
+
+      <ng-template #noData>
+        <tbody>
+          <tr>
+            <td colspan="6" class="text-center text-muted">No Company available.</td>
+          </tr>
+        </tbody>
+      </ng-template>
+
       <tfoot>
         <tr>
-          <td colspan="9" class="text-start fw-bold">Total Records: 3</td>
+          <td colspan="6" class="text-start fw-bold">
+            Total Records: {{ companyList.length }}
+          </td>
         </tr>
       </tfoot>
     </table>
   </div>
 </div>
+
+<!-- Mat Menu for Table -->
+<mat-menu #menuTable="matMenu" class="custom-menu bg-white">
+  <ng-container *ngFor="let option of menuOptions">
+    <button mat-menu-item (click)="handleMenuAction(option.action)" [disabled]="!selectedCompany">
+      {{ option.label }}
+    </button>
+  </ng-container>
+</mat-menu>
+
+<router-outlet></router-outlet>
