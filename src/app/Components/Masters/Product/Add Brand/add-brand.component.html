@@ -1,0 +1,55 @@
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isAddBrand" class="card shadow p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">{{ editMode ? 'Edit Category' : 'Add Category'
+            }}</h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+
+    <div class="card-body p-0 mt-1">
+        <div class="row col-12">
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Brand Code <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="brand_Code" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Brand Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="brand_Name" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">No of Products <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" [(ngModel)]="brand_No_of_prdts" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Category Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="brand_Category" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Divsion <span class="text-danger">*</span></label>
+                    <select class="form-select" [(ngModel)]="brand_Division">
+                        <option>Selection</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer bg-white border-0 p-0 mt-3 d-flex justify-content-end gap-2">
+        <button class="btn btn-outline-secondary" (click)="closeCard()">
+            Cancel
+        </button>
+        <button class="btn btn-success" (click)="saveBrand()">{{ editMode ? 'Update Brand' : 'Save Brand'
+            }}</button>
+    </div>
+</div>
