@@ -43,6 +43,7 @@ import { RateCardComponent } from './Components/Masters/Product/Rate Card/rate-c
 import { AddProductComponent } from './Components/Masters/Product/Add Product/add-product.component';
 import { AddCategoryComponent } from './Components/Masters/Product/Add Category/add-category.component';
 import { AddBrandComponent } from './Components/Masters/Product/Add Brand/add-brand.component';
+import { AddUomComponent } from './Components/Masters/Product/Add Uom/add-uom.component';
 
 export const routes: Routes = [
   {
@@ -228,6 +229,12 @@ export const routes: Routes = [
               {
                 path: 'uom',
                 component: UomComponent,
+                children: [
+                  {
+                    path: 'add-uom',
+                    component: AddUomComponent,
+                  },
+                ],
               },
               {
                 path: 'tax-allocation',
