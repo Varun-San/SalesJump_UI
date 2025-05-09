@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-designation',
@@ -19,43 +19,81 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     FormsModule,
     RouterLink,
-    RouterOutlet,
   ],
   templateUrl: './designation.component.html',
   styleUrl: './designation.component.css',
 })
 export class DesignationComponent {
   faSearch = faSearch;
-  //! Filter Option
   showFilterPopup = false;
 
-  //! Menu options
   menuOptions = [
-    { label: 'Edit Details', route: '/master/basic_details/designation/edit' },
-    { label: 'Deactivate', route: null }, // You can add a click handler for this
-    {
-      label: 'Menu Rights',
-      route: '/master/basic_details/designation/menu-rights',
-    },
+    { label: 'Edit Details', action: 'edit' },
+    { label: 'Deactivate', action: 'deactivate' },
   ];
-  onMenuAction(action: string) {
-    if (action === 'Deactivate') {
-      // Call deactivate logic
-      console.log('Deactivating...');
+
+  tempFilters = { status: '', role: '' };
+  activeFilters = { status: '', role: '' };
+
+  designationList: {
+    shortName: string;
+    designation: string;
+    type: string;
+    userWiseCount: string;
+    status: string;
+  }[] = [];
+
+  selectedDesignation: { designation: any; index: number } | null = null;
+
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.loadDesignations();
+  }
+
+  loadDesignations() {
+    const data = sessionStorage.getItem('add-designation');
+    this.designationList = data ? JSON.parse(data) : [];
+  }
+
+  editDesignation(designation: any, index: number) {
+    this.router.navigate(['master/basic_details/add-designation'], {
+      state: { designation, index },
+    });
+  }
+
+  handleMenuAction(action: string) {
+    if (!this.selectedDesignation) return;
+
+    switch (action) {
+      case 'edit':
+        this.editDesignation(
+          this.selectedDesignation.designation,
+          this.selectedDesignation.index
+        );
+        break;
+
+      case 'deactivate':
+        this.toggleDesignationStatus(this.selectedDesignation.index);
+        break;
+
+      default:
+        console.warn('Unknown action:', action);
     }
   }
 
-  // Temporary selections (before Apply)
-  tempFilters = {
-    status: '',
-    role: '',
-  };
+  toggleDesignationStatus(index: number) {
+    const stored = sessionStorage.getItem('add-designation');
+    let designations = stored ? JSON.parse(stored) : [];
 
-  // Final applied filters
-  activeFilters = {
-    status: '',
-    role: '',
-  };
+    const currentStatus = designations[index].status || 'Active';
+    designations[index].status =
+      currentStatus === 'Active' ? 'Inactive' : 'Active';
+
+    sessionStorage.setItem('add-designation', JSON.stringify(designations));
+    this.loadDesignations();
+    this.selectedDesignation = null;
+  }
 
   toggleFilterPopup() {
     this.showFilterPopup = !this.showFilterPopup;
@@ -74,5 +112,9 @@ export class DesignationComponent {
   clearFilter(type: 'status' | 'role') {
     this.activeFilters[type] = '';
     this.tempFilters[type] = '';
+  }
+
+  openMenu(designation: any, index: number) {
+    this.selectedDesignation = { designation, index };
   }
 }

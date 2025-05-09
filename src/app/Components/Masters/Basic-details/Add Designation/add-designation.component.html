@@ -1,7 +1,7 @@
-<!-- Floating Card (only shows on add-division route) -->
-<div *ngIf="isAddDesignationRoute" class="card shadow p-4" id="Add-Division">
+<div *ngIf="isAddDesignation" class="card shadow p-4" id="Add-Division">
     <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
-        <h5 class="mb-0 me-2">Add Designation</h5>
+        <h5 class="mb-0 me-2">{{ editMode ? 'Edit Designation' : 'Add Designation'
+            }}</h5>
         <div class="flex-grow-1">
             <hr class="mt-3 mb-0" />
         </div>
@@ -12,22 +12,27 @@
             <div class="col-4">
                 <div class="mb-3">
                     <label class="form-label">Short Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" [(ngModel)]="divisionPrefix" />
+                    <input type="text" class="form-control" [(ngModel)]="shortName" />
                 </div>
             </div>
             <div class="col-4">
                 <div class="mb-3">
-                    <label class="form-label">Designation<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" [(ngModel)]="divisionName" />
+                    <label class="form-label">Designation <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="designation" />
                 </div>
             </div>
             <div class="col-4">
                 <div class="mb-3">
                     <label class="form-label">Type <span class="text-danger">*</span></label>
-                    <select class="form-select" [(ngModel)]="selectedType">
-                        <option value="" disabled selected>Select a value</option>
-                        <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+                    <select class="form-select" [(ngModel)]="type">
+                        <option>Base Level</option>
                     </select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">User Wise Count <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" [(ngModel)]="userWiseCount" />
                 </div>
             </div>
         </div>
@@ -37,6 +42,7 @@
         <button class="btn btn-outline-secondary" (click)="closeCard()">
             Cancel
         </button>
-        <button class="btn btn-success" (click)="saveDivision()">Save</button>
+        <button class="btn btn-success" (click)="saveDesignation()">{{ editMode ? 'Update Division' : 'Save Division'
+            }}</button>
     </div>
 </div>

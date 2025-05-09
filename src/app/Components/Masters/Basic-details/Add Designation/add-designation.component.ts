@@ -10,34 +10,77 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './add-designation.component.css',
 })
 export class AddDesignationComponent {
-  divisionPrefix = '';
-  divisionName = '';
-
-  constructor(private router: Router) {}
-
-  //! Dropdown
-  types = ['Division A', 'Division B', 'Division C']; // Replace with your actual values
-  selectedType = ''; // This will be bound to the dropdown
-
-  get isAddDesignationRoute(): boolean {
+  get isAddDesignation(): boolean {
     return this.router.url.includes('/master/basic_details/add-designation');
+  }
+  editMode: boolean = false;
+  editIndex: number | null = null;
+
+  shortName = '';
+  designation = '';
+  type = '';
+  userWiseCount = '';
+  status = '';
+
+  constructor(private router: Router) {
+    const nav = history.state;
+
+    if (nav && nav.designation) {
+      this.editMode = true;
+      this.editIndex = nav.index;
+
+      this.shortName = nav.designation.shortName || '';
+      this.designation = nav.designation.designation || '';
+      this.type = nav.designation.type || '';
+      this.userWiseCount = nav.designation.userWiseCount || '';
+      this.status = nav.designation.status || '';
+    }
   }
 
   closeCard() {
     this.router.navigate(['/master/basic_details/designation']); // go back to main tab
   }
 
-  saveDivision() {
-    if (!this.divisionPrefix || !this.divisionName || !this.selectedType) {
+  saveDesignation() {
+    if (
+      !this.shortName ||
+      !this.designation ||
+      !this.type ||
+      !this.userWiseCount
+    ) {
       alert('Please fill all required fields.');
       return;
     }
 
-    console.log('Saving division:', {
-      shortName: this.divisionPrefix,
-      designation: this.divisionName,
-      type: this.selectedType,
-    });
+    const designationData = {
+      shortName: this.shortName,
+      designation: this.designation,
+      type: this.type,
+      userWiseCount: this.userWiseCount,
+      status: 'Active',
+    };
+
+    const existingData = sessionStorage.getItem('add-designation');
+    let designation = [];
+
+    try {
+      designation = existingData ? JSON.parse(existingData) : [];
+    } catch {
+      designation = [];
+    }
+
+    if (this.editMode && this.editIndex !== null) {
+      designation[this.editIndex] = designationData;
+    } else {
+      designation.push(designationData);
+    }
+
+    sessionStorage.setItem('add-designation', JSON.stringify(designation));
+
+    console.log(
+      this.editMode ? 'Updated Designation:' : 'Added Designation:',
+      designationData
+    );
 
     this.closeCard();
   }

@@ -1,39 +1,44 @@
 .page_left {
   margin-left: 55px;
 }
+
 /* search icon */
 .search-icon {
   position: absolute;
   left: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: #949494; /* Adjust color as needed */
-  pointer-events: none; /* Prevent click events */
+  color: #949494;
+  /* Adjust color as needed */
+  pointer-events: none;
+  /* Prevent click events */
 }
 
 /* border for icon menu */
 .bordered-icon-button {
   border: 1px solid #ccc;
-  border-radius: 4px; /* optional: rounded corners */
-  padding: 4px; /* optional: spacing inside the button */
+  border-radius: 4px;
+  /* optional: rounded corners */
+  padding: 4px;
+  /* optional: spacing inside the button */
 }
 
-/* Css for Menu options */
-::ng-deep .custom-menu .mat-menu-item {
-  border-bottom: 1px solid #eee;
+.red-close {
+  filter: invert(26%) sepia(99%) saturate(7477%) hue-rotate(358deg) brightness(95%) contrast(119%);
 }
 
-::ng-deep .custom-menu .mat-menu-item:last-child {
-  border-bottom: none;
+.status-indicator .dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
 }
 
-::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__surface {
-  background-color: #d9f2ee !important;
-  color: #000000 !important;
-  border-radius: 8px !important;
+.dot-green {
+  background-color: green;
 }
 
-::ng-deep .mat-mdc-snack-bar-container {
-  z-index: 9999 !important; /* Ensure it's above cards, modals, etc. */
-  position: relative !important; /* Just in case it's overridden */
+.dot-red {
+  background-color: red;
 }
