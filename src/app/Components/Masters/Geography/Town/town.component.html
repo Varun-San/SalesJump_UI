@@ -80,7 +80,7 @@
                 <div class="col-4">
                     <button class="btn filter-btn d-flex align-items-center justify-content-center text-black"
                         style="background-color: #1997ce; color: white !important"
-                        [routerLink]="['/master/basic_details/add-division']" routerLinkActive="router-link-active">
+                        [routerLink]="['/master/geography/add-town']" routerLinkActive="router-link-active">
                         <img src="Assets/AdminMasters/Add.svg" alt="Filter Icon" height="16" width="16" class="me-2" />
                         Town
                     </button>
@@ -105,65 +105,52 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- Your rows here -->
-                <tr>
-                    <td>SIP 101</td>
-                    <td>Text</td>
-                    <td>Text</td>
-                    <td>06</td>
-                    <td>Active</td>
+            <tbody *ngIf="townList.length > 0; else noData">
+                <tr *ngFor="let town of townList;  let i = index" (click)="selectedTown = { town: town, index: i }">
+                    <td>{{ town.townCode }}</td>
+                    <td>{{ town.townName }}</td>
+                    <td>{{ town.district }}</td>
+                    <td style="color: #1997ce; font-weight: 500;">{{ town.territory}}</td>
+                    <td><span class="status-indicator">
+                            <span class="dot" [ngClass]="town.status === 'Active' ? 'dot-green' : 'dot-red'"></span>
+                            {{ town.status }}
+                        </span></td>
                     <td class="text-center">
-                        <button mat-icon-button [matMenuTriggerFor]="menuTable"
-                            aria-label="Example icon-button with a menu">
+                        <button mat-icon-button [matMenuTriggerFor]="menuTable" aria-label="Options">
                             <img src="Assets/Menu.svg" alt="menu">
                         </button>
-                        <mat-menu #menuTable="matMenu">
-                            <button mat-menu-item>Edit Details</button>
-                        </mat-menu>
-                    </td>
-                </tr>
-                <tr>
-                    <td>SIP 102</td>
-                    <td>Text</td>
-                    <td>Text</td>
-                    <td>06</td>
-                    <td>Active</td>
-                    <td class="text-center">
-                        <button mat-icon-button [matMenuTriggerFor]="menuTable"
-                            aria-label="Example icon-button with a menu">
-                            <img src="Assets/Menu.svg" alt="menu">
-                        </button>
-                        <mat-menu #menuTable="matMenu">
-                            <button mat-menu-item>Edit Details</button>
-                        </mat-menu>
-                    </td>
-                </tr>
-                <tr>
-                    <td>SIP 103</td>
-                    <td>Text</td>
-                    <td>Text</td>
-                    <td>06</td>
-                    <td>Active</td>
-                    <td class="text-center">
-                        <button mat-icon-button [matMenuTriggerFor]="menuTable"
-                            aria-label="Example icon-button with a menu">
-                            <img src="Assets/Menu.svg" alt="menu">
-                        </button>
-                        <mat-menu #menuTable="matMenu">
-                            <button mat-menu-item>Edit Details</button>
-                        </mat-menu>
                     </td>
                 </tr>
             </tbody>
+            <ng-template #noData>
+                <tbody>
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">No town Available.</td>
+                    </tr>
+                </tbody>
+            </ng-template>
             <tfoot>
                 <tr>
-                    <td colspan="9" class="text-start fw-bold">Total Records: 3</td>
+                    <td colspan="6" class="text-start fw-bold">
+                        Total Records: {{ townList.length }}
+                    </td>
                 </tr>
             </tfoot>
+
         </table>
     </div>
 </div>
+
+
+<mat-menu #menuTable="matMenu" class="custom-menu bg-white">
+    <ng-container *ngFor="let option of menuOptions">
+        <!-- Disable the menu item if no category is selected -->
+        <button mat-menu-item (click)="handleMenuAction(option.action)" [disabled]="!selectedTown ">
+            {{ option.label }}
+        </button>
+    </ng-container>
+</mat-menu>
+
 
 <!-- ! Menu Option -->
 <mat-menu #menu="matMenu">

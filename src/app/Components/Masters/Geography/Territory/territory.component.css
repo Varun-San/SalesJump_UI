@@ -26,3 +26,19 @@
 .red-close {
     filter: invert(26%) sepia(99%) saturate(7477%) hue-rotate(358deg) brightness(95%) contrast(119%);
 }
+
+.status-indicator .dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.dot-green {
+    background-color: green;
+}
+
+.dot-red {
+    background-color: red;
+}

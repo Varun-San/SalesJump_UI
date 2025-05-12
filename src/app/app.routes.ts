@@ -45,6 +45,11 @@ import { AddCategoryComponent } from './Components/Masters/Product/Add Category/
 import { AddBrandComponent } from './Components/Masters/Product/Add Brand/add-brand.component';
 import { AddUomComponent } from './Components/Masters/Product/Add Uom/add-uom.component';
 import { AddCompanyComponent } from './Components/Masters/Basic-details/Add Company/add-company.component';
+import { AddAreaComponent } from './Components/Masters/Geography/Add Area/add-area.component';
+import { AddZoneComponent } from './Components/Masters/Geography/Add Zone/add-zone.component';
+import { AddTerritoryComponent } from './Components/Masters/Geography/Add Territory/add-territory.component';
+import { AddDistrictComponent } from './Components/Masters/Geography/Add District/add-district.component';
+import { AddTownComponent } from './Components/Masters/Geography/Add Town/add-town.component';
 
 export const routes: Routes = [
   {
@@ -180,20 +185,40 @@ export const routes: Routes = [
                 component: AreaComponent,
               },
               {
+                path: 'add-area',
+                component: AddAreaComponent,
+              },
+              {
                 path: 'zone',
                 component: ZoneComponent,
+              },
+              {
+                path: 'add-zone',
+                component: AddZoneComponent,
               },
               {
                 path: 'territory',
                 component: TerritoryComponent,
               },
               {
+                path: 'add-territory',
+                component: AddTerritoryComponent,
+              },
+              {
                 path: 'district',
                 component: DistrictComponent,
               },
               {
+                path: 'add-district',
+                component: AddDistrictComponent,
+              },
+              {
                 path: 'town',
                 component: TownComponent,
+              },
+              {
+                path: 'add-town',
+                component: AddTownComponent,
               },
             ],
           },

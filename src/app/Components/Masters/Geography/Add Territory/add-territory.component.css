@@ -1,0 +1,44 @@
+.page_left {
+    margin-left: 55px;
+}
+
+#Add-Division {
+    position: absolute;
+    top: 60px;
+    left: 52%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: 1500px;
+    height: 90vh;
+}
+
+hr {
+    border-top: 2px solid #000000;
+}
+
+@media screen and (max-width: 1609px) {
+
+    #Add-Division {
+        position: absolute;
+        top: 60px;
+        left: 52%;
+        transform: translateX(-50%);
+        z-index: 9000;
+        width: 1510px;
+        height: 90vh;
+        overflow: visible !important;
+    }
+}
+
+@media screen and (min-width: 1610px) {
+    #Add-Division {
+        position: absolute;
+        top: 60px;
+        left: 52%;
+        transform: translateX(-50%);
+        z-index: 9000;
+        width: 1440px;
+        height: 90vh;
+        overflow: visible !important;
+    }
+}
