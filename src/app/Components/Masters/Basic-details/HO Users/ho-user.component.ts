@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -38,15 +38,20 @@ export class HoUserComponent {
   tempFilters = { status: '', role: '' };
   activeFilters = { status: '', role: '' };
 
-  // ✅ Dynamic Ho Users array
+  selectedHoUser: { houser: any; index: number } | null = null;
+
+  // 🛠️ HO User List with status
   HoUserList: {
     Ho_UserId: string;
     Name: string;
-    type: string[]; // 🛠️ Change to array of strings
+    type: string[];
     Houser_password: string;
     Houser_Confirmpassword: string;
     Username: string;
+    status: string;
   }[] = [];
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
     const storedHoUser = sessionStorage.getItem('Ho-user-data');
@@ -56,20 +61,66 @@ export class HoUserComponent {
         const dataArray = Array.isArray(parsed) ? parsed : [parsed];
 
         this.HoUserList = dataArray.map((ho: any, index: number) => ({
-          Ho_UserId: `HQ ${101 + index}`,
-          Name: ho.Name,
+          Ho_UserId: ho.Ho_UserId || `HQ ${101 + index}`,
+          Name: ho.Name || '',
           type: Array.isArray(ho.type) ? ho.type : [ho.type],
-          Houser_password: ho.Houser_password,
-          Houser_Confirmpassword: ho.Houser_Confirmpassword,
-          Username: ho.Username,
+          Houser_password: ho.Houser_password || '',
+          Houser_Confirmpassword: ho.Houser_Confirmpassword || '',
+          Username: ho.Username || '',
+          status: ho.status || 'Active',
         }));
-        console.log(this.HoUserList);
       } catch (e) {
         console.warn('Invalid headquarters data in sessionStorage');
       }
     }
   }
 
+  openMenu(hq: any, index: number) {
+    this.selectedHoUser = { houser: hq, index };
+  }
+
+  handleMenuAction(action: string) {
+    if (!this.selectedHoUser) return;
+
+    const { houser, index } = this.selectedHoUser;
+
+    if (action === 'edit') {
+      this.router.navigate(['/master/basic_details/add-ho-user'], {
+        state: { houser, index },
+      });
+    } else if (action === 'deactivate') {
+      this.toggleUserStatus(index);
+    }
+  }
+
+  onMenuAction(action: string) {
+    if (!this.selectedHoUser) return;
+
+    const { houser, index } = this.selectedHoUser;
+
+    if (action === 'Edit Details') {
+      this.router.navigate(['/master/basic_details/add-ho-user'], {
+        state: { houser, index },
+      });
+    } else if (action === 'Deactivate') {
+      this.toggleUserStatus(index);
+    }
+  }
+
+  toggleUserStatus(index: number) {
+    const stored = sessionStorage.getItem('Ho-user-data');
+    if (!stored) return;
+
+    let hoUsers = JSON.parse(stored);
+    if (!Array.isArray(hoUsers)) hoUsers = [hoUsers];
+
+    const currentStatus = hoUsers[index].status || 'Active';
+    hoUsers[index].status = currentStatus === 'Active' ? 'Inactive' : 'Active';
+
+    sessionStorage.setItem('Ho-user-data', JSON.stringify(hoUsers));
+    this.ngOnInit(); // Refresh the list
+    this.selectedHoUser = null;
+  }
   toggleFilterPopup() {
     this.showFilterPopup = !this.showFilterPopup;
   }
@@ -87,19 +138,5 @@ export class HoUserComponent {
   clearFilter(type: 'status' | 'role') {
     this.activeFilters[type] = '';
     this.tempFilters[type] = '';
-  }
-
-  selectedHQ: any = null;
-
-  openMenu(hq: any) {
-    this.selectedHQ = hq;
-  }
-  onMenuAction(action: string) {
-    if (!this.selectedHQ) return;
-
-    if (action === 'Deactivate') {
-      this.selectedHQ.status =
-        this.selectedHQ.status === 'Active' ? 'Inactive' : 'Active';
-    }
   }
 }

@@ -109,7 +109,7 @@
                 </tr>
             </thead>
             <tbody *ngIf="HoUserList.length > 0; else noData">
-                <tr *ngFor="let hq of HoUserList">
+                <tr *ngFor="let hq of HoUserList; let i = index">
                     <td>{{ hq.Name }}</td>
                     <td>{{ hq.Username }}</td>
                     <td>
@@ -125,14 +125,17 @@
                             </span>
                         </ng-container>
                     </td>
+
                     <td>
                         <span class="status-indicator">
-                            <span class="dot"></span>
-                            Active
+                            <span class="dot"
+                                [ngClass]="{'dot-green': hq.status === 'Active', 'dot-red': hq.status === 'Inactive'}"></span>
+                            {{ hq.status }}
                         </span>
                     </td>
+
                     <td class="text-center">
-                        <button mat-icon-button [matMenuTriggerFor]="menuTable" (click)="openMenu(hq)">
+                        <button mat-icon-button [matMenuTriggerFor]="menuTable" (click)="openMenu(hq, i)">
                             <img src="Assets/Menu.svg" alt="menu" />
                         </button>
                     </td>

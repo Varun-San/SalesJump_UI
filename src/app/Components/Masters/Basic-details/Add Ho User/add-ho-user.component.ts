@@ -10,13 +10,36 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './add-ho-user.component.css',
 })
 export class AddHoUserComponent {
+  get isAddHo_UserRoute(): boolean {
+    return this.router.url.includes('/master/basic_details/add-ho-user');
+  }
+
+  editMode: boolean = false;
+  editIndex: number | null = null;
+
   honame = '';
   houserid = '';
   hopassword = '';
   hoconfirmpassword = '';
   hoUserName = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    const nav = history.state;
+
+    if (nav && nav.houser) {
+      this.editMode = true;
+      this.editIndex = nav.index;
+
+      const ho = nav.houser;
+
+      this.honame = ho.Name || '';
+      this.houserid = ho.Ho_UserId || '';
+      this.hopassword = ho.Houser_password || '';
+      this.hoconfirmpassword = ho.Houser_Confirmpassword || '';
+      this.hoUserName = ho.Username || '';
+      this.selectedType = ho.type || [];
+    }
+  }
 
   //! Dropdown
   types = ['Pharma', 'FMCGA', 'Payroll', 'CRM', 'Auditing', 'Billing'];
@@ -26,15 +49,11 @@ export class AddHoUserComponent {
     this.selectedType = this.selectedType.filter((item) => item !== value);
   }
 
-  get isAddHo_UserRoute(): boolean {
-    return this.router.url.includes('/master/basic_details/add-ho-user');
-  }
-
   closeCard() {
     this.router.navigate(['/master/basic_details/ho-user']); // go back to main tab
   }
 
-  saveDivision() {
+  saveHoUser() {
     if (
       !this.honame ||
       !this.houserid ||
@@ -45,15 +64,6 @@ export class AddHoUserComponent {
       alert('Please fill all required fields.');
       return;
     }
-
-    console.log('Saving division:', {
-      Name: this.honame,
-      Ho_UserId: this.houserid,
-      Houser_password: this.hopassword,
-      Houser_Confirmpassword: this.hoconfirmpassword,
-      Username: this.hoUserName,
-      type: this.selectedType,
-    });
 
     const hoUser = {
       Name: this.honame,
@@ -69,18 +79,21 @@ export class AddHoUserComponent {
 
     try {
       const parsed = JSON.parse(existingData || '[]');
-      // If parsed is an array, use it; otherwise convert to array
       hoUserArray = Array.isArray(parsed) ? parsed : [parsed];
     } catch (e) {
       console.warn('Failed to parse sessionStorage data. Resetting...');
       hoUserArray = [];
     }
 
-    hoUserArray.push(hoUser);
+    if (this.editMode && this.editIndex !== null) {
+      hoUserArray[this.editIndex] = hoUser;
+    } else {
+      hoUserArray.push(hoUser);
+    }
 
     sessionStorage.setItem('Ho-user-data', JSON.stringify(hoUserArray));
 
-    console.log('Saving Ho User:', hoUserArray);
+    console.log(this.editMode ? 'Updated Company:' : 'Added Company:', hoUser);
 
     this.closeCard();
   }

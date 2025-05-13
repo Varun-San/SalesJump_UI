@@ -16,6 +16,7 @@ export class AddWorkTypeComponent {
   placeInvolved = '';
   expenseKmNeeded = '';
   workTypeFor = '';
+  status = 'Active';
 
   editMode: boolean = false;
   editIndex: number | null = null;
@@ -32,6 +33,7 @@ export class AddWorkTypeComponent {
       this.placeInvolved = nav.workType.placeInvolved || '';
       this.expenseKmNeeded = nav.workType.expenseKmNeeded || '';
       this.workTypeFor = nav.workType.workTypeFor || '';
+      this.status = nav.workType.status || 'Active';
     }
   }
 
@@ -40,7 +42,7 @@ export class AddWorkTypeComponent {
   }
 
   closeCard() {
-    this.router.navigate(['/master/basic_details/work-type']); // ✅ Adjust path if needed
+    this.router.navigate(['/master/basic_details/work-type']);
   }
 
   saveWorkType() {
@@ -61,7 +63,7 @@ export class AddWorkTypeComponent {
       placeInvolved: this.placeInvolved,
       expenseKmNeeded: this.expenseKmNeeded,
       workTypeFor: this.workTypeFor,
-      status: 'Active',
+      status: this.status,
     };
 
     const existingData = sessionStorage.getItem('add-work-type');

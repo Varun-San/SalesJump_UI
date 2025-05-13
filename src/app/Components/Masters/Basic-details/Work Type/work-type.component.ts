@@ -43,7 +43,7 @@ export class WorkTypeComponent {
     workTypeCode: string;
     workType: string;
     workTypeShortName: string;
-    level: string;
+    placeInvolved: string;
     status: string;
   }[] = [];
 
@@ -60,15 +60,7 @@ export class WorkTypeComponent {
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        const dataArray = Array.isArray(parsed) ? parsed : [parsed];
-
-        this.workTypeList = dataArray.map((work: any, index: number) => ({
-          workTypeCode: `WT-${100 + index}`,
-          workType: work.workType || '',
-          workTypeShortName: work.workTypeShortName || '',
-          level: work.placeInvolved || '',
-          status: work.status || 'Active',
-        }));
+        this.workTypeList = Array.isArray(parsed) ? parsed : [parsed];
       } catch (e) {
         console.warn('Invalid data in sessionStorage for work type');
       }
