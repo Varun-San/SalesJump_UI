@@ -111,7 +111,7 @@
             </thead>
 
             <tbody *ngIf="workTypeList.length > 0; else noData">
-                <tr *ngFor="let work of workTypeList">
+                <tr *ngFor="let work of workTypeList; let i = index">
                     <td>{{ work.workTypeCode }}</td>
                     <td>{{ work.workType }}</td>
                     <td>{{ work.workTypeShortName }}</td>
@@ -123,7 +123,7 @@
                         </span>
                     </td>
                     <td class="text-center">
-                        <button mat-icon-button [matMenuTriggerFor]="menuTable" (click)="openMenu(work)">
+                        <button mat-icon-button [matMenuTriggerFor]="menuTable" (click)="openMenu(work, i)">
                             <img src="Assets/Menu.svg" alt="menu" />
                         </button>
                     </td>
@@ -152,10 +152,7 @@
 <!-- Mat-Menu for Table -->
 <mat-menu #menuTable="matMenu" class="custom-menu bg-white">
     <ng-container *ngFor="let option of menuOptions">
-        <button mat-menu-item *ngIf="option.route" [routerLink]="option.route">
-            {{ option.label }}
-        </button>
-        <button mat-menu-item *ngIf="!option.route" (click)="onMenuAction(option.label)">
+        <button mat-menu-item (click)="onMenuAction(option.action)">
             {{ option.label }}
         </button>
     </ng-container>

@@ -6,11 +6,13 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+
 @Component({
   selector: 'app-work-type',
+  standalone: true,
   imports: [
     CommonModule,
     FontAwesomeModule,
@@ -23,15 +25,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTooltipModule,
   ],
   templateUrl: './work-type.component.html',
-  styleUrl: './work-type.component.css',
+  styleUrls: ['./work-type.component.css'],
 })
 export class WorkTypeComponent {
   faSearch = faSearch;
   showFilterPopup = false;
 
   menuOptions = [
-    { label: 'Edit Details', route: null },
-    { label: 'Deactivate', route: null },
+    { label: 'Edit Details', action: 'edit' },
+    { label: 'Deactivate', action: 'deactivate' },
   ];
 
   tempFilters = { status: '', role: '' };
@@ -45,8 +47,16 @@ export class WorkTypeComponent {
     status: string;
   }[] = [];
 
+  selectedWorkType: { workType: any; index: number } | null = null;
+
+  constructor(private router: Router) {}
+
   ngOnInit() {
-    const stored = sessionStorage.getItem('add-Work-Type');
+    this.loadWorkTypes();
+  }
+
+  loadWorkTypes() {
+    const stored = sessionStorage.getItem('add-work-type');
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
@@ -57,14 +67,50 @@ export class WorkTypeComponent {
           workType: work.workType || '',
           workTypeShortName: work.workTypeShortName || '',
           level: work.placeInvolved || '',
-          status: 'Active',
+          status: work.status || 'Active',
         }));
-
-        console.log(this.workTypeList);
       } catch (e) {
         console.warn('Invalid data in sessionStorage for work type');
       }
     }
+  }
+
+  openMenu(workType: any, index: number) {
+    this.selectedWorkType = { workType, index };
+  }
+
+  onMenuAction(action: string) {
+    if (!this.selectedWorkType) return;
+
+    const { workType, index } = this.selectedWorkType;
+
+    switch (action) {
+      case 'edit':
+        this.router.navigate(['/master/basic_details/add-work-type'], {
+          state: { workType, index },
+        });
+        break;
+
+      case 'deactivate':
+        this.toggleStatus(index);
+        break;
+
+      default:
+        console.warn('Unknown action:', action);
+    }
+  }
+
+  toggleStatus(index: number) {
+    const stored = sessionStorage.getItem('add-work-type');
+    let workTypes = stored ? JSON.parse(stored) : [];
+
+    const currentStatus = workTypes[index].status || 'Active';
+    workTypes[index].status =
+      currentStatus === 'Active' ? 'Inactive' : 'Active';
+
+    sessionStorage.setItem('add-work-type', JSON.stringify(workTypes));
+    this.loadWorkTypes();
+    this.selectedWorkType = null;
   }
 
   toggleFilterPopup() {
@@ -84,19 +130,5 @@ export class WorkTypeComponent {
   clearFilter(type: 'status' | 'role') {
     this.activeFilters[type] = '';
     this.tempFilters[type] = '';
-  }
-
-  selectedHQ: any = null;
-
-  openMenu(hq: any) {
-    this.selectedHQ = hq;
-  }
-  onMenuAction(action: string) {
-    if (!this.selectedHQ) return;
-
-    if (action === 'Deactivate') {
-      this.selectedHQ.status =
-        this.selectedHQ.status === 'Active' ? 'Inactive' : 'Active';
-    }
   }
 }

@@ -1,5 +1,5 @@
 <!-- Floating Card (only shows on add-division route) -->
-<div *ngIf="isAddworktypeRoute" class="card shadow p-4" id="Add-Division">
+<div *ngIf="isAddWorkTypeRoute" class="card shadow p-4" id="Add-Division">
     <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
         <h5 class="mb-0 me-2">Add Work Type</h5>
         <div class="flex-grow-1">
@@ -53,6 +53,7 @@
         <button class="btn btn-outline-secondary" (click)="closeCard()">
             Cancel
         </button>
-        <button class="btn btn-success" (click)="saveDivision()">Save</button>
+        <button class="btn btn-success" (click)="saveWorkType()">{{ editMode ? 'Update Worktype' : 'Save Worktype'
+            }}</button>
     </div>
 </div>

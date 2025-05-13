@@ -5,9 +5,10 @@ import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-add-work-type',
+  standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './add-work-type.component.html',
-  styleUrl: './add-work-type.component.css',
+  styleUrls: ['./add-work-type.component.css'], // ✅ Fixed typo here
 })
 export class AddWorkTypeComponent {
   workType = '';
@@ -16,17 +17,33 @@ export class AddWorkTypeComponent {
   expenseKmNeeded = '';
   workTypeFor = '';
 
-  constructor(private router: Router) {}
+  editMode: boolean = false;
+  editIndex: number | null = null;
 
-  get isAddworktypeRoute(): boolean {
+  constructor(private router: Router) {
+    const nav = history.state;
+
+    if (nav && nav.workType) {
+      this.editMode = true;
+      this.editIndex = nav.index;
+
+      this.workType = nav.workType.workType || '';
+      this.workTypeShortName = nav.workType.workTypeShortName || '';
+      this.placeInvolved = nav.workType.placeInvolved || '';
+      this.expenseKmNeeded = nav.workType.expenseKmNeeded || '';
+      this.workTypeFor = nav.workType.workTypeFor || '';
+    }
+  }
+
+  get isAddWorkTypeRoute(): boolean {
     return this.router.url.includes('/master/basic_details/add-work-type');
   }
 
   closeCard() {
-    this.router.navigate(['/master/basic_details/work-type']); // go back to main tab
+    this.router.navigate(['/master/basic_details/work-type']); // ✅ Adjust path if needed
   }
 
-  saveDivision() {
+  saveWorkType() {
     if (
       !this.workType ||
       !this.workTypeShortName ||
@@ -38,42 +55,36 @@ export class AddWorkTypeComponent {
       return;
     }
 
-    console.log('Saving Add work type:', {
+    const workTypeData = {
       workType: this.workType,
       workTypeShortName: this.workTypeShortName,
       placeInvolved: this.placeInvolved,
       expenseKmNeeded: this.expenseKmNeeded,
       workTypeFor: this.workTypeFor,
-    });
-
-    const addWorkType = {
-      workType: this.workType,
-      workTypeShortName: this.workTypeShortName,
-      placeInvolved: this.placeInvolved,
-      expenseKmNeeded: this.expenseKmNeeded,
-      workTypeFor: this.workTypeFor,
+      status: 'Active',
     };
 
-    const existingData = sessionStorage.getItem('add-Work-Type');
-    let add_work_type_Array: any[] = [];
+    const existingData = sessionStorage.getItem('add-work-type');
+    let workTypes = [];
 
     try {
-      const parsed = JSON.parse(existingData || '[]');
-      // If parsed is an array, use it; otherwise convert to array
-      add_work_type_Array = Array.isArray(parsed) ? parsed : [parsed];
-    } catch (e) {
-      console.warn('Failed to parse sessionStorage data. Resetting...');
-      add_work_type_Array = [];
+      workTypes = existingData ? JSON.parse(existingData) : [];
+    } catch {
+      workTypes = [];
     }
 
-    add_work_type_Array.push(addWorkType);
+    if (this.editMode && this.editIndex !== null) {
+      workTypes[this.editIndex] = workTypeData;
+    } else {
+      workTypes.push(workTypeData);
+    }
 
-    sessionStorage.setItem(
-      'add-Work-Type',
-      JSON.stringify(add_work_type_Array)
+    sessionStorage.setItem('add-work-type', JSON.stringify(workTypes));
+
+    console.log(
+      this.editMode ? 'Updated Work Type:' : 'Added Work Type:',
+      workTypeData
     );
-
-    console.log('Saving Add Work type:', add_work_type_Array);
 
     this.closeCard();
   }
