@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-add-currency',
   imports: [
@@ -21,11 +21,112 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     MatNativeDateModule,
     MatFormFieldModule,
   ],
+  standalone: true,
   providers: [provideNativeDateAdapter()],
   templateUrl: './add-currency.component.html',
   styleUrl: './add-currency.component.css',
 })
 export class AddCurrencyComponent {
+  // Form data
+  currencyName = '';
+  effectiveFrom: Date | null = null;
+  country!: { name: string; symbolList: string[] };
+  symbol: string = '';
+  symbolList: string[] = [];
+  equalToBaseCurrency: number = 0;
+
+  // Edit state
+  editMode = false;
+  editIndex: number | null = null;
+
+  constructor(private router: Router, private route: ActivatedRoute) {
+    const nav = this.router.getCurrentNavigation()?.extras.state;
+    if (nav && nav['currency']) {
+      this.editMode = true;
+      this.editIndex = nav['index'];
+      const currency = nav['currency'];
+
+      // Initialize the form fields with the currency data
+      this.currencyName = currency.currencyName || '';
+      this.country = currency.country;
+      this.symbolList = currency.country?.symbolList || [];
+      this.symbol = currency.symbol || '';
+      this.equalToBaseCurrency = currency.equalToBaseCurrency || 0;
+      this.effectiveFrom = new Date(currency.effectiveFrom);
+      this.onCountryChange(); // Update the symbol list and other data based on the country
+    }
+  }
+
+  get isAddCurrencyRoute(): boolean {
+    return this.router.url.includes(
+      '/master/basic_details/currency/add-currency'
+    );
+  }
+
+  closeCard() {
+    this.router.navigate(['/master/basic_details/currency']);
+  }
+
+  onCountryChange() {
+    if (this.country) {
+      this.symbolList = this.country.symbolList;
+      this.symbol = this.symbolList.length > 0 ? this.symbolList[0] : '';
+
+      const exchangeRate = this.exchangeRates[this.country.name];
+      this.equalToBaseCurrency = exchangeRate;
+    } else {
+      this.symbolList = [];
+      this.symbol = '';
+      this.equalToBaseCurrency = 0;
+    }
+  }
+
+  saveCurrency() {
+    if (
+      !this.currencyName ||
+      !this.country ||
+      !this.symbol ||
+      !this.equalToBaseCurrency ||
+      !this.effectiveFrom
+    ) {
+      alert('Please fill all required fields.');
+      return;
+    }
+
+    const currencyData = {
+      currencyName: this.currencyName,
+      country: this.country,
+      symbol: this.symbol,
+      equalToBaseCurrency: this.equalToBaseCurrency,
+      effectiveFrom: this.effectiveFrom,
+    };
+
+    const existingData = sessionStorage.getItem('add-currency');
+    let currencyArray: any[] = [];
+
+    try {
+      const parsed = JSON.parse(existingData || '[]');
+      currencyArray = Array.isArray(parsed) ? parsed : [parsed];
+    } catch {
+      currencyArray = [];
+    }
+
+    if (this.editMode && this.editIndex !== null) {
+      currencyArray[this.editIndex] = currencyData;
+    } else {
+      currencyArray.push(currencyData);
+    }
+
+    sessionStorage.setItem('add-currency', JSON.stringify(currencyArray));
+
+    console.log(
+      this.editMode ? 'Updated Currency:' : 'Added Currency:',
+      currencyData
+    );
+
+    this.closeCard();
+  }
+
   countryList: { name: string; symbolList: string[] }[] = [
     { name: 'United States', symbolList: ['$', '¢'] },
     { name: 'Canada', symbolList: ['$', '¢'] },
@@ -53,118 +154,30 @@ export class AddCurrencyComponent {
     { name: 'Pakistan', symbolList: ['₨'] },
   ];
 
-  // Exchange rates relative to the base currency (INR)
   exchangeRates: { [key: string]: number } = {
-    'United States': 74.85, // 1 INR = 74.85 USD
-    Canada: 60.91, // 1 INR = 60.91 CAD
-    'United Kingdom': 98.55, // 1 INR = 98.55 GBP
-    Australia: 53.75, // 1 INR = 53.75 AUD
-    India: 1, // Base currency (INR)
-    Germany: 88.12, // 1 INR = 88.12 EUR
-    France: 88.12, // 1 INR = 88.12 EUR
-    Brazil: 13.32, // 1 INR = 13.32 BRL
-    Mexico: 3.79, // 1 INR = 3.79 MXN
-    Japan: 1.52, // 1 INR = 1.52 JPY
-    China: 11.71, // 1 INR = 11.71 CNY
-    Russia: 1.09, // 1 INR = 1.09 RUB
-    'South Korea': 84.64, // 1 INR = 84.64 KRW
-    Italy: 88.12, // 1 INR = 88.12 EUR
-    Spain: 88.12, // 1 INR = 88.12 EUR
-    'South Africa': 14.15, // 1 INR = 14.15 ZAR
-    Argentina: 9.91, // 1 INR = 9.91 ARS
-    Nigeria: 399.75, // 1 INR = 399.75 NGN
-    Egypt: 19.52, // 1 INR = 19.52 EGP
-    'Saudi Arabia': 0.19, // 1 INR = 0.19 SAR
-    'United Arab Emirates': 0.2, // 1 INR = 0.20 AED
-    Turkey: 8.11, // 1 INR = 8.11 TRY
-    Indonesia: 1945.1, // 1 INR = 1945.10 IDR
-    Pakistan: 1.71, // 1 INR = 1.71 PKR
+    'United States': 74.85,
+    Canada: 60.91,
+    'United Kingdom': 98.55,
+    Australia: 53.75,
+    India: 1,
+    Germany: 88.12,
+    France: 88.12,
+    Brazil: 13.32,
+    Mexico: 3.79,
+    Japan: 1.52,
+    China: 11.71,
+    Russia: 1.09,
+    'South Korea': 84.64,
+    Italy: 88.12,
+    Spain: 88.12,
+    'South Africa': 14.15,
+    Argentina: 9.91,
+    Nigeria: 399.75,
+    Egypt: 19.52,
+    'Saudi Arabia': 0.19,
+    'United Arab Emirates': 0.2,
+    Turkey: 8.11,
+    Indonesia: 1945.1,
+    Pakistan: 1.71,
   };
-
-  // This function will handle both updating the symbol list and calculating the equivalent value
-  onCountryChange() {
-    if (this.country) {
-      // Update the symbol list based on the selected country
-      this.symbolList = this.country.symbolList;
-      this.symbol = this.symbolList.length > 0 ? this.symbolList[0] : '';
-
-      // Calculate the equivalent value based on the selected country
-      const exchangeRate = this.exchangeRates[this.country.name];
-      this.equalToBaseCurrency = exchangeRate; // Equivalent value to base currency (INR)
-    } else {
-      // If no country is selected, clear the symbol and set default values
-      this.symbolList = [];
-      this.symbol = '';
-      this.equalToBaseCurrency = 0;
-    }
-  }
-
-  //! /////////////////////////////////////////////////////
-  currencyName = '';
-  effectiveFrom: Date | null = null;
-  country!: { name: string; symbolList: string[] };
-  symbol: string = '';
-  symbolList: string[] = [];
-  equalToBaseCurrency: number = 0;
-
-  constructor(private router: Router) {}
-
-  get isAddCurrencyRoute(): boolean {
-    return this.router.url.includes(
-      '/master/basic_details/currency/add-currency'
-    );
-  }
-
-  closeCard() {
-    this.router.navigate(['/master/basic_details/currency']);
-  }
-
-  saveDivision() {
-    if (
-      !this.currencyName ||
-      !this.country ||
-      !this.symbol ||
-      !this.equalToBaseCurrency ||
-      !this.effectiveFrom
-    ) {
-      alert('Please fill all required fields.');
-      return;
-    }
-
-    console.log('Saving Add work type:', {
-      currencyName: this.currencyName,
-      country: this.country,
-      symbol: this.symbol,
-      equalToBaseCurrency: this.equalToBaseCurrency,
-      effectiveFrom: this.effectiveFrom,
-    });
-
-    const addCurrency = {
-      currencyName: this.currencyName,
-      country: this.country,
-      symbol: this.symbol,
-      equalToBaseCurrency: this.equalToBaseCurrency,
-      effectiveFrom: this.effectiveFrom,
-    };
-
-    const existingData = sessionStorage.getItem('add-currency');
-    let add_Currency_Array: any[] = [];
-
-    try {
-      const parsed = JSON.parse(existingData || '[]');
-      // If parsed is an array, use it; otherwise convert to array
-      add_Currency_Array = Array.isArray(parsed) ? parsed : [parsed];
-    } catch (e) {
-      console.warn('Failed to parse sessionStorage data. Resetting...');
-      add_Currency_Array = [];
-    }
-
-    add_Currency_Array.push(addCurrency);
-
-    sessionStorage.setItem('add-currency', JSON.stringify(add_Currency_Array));
-
-    console.log('Saving Add Currency:', add_Currency_Array);
-
-    this.closeCard();
-  }
 }
