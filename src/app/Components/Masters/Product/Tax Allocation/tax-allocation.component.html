@@ -1,1 +1,206 @@
-<p>tax-allocation works!</p>
+<div class="row page_left">
+    <div class="col-12 mt-3">
+        <div class="col-12 d-flex align-items-center justify-content-between">
+            <!-- Search and Filter Section -->
+            <div class="col-9 d-flex align-items-center gap-3">
+                <div class="position-relative col-4">
+                    <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
+                    <input type="text" class="form-control ps-5" placeholder="Search" />
+                </div>
+
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn border filter-btn d-flex align-items-center justify-content-center text-black"
+                        (click)="toggleFilterPopup()">
+                        <img src="Assets/AdminMasters/bars-filter.svg" alt="Filter Icon" height="16" width="16"
+                            class="me-2" />
+                        Filter
+                    </button>
+
+                    <!-- Filter Popup -->
+                    <div class="bg-white border rounded p-3 shadow" style="position: absolute; top: 45px; z-index: 1050"
+                        *ngIf="showFilterPopup">
+                        <label class="form-label fw-semibold">Status</label>
+                        <select class="form-select mb-3" [(ngModel)]="tempFilters.status">
+                            <option value="" disabled>Select status</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+
+                        <label class="form-label fw-semibold">Role</label>
+                        <select class="form-select mb-3" [(ngModel)]="tempFilters.role">
+                            <option value="" disabled>Select role</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Executive">Executive</option>
+                        </select>
+
+                        <div class="d-flex justify-content-end gap-2 mt-2">
+                            <button class="btn btn-outline-secondary btn-sm" (click)="cancelFilter()">Cancel</button>
+                            <button class="btn btn-primary btn-sm" (click)="applyFilters()">Apply</button>
+                        </div>
+                    </div>
+
+                    <div class="vr" style="height: 40px"></div>
+
+                    <!-- Selected Filters -->
+                    <div class="d-flex flex-wrap align-items-center gap-2">
+                        <ng-container *ngIf="activeFilters.status">
+                            <div class="border rounded-pill px-3 py-1 d-flex align-items-center gap-2">
+                                <span>Status</span>
+                                <span class="fw-semibold">{{ activeFilters.status }}</span>
+                                <button type="button" class="btn-close btn-close-sm red-close" aria-label="Close"
+                                    (click)="clearFilter('status')"></button>
+                            </div>
+                        </ng-container>
+
+                        <ng-container *ngIf="activeFilters.role">
+                            <div class="border rounded-pill px-3 py-1 d-flex align-items-center gap-2">
+                                <span>Role</span>
+                                <span class="fw-semibold">{{ activeFilters.role }}</span>
+                                <button type="button" class="btn-close btn-close-sm red-close" aria-label="Close"
+                                    (click)="clearFilter('role')"></button>
+                            </div>
+                        </ng-container>
+
+                        <p *ngIf="!activeFilters.status && !activeFilters.role" class="text-muted m-0">
+                            No filter
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add UOM Button Section -->
+            <div class="col-3 d-flex gap-3 align-items-center text-end">
+                <div class="col-12">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu Button"
+                        class="bordered-icon-button">
+                        <img src="Assets/Menu.svg" alt="menu" />
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>Option 1</button>
+                        <button mat-menu-item>Option 2</button>
+                        <button mat-menu-item>Option 3</button>
+                    </mat-menu>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="col-12 mt-3">
+        <table class="table table-bordered">
+            <thead class="table-light">
+                <tr>
+                    <td>Product Name</td>
+                    <td>Country</td>
+                    <td>State Name</td>
+                    <td>Tax</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> <img src="Assets/Tax Allocation/Green Plus.svg" alt=""> Red Tooth Paste 250gm</td>
+                    <td>
+                        <ng-select [items]="countryList" bindLabel="name" bindValue="name"
+                            [(ngModel)]="selectedCountry">
+                        </ng-select>
+                    </td>
+                    <td>
+                        <ng-select [items]="stateList" bindLabel="name" bindValue="name" [(ngModel)]="selectedState">
+                        </ng-select>
+                    </td>
+                    <td>
+                        <ng-select [items]="gstList" bindLabel="name" bindValue="name" [(ngModel)]="selectedGst">
+                        </ng-select>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="3"> <img src="Assets/Tax Allocation/Red Minus.svg" alt=""> Zabardast Paste 250gm
+                        <button class="btn btn-success">+ Row</button>
+                    </td>
+                    <td>
+                        <ng-select [items]="countryList" bindLabel="name" bindValue="name"
+                            [(ngModel)]="selectedCountry">
+                        </ng-select>
+                    </td>
+                    <td>
+                        <ng-select [items]="stateList" bindLabel="name" bindValue="name" [(ngModel)]="selectedState">
+                        </ng-select>
+                    </td>
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <ng-select [items]="gstList" bindLabel="name" bindValue="name" [(ngModel)]="selectedGst"
+                                style="flex: 1;">
+                            </ng-select>
+                            <img src="Assets/Tax Allocation/Minus_Fill.svg" alt="" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <ng-select [items]="countryList" bindLabel="name" bindValue="name"
+                            [(ngModel)]="selectedCountry">
+                        </ng-select>
+                    </td>
+                    <td>
+                        <ng-select [items]="stateList" bindLabel="name" bindValue="name" [(ngModel)]="selectedState">
+                        </ng-select>
+                    </td>
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <ng-select [items]="gstList" bindLabel="name" bindValue="name" [(ngModel)]="selectedGst"
+                                style="flex: 1;">
+                            </ng-select>
+                            <img src="Assets/Tax Allocation/Minus_Fill.svg" alt="" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <ng-select [items]="countryList" bindLabel="name" bindValue="name"
+                            [(ngModel)]="selectedCountry">
+                        </ng-select>
+                    </td>
+                    <td>
+                        <ng-select [items]="stateList" bindLabel="name" bindValue="name" [(ngModel)]="selectedState">
+                        </ng-select>
+                    </td>
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <ng-select [items]="gstList" bindLabel="name" bindValue="name" [(ngModel)]="selectedGst"
+                                style="flex: 1;">
+                            </ng-select>
+                            <img src="Assets/Tax Allocation/Minus_Fill.svg" alt="" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <img src="Assets/Tax Allocation/Red Minus.svg" alt=""> Takkatvar 20Gm <button
+                            class="btn btn-success"> + Row</button> </td>
+                    <td>
+                        <ng-select [items]="countryList" bindLabel="name" bindValue="name"
+                            [(ngModel)]="selectedCountry">
+                        </ng-select>
+                    </td>
+                    <td>
+                        <ng-select [items]="stateList" bindLabel="name" bindValue="name" [(ngModel)]="selectedState">
+                        </ng-select>
+                    </td>
+                    <td>
+                        <ng-select [items]="gstList" bindLabel="name" bindValue="name" [(ngModel)]="selectedGst">
+                        </ng-select>
+                    </td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="text-start">
+                        Total Records: 3
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

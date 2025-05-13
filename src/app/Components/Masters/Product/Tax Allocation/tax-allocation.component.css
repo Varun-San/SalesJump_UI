@@ -1,0 +1,55 @@
+.page_left {
+    margin-left: 55px;
+}
+
+/* search icon */
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #949494;
+    /* Adjust color as needed */
+    pointer-events: none;
+    /* Prevent click events */
+}
+
+thead>tr>td {
+    font-weight: 600;
+    color: #2e3032;
+}
+
+/* border for icon menu */
+.bordered-icon-button {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* optional: rounded corners */
+    padding: 4px;
+    /* optional: spacing inside the button */
+}
+    
+
+table td,
+table th {
+    white-space: nowrap;
+    /* prevents text wrap */
+}
+
+table th,
+table td {
+    max-width: 200px;
+    width: 150px;
+}
+
+::ng-deep .ng-select .ng-select-container .ng-value-container .ng-input>input {
+    box-sizing: content-box;
+    background: none transparent;
+    border: 0 none;
+    box-shadow: none;
+    outline: none;
+    padding: 0;
+    cursor: default;
+    width: 100%;
+    color: #000000;
+    font-weight: 500;
+}
