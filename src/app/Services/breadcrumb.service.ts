@@ -11,6 +11,18 @@ export class BreadcrumbService {
 
   private customBreadcrumbs = [
     {
+      match: '/master/product/pop-material/add-material',
+      trail: [
+        { label: 'Master', route: '#' },
+        { label: 'Product', route: '/master/product' },
+        { label: 'Pop-Material', route: '/master/product/pop-material' },
+        {
+          label: 'Add Material',
+          route: '/master/product/pop-material/add-material',
+        },
+      ],
+    },
+    {
       match: '/master/product/category/add-category',
       trail: [
         { label: 'Master', route: '#' },

@@ -1,0 +1,94 @@
+.page_left {
+    margin-left: 55px;
+}
+
+#Add-Division {
+    position: absolute;
+    top: 60px;
+    left: 52%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: 1500px;
+    height: 90vh;
+}
+
+hr {
+    border-top: 2px solid #000000;
+}
+
+label {
+    color: #909090
+}
+
+/* ! Drop down select */
+.custom-multiselect {
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.multiselect-wrapper {
+    position: relative;
+}
+
+.form-select {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+.form-select:focus {
+    border-color: #1997ce;
+    box-shadow: 0 0 5px #d1d1d1;
+}
+
+.selected-items {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.badge {
+    background-color: #1997ce !important;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 50px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.badge .remove {
+    margin-left: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1609px) {
+
+    #Add-Division {
+        position: absolute;
+        top: 60px;
+        left: 52%;
+        transform: translateX(-50%);
+        z-index: 9000;
+        width: 1510px;
+        height: 90vh;
+        overflow: visible !important;
+    }
+}
+
+@media screen and (min-width: 1610px) {
+    #Add-Division {
+        position: absolute;
+        top: 60px;
+        left: 52%;
+        transform: translateX(-50%);
+        z-index: 9000;
+        width: 1440px;
+        height: 90vh;
+        overflow: visible !important;
+    }
+}

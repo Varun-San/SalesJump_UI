@@ -50,6 +50,7 @@ import { AddZoneComponent } from './Components/Masters/Geography/Add Zone/add-zo
 import { AddTerritoryComponent } from './Components/Masters/Geography/Add Territory/add-territory.component';
 import { AddDistrictComponent } from './Components/Masters/Geography/Add District/add-district.component';
 import { AddTownComponent } from './Components/Masters/Geography/Add Town/add-town.component';
+import { AddMaterialComponent } from './Components/Masters/Product/Add Material/add-material.component';
 
 export const routes: Routes = [
   {
@@ -277,6 +278,12 @@ export const routes: Routes = [
               {
                 path: 'pop-material',
                 component: PopMaterialComponent,
+                children: [
+                  {
+                    path: 'add-material',
+                    component: AddMaterialComponent,
+                  },
+                ],
               },
               {
                 path: 'rate-card',
