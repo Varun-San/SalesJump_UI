@@ -1,0 +1,55 @@
+<!-- Floating Card (only shows on assign-product route) -->
+<div *ngIf="isAssignProduct" class="card shadow p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">Product Values</h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+
+    <div class="card-body p-0 mt-1">
+        <div class="row col-12">
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>UOM/Per</th>
+                        <th>Currency Type</th>
+                        <th>MRP</th>
+                        <th>Selling Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of productRateCards; let i = index">
+                        <td>
+                            <input type="text" class="form-control" [(ngModel)]="product.productName"
+                                placeholder="Enter product name" name="productName{{ i }}" />
+                        </td>
+                        <td>
+                            <ng-select [items]="uomOptions" [(ngModel)]="product.uom" [searchable]="true"
+                                placeholder="Select UOM" name="uom{{ i }}"></ng-select>
+                        </td>
+                        <td>
+                            <ng-select [items]="currencyOptions" [(ngModel)]="product.currencyType" [searchable]="true"
+                                placeholder="Select Currency" name="currency{{ i }}"></ng-select>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" [(ngModel)]="product.mrp" name="mrp{{ i }}"
+                                min="0" />
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" [(ngModel)]="product.sellingPrice"
+                                name="sellingPrice{{ i }}" min="0" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer Buttons -->
+    <div class="card-footer bg-white border-0 p-0 mt-3 d-flex justify-content-end gap-2">
+        <button class="btn btn-outline-secondary" (click)="cancel()">Cancel</button>
+        <button class="btn btn-success" (click)="saveProducts()">Save</button>
+    </div>
+</div>

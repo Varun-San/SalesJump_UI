@@ -51,6 +51,8 @@ import { AddTerritoryComponent } from './Components/Masters/Geography/Add Territ
 import { AddDistrictComponent } from './Components/Masters/Geography/Add District/add-district.component';
 import { AddTownComponent } from './Components/Masters/Geography/Add Town/add-town.component';
 import { AddMaterialComponent } from './Components/Masters/Product/Add Material/add-material.component';
+import { AddRateCardComponent } from './Components/Masters/Product/Add Rate Card/add-rate-card.component';
+import { AssignProductComponent } from './Components/Masters/Product/Assign Product/assign-product.component';
 
 export const routes: Routes = [
   {
@@ -288,6 +290,16 @@ export const routes: Routes = [
               {
                 path: 'rate-card',
                 component: RateCardComponent,
+                children: [
+                  {
+                    path: 'add-rate-card',
+                    component: AddRateCardComponent,
+                  },
+                  {
+                    path: 'assign-product',
+                    component: AssignProductComponent,
+                  },
+                ],
               },
             ],
           },

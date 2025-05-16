@@ -1,0 +1,70 @@
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isAddRateCard" class="card shadow p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">Add Rate Card</h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+
+    <div class="card-body p-0 mt-1">
+        <div class="row col-12">
+            <!-- Rate Card Name -->
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Rate Card Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="rateCardName" />
+                </div>
+            </div>
+
+            <!-- Division -->
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Division <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="division" />
+                </div>
+            </div>
+
+            <!-- Country -->
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Country <span class="text-danger">*</span></label>
+                    <ng-select [(ngModel)]="country" [items]="countryList" bindLabel="name" placeholder="Select Country"
+                        [searchable]="true" (change)="onCountryChange()">
+                    </ng-select>
+                </div>
+            </div>
+
+            <!-- Currency Type -->
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Currency Type <span class="text-danger">*</span></label>
+                    <ng-select [(ngModel)]="currencyType" [items]="divisionOptions" placeholder="Select Currency Type"
+                        [searchable]="true">
+                    </ng-select>
+                </div>
+            </div>
+
+            <!-- Effective From -->
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Effective From <span class="text-danger">*</span></label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <input matInput [matDatepicker]="cal" [(ngModel)]="effectiveFrom" />
+                        <img src="Assets/AddCurrency/Calendar.svg" alt="Calendar Icon" (click)="cal.open()"
+                            class="calendar-icon" />
+                        <mat-datepicker #cal></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Buttons -->
+    <div class="card-footer bg-white border-0 p-0 mt-3 d-flex justify-content-end gap-2">
+        <button class="btn btn-outline-secondary" (click)="closeCard()">Cancel</button>
+        <button class="btn btn-success" (click)="saveRateCard()">Save Rate Card</button>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
