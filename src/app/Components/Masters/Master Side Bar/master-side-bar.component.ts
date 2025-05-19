@@ -21,7 +21,7 @@ export class MasterSideBarComponent {
   hoveredItem: string | null = null;
   faSearch = faSearch;
 
-// ! FOR ACTIVE CHIPS
+  // ! FOR ACTIVE CHIPS
   constructor(private router: Router, private ActiveRoute: ActivatedRoute) {}
 
   getActiveChip(chipList: { name: string; route: string }[]): string | null {
@@ -35,22 +35,24 @@ export class MasterSideBarComponent {
     this.activeChip_Basic = this.getActiveChip(this.BasicDetails_label) || '';
     this.activeChip_Geography = this.getActiveChip(this.Geography_label) || '';
     this.activeChip_Product = this.getActiveChip(this.Product_label) || '';
+    this.activeChip_Gamification = this.getActiveChip(this.Gamification_label) || '';
     this.activeTab = this.getActiveTabFromUrl(currentUrl) || this.tabs[0];
   }
 
   tabUrlMap: { [key: string]: string } = {
     'Basic Details': 'basic_details',
-    'Geography': 'geography',
-    'Merchandising': 'merchandising',
-    'Product': 'product',
-    'Employee': 'employee',
-    'Retailer': 'retailer',
+    Geography: 'geography',
+    Merchandising: 'merchandising',
+    Product: 'product',
+    Employee: 'employee',
+    Retailer: 'retailer',
     'Super Stockist': 'super-stockist',
-    'Route': 'route',
-    'Tax': 'tax',
+    Route: 'route',
+    Tax: 'tax',
     'HO Creation': 'ho-creation',
-    'Competitor': 'competitor',
+    Competitor: 'competitor',
     'Van Sales': 'van-sales',
+    Gamification: 'gamification',
   };
   getActiveTabFromUrl(url: string): string | null {
     for (const [tab, pathFragment] of Object.entries(this.tabUrlMap)) {
@@ -74,6 +76,7 @@ export class MasterSideBarComponent {
     { name: 'HO Creation', route: '/masters' },
     { name: 'Competitor', route: '/masters' },
     { name: 'Van Sales', route: '/masters' },
+    { name: 'Gamification', route: '/masters' },
   ];
 
   // Function to handle navigation
@@ -97,9 +100,9 @@ export class MasterSideBarComponent {
     'HO Creation',
     'Competitor',
     'Van Sales',
+    'Gamification',
   ];
 
-  
   activeTab = this.tabs[0]; // Default active tab
 
   setActiveTab(tab: string) {
@@ -139,5 +142,14 @@ export class MasterSideBarComponent {
     { name: 'Rate Entry Statewise', route: '/master/product/rate-entry' },
     { name: 'POP Material', route: '/master/product/pop-material' },
     { name: 'Rate Card Fixation', route: '/master/product/rate-card' },
+  ];
+
+  //! Gamification
+  activeChip_Gamification: string = '';
+  Gamification_label = [
+    { name: 'Competitions', route: '/master/gamification/competitions' },
+    { name: 'Formula', route: '/master/gamification/formula' },
+    { name: 'Rewards', route: '/master/gamification/rewards' },
+    { name: 'Levels', route: '/master/gamification/levels' },
   ];
 }

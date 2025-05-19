@@ -53,6 +53,11 @@ import { AddTownComponent } from './Components/Masters/Geography/Add Town/add-to
 import { AddMaterialComponent } from './Components/Masters/Product/Add Material/add-material.component';
 import { AddRateCardComponent } from './Components/Masters/Product/Add Rate Card/add-rate-card.component';
 import { AssignProductComponent } from './Components/Masters/Product/Assign Product/assign-product.component';
+import { GamificationComponent } from './Components/Masters/Gamification/gamification.component';
+import { CompetitionsComponent } from './Components/Masters/Gamification/Competitions/competitions.component';
+import { FormulaComponent } from './Components/Masters/Gamification/Formula/formula.component';
+import { RewardsComponent } from './Components/Masters/Gamification/Rewards/rewards.component';
+import { LevelsComponent } from './Components/Masters/Gamification/Levels/levels.component';
 
 export const routes: Routes = [
   {
@@ -300,6 +305,25 @@ export const routes: Routes = [
                     component: AssignProductComponent,
                   },
                 ],
+              },
+            ],
+          },
+          {
+            path: 'gamification',
+            component: GamificationComponent,
+            children: [
+              { path: 'competitions', component: CompetitionsComponent },
+              {
+                path: 'formula',
+                component: FormulaComponent,
+              },
+              {
+                path: 'rewards',
+                component: RewardsComponent,
+              },
+              {
+                path: 'levels',
+                component: LevelsComponent,
               },
             ],
           },

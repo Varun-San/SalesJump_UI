@@ -46,14 +46,17 @@ export class AddCurrencyComponent {
       this.editIndex = nav['index'];
       const currency = nav['currency'];
 
-      // Initialize the form fields with the currency data
       this.currencyName = currency.currencyName || '';
-      this.country = currency.country;
-      this.symbolList = currency.country?.symbolList || [];
+
+      // 🔥 Find country by name to avoid object reference mismatch
+      this.country = this.countryList.find(
+        (c) => c.name === currency.country?.name
+      ) ?? { name: '', symbolList: [] };
+
+      this.symbolList = this.country?.symbolList || [];
       this.symbol = currency.symbol || '';
       this.equalToBaseCurrency = currency.equalToBaseCurrency || 0;
-      this.effectiveFrom = new Date(currency.effectiveFrom);
-      this.onCountryChange(); // Update the symbol list and other data based on the country
+      this.effectiveFrom = new Date(currency.effectiveFrom || '');
     }
   }
 

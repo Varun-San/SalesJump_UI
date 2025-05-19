@@ -9,19 +9,19 @@
 
     <div class="card-body p-0 mt-1">
         <div class="row col-12">
-            <div class="col-4">
+            <div class="col-6">
                 <div class="mb-3">
                     <label class="form-label">Short Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" [(ngModel)]="shortName" />
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-6">
                 <div class="mb-3">
                     <label class="form-label">Designation <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" [(ngModel)]="designation" />
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-6">
                 <div class="mb-3">
                     <label class="form-label">Type <span class="text-danger">*</span></label>
                     <select class="form-select" [(ngModel)]="type">
@@ -29,7 +29,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-6">
                 <div class="mb-3">
                     <label class="form-label">User Wise Count <span class="text-danger">*</span></label>
                     <input type="number" class="form-control" [(ngModel)]="userWiseCount" />
@@ -42,7 +42,8 @@
         <button class="btn btn-outline-secondary" (click)="closeCard()">
             Cancel
         </button>
-        <button class="btn btn-success" (click)="saveDesignation()">{{ editMode ? 'Update Designation' : 'Save Designation'
+        <button class="btn btn-success" (click)="saveDesignation()">{{ editMode ? 'Update Designation' : 'Save
+            Designation'
             }}</button>
     </div>
 </div>

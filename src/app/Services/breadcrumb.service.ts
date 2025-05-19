@@ -151,6 +151,11 @@ export class BreadcrumbService {
         'rate-card',
       ],
     },
+    {
+      base: '/master/gamification/',
+      label: 'Gamification',
+      subs: ['competitions', 'formula', 'rewards', 'levels'],
+    },
   ];
 
   getBreadcrumbs(route: string): { label: string; route: string }[] | null {

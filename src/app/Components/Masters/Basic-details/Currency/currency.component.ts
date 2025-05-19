@@ -40,6 +40,8 @@ export class CurrencyComponent {
     { label: 'Deactivate', route: null },
   ];
 
+  
+
   CurrencyList: {
     currencyName: string;
     country: string;

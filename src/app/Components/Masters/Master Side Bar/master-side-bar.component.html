@@ -95,6 +95,17 @@
             <div *ngSwitchCase="'Van Sales'">
               <h4>Van Sales</h4>
             </div>
+            <!-- !Gamificaiton -->
+            <div *ngSwitchCase="'Gamification'">
+              <h4>Gamificaiton</h4>
+              <mat-chip-set>
+                <mat-chip *ngFor="let Gam of Gamification_label" [ngClass]="{
+                    'active-chip': activeChip_Gamification === Gam.name
+                  }" (click)="activeChip_Gamification = Gam.name" routerLink="{{ Gam.route }}">
+                  {{ Gam.name }}
+                </mat-chip>
+              </mat-chip-set>
+            </div>
             <!-- !Default -->
             <div *ngSwitchDefault>
               <h4>Welcome</h4>

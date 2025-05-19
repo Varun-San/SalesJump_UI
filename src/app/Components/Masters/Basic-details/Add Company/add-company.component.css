@@ -3,13 +3,21 @@
 }
 
 #Add-Division {
-    position: absolute;
+    /* position: absolute;
     top: 60px;
     left: 52%;
     transform: translateX(-50%);
     z-index: 9999;
     width: 1500px;
-    height: 90vh;
+    height: 90vh; */
+    position: absolute;
+    top: 10px;
+    left: 77.3%;
+    transform: translateX(-50%);
+    z-index: 9000;
+    width: 700px;
+    height: auto;
+    overflow: visible !important;
 }
 
 hr {
@@ -79,12 +87,12 @@ label {
 
     #Add-Division {
         position: absolute;
-        top: 60px;
-        left: 52%;
+        top: 10px;
+        left: 77.3%;
         transform: translateX(-50%);
         z-index: 9000;
-        width: 1510px;
-        height: 90vh;
+        width: 700px;
+        height: auto;
         overflow: visible !important;
     }
 }
@@ -92,12 +100,12 @@ label {
 @media screen and (min-width: 1610px) {
     #Add-Division {
         position: absolute;
-        top: 60px;
-        left: 52%;
+        top: 10px;
+        left: 77.3%;
         transform: translateX(-50%);
         z-index: 9000;
-        width: 1440px;
-        height: 90vh;
+        width: 700px;
+        height: auto;
         overflow: visible !important;
     }
 }

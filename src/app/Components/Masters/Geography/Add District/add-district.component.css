@@ -20,12 +20,12 @@ hr {
 
     #Add-Division {
         position: absolute;
-        top: 60px;
-        left: 52%;
+        top: 10px;
+        left: 74.5%;
         transform: translateX(-50%);
         z-index: 9000;
-        width: 1510px;
-        height: 90vh;
+        width: 800px;
+        height: auto;
         overflow: visible !important;
     }
 }
