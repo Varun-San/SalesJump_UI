@@ -21,7 +21,6 @@ import { NgSelectComponent } from '@ng-select/ng-select';
     MatMenuModule,
     MatIconModule,
     FormsModule,
-    RouterLink,
     MatTooltipModule,
     RouterOutlet,
     NgSelectComponent,

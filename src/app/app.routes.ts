@@ -58,6 +58,7 @@ import { CompetitionsComponent } from './Components/Masters/Gamification/Competi
 import { FormulaComponent } from './Components/Masters/Gamification/Formula/formula.component';
 import { RewardsComponent } from './Components/Masters/Gamification/Rewards/rewards.component';
 import { LevelsComponent } from './Components/Masters/Gamification/Levels/levels.component';
+import { AddCompetitionsComponent } from './Components/Masters/Gamification/Competitions/Add Competitions/add-competitions.component';
 
 export const routes: Routes = [
   {
@@ -312,7 +313,16 @@ export const routes: Routes = [
             path: 'gamification',
             component: GamificationComponent,
             children: [
-              { path: 'competitions', component: CompetitionsComponent },
+              {
+                path: 'competitions',
+                component: CompetitionsComponent,
+                children: [
+                  {
+                    path: 'add-competitions',
+                    component: AddCompetitionsComponent,
+                  },
+                ],
+              },
               {
                 path: 'formula',
                 component: FormulaComponent,

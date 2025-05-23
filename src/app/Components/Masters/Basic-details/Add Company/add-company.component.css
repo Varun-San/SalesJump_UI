@@ -90,7 +90,7 @@ label {
         top: 10px;
         left: 77.3%;
         transform: translateX(-50%);
-        z-index: 9000;
+        z-index: 1;
         width: 700px;
         height: auto;
         overflow: visible !important;
@@ -103,7 +103,7 @@ label {
         top: 10px;
         left: 77.3%;
         transform: translateX(-50%);
-        z-index: 9000;
+        z-index: 1;
         width: 700px;
         height: auto;
         overflow: visible !important;

@@ -99,6 +99,18 @@ export class BreadcrumbService {
         },
       ],
     },
+    {
+      match: 'master/gamification/competitions/add-competitions',
+      trail: [
+        { label: 'Master', route: '#' },
+        { label: 'Gamefication', route: 'master/gamification' },
+        { label: 'Competition', route: 'master/gamification/competitions' },
+        {
+          label: 'Add Competitions',
+          route: 'master/gamification/competitions/add-competitions',
+        },
+      ],
+    },
   ];
 
   private dynamicGroups = [

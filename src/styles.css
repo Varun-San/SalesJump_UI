@@ -16,6 +16,15 @@ body {
   font-family: "Work Sans", sans-serif !important;
 }
 
+
+/* Ellipsis */
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .form-control {
   display: block;
   width: 100%;

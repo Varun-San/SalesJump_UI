@@ -82,7 +82,7 @@ label {
         top: 60px;
         left: 52%;
         transform: translateX(-50%);
-        z-index: 9000;
+        z-index: 1;
         width: 1510px;
         height: 90vh;
         overflow: visible !important;
@@ -95,7 +95,7 @@ label {
         top: 60px;
         left: 52%;
         transform: translateX(-50%);
-        z-index: 9000;
+        z-index: 1;
         width: 1440px;
         height: 90vh;
         overflow: visible !important;

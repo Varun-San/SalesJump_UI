@@ -1,0 +1,173 @@
+<div *ngIf="isAddCompetitions" class="card shadow p-3" id="Add-Division">
+    <mat-stepper linear #stepper>
+        <!-- ! DETIALS STEPPER -->
+        <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+            <div class="card-body" [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Details</ng-template>
+                <div class="card-body p-0 mt-1">
+                    <div class="row col-12">
+                        <div class="col-4">
+                            <div class="mb-3">
+                                <label class="form-label">Currency Name <span class="text-danger">*</span></label>
+                                <div class="calendar-reisze">
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <input type="text" matInput formControlName="currencyName">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="mb-3">
+                                <label class="form-label">Start Date <span class="text-danger">*</span></label>
+                                <div class="calendar-reisze">
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <input matInput [matDatepicker]="cal1" formControlName="startDate" />
+                                        <img src="Assets/AddCurrency/Calendar.svg" alt="Calendar Icon"
+                                            (click)="cal1.open()" class="calendar-icon" />
+                                        <mat-datepicker #cal1></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="mb-3">
+                                <label class="form-label">End Date <span class="text-danger">*</span></label>
+                                <div class="calendar-reisze">
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <input matInput [matDatepicker]="cal" formControlName="endDate" />
+                                        <img src="Assets/AddCurrency/Calendar.svg" alt="Calendar Icon"
+                                            (click)="cal.open()" class="calendar-icon" />
+                                        <mat-datepicker #cal></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">Competition Type <span class="text-danger">*</span></label>
+                                <div class="row">
+                                    <!-- Player Competition -->
+                                    <div class="col-md-4">
+                                        <input type="radio" class="btn-check" name="competitionType" id="player"
+                                            autocomplete="off" checked>
+                                        <label class="btn btn-outline-primary w-100 text-start p-3" for="player">
+                                            <div class="">
+                                                <div class="me-3 fs-3">
+                                                    <img src="Assets/Gamification/Player.svg" alt="Player Icon"
+                                                        class="img-fluid"
+                                                        style="height: 2.5rem; padding: 3px; margin-bottom: 10px; ">
+                                                </div>
+                                                <div>
+                                                    <div>
+                                                        <h5>Player Competition</h5>
+                                                    </div>
+                                                    <div class="text-muted small">
+                                                        <p style="margin-bottom: 0px;"> Players compete against each
+                                                            other to see who can reach a
+                                                            specific target at a period of time.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                    <!-- Team Competition -->
+                                    <div class="col-md-4">
+                                        <input type="radio" class="btn-check" name="competitionType" id="team"
+                                            autocomplete="off">
+                                        <label class="btn btn-outline-primary w-100 text-start p-3" for="team">
+                                            <div class="">
+                                                <div class="me-3 fs-3">
+                                                    <img src="Assets/Gamification/Team.svg" alt="Player Icon"
+                                                        class="img-fluid"
+                                                        style="height: 2.5rem; padding: 3px; margin-bottom: 10px;">
+                                                </div>
+                                                <div>
+                                                    <div>
+                                                        <h5>Team Competition</h5>
+                                                    </div>
+                                                    <div class="text-muted small">
+                                                        <p style="margin-bottom: 0px;">Teams compete against each other
+                                                            to reach a specific target
+                                                            at a
+                                                            period of time.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-grow-1">
+                    <hr style="margin-top: 120px;" />
+                </div>
+                <div class="col-12 text-end">
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </div>
+        </mat-step>
+        <!-- ! TARGET AND PLAYERS -->
+        <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Target & Player</ng-template>
+                <mat-form-field>
+                    <mat-label>Target & Player</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                    <button mat-button matStepperPrevious>Previous</button>
+                </div>
+            </form>
+        </mat-step>
+        <!-- ! PRIZES -->
+        <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
+            <form [formGroup]="thirdFormGroup">
+                <ng-template matStepLabel>Prizes</ng-template>
+                <mat-form-field>
+                    <mat-label>Prizes</mat-label>
+                    <input matInput formControlName="thirdCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <!-- ! SETTINGS -->
+        <mat-step [stepControl]="fourthFormGroup" [editable]="isEditable">
+            <form [formGroup]="fourthFormGroup">
+                <ng-template matStepLabel>Settings</ng-template>
+                <mat-form-field>
+                    <mat-label>Settings</mat-label>
+                    <input matInput formControlName="fourthCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <!-- ! THEMES -->
+        <mat-step [stepControl]="fifthFormGroup" [editable]="isEditable">
+            <form [formGroup]="fifthFormGroup">
+                <ng-template matStepLabel>Themes</ng-template>
+                <mat-form-field>
+                    <mat-label>Thems</mat-label>
+                    <input matInput formControlName="fifthCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                    <button mat-button (click)="stepper.reset()">Reset</button>
+                </div>
+            </form>
+        </mat-step>
+    </mat-stepper>
+</div>
