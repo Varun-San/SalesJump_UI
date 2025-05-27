@@ -191,3 +191,26 @@ table td {
   background-color: #1997ce !important;
   color: white !important;
 }
+
+
+/* ! INFO BLUE ICON */
+.info_blue {
+  background-image: url('/Assets/Gamification/Info_blue.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+/* ! INFO GREY ICON */
+.info_grey {
+  background-image: url('/Assets/Gamification/Info.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
