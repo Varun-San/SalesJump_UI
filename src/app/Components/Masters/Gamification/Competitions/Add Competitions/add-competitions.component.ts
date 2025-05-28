@@ -50,7 +50,31 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   templateUrl: './add-competitions.component.html',
   styleUrl: './add-competitions.component.css',
 })
-export class AddCompetitionsComponent {
+export class AddCompetitionsComponent implements OnInit {
+  ngOnInit(): void {
+    const data = sessionStorage.getItem('selectedPlayers');
+    if (data) {
+      this.selectedPlayers = JSON.parse(data);
+      this.selected_players = this.selectedPlayers.length;
+    }
+
+    const stored = sessionStorage.getItem('competitionData');
+    if (stored) {
+      const sessionData = JSON.parse(stored);
+      if (sessionData.step1) {
+        this.firstFormGroup.patchValue(sessionData.step1);
+      }
+      if (sessionData.step2) {
+        this.secondFormGroup.patchValue(sessionData.step2);
+      }
+      const players = sessionStorage.getItem('selectedPlayers');
+      if (players) {
+        this.selectedPlayers = JSON.parse(players);
+        this.selected_players = this.selectedPlayers.length;
+      }
+    }
+  }
+
   faSearch = faSearch;
 
   sidebarVisible: boolean = false;
@@ -59,13 +83,6 @@ export class AddCompetitionsComponent {
     return this.router.url.includes(
       'master/gamification/competitions/add-competitions'
     );
-  }
-
-  date = new Date();
-  curdt = this.date.getDate();
-
-  ngOnInit(): void {
-    console.log(this.curdt);
   }
 
   closeCard() {
@@ -78,11 +95,10 @@ export class AddCompetitionsComponent {
     private router: Router,
     private stepService: StepNavigationService
   ) {}
-
   ngAfterViewInit() {
     if (this.stepService.stepToGo !== null) {
       this.stepper.selectedIndex = this.stepService.stepToGo;
-      this.stepService.stepToGo = null; // Reset after navigation
+      this.stepService.stepToGo = null; // Reset after using
     }
   }
 
@@ -102,15 +118,44 @@ export class AddCompetitionsComponent {
     competitionType: ['player'],
   });
 
+  onFirstStepNext(): void {
+    const step1Data = this.firstFormGroup.value;
+    const stored = sessionStorage.getItem('competitionData');
+    let sessionData = stored ? JSON.parse(stored) : {};
+
+    sessionData.step1 = step1Data;
+    sessionStorage.setItem('competitionData', JSON.stringify(sessionData));
+  }
+
   // ! -----> TARGET AND PLAYERS <-----
   secondFormGroup = this._formBuilder.group({
     formula: ['', Validators.required],
     startDate_TandP: ['', Validators.required],
     endDate_TandP: ['', Validators.required],
   });
+  onSecondStepNext(): void {
+    const step2Data = this.secondFormGroup.value;
+    const stored = sessionStorage.getItem('competitionData');
+    let sessionData = stored ? JSON.parse(stored) : {};
+
+    sessionData.step2 = step2Data;
+    sessionStorage.setItem('competitionData', JSON.stringify(sessionData));
+  }
 
   // ! -----> SELECTED PLAYERS <-----
-  selected_players = 0;
+  selectedPlayers: any[] = [];
+  selected_players: number = 0; // ✅ Add this line
+
+  removePlayer(index: number): void {
+    this.selectedPlayers.splice(index, 1);
+    this.selected_players = this.selectedPlayers.length;
+    sessionStorage.setItem(
+      'selectedPlayers',
+      JSON.stringify(this.selectedPlayers)
+    );
+  }
+
+  // ? ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],

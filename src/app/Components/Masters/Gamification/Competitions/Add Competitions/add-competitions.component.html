@@ -113,7 +113,7 @@
                 </div>
                 <div class="col-12 d-flex gap-2 justify-content-end align-items-center">
                     <button class="btn btn-outline-secondary" (click)="closeCard()">Cancel</button>
-                    <button class="btn btn-primary" matStepperNext>Next</button>
+                    <button class="btn btn-primary" matStepperNext (click)="onFirstStepNext()">Next</button>
                 </div>
             </div>
         </mat-step>
@@ -198,25 +198,35 @@
                             </p-button>
                         </div> -->
 
-                        <div class="col-12">
+                        <div class="col-12" style="display: none;">
                             <button class="btn filter-btn d-flex align-items-center justify-content-center text-black"
                                 style="background-color: #1997ce; color: white !important"
                                 [routerLink]="['/master/gamification/competitions/add-competitions/player-selection']"
                                 routerLinkActive="router-link-active">
                                 <img src="Assets/AdminMasters/Add.svg" alt="Add Icon" height="16" width="16"
                                     class="me-2" />
-                                Add Players
+                                Players
+                            </button>
+                        </div>
+                        <div class="col-12" style="display: block;">
+                            <button class="btn filter-btn d-flex align-items-center justify-content-center text-black"
+                                style="background-color: #1997ce; color: white !important"
+                                [routerLink]="['/master/gamification/competitions/add-competitions/player-selection']"
+                                routerLinkActive="router-link-active">
+                                <img src="Assets/AdminMasters/Add.svg" alt="Add Icon" height="16" width="16"
+                                    class="me-2" />
+                                Team
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 mt-3" *ngIf="selected_players > -1">
+                <div class="col-12 mt-3" *ngIf="selected_players > 0">
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Selected Players ( )
+                                    Selected Players ({{ selected_players }})
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
@@ -239,22 +249,23 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                <tr *ngFor="let player of selectedPlayers; let i = index">
                                                     <!-- Delete Icon -->
                                                     <td class="text-center">
                                                         <img src="Assets/Gamification/Delete.svg" alt="Delete"
-                                                            style="cursor: pointer; height: 20px; width: 20px;" />
+                                                            style="cursor: pointer; height: 20px; width: 20px;"
+                                                            (click)="removePlayer(i)" />
                                                     </td>
 
                                                     <!-- Player Info -->
                                                     <td>
                                                         <div class="d-flex align-items-center gap-2">
-                                                            <img src="Assets/Gamification/Profile Picture_1.svg"
-                                                                alt="profile_pic" class="rounded-circle" width="40"
-                                                                height="40" />
+                                                            <img [src]="player.profileImage" alt="profile_pic"
+                                                                class="rounded-circle" width="40" height="40" />
                                                             <div>
-                                                                <h6 class="mb-0">Rahul</h6>
-                                                                <small class="text-muted">Dummy</small>
+                                                                <h6 class="mb-0">{{ player.name }}</h6>
+                                                                <small class="text-muted">{{ player.designation
+                                                                    }}</small>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -276,14 +287,14 @@
                     </div>
                 </div>
                 <div class="flex-grow-1">
-                    <hr [ngStyle]="{'margin-top': selected_players > -1 ? '20px' : '260px'}" />
+                    <hr [ngStyle]="{'margin-top': selected_players >  0 ? '20px' : '260px'}" />
                 </div>
                 <div class="row">
                     <div class="col-6 d-flex gap-2 justify-content-start align-items-center"><button
                             class="btn custom-style" (click)="closeCard()">Close</button></div>
                     <div class="col-6 d-flex gap-2 justify-content-end align-items-center">
                         <button class="btn btn-outline-secondary" matStepperPrevious>Previous</button>
-                        <button class="btn btn-primary" matStepperNext>Next</button>
+                        <button class="btn btn-primary" matStepperNext (click)="onSecondStepNext()">Next</button>
                     </div>
                 </div>
             </div>

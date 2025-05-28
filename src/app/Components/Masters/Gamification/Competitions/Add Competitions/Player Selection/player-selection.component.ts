@@ -115,9 +115,22 @@ export class PlayerSelectionComponent {
   }
 
   closeCard() {
+    // Set step to go
+    this.stepService.stepToGo = 1;
+
+    // Force full page reload by assigning to window.location.href
+    window.location.href = '/master/gamification/competitions/add-competitions';
+  }
+
+  getSelectedPlayers() {
+    const selected = this.employeeList.filter((emp) => emp.selected);
+    sessionStorage.setItem('selectedPlayers', JSON.stringify(selected));
+
+    // Optional: Navigate back
     this.stepService.stepToGo = 1;
     this.router.navigate([
       '/master/gamification/competitions/add-competitions',
     ]);
+    this.closeCard();
   }
 }

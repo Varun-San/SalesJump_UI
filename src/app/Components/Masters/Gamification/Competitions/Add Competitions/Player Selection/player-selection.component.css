@@ -43,6 +43,12 @@ hr {
     margin-top: 2px;
 }
 
+::ng-deep .form-check-input:focus {
+    border: 2px solid #1997ce !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
 @media screen and (max-width: 1609px) {
 
     #Add-Division {
