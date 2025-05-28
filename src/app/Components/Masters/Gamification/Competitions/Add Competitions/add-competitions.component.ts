@@ -22,6 +22,8 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { StepNavigationService } from '../../../../../Services/step-navigation.service';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-add-competitions',
@@ -42,11 +44,15 @@ import { StepNavigationService } from '../../../../../Services/step-navigation.s
     MatDatepickerModule,
     MatNativeDateModule,
     MatTooltip,
+    CommonModule,
+    FontAwesomeModule,
   ],
   templateUrl: './add-competitions.component.html',
   styleUrl: './add-competitions.component.css',
 })
 export class AddCompetitionsComponent {
+  faSearch = faSearch;
+
   sidebarVisible: boolean = false;
 
   get isAddCompetitions(): boolean {
@@ -102,6 +108,10 @@ export class AddCompetitionsComponent {
     startDate_TandP: ['', Validators.required],
     endDate_TandP: ['', Validators.required],
   });
+
+  // ! -----> SELECTED PLAYERS <-----
+  selected_players = 0;
+
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
   });

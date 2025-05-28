@@ -210,8 +210,73 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12 mt-3" *ngIf="selected_players > -1">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Selected Players ( )
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="col-12 d-flex align-items-center gap-3 mb-3">
+                                        <div class="position-relative col-12">
+                                            <fa-icon [icon]="faSearch" class="search-icon"
+                                                style="font-size: 18px;"></fa-icon>
+                                            <input type="text" class="form-control ps-5" placeholder="Search" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <table class="table table-bordered align-middle table-fixed">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th style="width: 10px;"></th>
+                                                    <th>Players</th>
+                                                    <th style="width: 200px;">Target</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <!-- Delete Icon -->
+                                                    <td class="text-center">
+                                                        <img src="Assets/Gamification/Delete.svg" alt="Delete"
+                                                            style="cursor: pointer; height: 20px; width: 20px;" />
+                                                    </td>
+
+                                                    <!-- Player Info -->
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <img src="Assets/Gamification/Profile Picture_1.svg"
+                                                                alt="profile_pic" class="rounded-circle" width="40"
+                                                                height="40" />
+                                                            <div>
+                                                                <h6 class="mb-0">Rahul</h6>
+                                                                <small class="text-muted">Dummy</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                    <!-- Target Input -->
+                                                    <td>
+                                                        <div class="col-6">
+                                                            <input class="form-control" type="text" readonly
+                                                                style="background-color: #D9D9D9 !important;" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="flex-grow-1">
-                    <hr style="margin-top: 260px;" />
+                    <hr [ngStyle]="{'margin-top': selected_players > -1 ? '20px' : '260px'}" />
                 </div>
                 <div class="row">
                     <div class="col-6 d-flex gap-2 justify-content-start align-items-center"><button
