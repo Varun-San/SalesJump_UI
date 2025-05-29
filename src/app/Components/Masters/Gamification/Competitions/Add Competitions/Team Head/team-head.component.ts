@@ -6,9 +6,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StepNavigationService } from '../../../../../../Services/step-navigation.service';
-
 @Component({
-  selector: 'app-player-selection',
+  selector: 'app-team-head',
   imports: [
     NgIf,
     RouterModule,
@@ -17,19 +16,19 @@ import { StepNavigationService } from '../../../../../../Services/step-navigatio
     FormsModule,
     FontAwesomeModule,
   ],
-  templateUrl: './player-selection.component.html',
-  styleUrl: './player-selection.component.css',
+  templateUrl: './team-head.component.html',
+  styleUrl: './team-head.component.css',
 })
-export class PlayerSelectionComponent {
+export class TeamHeadComponent {
   faSearch = faSearch;
 
   constructor(
     private router: Router,
     private stepService: StepNavigationService
   ) {}
-  get isAddCompetitions(): boolean {
+  get isAddTeamHead(): boolean {
     return this.router.url.includes(
-      'master/gamification/competitions/add-competitions/player-selection'
+      'master/gamification/competitions/add-competitions/team-head'
     );
   }
 
@@ -38,6 +37,7 @@ export class PlayerSelectionComponent {
   division: any = null;
   designation: any = null;
   role: any = null;
+  id: any = null;
   // ! Options List
 
   // ? States
@@ -69,15 +69,6 @@ export class PlayerSelectionComponent {
     { name: 'Business Analyst' },
     { name: 'HR Manager' },
     { name: 'Quality Assurance Engineer' },
-  ];
-
-  // ? Role List
-  roleList: { name: string }[] = [
-    { name: 'Admin' },
-    { name: 'Manager' },
-    { name: 'Team Lead' },
-    { name: 'Developer' },
-    { name: 'Tester' },
   ];
 
   // ! Employee List
@@ -131,16 +122,24 @@ export class PlayerSelectionComponent {
       });
   }
 
-  getSelectedPlayers() {
-    const selected = this.employeeList.filter((emp) => emp.selected);
-    sessionStorage.setItem('selectedPlayers', JSON.stringify(selected));
+  // getSelectedPlayers_Head() {
+  //   const selected = this.employeeList.filter((emp) => emp.selected);
+  //   sessionStorage.setItem('selectedPlayers_Head', JSON.stringify(selected));
 
-    // Optional: Navigate back
+  //   // Instead of reloading, just navigate back
+  //   this.stepService.stepToGo = 1;
+  //   this.router.navigate([
+  //     '/master/gamification/competitions/add-competitions',
+  //   ]);
+  //   this.closeCard();
+  // }
+
+  getSelectedPlayers_Head() {
+    const selected = this.employeeList.filter((emp) => emp.selected);
+    sessionStorage.setItem('selectedPlayers_Head', JSON.stringify(selected));
     this.stepService.stepToGo = 1;
     this.router.navigate([
       '/master/gamification/competitions/add-competitions',
     ]);
-    this.closeCard();
-    window.location.href = '/master/gamification/competitions/add-competitions';
   }
 }

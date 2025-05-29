@@ -60,6 +60,7 @@ import { RewardsComponent } from './Components/Masters/Gamification/Rewards/rewa
 import { LevelsComponent } from './Components/Masters/Gamification/Levels/levels.component';
 import { AddCompetitionsComponent } from './Components/Masters/Gamification/Competitions/Add Competitions/add-competitions.component';
 import { PlayerSelectionComponent } from './Components/Masters/Gamification/Competitions/Add Competitions/Player Selection/player-selection.component';
+import { TeamHeadComponent } from './Components/Masters/Gamification/Competitions/Add Competitions/Team Head/team-head.component';
 
 export const routes: Routes = [
   {
@@ -325,6 +326,10 @@ export const routes: Routes = [
                       {
                         path: 'player-selection',
                         component: PlayerSelectionComponent,
+                      },
+                      {
+                        path: 'team-head',
+                        component: TeamHeadComponent,
                       },
                     ],
                   },

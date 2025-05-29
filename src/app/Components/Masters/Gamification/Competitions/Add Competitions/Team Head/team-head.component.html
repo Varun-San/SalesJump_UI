@@ -1,13 +1,13 @@
-<div *ngIf="isAddCompetitions" class="card shadow p-3" id="Add-Division">
+<div *ngIf="isAddTeamHead" class="card shadow p-3" id="Add-Division">
     <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
-        <h5 class="mb-0 me-2">Player Selection</h5>
+        <h5 class="mb-0 me-2">Team Head</h5>
         <div class="flex-grow-1">
             <hr class="mt-3 mb-0" />
         </div>
     </div>
     <div class="card-body p-0 mt-1">
         <div class="row col-12">
-            <div class="col-3">
+            <div class="col-4">
                 <div class="mb-3">
                     <label class="form-label">State <span class="text-danger">*</span></label>
                     <ng-select [(ngModel)]="state" [items]="stateList" bindLabel="name" placeholder="Select State"
@@ -15,7 +15,7 @@
                     </ng-select>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-4">
                 <div class="mb-3">
                     <label class="form-label">Division <span class="text-danger">*</span></label>
                     <ng-select [(ngModel)]="division" [items]="divisionList" bindLabel="name"
@@ -23,19 +23,11 @@
                     </ng-select>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-4">
                 <div class="mb-3">
                     <label class="form-label">Designation <span class="text-danger">*</span></label>
                     <ng-select [(ngModel)]="designation" [items]="designationList" bindLabel="name"
                         placeholder="Select Designation" [searchable]="true">
-                    </ng-select>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="mb-3">
-                    <label class="form-label">Role <span class="text-danger">*</span></label>
-                    <ng-select [(ngModel)]="role" [items]="roleList" bindLabel="name" placeholder="Select Role"
-                        [searchable]="true">
                     </ng-select>
                 </div>
             </div>
@@ -44,7 +36,8 @@
             <div class="alert alert-primary info p-2 mb-3 d-flex align-items-center gap-2" role="alert">
                 <i class="bi bi-info-circle-fill info_blue"></i>
                 <p class="info_alert mb-0">
-                    All employees listed below, you can use above options to filter the list.
+                    Select any one employee below to select his team members, you can use above options to filter the
+                    list
                 </p>
             </div>
         </div>
@@ -102,11 +95,11 @@
             <div class="row mt-3">
                 <div class="col-12 d-flex justify-content-end align-items-center gap-3">
                     <button class="btn btn-outline-secondary" (click)="closeCard()">Cancel</button>
-                    <button class="btn btn-primary" (click)="getSelectedPlayers()">Add</button>
+                    <button class="btn btn-primary" (click)="getSelectedPlayers_Head()">Add</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Background Blur Properties -->
-<div *ngIf="isAddCompetitions" class="card shadow p-3" id="Add-Division2"></div>
+<div *ngIf="isAddTeamHead" class="card shadow p-3" id="Add-Division2"></div>

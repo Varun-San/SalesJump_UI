@@ -208,10 +208,11 @@
                                 Players
                             </button>
                         </div>
+                        <!-- ! BASED ON THE TEAM SELECION -->
                         <div class="col-12" style="display: block;">
                             <button class="btn filter-btn d-flex align-items-center justify-content-center text-black"
                                 style="background-color: #1997ce; color: white !important"
-                                [routerLink]="['/master/gamification/competitions/add-competitions/player-selection']"
+                                [routerLink]="['/master/gamification/competitions/add-competitions/team-head']"
                                 routerLinkActive="router-link-active">
                                 <img src="Assets/AdminMasters/Add.svg" alt="Add Icon" height="16" width="16"
                                     class="me-2" />
@@ -286,6 +287,82 @@
                         </div>
                     </div>
                 </div>
+                <div class="row mt-3 border" *ngIf="selected_players_Head > 0">
+                    <div class="row col-12 position-relative" *ngFor="let block of teamBlocks; let i = index">
+
+                        <!-- Remove Button -->
+                        <button type="button"
+                            class="btn btn-sm position-absolute text-end end-0 p-0 bg-transparent border-0"
+                            style="z-index: 10; top:10px" (click)="removeTeamHead(i)">
+                            <img src="Assets/Add Product Details/Minus_Fill.svg" alt="Remove"
+                                style="width: 30px; height: 30px;" />
+                        </button>
+
+                        <!-- Team Head -->
+                        <div class="col-4 mt-3">
+                            <div class="mb-3">
+                                <label class="form-label">Team Head <span class="text-danger">*</span></label>
+                                <ng-select [ngModelOptions]="{standalone: true}" [(ngModel)]="block.teamHead"
+                                    [items]="teamHeadList" bindLabel="name" placeholder="Select Team Head"
+                                    [searchable]="true">
+                                </ng-select>
+                            </div>
+                        </div>
+
+                        <!-- Team Name -->
+                        <div class="col-4 mt-3">
+                            <div class="mb-3">
+                                <label class="form-label">Team Name <span class="text-danger">*</span></label>
+                                <div class="calendar-reisze">
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <input matInput type="text" [(ngModel)]="block.teamName"
+                                            [ngModelOptions]="{standalone: true}">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Logo Upload -->
+                        <div class="col-4 mt-3">
+                            <label class="form-label">Team Logo</label>
+                            <div class="position-relative">
+                                <input type="text" class="form-control pe-5" [(ngModel)]="block.prdtImage"
+                                    [ngModelOptions]="{standalone: true}" readonly />
+                                <img src="Assets/Add Product Details/ProductImageUpload.svg" alt="Upload Icon"
+                                    class="input-icon" (click)="triggerFileUpload(i)" />
+                                <input type="file" #fileInput accept="image/*" (change)="onImageSelected($event, i)"
+                                    hidden />
+                            </div>
+                        </div>
+
+                        <!-- Image Preview -->
+                        <div class="col-12" *ngIf="block.imagePreviews.length">
+                            <label class="form-label">Preview Images</label>
+                            <div class="d-flex flex-wrap gap-3">
+                                <div *ngFor="let img of block.imagePreviews; let j = index"
+                                    class="position-relative me-2 mb-2">
+                                    <img [src]="img" class="img-thumbnail"
+                                        style="max-width: 150px; max-height: 150px;" />
+                                    <button type="button"
+                                        class="btn btn-sm position-absolute top-0 end-0 p-0 bg-transparent border-0"
+                                        (click)="removeImage(i, j)">
+                                        <img src="Assets/Add Product Details/Minus_Fill.svg" alt="Remove"
+                                            style="width: 30px; height: 30px;" />
+                                    </button>
+                                </div>
+
+                                <!-- Upload More -->
+                                <button type="button"
+                                    class="btn btn-outline-primary d-flex align-items-center justify-content-center"
+                                    style="width: 30px; height: 30px;" (click)="triggerFileUpload(i)">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
                 <div class="flex-grow-1">
                     <hr [ngStyle]="{'margin-top': selected_players >  0 ? '20px' : '260px'}" />
                 </div>

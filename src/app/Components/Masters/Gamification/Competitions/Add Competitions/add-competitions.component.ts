@@ -1,4 +1,12 @@
-import { Component, inject, ViewChild, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  ViewChild,
+  OnInit,
+  ElementRef,
+  ViewChildren,
+  QueryList,
+} from '@angular/core';
 import {
   FormBuilder,
   Validators,
@@ -39,7 +47,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatStepperModule,
     RouterModule,
     NgIf,
-    FormsModule,
     NgSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -53,6 +60,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 export class AddCompetitionsComponent implements OnInit {
   ngOnInit(): void {
     const data = sessionStorage.getItem('selectedPlayers');
+    const team_head = sessionStorage.getItem('selectedPlayers_Head');
+    this.loadSelectedPlayersFromSession();
+
+    console.log(data);
+    console.log(team_head);
+
+    if (team_head) {
+      this.selectedPlayers_Head = JSON.parse(team_head);
+      this.selected_players_Head = this.selectedPlayers_Head.length;
+    }
+
     if (data) {
       this.selectedPlayers = JSON.parse(data);
       this.selected_players = this.selectedPlayers.length;
@@ -155,6 +173,107 @@ export class AddCompetitionsComponent implements OnInit {
     );
   }
 
+  // ! CREATING THE TEAM HEAD
+
+  addTeamHead() {
+    this.teamBlocks.push({
+      teamHead: this.teamHead,
+      teamName: this.teamName,
+      prdtImage: this.prdtImage,
+      imagePreviews: [...this.imagePreviews],
+    });
+
+    this.selected_players_Head = this.teamBlocks.length;
+
+    // Save updated blocks
+    sessionStorage.setItem(
+      'selectedPlayers_Head',
+      JSON.stringify(this.teamBlocks)
+    );
+
+    // Clear form
+    this.teamHead = null;
+    this.teamName = null;
+    this.prdtImage = '';
+    this.imagePreviews = [];
+    this.imageFiles = [];
+  }
+
+  removeTeamHead(index: number) {
+    this.teamBlocks.splice(index, 1);
+
+    // Update the count
+    this.selected_players_Head = this.teamBlocks.length;
+
+    // Optionally, update session storage
+    sessionStorage.setItem(
+      'selectedPlayers_Head',
+      JSON.stringify(this.teamBlocks)
+    );
+  }
+
+  selectedPlayers_Head: any[] = [];
+  selected_players_Head: number = 0;
+
+  loadSelectedPlayersFromSession() {
+    const stored = sessionStorage.getItem('selectedPlayers_Head');
+    if (stored) {
+      const players = JSON.parse(stored);
+      this.teamBlocks = players.map((player: any) => ({
+        teamHead: player.name,
+        teamName: '',
+        prdtImage: '',
+        imagePreviews: [],
+      }));
+      this.selected_players_Head = this.teamBlocks.length;
+      this.teamHeadList = players.map((p: any) => ({ name: p.name }));
+    }
+  }
+
+  teamBlocks: TeamBlock[] = [];
+
+  teamHead: any = null; // ? States
+  teamName: any = null;
+  teamHeadList: { name: string }[] = [];
+
+  prdtImage: string = '';
+
+  imagePreviews: string[] = [];
+  imageFiles: File[] = [];
+
+  @ViewChildren('fileInput') fileInputs!: QueryList<
+    ElementRef<HTMLInputElement>
+  >;
+
+  triggerFileUpload(index: number) {
+    const input = this.fileInputs.toArray()[index];
+    input.nativeElement.click();
+  }
+
+  onImageSelected(event: Event, index: number) {
+    const files = (event.target as HTMLInputElement).files;
+    if (files) {
+      const block = this.teamBlocks[index];
+      Array.from(files).forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          block.imagePreviews.push(reader.result as string);
+          block.prdtImage = block.imagePreviews
+            .map((_, i) => `Image ${i + 1}`)
+            .join(', ');
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  }
+
+  removeImage(blockIndex: number, imageIndex: number) {
+    const block = this.teamBlocks[blockIndex];
+    block.imagePreviews.splice(imageIndex, 1);
+    block.prdtImage = block.imagePreviews
+      .map((_, i) => `Image ${i + 1}`)
+      .join(', ');
+  }
   // ? ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   thirdFormGroup = this._formBuilder.group({
@@ -167,4 +286,11 @@ export class AddCompetitionsComponent implements OnInit {
     fifthCtrl: ['', Validators.required],
   });
   isEditable = true;
+}
+
+interface TeamBlock {
+  teamHead: string | null;
+  teamName: string;
+  prdtImage: string;
+  imagePreviews: string[];
 }
