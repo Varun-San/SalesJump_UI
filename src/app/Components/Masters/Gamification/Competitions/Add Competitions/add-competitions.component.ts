@@ -61,6 +61,7 @@ export class AddCompetitionsComponent implements OnInit {
   ngOnInit(): void {
     const data = sessionStorage.getItem('selectedPlayers');
     const team_head = sessionStorage.getItem('selectedPlayers_Head');
+    const stored = sessionStorage.getItem('competitionData');
     this.loadSelectedPlayersFromSession();
 
     console.log(data);
@@ -76,8 +77,15 @@ export class AddCompetitionsComponent implements OnInit {
       this.selected_players = this.selectedPlayers.length;
     }
 
-    const stored = sessionStorage.getItem('competitionData');
     if (stored) {
+      if (stored) {
+        const sessionData = JSON.parse(stored);
+        if (sessionData.step1) {
+          this.firstFormGroup.patchValue(sessionData.step1);
+          this.competitionType = sessionData.step1.competitionType;
+        }
+      }
+
       const sessionData = JSON.parse(stored);
       if (sessionData.step1) {
         this.firstFormGroup.patchValue(sessionData.step1);
@@ -90,6 +98,13 @@ export class AddCompetitionsComponent implements OnInit {
         this.selectedPlayers = JSON.parse(players);
         this.selected_players = this.selectedPlayers.length;
       }
+
+      // Live updates from radio changes
+      this.firstFormGroup
+        .get('competitionType')
+        ?.valueChanges.subscribe((value) => {
+          this.competitionType = value ?? '';
+        });
     }
   }
 
@@ -127,13 +142,14 @@ export class AddCompetitionsComponent implements OnInit {
   private _formBuilder = inject(FormBuilder);
 
   currentStepIndex: number = 0;
+  competitionType: string | null = '';
 
   // ! -----> DETAILS <-----
   firstFormGroup = this._formBuilder.group({
-    currencyName: ['1234', Validators.required],
-    startDate: [``, Validators.required],
+    competitionTitle: ['1234', Validators.required],
+    startDate: ['', Validators.required],
     endDate: ['', Validators.required],
-    competitionType: ['player'],
+    competitionType: ['', Validators.required],
   });
 
   onFirstStepNext(): void {
@@ -143,6 +159,16 @@ export class AddCompetitionsComponent implements OnInit {
 
     sessionData.step1 = step1Data;
     sessionStorage.setItem('competitionData', JSON.stringify(sessionData));
+    this.stepService.stepToGo = 1;
+
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(
+        ['/master/gamification/competitions/add-competitions'],
+        {
+          queryParams: { reload: new Date().getTime() },
+        }
+      );
+    });
   }
 
   // ! -----> TARGET AND PLAYERS <-----
@@ -192,8 +218,8 @@ export class AddCompetitionsComponent implements OnInit {
     );
 
     // Clear form
-    this.teamHead = null;
-    this.teamName = null;
+    this.teamHead = '';
+    this.teamName = '';
     this.prdtImage = '';
     this.imagePreviews = [];
     this.imageFiles = [];
@@ -289,7 +315,7 @@ export class AddCompetitionsComponent implements OnInit {
 }
 
 interface TeamBlock {
-  teamHead: string | null;
+  teamHead: string;
   teamName: string;
   prdtImage: string;
   imagePreviews: string[];

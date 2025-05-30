@@ -8,10 +8,10 @@
                     <div class="row col-12">
                         <div class="col-4">
                             <div class="mb-3">
-                                <label class="form-label">Currency Name <span class="text-danger">*</span></label>
+                                <label class="form-label">Competition Title <span class="text-danger">*</span></label>
                                 <div class="calendar-reisze">
                                     <mat-form-field appearance="outline" class="w-100">
-                                        <input type="text" matInput formControlName="currencyName">
+                                        <input type="text" matInput formControlName="competitionTitle">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -52,59 +52,52 @@
                         <div class="col-12">
                             <div class="mb-3">
                                 <label class="form-label">Competition Type <span class="text-danger">*</span></label>
-                                <div class="row">
+                                <div class="row" [formGroup]="firstFormGroup">
+
                                     <!-- Player Competition -->
                                     <div class="col-md-4">
-                                        <input type="radio" class="btn-check" name="competitionType" id="player"
-                                            autocomplete="off" checked>
+                                        <input type="radio" class="btn-check" id="player" value="player"
+                                            formControlName="competitionType" name="competitionType"
+                                            autocomplete="off" />
                                         <label class="btn btn-outline-primary w-100 text-start p-3" for="player">
-                                            <div class="">
-                                                <div class="me-3 fs-3">
-                                                    <img src="Assets/Gamification/Player.svg" alt="Player Icon"
-                                                        class="img-fluid"
-                                                        style="height: 2.5rem; padding: 3px; margin-bottom: 10px; ">
-                                                </div>
-                                                <div>
-                                                    <div>
-                                                        <h5>Player Competition</h5>
-                                                    </div>
-                                                    <div class="text-muted small">
-                                                        <p style="margin-bottom: 0px;"> Players compete against each
-                                                            other to see who can reach a
-                                                            specific target at a period of time.</p>
-                                                    </div>
-                                                </div>
+                                            <div class="me-3 fs-3">
+                                                <img src="Assets/Gamification/Player.svg" alt="Player Icon"
+                                                    class="img-fluid"
+                                                    style="height: 2.5rem; padding: 3px; margin-bottom: 10px;" />
+                                            </div>
+                                            <div>
+                                                <h5>Player Competition</h5>
+                                                <p class="text-muted small mb-0">
+                                                    Players compete against each other to see who can reach a specific
+                                                    target at a period of time.
+                                                </p>
                                             </div>
                                         </label>
                                     </div>
 
                                     <!-- Team Competition -->
                                     <div class="col-md-4">
-                                        <input type="radio" class="btn-check" name="competitionType" id="team"
-                                            autocomplete="off">
+                                        <input type="radio" class="btn-check" id="team" value="team"
+                                            formControlName="competitionType" name="competitionType"
+                                            autocomplete="off" />
                                         <label class="btn btn-outline-primary w-100 text-start p-3" for="team">
-                                            <div class="">
-                                                <div class="me-3 fs-3">
-                                                    <img src="Assets/Gamification/Team.svg" alt="Player Icon"
-                                                        class="img-fluid"
-                                                        style="height: 2.5rem; padding: 3px; margin-bottom: 10px;">
-                                                </div>
-                                                <div>
-                                                    <div>
-                                                        <h5>Team Competition</h5>
-                                                    </div>
-                                                    <div class="text-muted small">
-                                                        <p style="margin-bottom: 0px;">Teams compete against each other
-                                                            to reach a specific target
-                                                            at a
-                                                            period of time.</p>
-                                                    </div>
-                                                </div>
+                                            <div class="me-3 fs-3">
+                                                <img src="Assets/Gamification/Team.svg" alt="Team Icon"
+                                                    class="img-fluid"
+                                                    style="height: 2.5rem; padding: 3px; margin-bottom: 10px;" />
+                                            </div>
+                                            <div>
+                                                <h5>Team Competition</h5>
+                                                <p class="text-muted small mb-0">
+                                                    Teams compete against each other to reach a specific target at a
+                                                    period of time.
+                                                </p>
                                             </div>
                                         </label>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -198,7 +191,7 @@
                             </p-button>
                         </div> -->
 
-                        <div class="col-12" style="display: none;">
+                        <div class="col-1" style="display: block;" *ngIf="competitionType === 'player'">
                             <button class="btn filter-btn d-flex align-items-center justify-content-center text-black"
                                 style="background-color: #1997ce; color: white !important"
                                 [routerLink]="['/master/gamification/competitions/add-competitions/player-selection']"
@@ -208,8 +201,9 @@
                                 Players
                             </button>
                         </div>
-                        <!-- ! BASED ON THE TEAM SELECION -->
-                        <div class="col-12" style="display: block;">
+
+                        <!-- TEAM BUTTON -->
+                        <div class="col-1" style="display: block;" *ngIf="competitionType === 'team'">
                             <button class="btn filter-btn d-flex align-items-center justify-content-center text-black"
                                 style="background-color: #1997ce; color: white !important"
                                 [routerLink]="['/master/gamification/competitions/add-competitions/team-head']"
@@ -219,68 +213,71 @@
                                 Team
                             </button>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-12 mt-3" *ngIf="selected_players > 0">
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Selected Players ({{ selected_players }})
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <div class="col-12 d-flex align-items-center gap-3 mb-3">
-                                        <div class="position-relative col-12">
-                                            <fa-icon [icon]="faSearch" class="search-icon"
-                                                style="font-size: 18px;"></fa-icon>
-                                            <input type="text" class="form-control ps-5" placeholder="Search" />
+                    <div *ngIf="selected_players_Head < 0">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Selected Players ({{ selected_players }})
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="col-12 d-flex align-items-center gap-3 mb-3">
+                                            <div class="position-relative col-12">
+                                                <fa-icon [icon]="faSearch" class="search-icon"
+                                                    style="font-size: 18px;"></fa-icon>
+                                                <input type="text" class="form-control ps-5" placeholder="Search" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <table class="table table-bordered align-middle table-fixed">
-                                            <thead class="table-light">
-                                                <tr>
-                                                    <th style="width: 10px;"></th>
-                                                    <th>Players</th>
-                                                    <th style="width: 200px;">Target</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let player of selectedPlayers; let i = index">
-                                                    <!-- Delete Icon -->
-                                                    <td class="text-center">
-                                                        <img src="Assets/Gamification/Delete.svg" alt="Delete"
-                                                            style="cursor: pointer; height: 20px; width: 20px;"
-                                                            (click)="removePlayer(i)" />
-                                                    </td>
+                                        <div class="col-12">
+                                            <table class="table table-bordered align-middle table-fixed">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th style="width: 10px;"></th>
+                                                        <th>Players</th>
+                                                        <th style="width: 200px;">Target</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let player of selectedPlayers; let i = index">
+                                                        <!-- Delete Icon -->
+                                                        <td class="text-center">
+                                                            <img src="Assets/Gamification/Delete.svg" alt="Delete"
+                                                                style="cursor: pointer; height: 20px; width: 20px;"
+                                                                (click)="removePlayer(i)" />
+                                                        </td>
 
-                                                    <!-- Player Info -->
-                                                    <td>
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <img [src]="player.profileImage" alt="profile_pic"
-                                                                class="rounded-circle" width="40" height="40" />
-                                                            <div>
-                                                                <h6 class="mb-0">{{ player.name }}</h6>
-                                                                <small class="text-muted">{{ player.designation
-                                                                    }}</small>
+                                                        <!-- Player Info -->
+                                                        <td>
+                                                            <div class="d-flex align-items-center gap-2">
+                                                                <img [src]="player.profileImage" alt="profile_pic"
+                                                                    class="rounded-circle" width="40" height="40" />
+                                                                <div>
+                                                                    <h6 class="mb-0">{{ player.name }}</h6>
+                                                                    <small class="text-muted">{{ player.designation
+                                                                        }}</small>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
+                                                        </td>
 
-                                                    <!-- Target Input -->
-                                                    <td>
-                                                        <div class="col-6">
-                                                            <input class="form-control" type="text" readonly
-                                                                style="background-color: #D9D9D9 !important;" />
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                                        <!-- Target Input -->
+                                                        <td>
+                                                            <div class="col-6">
+                                                                <input class="form-control" type="text" readonly
+                                                                    style="background-color: #D9D9D9 !important;" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -359,7 +356,79 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseHead" aria-expanded="true"
+                                        aria-controls="collapseHead">
+                                        Selected Players ({{ selected_players }})
+                                    </button>
+                                </h2>
+                                <div id="collapseHead" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="col-12 d-flex align-items-center gap-3 mb-3">
+                                            <div class="position-relative col-12">
+                                                <fa-icon [icon]="faSearch" class="search-icon"
+                                                    style="font-size: 18px;"></fa-icon>
+                                                <input type="text" class="form-control ps-5" placeholder="Search" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button
+                                                class="btn filter-btn d-flex align-items-center justify-content-center text-black"
+                                                style="background-color: #1997ce; color: white !important">
+                                                <img src="Assets/AdminMasters/Add.svg" alt="Add Icon" height="16"
+                                                    width="16" />
+                                            </button>
+                                        </div>
+                                        <div class="col-12">
+                                            <table class="table table-bordered align-middle table-fixed">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th style="width: 10px;"></th>
+                                                        <th>Players</th>
+                                                        <th style="width: 200px;">Target</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let player of selectedPlayers; let i = index">
+                                                        <!-- Delete Icon -->
+                                                        <td class="text-center">
+                                                            <img src="Assets/Gamification/Delete.svg" alt="Delete"
+                                                                style="cursor: pointer; height: 20px; width: 20px;"
+                                                                (click)="removePlayer(i)" />
+                                                        </td>
 
+                                                        <!-- Player Info -->
+                                                        <td>
+                                                            <div class="d-flex align-items-center gap-2">
+                                                                <img [src]="player.profileImage" alt="profile_pic"
+                                                                    class="rounded-circle" width="40" height="40" />
+                                                                <div>
+                                                                    <h6 class="mb-0">{{ player.name }}</h6>
+                                                                    <small class="text-muted">{{ player.designation
+                                                                        }}</small>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <!-- Target Input -->
+                                                        <td>
+                                                            <div class="col-6">
+                                                                <input class="form-control" type="text" readonly
+                                                                    style="background-color: #D9D9D9 !important;" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
