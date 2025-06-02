@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CommonModule } from '@angular/common';
@@ -21,7 +21,20 @@ import { BreadcrumbService } from '../../Services/breadcrumb.service';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit {
+  menuItems: any[] = [];
+  // ! HANDLING THE MENU ITEMS BASED ON THE LOGIN CREDENTIALS
+  ngOnInit(): void {
+    const authData = JSON.parse(sessionStorage.getItem('authData') || '{}');
+    const role = authData?.userDetails?.username;
+    if (role === 'admin') {
+      this.menuItems = this.adminMenu;
+    } else if (role === 'superadmin') {
+      this.menuItems = this.superAdminMenu;
+    }
+    console.log('Current user role:', role);
+  }
+
   faSearch = faSearch;
   hoveredItem: string | null = null;
 
@@ -33,9 +46,12 @@ export class LayoutComponent {
   togglePopup(item: string): void {
     this.hoveredItem = this.hoveredItem === item ? null : item;
   }
-
-  menuItems = [
-    { label: 'Home', route: '/home', icon: 'Assets/LayoutIcons/Home.svg' },
+  adminMenu = [
+    {
+      label: 'Home',
+      route: null,
+      icon: 'Assets/LayoutIcons/Home.svg',
+    },
     {
       label: 'Master',
       route: 'master/',
@@ -56,6 +72,25 @@ export class LayoutComponent {
       icon: 'Assets/LayoutIcons/Gamefication.svg',
     },
   ];
+
+  superAdminMenu = [
+    { label: 'Menu Add', route: '#', icon: 'Assets/LayoutIcons/Menu_add.svg' },
+    {
+      label: 'Menu Permission',
+      route: '#',
+      icon: 'Assets/LayoutIcons/Menu_Permission.svg',
+    },
+    {
+      label: 'Field Setup',
+      route: '#',
+      icon: 'Assets/LayoutIcons/Field_Setup.svg',
+    },
+  ];
+
+  logout() {
+    sessionStorage.removeItem('authToken');
+    this.router.navigate(['/home']);
+  }
 
   getHeaderText() {
     return this.breadcrumbService.getBreadcrumbs(this.router.url);

@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sample',
@@ -67,5 +67,51 @@ export class SampleComponent implements OnInit, OnDestroy {
 
   goToSlide(index: number) {
     this.currentSlide = index;
+  }
+
+  // ! HARD CODED LOGIN USERS
+  LoginObject: any = {
+    username: '',
+    password: '',
+  };
+
+  hardcodedUsers = [
+    { username: 'admin', password: 'admin', role: 1 },
+    { username: 'superadmin', password: 'superadmin', role: 0 },
+  ];
+
+  router = inject(Router);
+
+  onLogin() {
+    const user = this.hardcodedUsers.find(
+      (check) =>
+        check.username === this.LoginObject.username &&
+        check.password === this.LoginObject.password
+    );
+
+    if (user) {
+      const fakeToken = 'fake-jwt-token-12345';
+      const userDetails = {
+        username: user.username,
+        role: user.role, // Add this
+      };
+
+      const authData = {
+        authToken: fakeToken,
+        userDetails: userDetails,
+      };
+
+      sessionStorage.setItem('authData', JSON.stringify(authData));
+
+      //  Navigate based on role
+      const targetUrl =
+        user.role === 1 ? '/master/basic_details/company' : '/master/basic_details/division';
+
+      setTimeout(() => {
+        this.router.navigateByUrl(targetUrl);
+      }, 200);
+    } else {
+      alert('Invalid Credentials');
+    }
   }
 }

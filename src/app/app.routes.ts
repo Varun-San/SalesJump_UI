@@ -61,6 +61,7 @@ import { LevelsComponent } from './Components/Masters/Gamification/Levels/levels
 import { AddCompetitionsComponent } from './Components/Masters/Gamification/Competitions/Add Competitions/add-competitions.component';
 import { PlayerSelectionComponent } from './Components/Masters/Gamification/Competitions/Add Competitions/Player Selection/player-selection.component';
 import { TeamHeadComponent } from './Components/Masters/Gamification/Competitions/Add Competitions/Team Head/team-head.component';
+import { authGuard } from './Guard/auth.guard';
 
 export const routes: Routes = [
   {
@@ -98,6 +99,7 @@ export const routes: Routes = [
     // Routes for the layout section (without "layout" prefix)
     path: '',
     component: LayoutComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: 'configuration',

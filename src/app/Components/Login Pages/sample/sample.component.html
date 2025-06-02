@@ -17,12 +17,15 @@
               <form>
                 <div class="mb-3">
                   <label for="username" class="form-label labels">User Name</label>
-                  <input type="text" class="form-control" id="username" />
+                  <input type="text" class="form-control" [(ngModel)]="LoginObject.username" name="username"
+                    id="username" />
                 </div>
                 <div class="mb-3">
                   <label for="password" class="form-label labels">Password</label>
                   <div class="password-wrapper">
-                    <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" />
+                    <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"
+                      [(ngModel)]="LoginObject.password" name="password" />
+
                     <img
                       [src]="showPassword ? 'Assets/LoginPageImages/Show_Password.svg' : 'Assets/LoginPageImages/Hide_Password.svg'"
                       alt="Toggle Password" (click)="togglePassword()" />
@@ -33,8 +36,8 @@
                     Forgot Password?
                   </a>
                 </div>
-                <button type="submit" [routerLink]="'/master/basic_details/company'" class="btn w-100"
-                  style="background-color: #1997ce; color: white; padding: 9px; font-size: 16px;">
+                <button type="submit" class="btn w-100"
+                  style="background-color: #1997ce; color: white; padding: 9px; font-size: 16px;" (click)="onLogin()">
                   Login
                 </button>
               </form>
