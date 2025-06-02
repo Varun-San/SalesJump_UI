@@ -59,7 +59,7 @@
             </div>
         </div>
     </div>
-
+    <div class="margin-top"></div>
     <!-- Footer Buttons -->
     <div class="card-footer bg-white border-0 p-0 mt-3 d-flex justify-content-end gap-2">
         <button class="btn btn-outline-secondary" (click)="closeCard()">Cancel</button>
@@ -67,4 +67,5 @@
     </div>
 </div>
 
+<div *ngIf="isAddRateCard" class="card shadow p-3" id="Add-Division2"></div>
 <router-outlet></router-outlet>
