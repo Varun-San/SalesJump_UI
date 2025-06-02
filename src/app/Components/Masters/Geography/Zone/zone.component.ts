@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -21,6 +21,7 @@ import { Router } from '@angular/router';
     MatIconModule,
     FormsModule,
     RouterLink,
+    RouterOutlet,
   ],
   templateUrl: './zone.component.html',
   styleUrl: './zone.component.css',

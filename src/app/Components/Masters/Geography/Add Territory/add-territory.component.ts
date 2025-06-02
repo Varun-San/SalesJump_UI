@@ -31,7 +31,9 @@ export class AddTerritoryComponent {
   }
 
   get isAddTerritory(): boolean {
-    return this.router.url.includes('/master/geography/add-territory');
+    return this.router.url.includes(
+      '/master/geography/territory/add-territory'
+    );
   }
 
   closeCard() {

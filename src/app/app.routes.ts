@@ -202,42 +202,52 @@ export const routes: Routes = [
               {
                 path: 'area',
                 component: AreaComponent,
-              },
-              {
-                path: 'add-area',
-                component: AddAreaComponent,
+                children: [
+                  {
+                    path: 'add-area',
+                    component: AddAreaComponent,
+                  },
+                ],
               },
               {
                 path: 'zone',
                 component: ZoneComponent,
-              },
-              {
-                path: 'add-zone',
-                component: AddZoneComponent,
+                children: [
+                  {
+                    path: 'add-zone',
+                    component: AddZoneComponent,
+                  },
+                ],
               },
               {
                 path: 'territory',
                 component: TerritoryComponent,
-              },
-              {
-                path: 'add-territory',
-                component: AddTerritoryComponent,
+                children: [
+                  {
+                    path: 'add-territory',
+                    component: AddTerritoryComponent,
+                  },
+                ],
               },
               {
                 path: 'district',
                 component: DistrictComponent,
-              },
-              {
-                path: 'add-district',
-                component: AddDistrictComponent,
+                children: [
+                  {
+                    path: 'add-district',
+                    component: AddDistrictComponent,
+                  },
+                ],
               },
               {
                 path: 'town',
                 component: TownComponent,
-              },
-              {
-                path: 'add-town',
-                component: AddTownComponent,
+                children: [
+                  {
+                    path: 'add-town',
+                    component: AddTownComponent,
+                  },
+                ],
               },
             ],
           },

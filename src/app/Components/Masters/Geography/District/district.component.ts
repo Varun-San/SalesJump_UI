@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -21,6 +21,7 @@ import { Router } from '@angular/router';
     MatIconModule,
     FormsModule,
     RouterLink,
+    RouterOutlet,
   ],
   templateUrl: './district.component.html',
   styleUrl: './district.component.css',
@@ -126,7 +127,8 @@ export class DistrictComponent {
 
     if (action === 'deactivate' && district[index]) {
       const currentStatus = district[index].status || 'Active';
-      district[index].status = currentStatus === 'Active' ? 'Inactive' : 'Active';
+      district[index].status =
+        currentStatus === 'Active' ? 'Inactive' : 'Active';
 
       // ✅ Save to the correct key
       sessionStorage.setItem('add-district', JSON.stringify(district));

@@ -31,7 +31,7 @@ export class AddAreaComponent {
   }
 
   get isAddArea(): boolean {
-    return this.router.url.includes('/master/geography/add-area');
+    return this.router.url.includes('/master/geography/area/add-area');
   }
 
   closeCard() {

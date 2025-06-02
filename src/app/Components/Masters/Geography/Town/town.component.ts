@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -21,6 +21,7 @@ import { Router } from '@angular/router';
     MatIconModule,
     FormsModule,
     RouterLink,
+    RouterOutlet,
   ],
   templateUrl: './town.component.html',
   styleUrl: './town.component.css',
@@ -123,8 +124,7 @@ export class TownComponent {
 
     if (action === 'deactivate' && town[index]) {
       const currentStatus = town[index].status || 'Active';
-      town[index].status =
-        currentStatus === 'Active' ? 'Inactive' : 'Active';
+      town[index].status = currentStatus === 'Active' ? 'Inactive' : 'Active';
 
       // ✅ Save to the correct key
       sessionStorage.setItem('add-town', JSON.stringify(town));

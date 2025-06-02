@@ -31,7 +31,7 @@ export class AddDistrictComponent {
   }
 
   get isAddDistrict(): boolean {
-    return this.router.url.includes('/master/geography/add-district');
+    return this.router.url.includes('/master/geography/district/add-district');
   }
 
   closeCard() {

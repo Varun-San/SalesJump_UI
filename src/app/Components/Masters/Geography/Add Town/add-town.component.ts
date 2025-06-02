@@ -31,7 +31,7 @@ export class AddTownComponent {
   }
 
   get isAddTown(): boolean {
-    return this.router.url.includes('/master/geography/add-town');
+    return this.router.url.includes('/master/geography/town/add-town');
   }
 
   closeCard() {

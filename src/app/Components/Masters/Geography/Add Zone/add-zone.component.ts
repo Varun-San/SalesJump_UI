@@ -31,7 +31,7 @@ export class AddZoneComponent {
   }
 
   get isAddZone(): boolean {
-    return this.router.url.includes('/master/geography/add-zone');
+    return this.router.url.includes('/master/geography/zone/add-zone');
   }
 
   closeCard() {

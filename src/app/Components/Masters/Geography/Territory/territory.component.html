@@ -80,7 +80,8 @@
                 <div class="col-4">
                     <button class="btn filter-btn d-flex align-items-center justify-content-center text-black"
                         style="background-color: #1997ce; color: white !important"
-                        [routerLink]="['/master/geography/add-territory']" routerLinkActive="router-link-active">
+                        [routerLink]="['/master/geography/territory/add-territory']"
+                        routerLinkActive="router-link-active">
                         <img src="Assets/AdminMasters/Add.svg" alt="Filter Icon" height="16" width="16" class="me-2" />
                         Territory
                     </button>
@@ -160,3 +161,5 @@
     <button mat-menu-item>Option 2</button>
     <button mat-menu-item>Option 3</button>
 </mat-menu>
+
+<router-outlet></router-outlet>
