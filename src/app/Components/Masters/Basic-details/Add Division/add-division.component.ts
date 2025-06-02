@@ -33,7 +33,9 @@ export class AddDivisionComponent {
   }
 
   get isAddDivisionRoute(): boolean {
-    return this.router.url.includes('/master/basic_details/add-division');
+    return this.router.url.includes(
+      'master/basic_details/division/add-division'
+    );
   }
 
   closeCard() {

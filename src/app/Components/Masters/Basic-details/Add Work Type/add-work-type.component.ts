@@ -38,7 +38,9 @@ export class AddWorkTypeComponent {
   }
 
   get isAddWorkTypeRoute(): boolean {
-    return this.router.url.includes('/master/basic_details/add-work-type');
+    return this.router.url.includes(
+      '/master/basic_details/work-type/add-work-type'
+    );
   }
 
   closeCard() {

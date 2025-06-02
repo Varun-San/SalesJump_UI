@@ -126,6 +126,12 @@ export const routes: Routes = [
               {
                 path: 'company',
                 component: CompanyComponent,
+                children: [
+                  {
+                    path: 'add-company',
+                    component: AddCompanyComponent,
+                  },
+                ],
               },
               {
                 path: 'currency',
@@ -140,11 +146,21 @@ export const routes: Routes = [
               {
                 path: 'division',
                 component: DivisionComponent,
+                children: [
+                  {
+                    path: 'add-division',
+                    component: AddDivisionComponent,
+                  },
+                ],
               },
               {
                 path: 'designation',
                 component: DesignationComponent,
                 children: [
+                  {
+                    path: 'add-designation',
+                    component: AddDesignationComponent,
+                  },
                   {
                     path: 'menu-rights',
                     component: MenuRightsComponent,
@@ -158,18 +174,16 @@ export const routes: Routes = [
               {
                 path: 'work-type',
                 component: WorkTypeComponent,
+                children: [
+                  {
+                    path: 'add-work-type',
+                    component: AddWorkTypeComponent,
+                  },
+                ],
               },
               {
                 path: 'ho-user',
                 component: HoUserComponent,
-              },
-              {
-                path: 'add-division',
-                component: AddDivisionComponent,
-              },
-              {
-                path: 'add-designation',
-                component: AddDesignationComponent,
               },
               {
                 path: 'add-headquarters',
@@ -178,14 +192,6 @@ export const routes: Routes = [
               {
                 path: 'add-ho-user',
                 component: AddHoUserComponent,
-              },
-              {
-                path: 'add-work-type',
-                component: AddWorkTypeComponent,
-              },
-              {
-                path: 'add-company',
-                component: AddCompanyComponent,
               },
             ],
           },

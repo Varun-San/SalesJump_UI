@@ -348,7 +348,7 @@
 
 ::ng-deep .mat-datepicker-content .mat-calendar {
     width: 300px !important;
-    height: 320px !important;
+    height: 350px !important;
 }
 
 ::ng-deep .mat-datepicker-content {

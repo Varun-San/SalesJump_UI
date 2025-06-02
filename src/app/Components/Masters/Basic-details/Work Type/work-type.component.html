@@ -83,7 +83,8 @@
                 <div class="col-5">
                     <button class="btn filter-btn d-flex align-items-center justify-content-center text-black"
                         style="background-color: #1997ce; color: white !important"
-                        [routerLink]="['/master/basic_details/add-work-type']" routerLinkActive="router-link-active">
+                        [routerLink]="['/master/basic_details/work-type/add-work-type']"
+                        routerLinkActive="router-link-active">
                         <img src="Assets/AdminMasters/Add.svg" alt="Add Icon" height="16" width="16" class="me-2" />
                         Work Type
                     </button>
@@ -157,3 +158,5 @@
         </button>
     </ng-container>
 </mat-menu>
+
+<router-outlet></router-outlet>

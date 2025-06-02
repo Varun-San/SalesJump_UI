@@ -11,7 +11,9 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class AddDesignationComponent {
   get isAddDesignation(): boolean {
-    return this.router.url.includes('/master/basic_details/add-designation');
+    return this.router.url.includes(
+      '/master/basic_details/designation/add-designation'
+    );
   }
   editMode: boolean = false;
   editIndex: number | null = null;

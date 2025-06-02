@@ -11,7 +11,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class AddCompanyComponent {
   get isAddCompany(): boolean {
-    return this.router.url.includes('master/basic_details/add-company');
+    return this.router.url.includes('master/basic_details/company/add-company');
   }
   editMode: boolean = false;
   editIndex: number | null = null;

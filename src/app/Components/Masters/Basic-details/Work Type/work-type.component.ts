@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink, Router } from '@angular/router';
+import { RouterLink, Router, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -23,6 +23,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FormsModule,
     RouterLink,
     MatTooltipModule,
+    RouterOutlet,
   ],
   templateUrl: './work-type.component.html',
   styleUrls: ['./work-type.component.css'],

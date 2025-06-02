@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink, Router } from '@angular/router';
+import { RouterLink, Router, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-designation',
@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     FormsModule,
     RouterLink,
+    RouterOutlet,
   ],
   templateUrl: './designation.component.html',
   styleUrl: './designation.component.css',

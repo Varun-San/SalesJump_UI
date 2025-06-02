@@ -169,7 +169,11 @@ label {
 
 ::ng-deep .mat-datepicker-content .mat-calendar {
     width: 300px !important;
-    height: 320px !important;
+    height: 350px !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline {
+    border-color: #ccc;
 }
 
 ::ng-deep .mat-datepicker-content {
@@ -188,29 +192,76 @@ label {
     background-color: white !important;
 }
 
+
+
+.margin-top {
+    margin-top: 23.3em;
+}
+
+@keyframes slideInFromRight {
+    0% {
+        opacity: 1;
+        transform: translateX(100%);
+        /* Fully off-screen right */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%);
+        /* Your final transform */
+    }
+}
+
+
 @media screen and (max-width: 1609px) {
 
     #Add-Division {
         position: absolute;
-        top: 10px;
-        left: 74.5%;
+        top: 0px;
+        left: 78%;
         transform: translateX(-50%);
-        z-index: 1;
-        width: 800px;
+        z-index: 2;
+        width: 700px;
         height: auto;
         overflow: visible !important;
+        animation: slideInFromRight 0.3s ease-in;
+    }
+
+    #Add-Division2 {
+        position: absolute;
+        top: 0;
+        left: 4em;
+        width: 1540px;
+        height: 100%;
+        /* Or match the content height dynamically */
+        background-color: rgba(46, 48, 50, 0.4);
+        z-index: 1;
+        backdrop-filter: blur(2px);
     }
 }
 
 @media screen and (min-width: 1610px) {
     #Add-Division {
         position: absolute;
-        top: 60px;
-        left: 52%;
+        top: 10px;
+        left: 77.3%;
         transform: translateX(-50%);
-        z-index: 1;
-        width: 1440px;
-        height: 90vh;
+        z-index: 2;
+        width: 700px;
+        height: auto;
         overflow: visible !important;
+        animation: slideInFromRight 0.2s ease-in;
+    }
+
+    #Add-Division2 {
+        position: absolute;
+        top: 0;
+        left: 4em;
+        z-index: 1;
+        width: 1540px;
+        height: 100vh;
+        background-color: #2E3032;
+        overflow: visible !important;
+        opacity: 0.4;
     }
 }
