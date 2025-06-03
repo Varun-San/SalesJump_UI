@@ -62,6 +62,9 @@ import { AddCompetitionsComponent } from './Components/Masters/Gamification/Comp
 import { PlayerSelectionComponent } from './Components/Masters/Gamification/Competitions/Add Competitions/Player Selection/player-selection.component';
 import { TeamHeadComponent } from './Components/Masters/Gamification/Competitions/Add Competitions/Team Head/team-head.component';
 import { authGuard } from './Guard/auth.guard';
+import { FieldSetupComponent } from './Components/Field Setup/field-setup.component';
+import { GeneralSettingsFsComponent } from './Components/Field Setup/General Settings FS/general-settings-fs.component';
+import { UserSettingsFsComponent } from './Components/Field Setup/User Settings FS/user-settings-fs.component';
 
 export const routes: Routes = [
   {
@@ -366,6 +369,20 @@ export const routes: Routes = [
                 component: LevelsComponent,
               },
             ],
+          },
+        ],
+      },
+      {
+        path: 'field-setup',
+        component: FieldSetupComponent,
+        children: [
+          {
+            path: 'fs-general-settings',
+            component: GeneralSettingsFsComponent,
+          },
+          {
+            path: 'fs-user-settings',
+            component: UserSettingsFsComponent,
           },
         ],
       },

@@ -6,8 +6,12 @@ import { routes } from '../app.routes';
   providedIn: 'root',
 })
 export class BreadcrumbService {
-  private formatLabel(str: string): string {
-    return str.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+  private formatLabel(routeSegment: string): string {
+    // Remove known prefixes like "fs-"
+    const cleaned = routeSegment.replace(/^fs-/, '');
+
+    // Convert kebab-case to Title Case
+    return cleaned.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
   }
 
   private customBreadcrumbs = [
@@ -170,11 +174,41 @@ export class BreadcrumbService {
     },
   ];
 
+  private superAdmin = [
+    {
+      base: '/field-setup/',
+      label: 'Field Setup',
+      subs: ['', 'fs-general-settings', 'fs-user-settings', 'add-field'],
+    },
+  ];
+
   getBreadcrumbs(route: string): { label: string; route: string }[] | null {
     // Custom routes
     for (const item of this.customBreadcrumbs) {
       if (route.includes(item.match)) {
         return item.trail;
+      }
+    }
+
+    // !  BREADCRUMBS FOR SUPER ADMIN:
+    for (const group of this.superAdmin) {
+      for (const sub of group.subs) {
+        const fullPath = `${group.base}${sub}`;
+        if (route === fullPath) {
+          return [
+            { label: group.label, route: group.base },
+            { label: this.formatLabel(sub), route: fullPath },
+          ];
+        }
+      }
+
+      // Handle case like `/field-setup`
+      const basePath = group.base.endsWith('/')
+        ? group.base.slice(0, -1)
+        : group.base;
+
+      if (route === basePath) {
+        return [{ label: group.label, route: group.base }];
       }
     }
 

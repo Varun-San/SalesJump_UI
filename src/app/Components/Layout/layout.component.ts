@@ -7,6 +7,7 @@ import { SettingsSideBarComponent } from '../Setup/Configuration/Settings Side B
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BreadcrumbService } from '../../Services/breadcrumb.service';
+import { FieldSetupSideBarComponent } from '../Field Setup/Field Setup Side Bar/field-setup-side-bar.component';
 @Component({
   selector: 'app-layout',
   standalone: true,
@@ -17,6 +18,7 @@ import { BreadcrumbService } from '../../Services/breadcrumb.service';
     MasterSideBarComponent,
     SettingsSideBarComponent,
     FontAwesomeModule,
+    FieldSetupSideBarComponent,
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
@@ -74,7 +76,7 @@ export class LayoutComponent implements OnInit {
   ];
 
   superAdminMenu = [
-    { label: 'Menu Add', route: '#', icon: 'Assets/LayoutIcons/Menu_add.svg' },
+    { label: 'Menu Add', route: '#', icon: 'Assets/LayoutIcons/Menu_Add.svg' },
     {
       label: 'Menu Permission',
       route: '#',
@@ -82,7 +84,7 @@ export class LayoutComponent implements OnInit {
     },
     {
       label: 'Field Setup',
-      route: '#',
+      route: 'field-setup/',
       icon: 'Assets/LayoutIcons/Field_Setup.svg',
     },
   ];

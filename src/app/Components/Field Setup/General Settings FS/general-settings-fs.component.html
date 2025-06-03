@@ -1,0 +1,179 @@
+<div class="row page_left">
+    <!-- Top Section -->
+    <div class="col-12 mt-3">
+        <div class="d-flex align-items-center justify-content-end">
+            <!-- Search -->
+            <div class="col-9 d-flex align-items-center gap-3">
+                <div class="position-relative col-4">
+                    <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
+                    <input type="text" class="form-control ps-5" placeholder="Search" />
+                </div>
+            </div>
+
+            <!-- Add Button -->
+            <div class="col-3 d-flex justify-content-end align-item-end">
+                <button class="btn filter-btn d-flex align-items-center justify-content-center "
+                    style="background-color: #1997ce; color: white !important"
+                    [routerLink]="['/field-setup/fs-general-settings']" routerLinkActive="router-link-active">
+                    <img src="Assets/AdminMasters/Add.svg" alt="Add Icon" height="16" width="16" class="me-2" />
+                    Field
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="col-12 mt-3">
+        <table class="table table-bordered">
+            <thead class="table-light">
+                <tr>
+                    <th class="text-center">
+                        <div class="form-check d-flex justify-content-center">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        </div>
+                    </th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Default Value</th>
+                    <th>Parent Field</th>
+                    <th class="text-center">
+                        <div>
+                            <img src="Assets/AdminMasters/Dashboard.svg" alt="Dashboard" height="25" width="25" />
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- Checkbox Column (compact, no label) -->
+                    <td class="align-middle text-center">
+                        <input class="form-check-input m-0" type="checkbox" />
+                    </td>
+
+                    <!-- Description Column -->
+                    <td>
+                        <div class="mt-2">
+                            <h6 class="mb-1">Outlet Caption</h6>
+                            <p class="text-muted mb-0 small">User can customise caption for Outlet (Customer)</p>
+                        </div>
+                    </td>
+
+                    <!-- Field Type Column -->
+                    <td class="align-middle">Text</td>
+
+                    <!-- Module Column -->
+                    <td class="align-middle">Outlet</td>
+
+                    <!-- Placeholder Column -->
+                    <td class="align-middle">-</td>
+
+                    <!-- Menu Button Column -->
+                    <td class="align-middle">
+                        <div class="d-flex justify-content-center">
+                            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu Button">
+                                <img src="Assets/Menu.svg" alt="menu">
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item>Option 1</button>
+                                <button mat-menu-item>Option 2</button>
+                                <button mat-menu-item>Option 3</button>
+                            </mat-menu>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- Checkbox Column (compact, no label) -->
+                    <td class="align-middle text-center">
+                        <input class="form-check-input m-0" type="checkbox" />
+                    </td>
+
+                    <!-- Description Column -->
+                    <td>
+                        <div class="mt-2">
+                            <h6 class="mb-1">Distributor Caption</h6>
+                            <p class="text-muted mb-0 small">User can Customise Caption for Distributor</p>
+                        </div>
+                    </td>
+
+                    <!-- Field Type Column -->
+                    <td class="align-middle">Text</td>
+
+                    <!-- Module Column -->
+                    <td class="align-middle">Distributor</td>
+
+                    <!-- Placeholder Column -->
+                    <td class="align-middle">-</td>
+
+                    <!-- Menu Button Column -->
+                    <td class="align-middle">
+                        <div class="d-flex justify-content-center">
+                            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu Button">
+                                <img src="Assets/Menu.svg" alt="menu">
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item>Option 1</button>
+                                <button mat-menu-item>Option 2</button>
+                                <button mat-menu-item>Option 3</button>
+                            </mat-menu>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- Checkbox Column (compact, no label) -->
+                    <td class="align-middle text-center">
+                        <input class="form-check-input m-0" type="checkbox" />
+                    </td>
+
+                    <!-- Description Column -->
+                    <td>
+                        <div class="mt-2">
+                            <h6 class="mb-1">Secondary Caption</h6>
+                            <p class="text-muted mb-0 small">User can change retailer order caption in home screen</p>
+                        </div>
+                    </td>
+
+                    <!-- Field Type Column -->
+                    <td class="align-middle">Text</td>
+
+                    <!-- Module Column -->
+                    <td class="align-middle">Secondary Order</td>
+
+                    <!-- Placeholder Column -->
+                    <td class="align-middle">-</td>
+
+                    <!-- Menu Button Column -->
+                    <td class="align-middle">
+                        <div class="d-flex justify-content-center">
+                            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu Button">
+                                <img src="Assets/Menu.svg" alt="menu">
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item>Option 1</button>
+                                <button mat-menu-item>Option 2</button>
+                                <button mat-menu-item>Option 3</button>
+                            </mat-menu>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="text-start fw-bold">
+                        Total Records: 3
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<!-- Mat Menu for Table -->
+<mat-menu #menuTable="matMenu" class="custom-menu bg-white">
+    <ng-container *ngFor="let option of menuOptions">
+        <button mat-menu-item (click)="handleMenuAction(option.action)" [disabled]="!selectedCompany">
+            {{ option.label }}
+        </button>
+    </ng-container>
+</mat-menu>
+
+<router-outlet></router-outlet>

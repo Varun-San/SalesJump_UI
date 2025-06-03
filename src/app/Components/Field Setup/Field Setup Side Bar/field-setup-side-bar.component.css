@@ -1,0 +1,108 @@
+/* search icon */
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #909090;
+    pointer-events: none;
+}
+
+/* Additional */
+.cursor-pointer {
+    cursor: pointer;
+    color: #000000;
+    transition: color 0.2s ease-in-out;
+}
+
+.border_right {
+    margin-top: 10px;
+    height: 85vh;
+    border-right: 1px solid #d9d9d9;
+}
+
+.border_bottom {
+    border-bottom: 1px solid #d9d9d9 !important;
+}
+
+.cursor-pointer:hover {
+    color: #6d6d6d;
+}
+
+.nav-tabs {
+    border: none;
+    margin-bottom: none;
+}
+
+.nav-tabs {
+    display: block;
+    /* Ensures each item takes full width */
+    padding: 8px 0;
+    /* Adds spacing */
+    border-bottom: 1px solid #ddd;
+    /* Optional: Add a separator */
+}
+
+/* active tabs */
+.nav-link {
+    color: black;
+}
+
+/* ✅ Styles for vertical (sidebar) tabs */
+#nav_tab_vertical .nav-link.active {
+    background-color: #e6f7ff !important;
+    color: #1997ce;
+    /* font-weight: bold; */
+    /* border-left: 3px solid #1997ce !important; */
+    border-bottom: none !important;
+}
+
+/* ✅ Styles for horizontal (top) tabs */
+#nav_tab_horizontal .nav-link.active {
+    border-bottom: 2px solid #1997ce !important;
+    /* background-color: #ddeff8 !important; */
+    color: #1997ce;
+}
+
+.nav-tabs .nav-link {
+    margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+    border: var(--bs-nav-tabs-border-width) solid transparent;
+    border-top-left-radius: var(--bs-nav-tabs-border-radius);
+    /* border-top-right-radius: var(--bs-nav-tabs-border-radius); */
+}
+
+/* Chip Wrapper style */
+::ng-deep .mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__text-label {
+    color: #000000 !important;
+}
+
+::ng-deep .mat-mdc-standard-chip .mdc-evolution-chip__action--primary {
+    background-color: #d9d9d9;
+    border: none !important;
+    border-radius: 5px !important;
+}
+
+::ng-deep .mat-mdc-standard-chip .mdc-evolution-chip__action--primary::before {
+    border: none !important;
+}
+
+::ng-deep .mat-mdc-standard-chip.active-chip .mdc-evolution-chip__action--primary {
+    background-color: #ddeff8 !important;
+    border-radius: 5px;
+}
+
+::ng-deep .mat-mdc-standard-chip.active-chip .mdc-evolution-chip__text-label {
+    color: #1997ce !important;
+}
+
+::ng-deep .mat-mdc-chip-option .mat-mdc-chip-checkmark {
+    display: none !important;
+}
+
+::ng-deep .border {
+    border: none !important;
+}
+
+::ng-deep .nav-tabs {
+    border-bottom: none !important;
+}

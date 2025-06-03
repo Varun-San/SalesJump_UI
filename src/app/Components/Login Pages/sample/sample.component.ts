@@ -105,7 +105,9 @@ export class SampleComponent implements OnInit, OnDestroy {
 
       //  Navigate based on role
       const targetUrl =
-        user.role === 1 ? '/master/basic_details/company' : '/master/basic_details/division';
+        user.role === 1
+          ? '/master/basic_details/company'
+          : '/field-setup/fs-general-settings';
 
       setTimeout(() => {
         this.router.navigateByUrl(targetUrl);

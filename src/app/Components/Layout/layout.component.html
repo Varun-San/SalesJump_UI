@@ -26,6 +26,11 @@
         (mouseleave)="hoveredItem = null">
         <app-settings-side-bar></app-settings-side-bar>
       </div>
+      <!-- Show Field Setup Component on Hover  -->
+      <div class="hover-popup" *ngIf="hoveredItem === 'Field Setup'" (mouseenter)="hoveredItem = 'Field Setup'"
+        (mouseleave)="hoveredItem = null">
+        <app-field-setup-side-bar></app-field-setup-side-bar>
+      </div>
     </li>
   </ul>
 </nav>
