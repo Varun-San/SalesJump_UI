@@ -1,0 +1,91 @@
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isAddHeadquartersRoute" class="card shadow p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">Add Field Setup</h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+
+    <div class="card-body p-0 mt-1">
+        <div class="row col-12 mb-3">
+            <div class="col-4" id="1">
+                <label class="form-label">Name <span style="color: #FF004D;">*</span></label>
+                <input type="text" class="form-control" [(ngModel)]="name" />
+            </div>
+            <div class="col-4" id="2">
+                <div>
+                    <label class="form-label">Field Name (dev) <span style="color: #FF004D;">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="fieldName" />
+                </div>
+            </div>
+            <div class="col-4" id="3">
+                <div>
+                    <label class="form-label">Group <span style="color: #FF004D;">*</span></label>
+                    <select class="form-select" [(ngModel)]="group">
+                        <option value="" disabled selected>Select a value</option>
+                        <option>1</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row col-12  mb-3">
+            <div class="col-4" id="4">
+                <div>
+                    <label class="form-label">Type of Setup <span style="color: #FF004D;">*</span></label>
+                    <select class="form-select" [(ngModel)]="typeOfSetup">
+                        <option value="" disabled selected>Select a value</option>
+                        <option *ngFor="let opt of types" [value]="opt" onchange="changeField()">{{ opt }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div>
+                    <label class="form-label">Default Value</label>
+                    <input type="number" class="form-control" [(ngModel)]="defaultValue" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div>
+                    <label class="form-label">Description <span style="color: #FF004D;">*</span></label>
+                    <textarea [(ngModel)]="description" class="form-control" id="Textarea1" rows="1"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row col-12  mb-3">
+            <div class="col-4">
+                <div>
+                    <label class="form-label">Parent Field <span style="color: #FF004D;">*</span></label>
+                    <select class="form-select" [(ngModel)]="parentField">
+                        <option value="" disabled selected>Select a value</option>
+                        <option> 1 </option>
+                        <option> 2 </option>
+                        <option> 3 </option>
+                        <option> 4 </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div>
+                    <label class="form-label">Parent Values <span style="color: #FF004D;">*</span></label>
+                    <select class="form-select" [(ngModel)]="parentValue">
+                        <option value="" disabled selected>Select a value</option>
+                        <option> 1 </option>
+                        <option> 2 </option>
+                        <option> 3 </option>
+                        <option> 4 </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-footer bg-white border-0 p-0 mt-3 mb-3 d-flex justify-content-end gap-2">
+        <button class="btn btn-outline-secondary" (click)="closeCard()">Cancel</button>
+        <button class="btn btn-success" (click)="saveFields()">
+            {{ editMode ? 'Update' : 'Save' }}
+        </button>
+    </div>
+</div>

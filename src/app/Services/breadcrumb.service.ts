@@ -178,7 +178,7 @@ export class BreadcrumbService {
     {
       base: '/field-setup/',
       label: 'Field Setup',
-      subs: ['', 'fs-general-settings', 'fs-user-settings', 'add-field'],
+      subs: ['fs-general-settings', 'fs-user-settings', 'add-field'],
     },
   ];
 
@@ -192,26 +192,24 @@ export class BreadcrumbService {
 
     // !  BREADCRUMBS FOR SUPER ADMIN:
     for (const group of this.superAdmin) {
-      for (const sub of group.subs) {
-        const fullPath = `${group.base}${sub}`;
-        if (route === fullPath) {
-          return [
-            { label: group.label, route: group.base },
-            { label: this.formatLabel(sub), route: fullPath },
-          ];
+      if (route.startsWith(group.base)) {
+        const pathSegments = route.replace(group.base, '').split('/');
+        const breadcrumbs = [{ label: group.label, route: group.base }];
+        let currentRoute = group.base;
+
+        for (const segment of pathSegments) {
+          if (!segment) continue;
+          currentRoute += segment;
+          breadcrumbs.push({
+            label: this.formatLabel(segment),
+            route: currentRoute,
+          });
+          currentRoute += '/';
         }
-      }
 
-      // Handle case like `/field-setup`
-      const basePath = group.base.endsWith('/')
-        ? group.base.slice(0, -1)
-        : group.base;
-
-      if (route === basePath) {
-        return [{ label: group.label, route: group.base }];
+        return breadcrumbs;
       }
     }
-
     // Dynamic routes
     for (const group of this.dynamicGroups) {
       const matched = group.subs.find((sub) =>

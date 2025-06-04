@@ -65,17 +65,18 @@ import { authGuard } from './Guard/auth.guard';
 import { FieldSetupComponent } from './Components/Field Setup/field-setup.component';
 import { GeneralSettingsFsComponent } from './Components/Field Setup/General Settings FS/general-settings-fs.component';
 import { UserSettingsFsComponent } from './Components/Field Setup/User Settings FS/user-settings-fs.component';
+import { AddFieldComponent } from './Components/Field Setup/General Settings FS/Add Field/add-field.component';
 
 export const routes: Routes = [
   {
     // Default route
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full', // Ensure that the redirect is only happening at the root
   },
   {
-    // Home-Page
-    path: 'home',
+    // login-Page
+    path: 'login',
     component: SampleComponent,
   },
   {
@@ -379,6 +380,12 @@ export const routes: Routes = [
           {
             path: 'fs-general-settings',
             component: GeneralSettingsFsComponent,
+            children: [
+              {
+                path: 'add-field',
+                component: AddFieldComponent,
+              },
+            ],
           },
           {
             path: 'fs-user-settings',

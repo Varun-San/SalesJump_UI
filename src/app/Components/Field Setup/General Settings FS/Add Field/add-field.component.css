@@ -1,0 +1,67 @@
+.page_left {
+    margin-left: 55px;
+}
+
+#Add-Division {
+    position: absolute;
+    top: 60px;
+    left: 52%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: 1500px;
+    height: 110vh;
+}
+
+hr {
+    border-top: 2px solid #000000;
+}
+
+.btn-outline-secondary {
+    --bs-btn-color: #1997ce !important;
+    --bs-btn-border-color: #1997ce !important;
+    --bs-btn-hover-color: #fff !important;
+    --bs-btn-hover-bg: #1997ce !important;
+    --bs-btn-hover-border-color: #1997ce !important;
+    --bs-btn-focus-shadow-rgb: 108, 117, 125 !important;
+    --bs-btn-active-color: #fff !important;
+    --bs-btn-active-bg: #1997ce !important;
+}
+
+.btn-success {
+    --bs-btn-color: #fff !important;
+    --bs-btn-bg: #1997ce !important;
+    --bs-btn-border-color: #1997ce !important;
+    --bs-btn-hover-color: #fff !important;
+    --bs-btn-hover-bg: #1997ce !important;
+    --bs-btn-hover-border-color: #1997ce !important;
+    --bs-btn-focus-shadow-rgb: 60, 153, 110 !important;
+    --bs-btn-active-color: #1997ce !important;
+    --bs-btn-active-bg: #1997ce !important;
+}
+
+@media screen and (max-width: 1609px) {
+
+    #Add-Division {
+        position: absolute;
+        top: 60px;
+        left: 52%;
+        transform: translateX(-50%);
+        z-index: 1;
+        width: 1520px;
+        height: 91vh;
+        overflow: visible !important;
+    }
+}
+
+@media screen and (min-width: 1610px) {
+    #Add-Division {
+        position: absolute;
+        top: 60px;
+        left: 52%;
+        transform: translateX(-50%);
+        z-index: 1;
+        width: 1440px;
+        height: 90vh;
+        overflow: visible !important;
+    }
+}
