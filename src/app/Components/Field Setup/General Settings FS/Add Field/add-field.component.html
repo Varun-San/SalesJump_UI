@@ -30,20 +30,37 @@
             </div>
         </div>
         <div class="row col-12  mb-3">
+            <!-- Type of Setup Dropdown -->
             <div class="col-4" id="4">
                 <div>
                     <label class="form-label">Type of Setup <span style="color: #FF004D;">*</span></label>
-                    <select class="form-select" [(ngModel)]="typeOfSetup">
-                        <option value="" disabled selected>Select a value</option>
-                        <option *ngFor="let opt of types" [value]="opt" onchange="changeField()">{{ opt }}
-                        </option>
+                    <select class="form-select" [ngModel]="typeOfSetup" (ngModelChange)="onTypeChange($event)">
+                        <option value="" disabled>Select a value</option>
+                        <option *ngFor="let opt of types" [value]="opt">{{ opt }}</option>
                     </select>
                 </div>
             </div>
-            <div class="col-4">
+
+            <!-- Default Value Field (Text) - shown when NOT Date -->
+            <div class="col-4" *ngIf="typeOfSetup !== 'Date'">
                 <div>
-                    <label class="form-label">Default Value</label>
-                    <input type="number" class="form-control" [(ngModel)]="defaultValue" />
+                    <label class="form-label">Default Value <span style="color: #FF004D;">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="defaultTextValue"
+                        *ngIf="typeOfSetup !== 'Date'" />
+                </div>
+            </div>
+
+            <!-- Default Value Field (Date) - shown only when Date is selected -->
+            <div class="col-4" *ngIf="typeOfSetup === 'Date'">
+                <div>
+                    <label class="form-label">Default Value <span style="color: #FF004D;">*</span></label>
+                    <mat-form-field appearance="outline" class="example-full-width w-100">
+                        <input matInput [matDatepicker]="picker" [(ngModel)]="defaultDateValue"
+                            *ngIf="typeOfSetup === 'Date'" />
+                        <mat-datepicker #picker></mat-datepicker>
+                        <img src="Assets/AddCurrency/Calendar.svg" alt="Calendar Icon" (click)="picker.open()"
+                            class="calendar-icon" />
+                    </mat-form-field>
                 </div>
             </div>
             <div class="col-4">
