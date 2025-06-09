@@ -97,6 +97,81 @@ hr {
 }
 
 
+/* ! TIME PICKER */
+
+::ng-deep .p-inputtext {
+    font-family: inherit;
+    font-feature-settings: inherit;
+    font-size: 1rem;
+    color: #000000 !important;
+    background: white !important;
+    padding-block: var(--p-inputtext-padding-y);
+    padding-inline: var(--p-inputtext-padding-x);
+    border: 1px solid #d9d9d9 !important;
+    transition: background var(--p-inputtext-transition-duration), color var(--p-inputtext-transition-duration), border-color var(--p-inputtext-transition-duration), outline-color var(--p-inputtext-transition-duration), box-shadow var(--p-inputtext-transition-duration);
+    appearance: none;
+    border-radius: var(--p-inputtext-border-radius);
+    outline-color: transparent;
+    box-shadow: var(--p-inputtext-shadow);
+}
+
+::ng-deep .p-datepicker-panel {
+    width: auto;
+    padding: var(--p-datepicker-panel-padding);
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d9d9d9 !important;
+    border-radius: var(--p-datepicker-panel-border-radius);
+    box-shadow: var(--p-datepicker-panel-shadow);
+}
+
+::ng-deep .p-button-text {
+    background: transparent;
+    border-color: transparent;
+    color: black !important;
+}
+
+::ng-deep p-calendar,
+::ng-deep p-datepicker {
+    display: block;
+    width: 100%;
+}
+
+::ng-deep .p-datepicker {
+    position: relative;
+    display: block !important;
+    max-width: 100% !important;
+}
+
+::ng-deep .p-datepicker-input {
+    flex: 1 1 auto;
+    width: 100% !important;
+}
+
+.flex-auto {
+    width: 100%;
+}
+
+::ng-deep .time-icon {
+    position: absolute;
+    right: 0px;
+    padding: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 5;
+    background-color: #2E3032;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px
+}
+
+::ng-deep .p-button:not(:disabled):hover {
+    background-color: transparent !important;
+    color: #d9d9d9 !important;
+}
+
 @media screen and (max-width: 1609px) {
 
     #Add-Division {

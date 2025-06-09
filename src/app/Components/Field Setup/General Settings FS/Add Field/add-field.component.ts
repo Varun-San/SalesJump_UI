@@ -1,16 +1,17 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ChangeDetectorRef } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { DatePicker } from 'primeng/datepicker';
 
 @Component({
   selector: 'app-add-field',
+  standalone: true,
   imports: [
     CommonModule,
     RouterModule,
@@ -19,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     MatDatepickerModule,
     MatIconModule,
+    DatePicker,
   ],
   templateUrl: './add-field.component.html',
   styleUrl: './add-field.component.css',
@@ -26,61 +28,48 @@ import { MatInputModule } from '@angular/material/input';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddFieldComponent {
+  // Form Models
   name = '';
   fieldName = '';
   group = '';
-  typeOfSetup: string = '';
-  defaultTextValue: string = '';
+  typeOfSetup = '';
+  defaultTextValue = '';
   defaultDateValue: Date | null = null;
-  defaultValue?: any;
+  time12h: Date = new Date();
   description = '';
   parentField = '';
   parentValue = '';
 
-  editMode = false;
-  editIndex: number | null = null;
-
-  //! Dropdown options
-
-  types = [
-    'Text',
-    'Number',
-    'Date',
-    'Time',
-    'Toogle',
-    'Single Selection',
-    'Currency',
-  ];
-
-  changeField() {
-    console.log(1234);
-  }
-
-  onTypeChange(newValue: string) {
-    this.typeOfSetup = newValue;
-
-    if (newValue !== 'Date' && this.defaultValue instanceof Date) {
-      // Format the date to 'YYYY-MM-DD' or any format you want
-      const d = this.defaultValue;
-      this.defaultValue = `${d.getFullYear()}-${(d.getMonth() + 1)
-        .toString()
-        .padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`;
-    }
-  }
-
   constructor(private router: Router, private cdRef: ChangeDetectorRef) {}
 
-  get isAddHeadquartersRoute(): boolean {
-    return this.router.url.includes(
-      '/field-setup/fs-general-settings/add-field'
-    );
+  // Time Picker Trigger
+  openTimePicker(timepicker: any): void {
+    setTimeout(() => {
+      const inputElement = timepicker.inputfieldViewChild?.nativeElement;
+      if (inputElement) {
+        inputElement.focus();
+      }
+      timepicker.showOverlay();
+    });
   }
 
-  closeCard() {
+  types = ['Text', 'Number', 'Date', 'Time', 'Toggle', 'Single Selection', 'Currency'];
+
+  // Type Change Handler
+  onTypeChange(newValue: string): void {
+    this.typeOfSetup = newValue;
+  }
+
+  get isAddHeadquartersRoute(): boolean {
+    return this.router.url.includes('/field-setup/fs-general-settings/add-field');
+  }
+
+  closeCard(): void {
     this.router.navigate(['/field-setup/fs-general-settings']);
   }
 
-  saveFields() {
+  // Save Button
+  saveFields(): void {
     if (
       !this.name ||
       !this.fieldName ||
@@ -94,44 +83,30 @@ export class AddFieldComponent {
       return;
     }
 
-    const fields = {
+    const fieldData = {
       name: this.name,
       type: this.fieldName,
       group: this.group,
       typeOfSetup: this.typeOfSetup,
-
       description: this.description,
       parentField: this.parentField,
       parentValue: this.parentValue,
     };
 
     const existingData = sessionStorage.getItem('addFieldsData');
-    let addFieldArray: any[] = [];
+    let fieldsArray: any[] = [];
 
     try {
       const parsed = JSON.parse(existingData || '[]');
-      addFieldArray = Array.isArray(parsed) ? parsed : [parsed];
-    } catch (e) {
-      console.warn('Failed to parse sessionStorage data. Resetting...');
-      addFieldArray = [];
+      fieldsArray = Array.isArray(parsed) ? parsed : [parsed];
+    } catch {
+      fieldsArray = [];
     }
 
-    if (this.editMode && this.editIndex !== null) {
-      // Update the headquarters at the provided index
-      addFieldArray[this.editIndex] = fields;
-    } else {
-      // Add the new headquarters
-      addFieldArray.push(fields);
-    }
+    // Always add a new entry
+    fieldsArray.push(fieldData);
 
-    // Store the updated data back in sessionStorage
-    sessionStorage.setItem('addFieldsData', JSON.stringify(addFieldArray));
-
-    console.log(
-      this.editMode ? 'Updated FieldsData:' : 'Added FieldsData:',
-      fields
-    );
-
+    sessionStorage.setItem('addFieldsData', JSON.stringify(fieldsArray));
     this.closeCard();
   }
 }

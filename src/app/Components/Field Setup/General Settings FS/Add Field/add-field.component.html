@@ -32,35 +32,40 @@
         <div class="row col-12  mb-3">
             <!-- Type of Setup Dropdown -->
             <div class="col-4" id="4">
-                <div>
-                    <label class="form-label">Type of Setup <span style="color: #FF004D;">*</span></label>
-                    <select class="form-select" [ngModel]="typeOfSetup" (ngModelChange)="onTypeChange($event)">
-                        <option value="" disabled>Select a value</option>
-                        <option *ngFor="let opt of types" [value]="opt">{{ opt }}</option>
-                    </select>
-                </div>
+                <label class="form-label">Type of Setup <span style="color: #FF004D;">*</span></label>
+                <select class="form-select" [(ngModel)]="typeOfSetup" (ngModelChange)="onTypeChange($event)">
+                    <option value="" disabled>Select a value</option>
+                    <option *ngFor="let opt of types" [value]="opt">{{ opt }}</option>
+                </select>
             </div>
 
-            <!-- Default Value Field (Text) - shown when NOT Date -->
-            <div class="col-4" *ngIf="typeOfSetup !== 'Date'">
-                <div>
-                    <label class="form-label">Default Value <span style="color: #FF004D;">*</span></label>
-                    <input type="text" class="form-control" [(ngModel)]="defaultTextValue"
-                        *ngIf="typeOfSetup !== 'Date'" />
-                </div>
+            <!-- Default Value Field (Text) -->
+            <div class="col-4" *ngIf="typeOfSetup !== 'Date' && typeOfSetup !== 'Time'">
+                <label class="form-label">Default Value <span style="color: #FF004D;">*</span></label>
+                <input type="text" class="form-control" [(ngModel)]="defaultTextValue" />
             </div>
 
-            <!-- Default Value Field (Date) - shown only when Date is selected -->
+            <!-- Default Value Field (Date) -->
             <div class="col-4" *ngIf="typeOfSetup === 'Date'">
-                <div>
-                    <label class="form-label">Default Value <span style="color: #FF004D;">*</span></label>
-                    <mat-form-field appearance="outline" class="example-full-width w-100">
-                        <input matInput [matDatepicker]="picker" [(ngModel)]="defaultDateValue"
-                            *ngIf="typeOfSetup === 'Date'" />
-                        <mat-datepicker #picker></mat-datepicker>
-                        <img src="Assets/AddCurrency/Calendar.svg" alt="Calendar Icon" (click)="picker.open()"
-                            class="calendar-icon" />
-                    </mat-form-field>
+                <label class="form-label">Default Value <span style="color: #FF004D;">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width w-100">
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="defaultDateValue" />
+                    <mat-datepicker #picker></mat-datepicker>
+                    <img src="Assets/FieldSetup/Calendar.svg" alt="Calendar Icon" (click)="picker.open()"
+                        class="calendar-icon" />
+                </mat-form-field>
+            </div>
+
+            <!-- Default Value Field (Time) -->
+            <div class="col-4" *ngIf="typeOfSetup === 'Time'">
+                <label class="form-label">Default Value <span style="color: #FF004D;">*</span></label>
+                <div class="flex-auto position-relative">
+                    <!-- Hidden PrimeNG Time Picker -->
+                    <p-datepicker #timepicker [(ngModel)]="time12h" [showTime]="true" [timeOnly]="true" hourFormat="12"
+                        class="width-100"></p-datepicker>
+                    <!-- Trigger Icon -->
+                    <img src="Assets/FieldSetup/Clock.svg" alt="Clock Icon" (click)="openTimePicker(timepicker)"
+                        class="time-icon" />
                 </div>
             </div>
             <div class="col-4">
@@ -102,7 +107,7 @@
     <div class="card-footer bg-white border-0 p-0 mt-3 mb-3 d-flex justify-content-end gap-2">
         <button class="btn btn-outline-secondary" (click)="closeCard()">Cancel</button>
         <button class="btn btn-success" (click)="saveFields()">
-            {{ editMode ? 'Update' : 'Save' }}
+            Save
         </button>
     </div>
 </div>
