@@ -22,10 +22,9 @@
             <div class="col-4" id="3">
                 <div>
                     <label class="form-label">Group <span style="color: #FF004D;">*</span></label>
-                    <select class="form-select" [(ngModel)]="group">
-                        <option value="" disabled selected>Select a value</option>
-                        <option>1</option>
-                    </select>
+                    <ng-select [(ngModel)]="group" [items]="group_Values" [placeholder]="'Select a Group'"
+                        [searchable]="true">
+                    </ng-select>
                 </div>
             </div>
         </div>
@@ -33,15 +32,15 @@
             <!-- Type of Setup Dropdown -->
             <div class="col-4" id="4">
                 <label class="form-label">Type of Setup <span style="color: #FF004D;">*</span></label>
-                <select class="form-select" [(ngModel)]="typeOfSetup" (ngModelChange)="onTypeChange($event)">
-                    <option value="" disabled>Select a value</option>
-                    <option *ngFor="let opt of types" [value]="opt">{{ opt }}</option>
-                </select>
+                <ng-select [(ngModel)]="typeOfSetup" [items]="types" [placeholder]="'Select a value'"
+                    [searchable]="true" (change)="onTypeChange($event)">
+                </ng-select>
             </div>
 
             <!-- Default Value Field (Text) -->
-            <div class="col-4" *ngIf="typeOfSetup !== 'Date' && typeOfSetup !== 'Time'">
-                <label class="form-label">Default Value <span style="color: #FF004D;">*</span></label>
+            <div class="col-4"
+                *ngIf="typeOfSetup !== 'Date' && typeOfSetup !== 'Time' && typeOfSetup !=='Toggle' && typeOfSetup !== 'Single Selection'">
+                <label class=" form-label">Default Value <span style="color: #FF004D;">*</span></label>
                 <input type="text" class="form-control" [(ngModel)]="defaultTextValue" />
             </div>
 
@@ -68,7 +67,51 @@
                         class="time-icon" />
                 </div>
             </div>
-            <div class="col-4">
+
+            <!-- Toggle options  -->
+            <div class="col-4" *ngIf="typeOfSetup === 'Toggle'">
+                <label class="form-label">Toggle on <span style="color: #FF004D;">*</span></label>
+                <ng-select [(ngModel)]="toggleon" [items]="toggleOn_Values" [placeholder]="'Select a Toggle'"
+                    [searchable]="true">
+                </ng-select>
+            </div>
+            <div class="col-4" *ngIf="typeOfSetup === 'Toggle'">
+                <label class="form-label">Toggle off <span style="color: #FF004D;">*</span></label>
+                <ng-select [(ngModel)]="toggleoff" [items]="toggleOff_Values" [placeholder]="'Select a Toggle'"
+                    [searchable]="true">
+                </ng-select>
+            </div>
+            <!-- ! Single Selection -->
+            <div class="col-4" *ngIf="typeOfSetup === 'Single Selection'">
+                <label class="form-label">Values <span style="color: #FF004D;">*</span></label>
+                <ng-select [(ngModel)]="singleSelection" (change)="onItemSelected($event)"
+                    [items]="singleSelection_Values" bindLabel="name" [searchable]="true" placeholder="Select Value"
+                    [closeOnSelect]="true" [compareWith]="compareFn">
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                        <ng-container *ngIf="item.name !== '>>> Customize'; else customizeTpl">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>{{ item.name }}</span>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span *ngIf="item.toggled && item.needed === item.defaultNeeded"
+                                        style="font-size: 0.75rem; padding: 2px 6px; color:#07C126; border-radius: 4px;">
+                                        Default
+                                    </span>
+                                    <input type="checkbox" class="form-check-input" [checked]="item.needed"
+                                        (click)="toggleNeeded(item, $event)" title="Mark as needed" />
+                                </div>
+                            </div>
+                        </ng-container>
+                        <ng-template #customizeTpl>
+                            <button class="btn btn-sm btn-primary w-100 p-2" (click)="onCustomizeClick($event)">
+                                >>> Customize
+                            </button>
+                        </ng-template>
+                    </ng-template>
+                </ng-select>
+            </div>
+
+            <!-- ! Description -->
+            <div class="col-4" *ngIf="typeOfSetup !== 'Toggle'">
                 <div>
                     <label class="form-label">Description <span style="color: #FF004D;">*</span></label>
                     <textarea [(ngModel)]="description" class="form-control" id="Textarea1" rows="1"></textarea>
@@ -76,28 +119,26 @@
             </div>
         </div>
         <div class="row col-12  mb-3">
+            <div class="col-4" *ngIf="typeOfSetup === 'Toggle'">
+                <div>
+                    <label class="form-label">Description <span style="color: #FF004D;">*</span></label>
+                    <textarea [(ngModel)]="description" class="form-control" id="Textarea1" rows="1"></textarea>
+                </div>
+            </div>
             <div class="col-4">
                 <div>
                     <label class="form-label">Parent Field <span style="color: #FF004D;">*</span></label>
-                    <select class="form-select" [(ngModel)]="parentField">
-                        <option value="" disabled selected>Select a value</option>
-                        <option> 1 </option>
-                        <option> 2 </option>
-                        <option> 3 </option>
-                        <option> 4 </option>
-                    </select>
+                    <ng-select [(ngModel)]="parentField" [items]="parentFields_Options"
+                        [placeholder]="'Select a Parent Values'" [searchable]="true">
+                    </ng-select>
                 </div>
             </div>
             <div class="col-4">
                 <div>
                     <label class="form-label">Parent Values <span style="color: #FF004D;">*</span></label>
-                    <select class="form-select" [(ngModel)]="parentValue">
-                        <option value="" disabled selected>Select a value</option>
-                        <option> 1 </option>
-                        <option> 2 </option>
-                        <option> 3 </option>
-                        <option> 4 </option>
-                    </select>
+                    <ng-select [(ngModel)]="parentValue" [items]="parentValues_Options"
+                        [placeholder]="'Select a Parent Values'" [searchable]="true">
+                    </ng-select>
                 </div>
             </div>
         </div>

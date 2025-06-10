@@ -52,6 +52,11 @@ export class SampleComponent implements OnInit, OnDestroy {
   interval: any;
 
   ngOnInit() {
+    if (sessionStorage.length > 0) {
+      sessionStorage.clear();
+    } else {
+      return;
+    }
     this.startCarousel();
   }
 
@@ -93,7 +98,7 @@ export class SampleComponent implements OnInit, OnDestroy {
       const fakeToken = 'fake-jwt-token-12345';
       const userDetails = {
         username: user.username,
-        role: user.role, // Add this
+        role: user.role,
       };
 
       const authData = {

@@ -31,9 +31,9 @@
             <div class="col-6">
                 <div class="mb-3">
                     <label class="form-label">Divsion <span class="text-danger">*</span></label>
-                    <select class="form-select" [(ngModel)]="category_Divisions">
-                        <option>Selection</option>
-                    </select>
+                    <ng-select [(ngModel)]="category_Divisions" [items]="categoryDivisions_Options"
+                        [placeholder]="'Select a Work Type For'" [searchable]="true">
+                    </ng-select>
                 </div>
             </div>
         </div>

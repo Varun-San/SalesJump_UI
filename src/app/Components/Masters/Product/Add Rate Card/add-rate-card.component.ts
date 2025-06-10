@@ -33,7 +33,7 @@ export class AddRateCardComponent {
   rateCardName = '';
   effectiveFrom: Date | null = null;
   country!: Country;
-  currencyType: string = '';
+  currencyType: string | null = null;
   division: string = '';
   divisionOptions: string[] = [];
   status = 'Active';

@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-add-material',
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, NgSelectModule],
   templateUrl: './add-material.component.html',
   styleUrl: './add-material.component.css',
 })
@@ -19,7 +20,8 @@ export class AddMaterialComponent {
 
   erp_Code = '';
   material_Name = '';
-  material_Division = '';
+  material_Division: string | null = null;
+  materialDivision_Options = ['Basic'];
 
   constructor(private router: Router) {
     const nav = history.state;

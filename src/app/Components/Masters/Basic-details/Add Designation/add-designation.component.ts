@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-add-designation',
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, NgSelectModule],
   templateUrl: './add-designation.component.html',
   styleUrl: './add-designation.component.css',
 })
@@ -20,9 +21,11 @@ export class AddDesignationComponent {
 
   shortName = '';
   designation = '';
-  type = '';
+  type: string | null = null;
   userWiseCount = '';
   status = '';
+
+  typeOptions = ['Basic'];
 
   constructor(private router: Router) {
     const nav = history.state;

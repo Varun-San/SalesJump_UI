@@ -37,7 +37,7 @@
                 <div class="mb-3">
                     <label class="form-label">Value equivalent to base currency <span
                             class="text-danger">*</span></label>
-                    <ng-select [(ngModel)]="equalToBaseCurrency">
+                    <ng-select [(ngModel)]="equalToBaseCurrency" placeholder="Select number">
                         <option *ngFor="let country of countryList" [ngValue]="exchangeRates[country.name]">
                             {{ country.name }} - {{ exchangeRates[country.name] | number:'1.2-2' }}
                         </option>

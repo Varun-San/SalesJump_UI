@@ -31,9 +31,9 @@ export class AddCurrencyComponent {
   currencyName = '';
   effectiveFrom: Date | null = null;
   country!: { name: string; symbolList: string[] };
-  symbol: string = '';
+  symbol: string | null = null;
   symbolList: string[] = [];
-  equalToBaseCurrency: number = 0;
+  equalToBaseCurrency: number | null = null;
 
   // Edit state
   editMode = false;
@@ -48,7 +48,6 @@ export class AddCurrencyComponent {
 
       this.currencyName = currency.currencyName || '';
 
-      // 🔥 Find country by name to avoid object reference mismatch
       this.country = this.countryList.find(
         (c) => c.name === currency.country?.name
       ) ?? { name: '', symbolList: [] };

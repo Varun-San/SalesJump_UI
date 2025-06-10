@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-add-brand',
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, NgSelectModule],
   templateUrl: './add-brand.component.html',
   styleUrl: './add-brand.component.css',
 })
@@ -16,8 +17,10 @@ export class AddBrandComponent {
   brand_Code = '';
   brand_Name = '';
   brand_Category = '';
-  brand_Division = '';
+  brand_Division: string | null = null;
   brand_No_of_prdts = '';
+
+  brandDivision_Options = ['Basic'];
 
   constructor(private router: Router) {
     const nav = history.state;

@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-add-category',
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, NgSelectModule],
   templateUrl: './add-category.component.html',
   styleUrl: './add-category.component.css',
 })
@@ -16,7 +17,9 @@ export class AddCategoryComponent {
   category_Code = '';
   category_Name = '';
   category_No_Of_Prdts = '';
-  category_Divisions = '';
+  category_Divisions: string | null = null;
+
+  categoryDivisions_Options = ['Basic'];
 
   constructor(private router: Router) {
     const nav = history.state;

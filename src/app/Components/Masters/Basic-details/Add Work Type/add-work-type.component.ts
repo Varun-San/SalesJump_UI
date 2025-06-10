@@ -2,24 +2,29 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-add-work-type',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, NgSelectModule],
   templateUrl: './add-work-type.component.html',
   styleUrls: ['./add-work-type.component.css'], // ✅ Fixed typo here
 })
 export class AddWorkTypeComponent {
   workType = '';
   workTypeShortName = '';
-  placeInvolved = '';
-  expenseKmNeeded = '';
-  workTypeFor = '';
+  placeInvolved: string | null = null;
+  expenseKmNeeded: string | null = null;
+  workTypeFor: string | null = null;
   status = 'Active';
 
   editMode: boolean = false;
   editIndex: number | null = null;
+
+  expenseKmNeeded_Options = ['Basic'];
+  workTypeFor_Options = ['Basic'];
+  placeInvolved_Options = ['Basic'];
 
   constructor(private router: Router) {
     const nav = history.state;
