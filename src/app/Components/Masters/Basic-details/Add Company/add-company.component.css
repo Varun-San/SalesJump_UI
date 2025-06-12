@@ -83,6 +83,26 @@ label {
     color: white;
 }
 
+select[multiple]::-webkit-scrollbar {
+    width: 8px;
+}
+
+select[multiple]::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+select[multiple]::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+}
+
+select[multiple]::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+
 
 .margin-top {
     margin-top: 19.3em;
@@ -106,7 +126,7 @@ label {
 @media screen and (max-width: 1609px) {
 
     #Add-Division {
-        position: absolute;
+        position: fixed;
         top: 0px;
         left: 78%;
         transform: translateX(-50%);

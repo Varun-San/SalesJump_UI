@@ -66,6 +66,7 @@ import { FieldSetupComponent } from './Components/Field Setup/field-setup.compon
 import { GeneralSettingsFsComponent } from './Components/Field Setup/General Settings FS/general-settings-fs.component';
 import { UserSettingsFsComponent } from './Components/Field Setup/User Settings FS/user-settings-fs.component';
 import { AddFieldComponent } from './Components/Field Setup/General Settings FS/Add Field/add-field.component';
+import { SingleSelectionNewValueComponent } from './Components/Field Setup/General Settings FS/Add Field/Single Selection New Value/single-selection-new-value.component';
 
 export const routes: Routes = [
   {
@@ -384,6 +385,12 @@ export const routes: Routes = [
               {
                 path: 'add-field',
                 component: AddFieldComponent,
+                children: [
+                  {
+                    path: 'new-single-selection-value',
+                    component: SingleSelectionNewValueComponent,
+                  },
+                ],
               },
             ],
           },

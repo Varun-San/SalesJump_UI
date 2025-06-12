@@ -88,8 +88,12 @@ export class AddFieldComponent {
   }
 
   onCustomizeClick(event: MouseEvent): void {
-    event.stopPropagation();
-    console.log('Customize clicked');
+    this.router.navigate([
+      'field-setup',
+      'fs-general-settings',
+      'add-field',
+      'new-single-selection-value',
+    ]);
   }
   onItemSelected(selectedItem: any): void {
     this.singleSelection_Values.forEach((item) => {
