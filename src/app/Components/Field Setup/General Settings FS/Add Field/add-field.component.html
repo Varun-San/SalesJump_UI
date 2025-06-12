@@ -39,7 +39,7 @@
 
             <!-- Default Value Field (Text) -->
             <div class="col-4"
-                *ngIf="typeOfSetup !== 'Date' && typeOfSetup !== 'Time' && typeOfSetup !=='Toggle' && typeOfSetup !== 'Single Selection'">
+                *ngIf="typeOfSetup !== 'Currency' && typeOfSetup !== 'Date' && typeOfSetup !== 'Time' && typeOfSetup !=='Toggle' && typeOfSetup !== 'Single Selection'">
                 <label class=" form-label">Default Value <span style="color: #FF004D;">*</span></label>
                 <input type="text" class="form-control" [(ngModel)]="defaultTextValue" />
             </div>
@@ -117,6 +117,14 @@
                     <textarea [(ngModel)]="description" class="form-control" id="Textarea1" rows="1"></textarea>
                 </div>
             </div>
+            <div class="col-4" *ngIf="typeOfSetup === 'Currency'">
+                <div>
+                    <label class="form-label">Parent Field <span style="color: #FF004D;">*</span></label>
+                    <ng-select [(ngModel)]="parentField" [items]="parentFields_Options"
+                        [placeholder]="'Select a Parent Values'" [searchable]="true">
+                    </ng-select>
+                </div>
+            </div>
         </div>
         <div class="row col-12  mb-3">
             <div class="col-4" *ngIf="typeOfSetup === 'Toggle'">
@@ -125,7 +133,7 @@
                     <textarea [(ngModel)]="description" class="form-control" id="Textarea1" rows="1"></textarea>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-4" *ngIf="typeOfSetup !== 'Currency'">
                 <div>
                     <label class="form-label">Parent Field <span style="color: #FF004D;">*</span></label>
                     <ng-select [(ngModel)]="parentField" [items]="parentFields_Options"

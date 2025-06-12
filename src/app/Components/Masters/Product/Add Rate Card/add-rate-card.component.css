@@ -188,11 +188,6 @@ label {
     background-color: white !important;
 }
 
-
-.margin-top {
-    margin-top: 21.5em;
-}
-
 @keyframes slideInFromRight {
     0% {
         opacity: 1;
@@ -211,13 +206,13 @@ label {
 @media screen and (max-width: 1609px) {
 
     #Add-Division {
-        position: absolute;
+        position: fixed;
         top: 0px;
         left: 78%;
         transform: translateX(-50%);
         z-index: 2;
         width: 700px;
-        height: auto;
+        height: 770px;
         overflow: visible !important;
         animation: slideInFromRight 0.3s ease-in;
     }

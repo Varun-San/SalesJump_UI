@@ -66,10 +66,6 @@ label {
     font-weight: bold;
 }
 
-.margin-top {
-    margin-top: 22em;
-}
-
 ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
     background-color: hsl(0, 0%, 89%) !important;
     color: rgb(0, 0, 0) !important;
@@ -108,13 +104,13 @@ label {
 @media screen and (max-width: 1609px) {
 
     #Add-Division {
-        position: absolute;
+        position: fixed;
         top: 0px;
         left: 78%;
         transform: translateX(-50%);
         z-index: 2;
         width: 700px;
-        height: auto;
+        height: 770px;
         overflow: visible !important;
         animation: slideInFromRight 0.3s ease-in;
     }

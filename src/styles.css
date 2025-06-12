@@ -192,6 +192,31 @@ table td {
   color: white !important;
 }
 
+/* FORM CONTROL INPUT FIELDS CSS */
+
+.form-control {
+  line-height: 1.3 !important;
+}
+
+.form-select {
+  line-height: 1.3 !important;
+}
+
+.form-select:focus {
+  border-color: transparent !important;
+  outline: 0;
+  box-shadow: 0 0 0 0.15rem #1997ce !important;
+  backdrop-filter: blur(4px);
+  border-radius: 0.25rem;
+}
+
+.form-control:focus {
+  border-color: transparent !important;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem #1997ce !important;
+  backdrop-filter: blur(4px);
+  border-radius: 0.25rem;
+}
 
 /* ! INFO BLUE ICON */
 .info_blue {

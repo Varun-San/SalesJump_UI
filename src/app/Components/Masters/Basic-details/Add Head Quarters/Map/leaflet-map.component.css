@@ -1,6 +1,16 @@
+.glass-map {
+  height: 600px;
+  border: 1px solid rgba(25, 151, 206, 0.4);
+  background: rgba(25, 151, 206, 0.1);
+  box-shadow: 0 0 0 0.3rem rgba(25, 151, 206, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 0.5rem;
+}
+
 ::ng-deep .leaflet-control-container {
   position: absolute;
-  top: 380px;
+  top: 480px;
   right: 80px;
 }
 
