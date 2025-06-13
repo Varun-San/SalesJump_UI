@@ -168,6 +168,16 @@ export class BreadcrumbService {
       ],
     },
     {
+      base: '/master/retailer/',
+      label: 'Retailer',
+      subs: [
+        'retailer-category',
+        'retailer-class',
+        'retailer-outlet-type',
+        'retailer-creation',
+      ],
+    },
+    {
       base: '/master/gamification/',
       label: 'Gamification',
       subs: ['competitions', 'formula', 'rewards', 'levels'],
@@ -190,7 +200,7 @@ export class BreadcrumbService {
       }
     }
 
-    // !  BREADCRUMBS FOR SUPER ADMIN:
+    // Super Admin routes
     for (const group of this.superAdmin) {
       if (route.startsWith(group.base)) {
         const pathSegments = route.replace(group.base, '').split('/');
@@ -210,35 +220,19 @@ export class BreadcrumbService {
         return breadcrumbs;
       }
     }
-    // Dynamic routes
+
+    // Dynamic routes for Master (Basic Details, Geography, Product, etc.)
     for (const group of this.dynamicGroups) {
-      const matched = group.subs.find((sub) =>
-        route.includes(`${group.base}${sub}`)
-      );
-      if (matched) {
+      if (route.startsWith(group.base)) {
+        // Show only 'Master' and the group label (e.g., 'Basic Details', 'Geography', etc.)
         return [
           { label: 'Master', route: '#' },
           { label: group.label, route: group.base },
-          {
-            label: this.formatLabel(matched),
-            route: `${group.base}${matched}`,
-          },
-        ];
-      }
-
-      // Match exact root like /master/geography
-      if (route === group.base.slice(0, -1)) {
-        return [
-          { label: 'Master', route: '#' },
-          {
-            label: group.label,
-            route: `${group.base}${group.subs[0]}`,
-          },
         ];
       }
     }
 
-    // Config routes
+    // Config routes (unchanged)
     if (route.includes('/general-settings')) {
       return [
         { label: 'Setup', route: '#' },
@@ -265,7 +259,6 @@ export class BreadcrumbService {
         { label: 'Configuration', route: '/configuration' },
       ];
     }
-
     return null;
   }
 }

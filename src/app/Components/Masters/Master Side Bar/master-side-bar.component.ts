@@ -35,7 +35,8 @@ export class MasterSideBarComponent {
     this.activeChip_Basic = this.getActiveChip(this.BasicDetails_label) || '';
     this.activeChip_Geography = this.getActiveChip(this.Geography_label) || '';
     this.activeChip_Product = this.getActiveChip(this.Product_label) || '';
-    this.activeChip_Gamification = this.getActiveChip(this.Gamification_label) || '';
+    this.activeChip_Gamification =
+      this.getActiveChip(this.Gamification_label) || '';
     this.activeTab = this.getActiveTabFromUrl(currentUrl) || this.tabs[0];
   }
 
@@ -151,5 +152,14 @@ export class MasterSideBarComponent {
     { name: 'Formula', route: '/master/gamification/formula' },
     { name: 'Rewards', route: '/master/gamification/rewards' },
     { name: 'Levels', route: '/master/gamification/levels' },
+  ];
+
+  // !  RETAILER
+  activeChip_Retailer: string = 'Outlet Type';
+  Retailer_label = [
+    { name: 'Outlet Type', route: 'master/retailer/retailer-outlet-type' },
+    { name: 'Class', route: 'master/retailer/retailer-class' },
+    { name: 'Retailer Creation', route: 'master/retailer/retailer-creation' },
+    { name: 'Category', route: 'master/retailer/retailer-category' },
   ];
 }

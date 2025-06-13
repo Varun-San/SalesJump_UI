@@ -1,0 +1,35 @@
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isAddOutlet" class="card shadow p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">{{ editMode ? 'Edit Outlet' : 'Add Outlet'
+            }}</h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+
+    <div class="card-body p-0 mt-1">
+        <div class="col-12">
+            <div class="mb-3">
+                <label class="form-label">Outlet Type Name <span class="text-danger"
+                        style="color: #FF004D">*</span></label>
+                <input type="text" class="form-control" [(ngModel)]="outletType_Name" />
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                <label class="form-label">Outlet Type Code <span class="text-danger"
+                        style="color: #FF004D">*</span></label>
+                <input type="number" class="form-control" [(ngModel)]="outletType_Code" />
+            </div>
+        </div>
+    </div>
+    <div class="margin-top"></div>
+    <div class="card-footer bg-white border-0 p-0 mt-3 d-flex justify-content-end gap-2">
+        <button class="btn btn-outline-secondary" (click)="closeCard()">
+            Cancel
+        </button>
+        <button class="btn btn-success" (click)="saveOutlet()">Save</button>
+    </div>
+</div>
+<div *ngIf="isAddOutlet" class="card shadow p-3" id="Add-Division2"></div>

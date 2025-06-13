@@ -67,6 +67,12 @@ import { GeneralSettingsFsComponent } from './Components/Field Setup/General Set
 import { UserSettingsFsComponent } from './Components/Field Setup/User Settings FS/user-settings-fs.component';
 import { AddFieldComponent } from './Components/Field Setup/General Settings FS/Add Field/add-field.component';
 import { SingleSelectionNewValueComponent } from './Components/Field Setup/General Settings FS/Add Field/Single Selection New Value/single-selection-new-value.component';
+import { ReatilerComponent } from './Components/Masters/Retailer/reatiler.component';
+import { ClassComponent } from './Components/Masters/Retailer/Class/class.component';
+import { OutletTypeComponent } from './Components/Masters/Retailer/Outlet Type/outlet-type.component';
+import { RetailerCreationComponent } from './Components/Masters/Retailer/Retailer Creation/retailer-creation.component';
+import { RetailerCategoryComponent } from './Components/Masters/Retailer/Retailer Category/retailer-category.component';
+import { AddOutletTypeComponent } from './Components/Masters/Retailer/Outlet Type/Add Outlet Type/add-outlet-type.component';
 
 export const routes: Routes = [
   {
@@ -331,6 +337,34 @@ export const routes: Routes = [
                     component: AssignProductComponent,
                   },
                 ],
+              },
+            ],
+          },
+          {
+            path: 'retailer',
+            component: ReatilerComponent,
+            children: [
+              {
+                path: 'retailer-category',
+                component: RetailerCategoryComponent,
+              },
+              {
+                path: 'retailer-class',
+                component: ClassComponent,
+              },
+              {
+                path: 'retailer-outlet-type',
+                component: OutletTypeComponent,
+                children: [
+                  {
+                    path: 'add-routlet-type',
+                    component: AddOutletTypeComponent
+                  }
+                ]
+              },
+              {
+                path: 'retailer-creation',
+                component: RetailerCreationComponent,
               },
             ],
           },

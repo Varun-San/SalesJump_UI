@@ -70,6 +70,13 @@
             <!-- !Retailer -->
             <div *ngSwitchCase="'Retailer'">
               <h4>Retailer</h4>
+              <mat-chip-set>
+                <mat-chip *ngFor="let Pro of Retailer_label" [ngClass]="{
+                    'active-chip': activeChip_Retailer === Pro.name
+                  }" (click)="activeChip_Retailer = Pro.name" routerLink="{{ Pro.route }}">
+                  {{ Pro.name }}
+                </mat-chip>
+              </mat-chip-set>
             </div>
             <!-- !Super Stockiest -->
             <div *ngSwitchCase="'Super Stockist'">

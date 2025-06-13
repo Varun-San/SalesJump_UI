@@ -218,6 +218,16 @@ table td {
   border-radius: 0.25rem;
 }
 
+.nav-link:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 .15rem #1997ce !important;
+}
+
+.nav-link:focus-visible:hover {
+  outline: 0;
+  box-shadow: 0 0 0 .15rem #1997ce !important;
+}
+
 /* ! INFO BLUE ICON */
 .info_blue {
   background-image: url('/Assets/Gamification/Info_blue.svg');
