@@ -73,6 +73,7 @@ import { OutletTypeComponent } from './Components/Masters/Retailer/Outlet Type/o
 import { RetailerCreationComponent } from './Components/Masters/Retailer/Retailer Creation/retailer-creation.component';
 import { RetailerCategoryComponent } from './Components/Masters/Retailer/Retailer Category/retailer-category.component';
 import { AddOutletTypeComponent } from './Components/Masters/Retailer/Outlet Type/Add Outlet Type/add-outlet-type.component';
+import { AddClassRetailerComponent } from './Components/Masters/Retailer/Class/Add Class/add-class-retailer.component';
 
 export const routes: Routes = [
   {
@@ -351,6 +352,12 @@ export const routes: Routes = [
               {
                 path: 'retailer-class',
                 component: ClassComponent,
+                children: [
+                  {
+                    path: 'add-class-retailer',
+                    component: AddClassRetailerComponent,
+                  },
+                ],
               },
               {
                 path: 'retailer-outlet-type',
@@ -358,9 +365,9 @@ export const routes: Routes = [
                 children: [
                   {
                     path: 'add-routlet-type',
-                    component: AddOutletTypeComponent
-                  }
-                ]
+                    component: AddOutletTypeComponent,
+                  },
+                ],
               },
               {
                 path: 'retailer-creation',

@@ -44,12 +44,7 @@ export class AddOutletTypeComponent {
   }
 
   saveOutlet() {
-    if (
-      !this.outletType_Name ||
-      !this.outletType_Code ||
-      !this.outlet_NoOfCustomer ||
-      !this.status
-    ) {
+    if (!this.outletType_Name || !this.outletType_Code) {
       alert('Please fill all required fields.');
       return;
     }
