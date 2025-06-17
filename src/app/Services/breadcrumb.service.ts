@@ -178,6 +178,11 @@ export class BreadcrumbService {
       ],
     },
     {
+      base: '/master/super-stockiest/',
+      label: 'Super Stockiest',
+      subs: ['super-stockiest-details'],
+    },
+    {
       base: '/master/gamification/',
       label: 'Gamification',
       subs: ['competitions', 'formula', 'rewards', 'levels'],

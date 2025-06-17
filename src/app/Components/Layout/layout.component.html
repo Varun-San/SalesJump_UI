@@ -63,18 +63,19 @@
     <!-- Search Bar & Profile Icon -->
     <div class="d-flex align-items-center">
       <form class="d-flex me-2">
-        <div class="position-relative" style="margin-top: 10px">
+        <div class="position-relative" style="margin-top: 12px">
           <fa-icon [icon]="faSearch" class="search-icon"> </fa-icon>
           <input type="text" class="form-control ps-5" placeholder="Search" />
         </div>
-        <a class="nav-link text-white fw-bold mt-1" matTooltip="Notification">
-          <img src="Assets/LayoutIcons/Notification.svg" alt="Notification" width="30" height="30" /></a>
+        <a class="nav-link text-white" matTooltip="Notification">
+          <img src="Assets/LayoutIcons/Notification.svg" alt="Notification" width="35" height="35"
+            style="border: 1.5px solid #ddd; border-radius: 5px; padding: 4px;" /></a>
+        <a class="nav-link text-white" matTooltip="Profile">
+          <!-- Profile Icon -->
+          <img src="Assets/LayoutIcons/Profile Picture_1.svg" alt="Profile" width="35" height="35"
+            style="border: 1.5px solid #ddd; border-radius: 5px; background-color: blueviolet;" />
+        </a>
       </form>
-
-      <!-- Profile Icon -->
-      <a matTooltip="Profile">
-        <img src="Assets/LayoutIcons/Profile Picture_1.svg" alt="Profile" width="35" height="35" class="squared" />
-      </a>
     </div>
   </div>
 </nav>

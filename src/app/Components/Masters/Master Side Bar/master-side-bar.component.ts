@@ -162,4 +162,13 @@ export class MasterSideBarComponent {
     { name: 'Retailer Creation', route: 'master/retailer/retailer-creation' },
     { name: 'Category', route: 'master/retailer/retailer-category' },
   ];
+
+  // !  SUPER STOCKIEST
+  activeChip_SuperStockiest: string = 'Super Stockiest';
+  superStockiest_label = [
+    {
+      name: 'Super Stockiest',
+      route: 'master/super-stockiest/super-stockiest-details',
+    },
+  ];
 }

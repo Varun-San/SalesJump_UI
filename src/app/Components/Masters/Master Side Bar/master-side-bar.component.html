@@ -81,6 +81,13 @@
             <!-- !Super Stockiest -->
             <div *ngSwitchCase="'Super Stockist'">
               <h4>Super Stockiest</h4>
+              <mat-chip-set>
+                <mat-chip *ngFor="let Pro of superStockiest_label" [ngClass]="{
+                    'active-chip': activeChip_SuperStockiest === Pro.name
+                  }" (click)="activeChip_SuperStockiest = Pro.name" routerLink="{{ Pro.route }}">
+                  {{ Pro.name }}
+                </mat-chip>
+              </mat-chip-set>
             </div>
             <!-- !Route -->
             <div *ngSwitchCase="'Route'">
