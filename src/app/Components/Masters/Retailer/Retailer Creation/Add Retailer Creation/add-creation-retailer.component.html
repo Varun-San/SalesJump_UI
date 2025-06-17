@@ -1,0 +1,95 @@
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isAddProductRoute" class="card shadow p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">Personal Profile</h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+    <div class="card-body p-0 mt-1">
+        <div class="row col-12">
+            <div class="col-4" *ngFor="let field of retailerFields">
+                <div class="mb-3">
+                    <label [for]="'retailer' + field.model" class="form-label">
+                        {{ field.label }}
+                        <span *ngIf="field.required" class="text-danger">*</span>
+                    </label>
+                    <input [id]="'retailer' + field.model" type="text" class="form-control"
+                        [(ngModel)]="retailer[field.model]" [name]="'retailer' + field.model"
+                        [placeholder]="field.label" />
+                </div>
+            </div>
+        </div>
+        <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+            <h5 class="mb-2 me-2">Address</h5>
+            <div class="flex-grow-1">
+                <hr class="mt-3 mb-0" />
+            </div>
+        </div>
+        <div class="row col-12">
+            <div class="col-4">
+                <div>
+                    <label for="retailerProfile" class="form-label">Profile Image <span
+                            class="text-danger">*</span></label>
+                    <div class="position-relative">
+                        <input id="retailerProfile" type="text" class="form-control pe-5"
+                            [(ngModel)]="retailer.profileImage" readonly placeholder="Add Your Image" />
+
+                        <!-- Upload icon inside the input -->
+                        <img src="Assets/Add Product Details/ProductImageUpload.svg" alt="Upload Icon"
+                            class="input-icon" (click)="triggerFileUpload()" />
+
+                        <!-- Hidden file input -->
+                        <input type="file" #fileInput accept="image/*" (change)="onImageSelected($event)" hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="retailerBilling" class="form-label">Billing Address </label>
+                    <input id="retailerBilling" type="text" class="form-control" [(ngModel)]="retailer.billingAddress"
+                        placeholder="Billing Address" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="retailerShopping" class="form-label">Shoping Address </label>
+                    <input id="retailerShopping" type="text" class="form-control" [(ngModel)]="retailer.shoppingAddress"
+                        placeholder="Shopping Address" />
+                </div>
+            </div>
+        </div>
+        <div class="row col-12">
+            <!-- ! Image preview outside, in a separate div -->
+            <div class="col-12" *ngIf="imagePreviews.length">
+                <label class="form-label">Preview Images</label>
+                <div class="d-flex flex-wrap gap-3">
+                    <div *ngFor="let img of imagePreviews; let i = index" class="position-relative me-2 mb-2">
+                        <img [src]="img" class="img-thumbnail" style="max-width: 150px; max-height: 150px;" />
+
+                        <button type="button"
+                            class="btn btn-sm position-absolute top-0 end-0 p-0 bg-transparent border-0"
+                            (click)="removeImage(i)">
+                            <img src="Assets/Add Product Details/Minus_Fill.svg" alt="Remove"
+                                style="width: 30px; height: 30px;" />
+                        </button>
+                    </div>
+
+                    <!-- Add more (+) -->
+                    <button type="button"
+                        class="btn btn-outline-primary d-flex align-items-center justify-content-center"
+                        style="width: 30px; height: 30px;" (click)="triggerFileUpload()">
+                        +
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer bg-white border-0 p-0 mt-3 d-flex justify-content-end gap-2">
+        <button class="btn btn-outline-secondary" (click)="closeCard()">
+            Cancel
+        </button>
+        <button class="btn btn-success" (click)="saveRetailer()">Save</button>
+    </div>
+</div>
