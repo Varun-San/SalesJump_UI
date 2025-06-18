@@ -249,3 +249,14 @@ table td {
   height: 24px;
   display: inline-block;
 }
+
+/* !  NG SELECT DROP DOWN STYLE */
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected {
+  font-weight: 600;
+  color: #1997CE !important;
+  background-color: rgb(221 221 221) !important;
+}
+
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+  background-color: #ccc !important;
+}

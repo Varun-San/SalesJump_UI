@@ -37,6 +37,9 @@ export class MasterSideBarComponent {
     this.activeChip_Product = this.getActiveChip(this.Product_label) || '';
     this.activeChip_Gamification =
       this.getActiveChip(this.Gamification_label) || '';
+    this.activeChip_Retailer = this.getActiveChip(this.Retailer_label) || '';
+    this.activeChip_SuperStockiest =
+      this.getActiveChip(this.superStockiest_label) || '';
     this.activeTab = this.getActiveTabFromUrl(currentUrl) || this.tabs[0];
   }
 
@@ -47,7 +50,7 @@ export class MasterSideBarComponent {
     Product: 'product',
     Employee: 'employee',
     Retailer: 'retailer',
-    'Super Stockist': 'super-stockist',
+    'Super Stockiest': 'super-stockiest',
     Route: 'route',
     Tax: 'tax',
     'HO Creation': 'ho-creation',
@@ -95,7 +98,7 @@ export class MasterSideBarComponent {
     'Product',
     'Employee',
     'Retailer',
-    'Super Stockist',
+    'Super Stockiest',
     'Route',
     'Tax',
     'HO Creation',
@@ -155,7 +158,7 @@ export class MasterSideBarComponent {
   ];
 
   // !  RETAILER
-  activeChip_Retailer: string = 'Outlet Type';
+  activeChip_Retailer: string = '';
   Retailer_label = [
     { name: 'Outlet Type', route: 'master/retailer/retailer-outlet-type' },
     { name: 'Class', route: 'master/retailer/retailer-class' },
@@ -164,10 +167,10 @@ export class MasterSideBarComponent {
   ];
 
   // !  SUPER STOCKIEST
-  activeChip_SuperStockiest: string = 'Super Stockiest';
+  activeChip_SuperStockiest: string = '';
   superStockiest_label = [
     {
-      name: 'Super Stockiest',
+      name: 'Super Stockies Details',
       route: 'master/super-stockiest/super-stockiest-details',
     },
   ];

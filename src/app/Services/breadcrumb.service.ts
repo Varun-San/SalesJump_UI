@@ -16,6 +16,19 @@ export class BreadcrumbService {
 
   private customBreadcrumbs = [
     {
+      match: '/master/retailer/retailer-creation/add-creation-retailer',
+      trail: [
+        {
+          label: 'Retailer Creation',
+          route: '/master/retailer/retailer-outlet-type',
+        },
+        {
+          label: 'Add Retailer Creation',
+          route: '/master/retailer/retailer-creation/add-creation-retailer',
+        },
+      ],
+    },
+    {
       match: '/master/product/rate-card/assign-product',
       trail: [
         { label: 'Master', route: '#' },

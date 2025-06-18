@@ -1,5 +1,5 @@
 <div class="row" style="display: block">
-  <div class="col-10">
+  <div class="col-12">
     <!-- Search bar -->
     <div class="col-12 mt-3">
       <div class="position-relative">
@@ -9,7 +9,7 @@
     </div>
     <!-- Master List -->
     <!-- Sidebar: Vertical Tabs (Left Side) -->
-    <div class="row">
+    <div class="row col-12">
       <div class="col-4 border_right">
         <ul class="nav flex-column nav-tabs " id="nav_tab_vertical">
           <li class="nav-item" *ngFor="let tab of tabs">
@@ -23,7 +23,7 @@
         </ul>
       </div>
       <!-- Content Area (Right Side) -->
-      <div class="col-8 mt-3">
+      <div class="col-7 mt-3">
         <div class="tab-content p-3">
           <div [ngSwitch]="activeTab">
             <!-- !Basic Details -->
@@ -79,7 +79,7 @@
               </mat-chip-set>
             </div>
             <!-- !Super Stockiest -->
-            <div *ngSwitchCase="'Super Stockist'">
+            <div *ngSwitchCase="'Super Stockiest'">
               <h4>Super Stockiest</h4>
               <mat-chip-set>
                 <mat-chip *ngFor="let Pro of superStockiest_label" [ngClass]="{

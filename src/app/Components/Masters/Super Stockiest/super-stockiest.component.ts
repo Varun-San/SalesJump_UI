@@ -43,7 +43,7 @@ export class SuperStockiestComponent {
   }
 
   // Master list merged into tabs
-  tabs = ['Outlet Type'];
+  tabs = ['Super Stockiest Details'];
 
   activeTab = this.tabs[0];
 

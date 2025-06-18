@@ -1,0 +1,147 @@
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isAddSuperStockiest" class="card shadow p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">Add Super Stockiest</h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+    <div class="card-body p-0 mt-1">
+        <div class="row col-8">
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="supplier-name" class="form-label">Supplier Name <span
+                            class="text-danger">*</span></label>
+                    <input id="supplier-name" type="text" class="form-control" [(ngModel)]="superStockiest.name" />
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="contact-person" class="form-label">Contact Person <span
+                            class="text-danger">*</span></label>
+                    <input id="contact-person" type="text" class="form-control"
+                        [(ngModel)]="superStockiest.contactPerson" />
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="erp-code" class="form-label">ERP Code <span class="text-danger">*</span></label>
+                    <ng-select id="erp-code" [(ngModel)]="superStockiest.erpcode" [items]="erpOptions" bindLabel="label"
+                        bindValue="value" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="mobile" class="form-label">Mobile <span class="text-danger">*</span></label>
+                    <input id="mobile" type="text" class="form-control" [(ngModel)]="superStockiest.mobile" />
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <label for="userName" class="form-label">User Name <span class="text-danger">*</span></label>
+                <div class="input-group mb-2">
+                    <span class="input-group-text" id="inputGroup-sizing-default">SANS-</span>
+                    <input type="text" class="form-control" id="userName" [(ngModel)]="superStockiest.userName" />
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Auto Generate
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                    <div class="password-wrapper">
+                        <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"
+                            name="password" [(ngModel)]="superStockiest.password" />
+                        <img [src]="showPassword ? 'Assets/LoginPageImages/Show_Password.svg' : 'Assets/LoginPageImages/Hide_Password.svg'"
+                            alt="Toggle Password" (click)="togglePassword()" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="state" class="form-label">State <span class="text-danger">*</span></label>
+                    <ng-select id="state" [(ngModel)]="superStockiest.state" [items]="stateOptions" bindLabel="label"
+                        bindValue="value" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label class="form-label">Field Officer <span class="text-danger">*</span></label>
+                    <div class="position-relative">
+                        <input type="text" class="form-control pe-5" [(ngModel)]="superStockiest.fieldOfficer" />
+                        <img src="Assets/Edit.svg" alt="Field office" class="input-icon" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="gst" class="form-label">GST No</label>
+                    <input id="gst" type="text" class="form-control" [(ngModel)]="superStockiest.gst" />
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input id="address" type="text" class="form-control" [(ngModel)]="superStockiest.address" />
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="type" class="form-label">Type</label>
+                    <ng-select id="type" [(ngModel)]="superStockiest.type" [items]="typeOptions" bindLabel="label"
+                        bindValue="value" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="subDivision" class="form-label">Sub Division</label>
+                    <ng-select id="subDivision" [(ngModel)]="superStockiest.subDivision" [items]="subDivisionOption"
+                        bindLabel="label" bindValue="value" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+            <h5 class="mb-2 me-2">Divisions</h5>
+            <div class="flex-grow-1">
+                <hr class="mt-3 mb-0" />
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="mb-3">
+                <label for="subDivision2" class="form-label">Sub Division</label>
+                <ng-select id="subDivision2" [items]="subDivisionOption" bindLabel="label" bindValue="value"
+                    [(ngModel)]="superStockiest.subDivision2" [multiple]="true" [closeOnSelect]="false"
+                    placeholder="Select sub divisions" [clearable]="false">
+                </ng-select>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-footer bg-white border-0 p-0 mt-3 d-flex justify-content-end gap-2">
+        <button class="btn btn-outline-secondary" (click)="closeCard()">
+            Cancel
+        </button>
+        <button class="btn btn-success" (click)="saveSuperStockiest()">Save</button>
+    </div>
+</div>
