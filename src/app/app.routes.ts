@@ -79,6 +79,9 @@ import { AddCreationRetailerComponent } from './Components/Masters/Retailer/Reta
 import { SuperStockiestComponent } from './Components/Masters/Super Stockiest/super-stockiest.component';
 import { SuperStockiestDetailsComponent } from './Components/Masters/Super Stockiest/Super Stockiest Details/super-stockiest-details.component';
 import { AddSuperSockiestDetailsComponent } from './Components/Masters/Super Stockiest/Super Stockiest Details/Add Super Sockiest Details/add-super-sockiest-details.component';
+import { RouteComponent } from './Components/Masters/Route Module/route.component';
+import { RouteListComponent } from './Components/Masters/Route Module/Route List/route-list.component';
+import { AddRouteListComponent } from './Components/Masters/Route Module/Route List/Add Route List/add-route-list.component';
 
 export const routes: Routes = [
   {
@@ -403,6 +406,22 @@ export const routes: Routes = [
                   {
                     path: 'add-super-sockiest',
                     component: AddSuperSockiestDetailsComponent,
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            path: 'route',
+            component: RouteComponent,
+            children: [
+              {
+                path: 'route-list',
+                component: RouteListComponent,
+                children: [
+                  {
+                    path: 'add-route-list',
+                    component: AddRouteListComponent,
                   },
                 ],
               },

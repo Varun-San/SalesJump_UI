@@ -1,0 +1,121 @@
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isAddRouteList" class="card shadow p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">Add Route</h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+    <div class="card-body p-0 mt-1">
+        <div class="row col-8 mb-2">
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="Route-Name" class="form-label">Route Name <span class="text-danger">*</span></label>
+                    <input id="Route-Name" type="text" class="form-control" [(ngModel)]="route.routeName" />
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="Distance" class="form-label">Distance</label>
+                    <input id="Distance" type="text" class="form-control" [(ngModel)]="route.distance" />
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="Target" class="form-label">Target</label>
+                    <input id="Target" type="text" class="form-control" [(ngModel)]="route.target" />
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="productionPercentage" class="form-label">Minimum Production Percentage <span
+                            class="text-danger">*</span></label>
+                    <input id="productionPercentage" type="text" class="form-control"
+                        [(ngModel)]="route.productionPercentage" />
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="routePopulation" class="form-label">Route Population <span
+                            class="text-danger">*</span></label>
+                    <input id="routePopulation" type="text" class="form-control" [(ngModel)]="route.routePopulation" />
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="territory" class="form-label">Territory <span class="text-danger">*</span></label>
+                    <ng-select id="territory" [(ngModel)]="route.territory" [items]="territoryOptions" bindLabel="label"
+                        bindValue="value" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="territory" class="form-label">Allowance Type <span class="text-danger">*</span></label>
+                    <ng-select id="territory" [(ngModel)]="route.allowanceType" [items]="allowanceOptions"
+                        bindLabel="label" bindValue="value" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="town" class="form-label">Town <span class="text-danger">*</span></label>
+                    <ng-select id="town" [(ngModel)]="route.town" [items]="townOptions" bindLabel="label"
+                        bindValue="value" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+            <h5 class="mb-2 me-2">Select Distributor</h5>
+            <div class="flex-grow-1">
+                <hr class="mt-3 mb-0" />
+            </div>
+        </div>
+
+        <div class="col-8 mb-3">
+            <div class="mb-3">
+                <label for="Distributor" class="form-label">Distributor</label>
+                <ng-select id="Distributor" [items]="distributorOption" bindLabel="label" bindValue="value"
+                    [(ngModel)]="route.distributor" [multiple]="true" [closeOnSelect]="false"
+                    placeholder="Select an option" [clearable]="false">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+            <h5 class="mb-2 me-2">Select Field Force</h5>
+            <div class="flex-grow-1">
+                <hr class="mt-3 mb-0" />
+            </div>
+        </div>
+
+        <div class="col-8">
+            <div class="mb-3">
+                <label for="subDivision" class="form-label">Sub Division</label>
+                <ng-select id="subDivision" [items]="subDivisionOption" bindLabel="label" bindValue="value"
+                    [(ngModel)]="route.subDivision" [multiple]="true" [closeOnSelect]="false"
+                    placeholder="Select an option" [clearable]="false">
+                </ng-select>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-footer bg-white mt-3">
+        <div class="d-flex justify-content-end gap-2 mt-3">
+            <button class="btn btn-outline-secondary" (click)="closeCard()">
+                Cancel
+            </button>
+            <button class="btn btn-success" (click)="saveRouteList()">Save</button>
+        </div>
+    </div>
+</div>

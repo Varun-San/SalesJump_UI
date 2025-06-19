@@ -40,6 +40,7 @@ export class MasterSideBarComponent {
     this.activeChip_Retailer = this.getActiveChip(this.Retailer_label) || '';
     this.activeChip_SuperStockiest =
       this.getActiveChip(this.superStockiest_label) || '';
+    this.activeChip_route = this.getActiveChip(this.route_label) || '';
     this.activeTab = this.getActiveTabFromUrl(currentUrl) || this.tabs[0];
   }
 
@@ -172,6 +173,15 @@ export class MasterSideBarComponent {
     {
       name: 'Super Stockies Details',
       route: 'master/super-stockiest/super-stockiest-details',
+    },
+  ];
+
+  // !  ROUTE
+  activeChip_route: string = '';
+  route_label = [
+    {
+      name: 'Route List',
+      route: 'master/route/route-list',
     },
   ];
 }

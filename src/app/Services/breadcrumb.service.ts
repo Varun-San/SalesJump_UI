@@ -196,6 +196,11 @@ export class BreadcrumbService {
       subs: ['super-stockiest-details'],
     },
     {
+      base: '/master/route/',
+      label: 'Route',
+      subs: ['route-list'],
+    },
+    {
       base: '/master/gamification/',
       label: 'Gamification',
       subs: ['competitions', 'formula', 'rewards', 'levels'],

@@ -92,6 +92,13 @@
             <!-- !Route -->
             <div *ngSwitchCase="'Route'">
               <h4>Route</h4>
+              <mat-chip-set>
+                <mat-chip *ngFor="let Pro of route_label" [ngClass]="{
+                    'active-chip': activeChip_route === Pro.name
+                  }" (click)="activeChip_route = Pro.name" routerLink="{{ Pro.route }}">
+                  {{ Pro.name }}
+                </mat-chip>
+              </mat-chip-set>
             </div>
             <!-- !Tax -->
             <div *ngSwitchCase="'Tax'">
