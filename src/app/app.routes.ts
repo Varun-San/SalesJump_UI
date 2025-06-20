@@ -82,6 +82,7 @@ import { AddSuperSockiestDetailsComponent } from './Components/Masters/Super Sto
 import { RouteComponent } from './Components/Masters/Route Module/route.component';
 import { RouteListComponent } from './Components/Masters/Route Module/Route List/route-list.component';
 import { AddRouteListComponent } from './Components/Masters/Route Module/Route List/Add Route List/add-route-list.component';
+import { FixedRateCardComponent } from './Components/Masters/Product/Fixed Rate Card/fixed-rate-card.component';
 
 export const routes: Routes = [
   {
@@ -336,6 +337,10 @@ export const routes: Routes = [
               {
                 path: 'rate-card',
                 component: RateCardComponent,
+              },
+              {
+                path: 'fixed-rate-card',
+                component: FixedRateCardComponent,
                 children: [
                   {
                     path: 'add-rate-card',

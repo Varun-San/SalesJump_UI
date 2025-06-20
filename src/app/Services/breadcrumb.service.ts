@@ -29,31 +29,19 @@ export class BreadcrumbService {
       ],
     },
     {
-      match: '/master/product/rate-card/assign-product',
+      match: '/master/product/fixed-rate-card/assign-product',
       trail: [
         { label: 'Master', route: '#' },
         { label: 'Product', route: '/master/product' },
-        { label: 'Rate Card', route: '/master/product/rate-card' },
-        {
-          label: 'Ind-Rate',
-          route: '#',
-        },
-        {
-          label: 'Assign Product',
-          route: '/master/product/rate-card/assign-product',
-        },
+        { label: 'Rate Card', route: '/master/product/fixed-rate-card' },
       ],
     },
     {
-      match: '/master/product/rate-card/add-rate-card',
+      match: '/master/product/fixed-rate-card/add-rate-card',
       trail: [
         { label: 'Master', route: '#' },
         { label: 'Product', route: '/master/product' },
-        { label: 'Rate Card', route: '/master/product/rate-card' },
-        {
-          label: 'Add Rate Card',
-          route: '/master/product/rate-card/add-rate-card',
-        },
+        { label: 'Rate Card', route: '/master/product/fixed-rate-card' },
       ],
     },
     {
@@ -178,6 +166,7 @@ export class BreadcrumbService {
         'rate-entry',
         'pop-material',
         'rate-card',
+        'fixed-rate-card',
       ],
     },
     {

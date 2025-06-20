@@ -58,11 +58,13 @@ export class AddRateCardComponent {
   }
 
   get isAddRateCard(): boolean {
-    return this.router.url.includes('/master/product/rate-card/add-rate-card');
+    return this.router.url.includes(
+      '/master/product/fixed-rate-card/add-rate-card'
+    );
   }
 
   closeCard() {
-    this.router.navigate(['/master/product/rate-card']);
+    this.router.navigate(['/master/product/fixed-rate-card']);
   }
 
   onCountryChange() {

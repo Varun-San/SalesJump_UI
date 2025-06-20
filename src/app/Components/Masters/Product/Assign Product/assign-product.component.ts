@@ -36,7 +36,9 @@ export class AssignProductComponent {
   constructor(private router: Router) {}
 
   get isAssignProduct(): boolean {
-    return this.router.url.includes('/master/product/rate-card/assign-product');
+    return this.router.url.includes(
+      '/master/product/fixed-rate-card/assign-product'
+    );
   }
 
   cancel() {

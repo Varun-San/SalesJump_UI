@@ -146,7 +146,8 @@ export class MasterSideBarComponent {
     { name: 'Tax Allocation', route: '/master/product/tax-allocation' },
     { name: 'Rate Entry Statewise', route: '/master/product/rate-entry' },
     { name: 'POP Material', route: '/master/product/pop-material' },
-    { name: 'Rate Card Fixation', route: '/master/product/rate-card' },
+    { name: 'Rate Card', route: '/master/product/rate-card' },
+    { name: 'Fixed Rate Card', route: '/master/product/fixed-rate-card' },
   ];
 
   //! Gamification

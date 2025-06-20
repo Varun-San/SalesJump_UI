@@ -58,6 +58,10 @@ export class ProductComponent {
       label: 'Rate Card',
       path: '/master/product/rate-card',
     },
+    {
+      label: 'Fixed Rate Card',
+      path: '/master/product/fixed-rate-card',
+    },
   ];
 
   // ?~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
