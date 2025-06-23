@@ -39,7 +39,7 @@ export class AddDivisionComponent {
   }
 
   closeCard() {
-    this.router.navigate(['/master/basic_details/division']); // go back to main tab
+    this.router.navigate(['/master/basic_details/division']);
   }
 
   saveDivision() {

@@ -44,13 +44,15 @@
             </div>
         </div>
     </div>
-    <div class="margin-top"></div>
-    <div class="card-footer bg-white border-0 p-0 mt-3 d-flex justify-content-end gap-2">
-        <button class="btn btn-outline-secondary" (click)="closeCard()">
-            Cancel
-        </button>
-        <button class="btn btn-success" (click)="saveBrand()">{{ editMode ? 'Update Brand' : 'Save Brand'
-            }}</button>
+
+    <div class="card-footer bg-white mt-3">
+        <div class="d-flex justify-content-end gap-2 mt-3">
+            <button class="btn btn-outline-secondary" (click)="closeCard()">
+                Cancel
+            </button>
+            <button class="btn btn-success" (click)="saveBrand()">{{ editMode ? 'Update Brand' : 'Save Brand'
+                }}</button>
+        </div>
     </div>
 </div>
 <div *ngIf="isAddBrand" class="card shadow p-3" id="Add-Division2"></div>

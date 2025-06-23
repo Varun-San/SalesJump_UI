@@ -47,12 +47,12 @@
             </div>
         </div>
     </div>
-    <div class="card-footer bg-white border-0 p-0 mt-3 d-flex justify-content-end gap-2">
-        <button class="btn btn-outline-secondary" (click)="closeCard()">
-            Cancel
-        </button>
-        <button class="btn btn-success" (click)="saveCompany()">{{ editMode ? 'Update Company' : 'Save Company'
-            }}</button>
+
+    <div class="card-footer bg-white mt-3">
+        <div class="d-flex justify-content-end gap-2 mt-3">
+            <button class="btn btn-outline-secondary" (click)="closeCard()">Cancel</button>
+            <button class="btn btn-success" (click)="saveCompany()">Save</button>
+        </div>
     </div>
 </div>
 

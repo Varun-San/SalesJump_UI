@@ -48,13 +48,12 @@
             </div>
         </div>
     </div>
-    <div class="margin-top"></div>
-    <div class="card-footer bg-white border-0 p-0 mt-3 d-flex justify-content-end gap-2">
-        <button class="btn btn-outline-secondary" (click)="closeCard()">
-            Cancel
-        </button>
-        <button class="btn btn-success" (click)="saveWorkType()">{{ editMode ? 'Update Worktype' : 'Save Worktype'
-            }}</button>
+
+    <div class="card-footer bg-white mt-3">
+        <div class="d-flex justify-content-end gap-2 mt-3">
+            <button class="btn btn-outline-secondary" (click)="closeCard()">Cancel</button>
+            <button class="btn btn-success" (click)="saveWorkType()">Save</button>
+        </div>
     </div>
 </div>
 

@@ -29,13 +29,13 @@
             <div class="col-4">
                 <div class="mb-4">
                     <label class="form-label">Latitude</label>
-                    <input type="number" class="form-control" [(ngModel)]="latitude" />
+                    <input type="text" class="form-control" [(ngModel)]="latitude" />
                 </div>
             </div>
             <div class="col-4">
                 <div>
                     <label class="form-label">Longitude</label>
-                    <input type="number" class="form-control" [(ngModel)]="longitude" />
+                    <input type="text" class="form-control" [(ngModel)]="longitude" />
                 </div>
             </div>
         </div>
@@ -45,11 +45,10 @@
         </div>
     </div>
 
-
-    <div class="card-footer bg-white border-0 p-0 mt-3 mb-3 d-flex justify-content-end gap-2">
-        <button class="btn btn-outline-secondary" (click)="closeCard()">Cancel</button>
-        <button class="btn btn-success" (click)="saveHeadquarters()">
-            {{ editMode ? 'Update' : 'Save' }}
-        </button>
+    <div class="card-footer bg-white mt-3">
+        <div class="d-flex justify-content-end gap-2 mt-3">
+            <button class="btn btn-outline-secondary" (click)="closeCard()">Cancel</button>
+            <button class="btn btn-success" (click)="saveHeadquarters()">Save</button>
+        </div>
     </div>
 </div>
