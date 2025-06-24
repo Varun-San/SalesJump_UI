@@ -27,20 +27,26 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrl: './ho-user.component.css',
 })
 export class HoUserComponent {
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ICONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   faSearch = faSearch;
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UI STATE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   showFilterPopup = false;
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MENU OPTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   menuOptions = [
     { label: 'Edit Details', route: null },
     { label: 'Deactivate', route: null },
   ];
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FILTERS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   tempFilters = { status: '', role: '' };
   activeFilters = { status: '', role: '' };
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SELECTION STATE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   selectedHoUser: { houser: any; index: number } | null = null;
 
-  // 🛠️ HO User List with status
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DATA MODEL <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   HoUserList: {
     Ho_UserId: string;
     Name: string;
@@ -51,8 +57,10 @@ export class HoUserComponent {
     status: string;
   }[] = [];
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   constructor(private router: Router) {}
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> LIFECYCLE HOOK <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   ngOnInit() {
     const storedHoUser = sessionStorage.getItem('Ho-user-data');
     if (storedHoUser) {
@@ -75,6 +83,7 @@ export class HoUserComponent {
     }
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MENU HANDLING <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   openMenu(hq: any, index: number) {
     this.selectedHoUser = { houser: hq, index };
   }
@@ -107,6 +116,7 @@ export class HoUserComponent {
     }
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TOGGLE USER STATUS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   toggleUserStatus(index: number) {
     const stored = sessionStorage.getItem('Ho-user-data');
     if (!stored) return;
@@ -121,6 +131,8 @@ export class HoUserComponent {
     this.ngOnInit(); // Refresh the list
     this.selectedHoUser = null;
   }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FILTER POPUP CONTROL <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   toggleFilterPopup() {
     this.showFilterPopup = !this.showFilterPopup;
   }

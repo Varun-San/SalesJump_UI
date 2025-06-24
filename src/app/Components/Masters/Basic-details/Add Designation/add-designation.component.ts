@@ -11,21 +11,32 @@ import { NgSelectModule } from '@ng-select/ng-select';
   styleUrl: './add-designation.component.css',
 })
 export class AddDesignationComponent {
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ROUTE CHECK <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   get isAddDesignation(): boolean {
     return this.router.url.includes(
       '/master/basic_details/designation/add-designation'
     );
   }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FLAGS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   editMode: boolean = false;
   editIndex: number | null = null;
 
-  shortName = '';
-  designation = '';
-  type: string | null = null;
-  userWiseCount = '';
-  status = '';
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORM FIELDS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-  typeOptions = ['Basic'];
+  shortName: string = '';
+  designation: string = '';
+  type: string | null = null;
+  userWiseCount: string = '';
+  status: string = '';
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DROPDOWN OPTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  typeOptions: string[] = ['Basic'];
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   constructor(private router: Router) {
     const nav = history.state;
@@ -42,11 +53,17 @@ export class AddDesignationComponent {
     }
   }
 
-  closeCard() {
-    this.router.navigate(['/master/basic_details/designation']); // go back to main tab
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CLOSE FORM & NAVIGATE BACK <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/basic_details/designation']);
+    });
   }
 
-  saveDesignation() {
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SAVE DESIGNATION DATA <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  saveDesignation(): void {
     if (
       !this.shortName ||
       !this.designation ||

@@ -5,56 +5,72 @@ import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-add-company',
+  standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './add-company.component.html',
   styleUrl: './add-company.component.css',
 })
 export class AddCompanyComponent {
-  get isAddCompany(): boolean {
-    return this.router.url.includes('master/basic_details/company/add-company');
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  constructor(private router: Router) {
+    this.loadEditStateFromNavigation();
   }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FLAGS & MODE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   editMode: boolean = false;
   editIndex: number | null = null;
 
-  //! Dropdown
-  types = [
-    'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh',
-    'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand',
-    'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur',
-    'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab',
-    'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura',
-    'Uttar Pradesh', 'Uttarakhand', 'West Bengal'
-  ]
-  ;
-
-  removeSelected(value: string) {
-    this.company_State = this.company_State.filter((item) => item !== value);
+  get isAddCompany(): boolean {
+    return this.router.url.includes('master/basic_details/company/add-company');
   }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORM FIELDS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   company_Name = '';
   alias_Name = '';
   company_City = '';
-  company_State :string[] = []
+  company_State: string[] = [];
   company_Status = '';
 
-  constructor(private router: Router) {
-    const nav = history.state;
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DROPDOWN OPTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-    if (nav && nav.company) {
-      this.editMode = true;
-      this.editIndex = nav.index;
+  types: string[] = [
+    'Andhra Pradesh',
+    'Arunachal Pradesh',
+    'Assam',
+    'Bihar',
+    'Chhattisgarh',
+    'Goa',
+    'Gujarat',
+    'Haryana',
+    'Himachal Pradesh',
+    'Jharkhand',
+    'Karnataka',
+    'Kerala',
+    'Madhya Pradesh',
+    'Maharashtra',
+    'Manipur',
+    'Meghalaya',
+    'Mizoram',
+    'Nagaland',
+    'Odisha',
+    'Punjab',
+    'Rajasthan',
+    'Sikkim',
+    'Tamil Nadu',
+    'Telangana',
+    'Tripura',
+    'Uttar Pradesh',
+    'Uttarakhand',
+    'West Bengal',
+  ];
 
-      this.company_Name = nav.company.company_Name || '';
-      this.alias_Name = nav.company.alias_Name || '';
-      this.company_City = nav.company.company_City || '';
-      this.company_State = nav.company.company_State || '';
-    }
-  }
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORM ACTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-  closeCard() {
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/master/basic_details/company']);
-    });
+  removeSelected(value: string) {
+    this.company_State = this.company_State.filter((item) => item !== value);
   }
 
   saveCompany() {
@@ -62,7 +78,7 @@ export class AddCompanyComponent {
       !this.company_Name ||
       !this.alias_Name ||
       !this.company_City ||
-      !this.company_State
+      !this.company_State.length
     ) {
       alert('Please fill all required fields.');
       return;
@@ -75,11 +91,12 @@ export class AddCompanyComponent {
       company_State: this.company_State,
     };
 
-    const existingData = sessionStorage.getItem('add_Company');
     let add_Company: any[] = [];
 
     try {
+      const existingData = sessionStorage.getItem('add_Company');
       add_Company = existingData ? JSON.parse(existingData) : [];
+
       if (!Array.isArray(add_Company)) {
         add_Company = [];
       }
@@ -101,5 +118,27 @@ export class AddCompanyComponent {
     );
 
     this.closeCard();
+  }
+
+  closeCard() {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/basic_details/company']);
+    });
+  }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NAVIGATION STATE HANDLING <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  private loadEditStateFromNavigation() {
+    const nav = history.state;
+
+    if (nav && nav.company) {
+      this.editMode = true;
+      this.editIndex = nav.index;
+
+      this.company_Name = nav.company.company_Name || '';
+      this.alias_Name = nav.company.alias_Name || '';
+      this.company_City = nav.company.company_City || '';
+      this.company_State = nav.company.company_State || [];
+    }
   }
 }

@@ -111,7 +111,7 @@
             <tbody *ngIf="HoUserList.length > 0; else noData">
                 <tr *ngFor="let hq of HoUserList; let i = index">
                     <td>{{ hq.Name }}</td>
-                    <td>{{ hq.Username }}</td>
+                    <td>{{ hq.Ho_UserId }}</td>
                     <td>
                         <!-- Check if 'hq.type' is an array -->
                         <span>{{ hq.type[0] }}</span>

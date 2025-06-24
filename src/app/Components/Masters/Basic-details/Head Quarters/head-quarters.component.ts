@@ -27,11 +27,17 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./head-quarters.component.css'],
 })
 export class HeadQuartersComponent {
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ICONS & FLAGS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   faSearch = faSearch;
   showFilterPopup = false;
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FILTERS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   tempFilters = { status: '', role: '' };
   activeFilters = { status: '', role: '' };
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DATA STRUCTURE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   headQuartersList: {
     id: string;
@@ -44,13 +50,19 @@ export class HeadQuartersComponent {
 
   selectedHQ: { hq: any; index: number } | null = null;
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MENU OPTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   menuOptions = [
     {
       label: 'Edit Details',
       action: 'edit',
       route: '/master/basic_details/add-headquarters',
     },
-    { label: 'Deactivate', action: 'deactivate', route: null }, // No route for deactivate
+    {
+      label: 'Deactivate',
+      action: 'deactivate',
+      route: null,
+    },
     {
       label: 'Menu Rights',
       action: 'menu-rights',
@@ -58,7 +70,11 @@ export class HeadQuartersComponent {
     },
   ];
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   constructor(private router: Router) {}
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ON INIT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   ngOnInit() {
     const storedHQ = sessionStorage.getItem('headQuartersData');
@@ -80,6 +96,8 @@ export class HeadQuartersComponent {
     }
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FILTER ACTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   toggleFilterPopup() {
     this.showFilterPopup = !this.showFilterPopup;
   }
@@ -99,6 +117,8 @@ export class HeadQuartersComponent {
     this.tempFilters[type] = '';
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MENU HANDLER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   openMenu(hq: any, index: number) {
     this.selectedHQ = { hq, index };
   }
@@ -106,28 +126,25 @@ export class HeadQuartersComponent {
   onMenuAction(action: string) {
     if (!this.selectedHQ) return;
 
-    // Access the hq object within selectedHQ
     const hq = this.selectedHQ.hq;
 
     switch (action) {
       case 'edit':
-        // Navigate to edit page and pass the data
         this.router.navigate(['/master/basic_details/add-headquarters'], {
-          state: { hq: hq, index: this.selectedHQ.index },
+          state: { hq, index: this.selectedHQ.index },
         });
         break;
 
       case 'deactivate':
-        // Toggle the status (active / inactive)
         hq.status = hq.status === 'Active' ? 'Inactive' : 'Active';
+        this.updateSessionStorage();
         break;
 
       case 'menu-rights':
-        // Navigate to menu rights page
         this.router.navigate(
           ['/master/basic_details/designation/menu-rights'],
           {
-            state: { hq: hq },
+            state: { hq },
           }
         );
         break;
@@ -135,5 +152,19 @@ export class HeadQuartersComponent {
       default:
         console.warn('Unknown action:', action);
     }
+  }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> STORAGE UPDATE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  private updateSessionStorage() {
+    const updatedData = this.headQuartersList.map((hq) => ({
+      name: hq.name,
+      type: hq.type,
+      latitude: hq.latitude,
+      longitude: hq.longitude,
+      status: hq.status,
+    }));
+
+    sessionStorage.setItem('headQuartersData', JSON.stringify(updatedData));
   }
 }

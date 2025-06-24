@@ -29,16 +29,24 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrls: ['./work-type.component.css'],
 })
 export class WorkTypeComponent {
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ICONS & UI STATE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   faSearch = faSearch;
   showFilterPopup = false;
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MENU OPTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   menuOptions = [
     { label: 'Edit Details', action: 'edit' },
     { label: 'Deactivate', action: 'deactivate' },
   ];
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FILTERS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   tempFilters = { status: '', role: '' };
   activeFilters = { status: '', role: '' };
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> WORK TYPE DATA <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   workTypeList: {
     workTypeCode: string;
@@ -50,11 +58,17 @@ export class WorkTypeComponent {
 
   selectedWorkType: { workType: any; index: number } | null = null;
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   constructor(private router: Router) {}
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> LIFECYCLE HOOK <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   ngOnInit() {
     this.loadWorkTypes();
   }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> LOAD WORK TYPES FROM STORAGE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   loadWorkTypes() {
     const stored = sessionStorage.getItem('add-work-type');
@@ -68,6 +82,8 @@ export class WorkTypeComponent {
     }
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MENU OPEN & ACTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   openMenu(workType: any, index: number) {
     this.selectedWorkType = { workType, index };
   }
@@ -79,7 +95,7 @@ export class WorkTypeComponent {
 
     switch (action) {
       case 'edit':
-        this.router.navigate(['/master/basic_details/add-work-type'], {
+        this.router.navigate(['/master/basic_details/work-type/add-work-type'], {
           state: { workType, index },
         });
         break;
@@ -93,6 +109,8 @@ export class WorkTypeComponent {
     }
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TOGGLE STATUS (ACTIVE / INACTIVE) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   toggleStatus(index: number) {
     const stored = sessionStorage.getItem('add-work-type');
     let workTypes = stored ? JSON.parse(stored) : [];
@@ -105,6 +123,8 @@ export class WorkTypeComponent {
     this.loadWorkTypes();
     this.selectedWorkType = null;
   }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FILTER POPUP MANAGEMENT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   toggleFilterPopup() {
     this.showFilterPopup = !this.showFilterPopup;

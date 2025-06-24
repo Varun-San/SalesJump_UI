@@ -13,17 +13,20 @@ import { LeafletMapComponent } from './Map/leaflet-map.component';
   styleUrls: ['./add-head-quarters.component.css'],
 })
 export class AddHeadQuartersComponent {
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORM DATA <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   headQuartersName = '';
   selectedType = '';
   latitude = '';
   longitude = '';
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EDIT MODE STATE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   editMode = false;
   editIndex: number | null = null;
 
-  //! Dropdown options
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DROPDOWN OPTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   types = ['Head Quarters A', 'Head Quarters B', 'Head Quarters C'];
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR & INITIALIZATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   constructor(private router: Router, private cdRef: ChangeDetectorRef) {
     const nav = history.state; // Access the state passed via router
 
@@ -39,20 +42,24 @@ export class AddHeadQuartersComponent {
     }
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ROUTE CHECK <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   get isAddHeadquartersRoute(): boolean {
     return this.router.url.includes('/master/basic_details/add-headquarters');
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MAP LOCATION SELECTION HANDLER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   onMapLocationSelected(location: { lat: number; lng: number }) {
     this.latitude = location.lat.toFixed(5);
     this.longitude = location.lng.toFixed(5);
     this.cdRef.detectChanges();
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NAVIGATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   closeCard() {
     this.router.navigate(['/master/basic_details/head-quarters']);
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SAVE OR UPDATE HEADQUARTERS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   saveHeadquarters() {
     if (
       !this.headQuartersName ||

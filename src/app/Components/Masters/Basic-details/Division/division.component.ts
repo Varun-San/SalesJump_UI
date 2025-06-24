@@ -10,6 +10,14 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
+interface Division {
+  divisionName: string;
+  divisionPrefix: string;
+  productWiseCount: number;
+  userWiseCount: number;
+  status: string;
+}
+
 @Component({
   selector: 'app-division',
   imports: [
@@ -27,21 +35,60 @@ import { Router } from '@angular/router';
   styleUrl: './division.component.css',
 })
 export class DivisionComponent {
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ICONS & FLAGS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   faSearch = faSearch;
   showFilterPopup = false;
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FILTERS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  tempFilters = { status: '', role: '' };
+  activeFilters = { status: '', role: '' };
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MENUS & OPTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   menuOptions = [
     { label: 'Edit Details', action: 'edit' },
     { label: 'Deactivate', action: 'deactivate' },
   ];
 
-  handleMenuAction(action: string) {
-    // Ensure selectedDivision exists before performing any action
+  selectedDivision: { division: any; index: number } | null = null;
+  selectedHQ: any = null;
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DIVISION DATA <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  divisionList: Division[] = [];
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  constructor(private router: Router) {}
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> INIT METHOD <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  ngOnInit() {
+    this.loadDivisions();
+  }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> LOAD DIVISIONS FROM SESSION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  loadDivisions(): void {
+    const data = sessionStorage.getItem('add-division');
+    this.divisionList = data ? JSON.parse(data) : [];
+  }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> OPEN MENU <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  openMenu(hq: any): void {
+    this.selectedHQ = hq;
+  }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HANDLE MENU ACTION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  handleMenuAction(action: string): void {
     if (!this.selectedDivision) return;
 
     switch (action) {
       case 'edit':
-        // Call editDivision with selected division data
         this.editDivision(
           this.selectedDivision.division,
           this.selectedDivision.index
@@ -49,8 +96,7 @@ export class DivisionComponent {
         break;
 
       case 'deactivate':
-        // Deactivate or Activate the division status
-        this.onMenuAction('deactivate'); // Or 'activate' depending on your logic
+        this.onMenuAction('deactivate');
         break;
 
       default:
@@ -58,64 +104,17 @@ export class DivisionComponent {
     }
   }
 
-  tempFilters = { status: '', role: '' };
-  activeFilters = { status: '', role: '' };
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NAVIGATE TO EDIT PAGE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-  divisionList: {
-    divisionName: string;
-    divisionPrefix: string;
-    productWiseCount: number;
-    userWiseCount: number;
-    status: string;
-  }[] = [];
-
-  selectedDivision: { division: any; index: number } | null = null;
-
-  constructor(private router: Router) {}
-
-  editDivision(division: any, index: number) {
-    this.router.navigate(['master/basic_details/add-division'], {
+  editDivision(division: any, index: number): void {
+    this.router.navigate(['master/basic_details/division/add-division'], {
       state: { division, index },
     });
   }
 
-  ngOnInit() {
-    this.loadDivisions();
-  }
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TOGGLE DIVISION STATUS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-  toggleFilterPopup() {
-    this.showFilterPopup = !this.showFilterPopup;
-  }
-
-  applyFilters() {
-    this.activeFilters = { ...this.tempFilters };
-    this.showFilterPopup = false;
-  }
-
-  cancelFilter() {
-    this.tempFilters = { ...this.activeFilters };
-    this.showFilterPopup = false;
-  }
-
-  clearFilter(type: 'status' | 'role') {
-    this.activeFilters[type] = '';
-    this.tempFilters[type] = '';
-  }
-
-  selectedHQ: any = null;
-
-  openMenu(hq: any) {
-    this.selectedHQ = hq;
-  }
-
-  // This will load the updated division list from sessionStorage
-  loadDivisions() {
-    const data = sessionStorage.getItem('add-division');
-    this.divisionList = data ? JSON.parse(data) : [];
-  }
-
-  // Handle the Deactivate/Activate action
-  onMenuAction(action: string) {
+  onMenuAction(action: string): void {
     if (!this.selectedDivision) return;
 
     const data = sessionStorage.getItem('add-division');
@@ -124,15 +123,35 @@ export class DivisionComponent {
     const index = this.selectedDivision.index;
 
     if (action === 'deactivate' && divisions[index]) {
-      const currentStatus = divisions[index].status || 'Active'; // Default to 'Active' if missing
+      const currentStatus = divisions[index].status || 'Active';
       divisions[index].status =
         currentStatus === 'Active' ? 'Inactive' : 'Active';
 
       sessionStorage.setItem('add-division', JSON.stringify(divisions));
-
-      this.loadDivisions(); // Refresh the division list after the update
+      this.loadDivisions(); // Refresh UI
     }
 
-    this.selectedDivision = null; // Reset the selected division
+    this.selectedDivision = null;
+  }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FILTER LOGIC <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  toggleFilterPopup(): void {
+    this.showFilterPopup = !this.showFilterPopup;
+  }
+
+  applyFilters(): void {
+    this.activeFilters = { ...this.tempFilters };
+    this.showFilterPopup = false;
+  }
+
+  cancelFilter(): void {
+    this.tempFilters = { ...this.activeFilters };
+    this.showFilterPopup = false;
+  }
+
+  clearFilter(type: 'status' | 'role'): void {
+    this.activeFilters[type] = '';
+    this.tempFilters[type] = '';
   }
 }

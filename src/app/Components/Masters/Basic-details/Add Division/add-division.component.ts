@@ -10,15 +10,25 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './add-division.component.css',
 })
 export class AddDivisionComponent {
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FLAGS & EDIT MODE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   editMode: boolean = false;
   editIndex: number | null = null;
 
-  divisionPrefix = '';
-  divisionName = '';
-  productWiseCount = '';
-  userWiseCount = '';
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORM FIELDS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  divisionPrefix: string = '';
+  divisionName: string = '';
+  productWiseCount: string = '';
+  userWiseCount: string = '';
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR & INITIALIZATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   constructor(private router: Router) {
+    this.initializeEditState();
+  }
+
+  private initializeEditState(): void {
     const nav = history.state;
 
     if (nav && nav.division) {
@@ -32,17 +42,17 @@ export class AddDivisionComponent {
     }
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ROUTE CHECK (ADD VS EDIT) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   get isAddDivisionRoute(): boolean {
     return this.router.url.includes(
       'master/basic_details/division/add-division'
     );
   }
 
-  closeCard() {
-    this.router.navigate(['/master/basic_details/division']);
-  }
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORM ACTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-  saveDivision() {
+  saveDivision(): void {
     if (
       !this.divisionPrefix ||
       !this.divisionName ||
@@ -61,11 +71,15 @@ export class AddDivisionComponent {
       status: 'Active',
     };
 
-    const existingData = sessionStorage.getItem('add-division');
-    let divisions = [];
+    let divisions: any[] = [];
 
     try {
+      const existingData = sessionStorage.getItem('add-division');
       divisions = existingData ? JSON.parse(existingData) : [];
+
+      if (!Array.isArray(divisions)) {
+        divisions = [];
+      }
     } catch {
       divisions = [];
     }
@@ -84,5 +98,13 @@ export class AddDivisionComponent {
     );
 
     this.closeCard();
+  }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ROUTE HANDLER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/basic_details/division']);
+    });
   }
 }

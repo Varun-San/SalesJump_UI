@@ -1,15 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatRadioModule } from '@angular/material/radio';
-// Drop down
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormControl, NgModel } from '@angular/forms';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -30,17 +28,17 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
     FormsModule,
   ],
   templateUrl: './menu-rights.component.html',
-  styleUrl: './menu-rights.component.css',
+  styleUrls: ['./menu-rights.component.css'],
 })
 export class MenuRightsComponent {
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> VARIABLES & ICONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  faSearch = faSearch;
+
   divisionPrefix = '';
   divisionName = '';
 
-  constructor(private router: Router, private _snackBar: MatSnackBar) {}
-
-  //! Dropdown
-  types = ['Division A', 'Division B', 'Division C']; // Replace with your actual values
-  selectedType = ''; // This will be bound to the dropdown
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ROUTER-BASED FLAG <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   get isDesignationMenuRights(): boolean {
     return this.router.url.includes(
@@ -48,22 +46,23 @@ export class MenuRightsComponent {
     );
   }
 
-  // !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  faSearch = faSearch;
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DROPDOWN SETTINGS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  types = ['Division A', 'Division B', 'Division C']; // Replace with your actual values
+  selectedType = ''; // Bound to dropdown selection
+
+  disableSelect = new FormControl(false);
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TAB MANAGEMENT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   tabs = ['Master', 'Entry', 'Upload', 'Approvals', 'Reports', 'Setup'];
-
   activeTab = this.tabs[0]; // Default active tab
 
   setActiveTab(tab: string) {
     this.activeTab = tab;
   }
 
-  disableSelect = new FormControl(false);
-
-  //? ------------- SECTION MODULES -------------
-
-  //! Master
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MENU RIGHTS DATA <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   menu_rights = [
     { title: 'Enable All Master', checked: false },
@@ -73,6 +72,12 @@ export class MenuRightsComponent {
     { title: 'Work Type', checked: false },
     { title: 'Shift Details', checked: false },
   ];
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  constructor(private router: Router, private _snackBar: MatSnackBar) {}
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MENU RIGHTS TOGGLE HANDLER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   onToggleChange(changedItem: any): void {
     const state = changedItem.checked ? 'enabled' : 'disabled';
@@ -85,7 +90,7 @@ export class MenuRightsComponent {
         item.checked = newState;
       });
     } else {
-      // If any individual is toggled off, uncheck master
+      // If any individual is toggled off, uncheck master switch
       const allCheckedExceptMaster = this.menu_rights
         .filter((item) => item.title !== 'Enable All Master')
         .every((item) => item.checked);
@@ -99,7 +104,7 @@ export class MenuRightsComponent {
     }
   }
 
-  //! ALERT BOX
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SNACKBAR SETTINGS & OPEN METHOD <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';

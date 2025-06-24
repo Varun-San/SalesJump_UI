@@ -113,7 +113,7 @@
 
             <tbody *ngIf="workTypeList.length > 0; else noData">
                 <tr *ngFor="let work of workTypeList; let i = index">
-                    <td>{{ work.workTypeCode }}</td>
+                    <td>SIP {{ i+100 }}</td>
                     <td>{{ work.workType }}</td>
                     <td>{{ work.workTypeShortName }}</td>
                     <td>{{ work.placeInvolved }}</td>

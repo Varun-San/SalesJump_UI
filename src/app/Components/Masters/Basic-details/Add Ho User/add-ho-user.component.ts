@@ -10,19 +10,24 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './add-ho-user.component.css',
 })
 export class AddHoUserComponent {
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ROUTE CHECK <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   get isAddHo_UserRoute(): boolean {
     return this.router.url.includes('/master/basic_details/add-ho-user');
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EDIT MODE STATE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   editMode: boolean = false;
   editIndex: number | null = null;
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORM DATA <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   honame = '';
   houserid = '';
   hopassword = '';
   hoconfirmpassword = '';
   hoUserName = '';
+  selectedType: string[] = [];
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR & INIT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   constructor(private router: Router) {
     const nav = history.state;
 
@@ -41,25 +46,27 @@ export class AddHoUserComponent {
     }
   }
 
-  //! Dropdown
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DROPDOWN OPTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   types = ['Pharma', 'FMCGA', 'Payroll', 'CRM', 'Auditing', 'Billing'];
-  selectedType: string[] = []; // 🛠️ Fix: initialize as an array
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SELECTED TYPE HANDLING <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   removeSelected(value: string) {
     this.selectedType = this.selectedType.filter((item) => item !== value);
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NAVIGATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   closeCard() {
-    this.router.navigate(['/master/basic_details/ho-user']); // go back to main tab
+    this.router.navigate(['/master/basic_details/ho-user']);
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SAVE OR UPDATE HO USER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   saveHoUser() {
     if (
       !this.honame ||
       !this.houserid ||
       !this.hopassword ||
       !this.hoconfirmpassword ||
-      !this.selectedType
+      !this.selectedType.length
     ) {
       alert('Please fill all required fields.');
       return;

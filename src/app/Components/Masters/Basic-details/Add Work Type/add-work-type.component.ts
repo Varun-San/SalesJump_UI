@@ -9,9 +9,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule, NgSelectModule],
   templateUrl: './add-work-type.component.html',
-  styleUrls: ['./add-work-type.component.css'], // ✅ Fixed typo here
+  styleUrls: ['./add-work-type.component.css'], // Fixed typo here
 })
 export class AddWorkTypeComponent {
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORM FIELDS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   workType = '';
   workTypeShortName = '';
   placeInvolved: string | null = null;
@@ -19,16 +20,18 @@ export class AddWorkTypeComponent {
   workTypeFor: string | null = null;
   status = 'Active';
 
-  editMode: boolean = false;
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EDIT MODE STATE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  editMode = false;
   editIndex: number | null = null;
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SELECT OPTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   expenseKmNeeded_Options = ['Basic'];
   workTypeFor_Options = ['Basic'];
   placeInvolved_Options = ['Basic'];
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR - SETUP EDIT MODE IF APPLICABLE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   constructor(private router: Router) {
     const nav = history.state;
-
     if (nav && nav.workType) {
       this.editMode = true;
       this.editIndex = nav.index;
@@ -42,17 +45,21 @@ export class AddWorkTypeComponent {
     }
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HELPER TO CHECK CURRENT ROUTE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   get isAddWorkTypeRoute(): boolean {
     return this.router.url.includes(
       '/master/basic_details/work-type/add-work-type'
     );
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NAVIGATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   closeCard() {
     this.router.navigate(['/master/basic_details/work-type']);
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SAVE OR UPDATE WORK TYPE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   saveWorkType() {
+    // Validate required fields
     if (
       !this.workType ||
       !this.workTypeShortName ||

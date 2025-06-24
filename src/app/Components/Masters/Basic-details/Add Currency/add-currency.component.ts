@@ -9,6 +9,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-add-currency',
   imports: [
@@ -27,7 +28,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './add-currency.component.css',
 })
 export class AddCurrencyComponent {
-  // Form data
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORM DATA <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   currencyName = '';
   effectiveFrom: Date | null = null;
   country!: { name: string; symbolList: string[] };
@@ -35,10 +36,11 @@ export class AddCurrencyComponent {
   symbolList: string[] = [];
   equalToBaseCurrency: number | null = null;
 
-  // Edit state
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EDIT MODE STATE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   editMode = false;
   editIndex: number | null = null;
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR & INIT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   constructor(private router: Router, private route: ActivatedRoute) {
     const nav = this.router.getCurrentNavigation()?.extras.state;
     if (nav && nav['currency']) {
@@ -59,16 +61,21 @@ export class AddCurrencyComponent {
     }
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ROUTE CHECK <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   get isAddCurrencyRoute(): boolean {
     return this.router.url.includes(
       '/master/basic_details/currency/add-currency'
     );
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NAVIGATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   closeCard() {
-    this.router.navigate(['/master/basic_details/currency']);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/basic_details/currency']);
+    });
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> COUNTRY CHANGE HANDLING <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   onCountryChange() {
     if (this.country) {
       this.symbolList = this.country.symbolList;
@@ -83,6 +90,7 @@ export class AddCurrencyComponent {
     }
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SAVE OR UPDATE CURRENCY <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   saveCurrency() {
     if (
       !this.currencyName ||
@@ -129,6 +137,7 @@ export class AddCurrencyComponent {
     this.closeCard();
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> COUNTRY LIST DATA <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   countryList: { name: string; symbolList: string[] }[] = [
     { name: 'United States', symbolList: ['$', '¢'] },
     { name: 'Canada', symbolList: ['$', '¢'] },
@@ -156,6 +165,7 @@ export class AddCurrencyComponent {
     { name: 'Pakistan', symbolList: ['₨'] },
   ];
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXCHANGE RATES DATA <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   exchangeRates: { [key: string]: number } = {
     'United States': 74.85,
     Canada: 60.91,

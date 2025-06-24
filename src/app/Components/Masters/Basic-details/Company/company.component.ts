@@ -29,27 +29,31 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrl: './company.component.css',
 })
 export class CompanyComponent {
-  Array = Array;
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ICONS & FLAGS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+  Array = Array;
   faSearch = faSearch;
   showFilterPopup = false;
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DROPDOWN MENU CONFIG <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   menuOptions = [
     { label: 'Edit Details', action: 'edit' },
     { label: 'Deactivate', action: 'deactivate' },
   ];
 
-  selectedCompany: { company: any; index: number } | null = null;
+  selectedCompany: { company: Company; index: number } | null = null;
+  selectedHQ: any = null;
 
-  companyList: {
-    company_Name: string;
-    alias_Name: string;
-    company_City: string;
-    company_State: string[];
-    company_Status: string;
-  }[] = [];
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> COMPANY DATA <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  companyList: Company[] = [];
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   constructor(private router: Router) {}
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> LIFECYCLE HOOK <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   ngOnInit() {
     const stored = sessionStorage.getItem('add_Company');
@@ -73,10 +77,18 @@ export class CompanyComponent {
     }
   }
 
-  editCompany(company: any, index: number) {
-    this.router.navigate(['/master/basic_details/add-company'], {
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EDIT COMPANY <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  editCompany(company: Company, index: number) {
+    this.router.navigate(['/master/basic_details/company/add-company'], {
       state: { company, index },
     });
+  }
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONTEXT MENU ACTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  openMenu(company: Company, index: number) {
+    this.selectedCompany = { company, index };
   }
 
   handleMenuAction(action: string) {
@@ -99,29 +111,33 @@ export class CompanyComponent {
     }
   }
 
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TOGGLE COMPANY STATUS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   toggleCompanyStatus(index: number) {
     const stored = sessionStorage.getItem('add_Company');
     if (!stored) return;
-  
+
     let companies = JSON.parse(stored);
     const currentStatus = companies[index].company_Status || 'Active';
-  
-    companies[index].company_Status = currentStatus === 'Active' ? 'Inactive' : 'Active';
-  
-    console.log('Updated company status:', companies[index].company_Status); // Check the status update
-  
+
+    companies[index].company_Status =
+      currentStatus === 'Active' ? 'Inactive' : 'Active';
+
+    console.log('Updated company status:', companies[index].company_Status);
+
     sessionStorage.setItem('add_Company', JSON.stringify(companies));
-    this.ngOnInit(); // Refresh the list
+    this.ngOnInit();
     this.selectedCompany = null;
   }
-  
+
+  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FILTER CONTROLS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  tempFilters = { status: '', role: '' };
+  activeFilters = { status: '', role: '' };
 
   toggleFilterPopup() {
     this.showFilterPopup = !this.showFilterPopup;
   }
-
-  tempFilters = { status: '', role: '' };
-  activeFilters = { status: '', role: '' };
 
   applyFilters() {
     this.activeFilters = { ...this.tempFilters };
@@ -137,10 +153,14 @@ export class CompanyComponent {
     this.activeFilters[type] = '';
     this.tempFilters[type] = '';
   }
+}
 
-  selectedHQ: any = null;
+//! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> COMPANY INTERFACE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-  openMenu(hq: any) {
-    this.selectedHQ = hq;
-  }
+interface Company {
+  company_Name: string;
+  alias_Name: string;
+  company_City: string;
+  company_State: string[];
+  company_Status: string;
 }
