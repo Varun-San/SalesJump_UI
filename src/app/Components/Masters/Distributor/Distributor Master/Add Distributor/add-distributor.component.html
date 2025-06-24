@@ -1,0 +1,173 @@
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isAddRouteList" class="card shadow p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">Add Distributor</h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+    <div class="card-body p-0 mt-1">
+        <div class="row col-12 mb-2">
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="erp-code" class="form-label">Erp Code <span class="text-danger">*</span></label>
+                    <input id="erp-code" type="text" class="form-control" [(ngModel)]="distributor.erpCode" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="type" class="form-label">Town</label>
+                    <ng-select id="type" [items]="townoptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="distributor.type" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="mobile" class="form-label">Mobile</label>
+                    <input id="mobile" type="text" class="form-control" [(ngModel)]="distributor.mobile" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="distributorName" class="form-label">Distributor Name <span
+                            class="text-danger">*</span></label>
+                    <input id="distributorName" type="text" class="form-control"
+                        [(ngModel)]="distributor.distributorName" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="town" class="form-label">Type</label>
+                    <ng-select id="town" [items]="typeOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="distributor.town" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="fieldOfficer" class="form-label">Field Officer <span
+                            class="text-danger">*</span></label>
+                    <input id="fieldOfficer" type="text" class="form-control" [(ngModel)]="distributor.fieldOfficer" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="contactPerson" class="form-label">Contact Person</label>
+                    <input id="contactPerson" type="text" class="form-control"
+                        [(ngModel)]="distributor.contactPerson" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="rate" class="form-label">Rate</label>
+                    <ng-select id="rate" [items]="rateOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="distributor.rate" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                    <div class="password-wrapper">
+                        <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"
+                            name="password" [(ngModel)]="distributor.password" />
+                        <img [src]="showPassword ? 'Assets/LoginPageImages/Show_Password.svg' : 'Assets/LoginPageImages/Hide_Password.svg'"
+                            alt="Toggle Password" (click)="togglePassword()" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" type="text" class="form-control" [(ngModel)]="distributor.email" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="normValue" class="form-label">Norm Value</label>
+                    <input id="normValue" type="text" class="form-control" [(ngModel)]="distributor.normValue" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <ng-select id="category" [items]="categoryOption" bindLabel="label" bindValue="value"
+                        [(ngModel)]="distributor.category" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="districtName" class="form-label">District Name <span
+                            class="text-danger">*</span></label>
+                    <ng-select id="districtName" [items]="districtOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="distributor.districtName" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address <span class="text-danger">*</span></label>
+                    <input id="address" type="text" class="form-control" [(ngModel)]="distributor.address" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="gstNo" class="form-label">GST No</label>
+                    <input id="gstNo" type="text" class="form-control" [(ngModel)]="distributor.gstNo" />
+                </div>
+            </div>
+            <div class="col-4 mb-3">
+                <label for="userName" class="form-label">User Name <span class="text-danger">*</span></label>
+                <div class="input-group mb-2">
+                    <span class="input-group-text" id="inputGroup-sizing-default">SANS-</span>
+                    <input type="text" class="form-control" id="userName" [(ngModel)]="distributor.userName" />
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Auto Generate
+                    </label>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="designation" class="form-label">Designation</label>
+                    <input id="designation" type="text" class="form-control" [(ngModel)]="distributor.designation" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="dlNo" class="form-label">DL No</label>
+                    <input id="dlNo" type="text" class="form-control" [(ngModel)]="distributor.dlNo" />
+                </div>
+            </div>
+        </div>
+        <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+            <h5 class="mb-0 me-2">Division</h5>
+            <div class="flex-grow-1">
+                <hr class="mt-3 mb-0" />
+            </div>
+        </div>
+        <div class="col-7">
+            <div class="mb-3">
+                <label for="subDivision" class="form-label">Division <span class="text-danger">*</span></label>
+                <ng-select id="subDivision" [items]="divisionOptions" bindLabel="label" bindValue="value"
+                    [(ngModel)]="distributor.divisions" [multiple]="true" [closeOnSelect]="false"
+                    placeholder="Select an option" [clearable]="false">
+                </ng-select>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-footer bg-white mt-3">
+        <div class="d-flex justify-content-end gap-2 mt-3">
+            <button class="btn btn-outline-secondary" (click)="closeCard()">
+                Cancel
+            </button>
+            <button class="btn btn-success" (click)="saveDistributorList()">Save</button>
+        </div>
+    </div>
+</div>

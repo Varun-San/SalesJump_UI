@@ -83,6 +83,9 @@ import { RouteComponent } from './Components/Masters/Route Module/route.componen
 import { RouteListComponent } from './Components/Masters/Route Module/Route List/route-list.component';
 import { AddRouteListComponent } from './Components/Masters/Route Module/Route List/Add Route List/add-route-list.component';
 import { FixedRateCardComponent } from './Components/Masters/Product/Fixed Rate Card/fixed-rate-card.component';
+import { DistributorComponent } from './Components/Masters/Distributor/distributor.component';
+import { DistributorMasterComponent } from './Components/Masters/Distributor/Distributor Master/distributor-master.component';
+import { AddDistributorComponent } from './Components/Masters/Distributor/Distributor Master/Add Distributor/add-distributor.component';
 
 export const routes: Routes = [
   {
@@ -395,6 +398,22 @@ export const routes: Routes = [
                   {
                     path: 'add-creation-retailer',
                     component: AddCreationRetailerComponent,
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            path: 'distributor',
+            component: DistributorComponent,
+            children: [
+              {
+                path: 'distributor-master',
+                component: DistributorMasterComponent,
+                children: [
+                  {
+                    path: 'add-distributor',
+                    component: AddDistributorComponent,
                   },
                 ],
               },

@@ -41,6 +41,8 @@ export class MasterSideBarComponent {
     this.activeChip_SuperStockiest =
       this.getActiveChip(this.superStockiest_label) || '';
     this.activeChip_route = this.getActiveChip(this.route_label) || '';
+    this.activeChip_distributor =
+      this.getActiveChip(this.distributor_label) || '';
     this.activeTab = this.getActiveTabFromUrl(currentUrl) || this.tabs[0];
   }
 
@@ -53,6 +55,7 @@ export class MasterSideBarComponent {
     Retailer: 'retailer',
     'Super Stockiest': 'super-stockiest',
     Route: 'route',
+    Distributor: 'distributor',
     Tax: 'tax',
     'HO Creation': 'ho-creation',
     Competitor: 'competitor',
@@ -77,6 +80,7 @@ export class MasterSideBarComponent {
     { name: 'Retailer', route: '/masters' },
     { name: 'Super Stockiest', route: '/masters' },
     { name: 'Route', route: '/masters' },
+    { name: 'Distributor', route: '/masters' },
     { name: 'Tax', route: '/masters' },
     { name: 'HO Creation', route: '/masters' },
     { name: 'Competitor', route: '/masters' },
@@ -89,8 +93,6 @@ export class MasterSideBarComponent {
     this.router.navigate([route]);
   }
 
-  // Tabs
-
   // Master list merged into tabs
   tabs = [
     'Basic Details',
@@ -101,6 +103,7 @@ export class MasterSideBarComponent {
     'Retailer',
     'Super Stockiest',
     'Route',
+    'Distributor',
     'Tax',
     'HO Creation',
     'Competitor',
@@ -108,7 +111,7 @@ export class MasterSideBarComponent {
     'Gamification',
   ];
 
-  activeTab = this.tabs[0]; // Default active tab
+  activeTab = this.tabs[0];
 
   setActiveTab(tab: string) {
     this.activeTab = tab;
@@ -179,10 +182,14 @@ export class MasterSideBarComponent {
 
   // !  ROUTE
   activeChip_route: string = '';
-  route_label = [
+  route_label = [{ name: 'Route List', route: 'master/route/route-list' }];
+
+  // !  DISTRIBUTORS
+  activeChip_distributor: string = '';
+  distributor_label = [
     {
-      name: 'Route List',
-      route: 'master/route/route-list',
+      name: 'Distributor Master',
+      route: 'master/distributor/distributor-master'
     },
   ];
 }

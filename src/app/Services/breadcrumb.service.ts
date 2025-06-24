@@ -120,7 +120,7 @@ export class BreadcrumbService {
 
   private dynamicGroups = [
     {
-      base: '/master/basic_details/',
+      base: '/master/basic_details',
       label: 'Basic Details',
       subs: [
         'company',
@@ -139,7 +139,7 @@ export class BreadcrumbService {
       ],
     },
     {
-      base: '/master/geography/',
+      base: '/master/geography',
       label: 'Geography',
       subs: [
         'area',
@@ -155,7 +155,7 @@ export class BreadcrumbService {
       ],
     },
     {
-      base: '/master/product/',
+      base: '/master/product',
       label: 'Product',
       subs: [
         'product-details',
@@ -170,7 +170,7 @@ export class BreadcrumbService {
       ],
     },
     {
-      base: '/master/retailer/',
+      base: '/master/retailer',
       label: 'Retailer',
       subs: [
         'retailer-category',
@@ -180,17 +180,22 @@ export class BreadcrumbService {
       ],
     },
     {
-      base: '/master/super-stockiest/',
+      base: '/master/super-stockiest',
       label: 'Super Stockiest',
       subs: ['super-stockiest-details'],
     },
     {
-      base: '/master/route/',
+      base: '/master/route',
       label: 'Route',
       subs: ['route-list'],
     },
     {
-      base: '/master/gamification/',
+      base: '/master/distributor',
+      label: 'Distributor',
+      subs: ['distributor-master'],
+    },
+    {
+      base: '/master/gamification',
       label: 'Gamification',
       subs: ['competitions', 'formula', 'rewards', 'levels'],
     },

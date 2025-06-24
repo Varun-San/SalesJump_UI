@@ -100,6 +100,17 @@
                 </mat-chip>
               </mat-chip-set>
             </div>
+            <!-- !Distributor -->
+            <div *ngSwitchCase="'Distributor'">
+              <h4>Distributor</h4>
+              <mat-chip-set>
+                <mat-chip *ngFor="let Pro of distributor_label" [ngClass]="{
+                    'active-chip': activeChip_distributor === Pro.name
+                  }" (click)="activeChip_distributor = Pro.name" routerLink="{{ Pro.route }}">
+                  {{ Pro.name }}
+                </mat-chip>
+              </mat-chip-set>
+            </div>
             <!-- !Tax -->
             <div *ngSwitchCase="'Tax'">
               <h4>Tax</h4>
@@ -129,8 +140,7 @@
             </div>
             <!-- !Default -->
             <div *ngSwitchDefault>
-              <h4>Welcome</h4>
-              <p>Select a tab to view content.</p>
+              <h4>Select another Tab</h4>
             </div>
           </div>
         </div>
