@@ -40,8 +40,10 @@ export class AddClassRetailerComponent {
     );
   }
 
-  closeCard() {
-    this.router.navigate(['/master/retailer/retailer-class']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/retailer/retailer-class']);
+    });
   }
 
   saveClass() {

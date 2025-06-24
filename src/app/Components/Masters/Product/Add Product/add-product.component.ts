@@ -20,9 +20,9 @@ export class AddProductComponent {
     if (nav && nav.product) {
       this.editMode = true;
       this.editIndex = nav.index;
-  
+
       const prod = nav.product;
-  
+
       // Assign all form fields from prod as you're already doing
       this.prdtCode = prod.prdtCode || '';
       this.prdtName = prod.prdtName || '';
@@ -43,14 +43,14 @@ export class AddProductComponent {
       this.prdtUnitWeight = prod.prdtUnitWeight || '';
       this.prdtImage = prod.prdtImage || '';
       this.imagePreviews = prod.imageBase64 || [];
-  
+
       this.rows =
         prod.rows && Array.isArray(prod.rows)
           ? prod.rows
           : [{ tax: '', state: '' }];
     }
   }
-  
+
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CHECKING THE IS ADDPRODUCT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   get isAddProductRoute(): boolean {
@@ -126,9 +126,10 @@ export class AddProductComponent {
   }
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CLOSE CARD <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-  closeCard() {
-    this.router.navigate(['/master/product/product-details']); // go back to main tab
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/product/product-details']);
+    });
   }
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SAVING THE DATA'S <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

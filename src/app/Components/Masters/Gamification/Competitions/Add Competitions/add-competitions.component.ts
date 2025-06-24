@@ -188,7 +188,7 @@ export class AddCompetitionsComponent implements OnInit {
 
   // ! -----> SELECTED PLAYERS <-----
   selectedPlayers: any[] = [];
-  selected_players: number = 0; // ✅ Add this line
+  selected_players: number = 0; 
 
   removePlayer(index: number): void {
     this.selectedPlayers.splice(index, 1);

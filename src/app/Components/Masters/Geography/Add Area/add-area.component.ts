@@ -34,8 +34,10 @@ export class AddAreaComponent {
     return this.router.url.includes('/master/geography/area/add-area');
   }
 
-  closeCard() {
-    this.router.navigate(['/master/geography/area']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/geography/area']);
+    });
   }
 
   saveArea() {

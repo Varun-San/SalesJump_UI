@@ -39,8 +39,10 @@ export class AddOutletTypeComponent {
     );
   }
 
-  closeCard() {
-    this.router.navigate(['/master/retailer/retailer-outlet-type']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/retailer/retailer-outlet-type']);
+    });
   }
 
   saveOutlet() {

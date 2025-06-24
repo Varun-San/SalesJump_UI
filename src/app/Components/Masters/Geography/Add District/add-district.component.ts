@@ -34,8 +34,10 @@ export class AddDistrictComponent {
     return this.router.url.includes('/master/geography/district/add-district');
   }
 
-  closeCard() {
-    this.router.navigate(['/master/geography/district']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/geography/district']);
+    });
   }
 
   saveDistrict() {

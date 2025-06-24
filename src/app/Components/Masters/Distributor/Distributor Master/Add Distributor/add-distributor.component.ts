@@ -142,10 +142,11 @@ export class AddDistributorComponent {
 
   // ! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORM ACTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-  closeCard() {
-    this.router.navigate(['/master/distributor/distributor-master']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/distributor/distributor-master']);
+    });
   }
-
   saveDistributorList() {
     if (!this.distributor.distributorName) {
       alert('Please fill all required fields.');

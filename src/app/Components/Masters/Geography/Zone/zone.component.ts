@@ -84,7 +84,7 @@ export class ZoneComponent {
   }
 
   editzone(zone: any, index: number) {
-    this.router.navigate(['master/geography/add-zone'], {
+    this.router.navigate(['master/geography/zone/add-zone'], {
       state: { zone, index },
     });
   }

@@ -36,8 +36,10 @@ export class AddTerritoryComponent {
     );
   }
 
-  closeCard() {
-    this.router.navigate(['/master/geography/territory']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/geography/territory']);
+    });
   }
 
   saveTerritory() {

@@ -84,7 +84,7 @@ export class TownComponent {
   }
 
   editTown(town: any, index: number) {
-    this.router.navigate(['master/geography/add-town'], {
+    this.router.navigate(['master/geography/town/add-town'], {
       state: { town, index },
     });
   }

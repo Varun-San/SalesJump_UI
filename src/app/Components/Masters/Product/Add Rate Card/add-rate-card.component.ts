@@ -63,8 +63,10 @@ export class AddRateCardComponent {
     );
   }
 
-  closeCard() {
-    this.router.navigate(['/master/product/fixed-rate-card']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/product/fixed-rate-card']);
+    });
   }
 
   onCountryChange() {

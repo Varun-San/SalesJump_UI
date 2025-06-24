@@ -34,8 +34,10 @@ export class AddZoneComponent {
     return this.router.url.includes('/master/geography/zone/add-zone');
   }
 
-  closeCard() {
-    this.router.navigate(['/master/geography/zone']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/geography/zone']);
+    });
   }
 
   saveZone() {

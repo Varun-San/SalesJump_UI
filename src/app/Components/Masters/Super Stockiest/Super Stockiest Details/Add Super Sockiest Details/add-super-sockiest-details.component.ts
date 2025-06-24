@@ -99,8 +99,12 @@ export class AddSuperSockiestDetailsComponent {
     }
   }
 
-  closeCard() {
-    this.router.navigate(['/master/super-stockiest/super-stockiest-details/']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([
+        '/master/super-stockiest/super-stockiest-details/',
+      ]);
+    });
   }
 
   saveSuperStockiest() {

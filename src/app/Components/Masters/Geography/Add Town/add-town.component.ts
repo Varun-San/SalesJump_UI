@@ -34,10 +34,11 @@ export class AddTownComponent {
     return this.router.url.includes('/master/geography/town/add-town');
   }
 
-  closeCard() {
-    this.router.navigate(['/master/geography/town']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/geography/town']);
+    });
   }
-
   saveTown() {
     if (!this.townName || !this.district || !this.territory) {
       alert('Please fill all required fields.');

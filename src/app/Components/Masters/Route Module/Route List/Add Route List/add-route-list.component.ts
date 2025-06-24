@@ -94,8 +94,10 @@ export class AddRouteListComponent {
 
   // ! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORM ACTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-  closeCard() {
-    this.router.navigate(['/master/route/route-list/']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/route/route-list/']);
+    });
   }
 
   saveRouteList() {

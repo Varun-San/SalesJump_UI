@@ -39,8 +39,10 @@ export class AddCategoryRetailerComponent {
     );
   }
 
-  closeCard() {
-    this.router.navigate(['/master/retailer/retailer-category']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/retailer/retailer-category']);
+    });
   }
 
   saveCategory() {

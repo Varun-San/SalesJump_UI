@@ -87,7 +87,7 @@ export class DistrictComponent {
   }
 
   editDistrict(district: any, index: number) {
-    this.router.navigate(['master/geography/add-district'], {
+    this.router.navigate(['master/geography/district/add-district'], {
       state: { district, index },
     });
   }

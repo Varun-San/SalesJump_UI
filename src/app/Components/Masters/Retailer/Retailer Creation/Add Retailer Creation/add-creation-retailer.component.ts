@@ -142,8 +142,10 @@ export class AddCreationRetailerComponent {
     this.retailer.profileImage = this.imageFiles.map((f) => f.name).join(', ');
   }
 
-  closeCard() {
-    this.router.navigate(['/master/retailer/retailer-creation']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/retailer/retailer-creation']);
+    });
   }
 
   saveRetailer() {

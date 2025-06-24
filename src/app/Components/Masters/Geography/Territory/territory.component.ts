@@ -87,7 +87,7 @@ export class TerritoryComponent {
   }
 
   editTerritory(territory: any, index: number) {
-    this.router.navigate(['master/geography/add-territory'], {
+    this.router.navigate(['master/geography/territory/add-territory'], {
       state: { territory, index },
     });
   }

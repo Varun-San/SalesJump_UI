@@ -84,7 +84,7 @@ export class AreaComponent {
   }
 
   editArea(area: any, index: number) {
-    this.router.navigate(['master/geography/add-area'], {
+    this.router.navigate(['master/geography/area/add-area'], {
       state: { area, index },
     });
   }
