@@ -119,14 +119,31 @@
 
                     <td>{{ product.prdtCode }}</td>
                     <td>{{ product.prdtErpCode }}</td>
-                    <td>
-                        <!-- Check if product.prdtImage exists, then display it -->
-                        <img *ngIf="product.prdtImage" src='Assets/Add Product Details/image.png' alt="Product"
-                            width="50" height="50" class="img-thumbnail" />
+                    <td class="text-center ellipsis" [matMenuTriggerFor]="imageMenu">
+                        <!-- Show up to 3 images -->
+                        <ng-container *ngIf="product.imageBase64?.length; else fallbackImages">
+                            <img *ngFor="let img of product.imageBase64" [src]="img" alt="Product" width="50"
+                                height="50" class="img-thumbnail me-1" />
+                        </ng-container>
+
+                        <ng-template #fallbackImages>
+                            <ng-container *ngIf="product.prdtImage?.length">
+                                <img *ngFor="let img of product.prdtImage" [src]="img" alt="Product" width="50"
+                                    height="50" class="img-thumbnail me-1" />
+                            </ng-container>
+                        </ng-template>
                     </td>
+
+                    <mat-menu #imageMenu="matMenu" class="image-tooltip-menu">
+                        <div class="tooltip-images p-2">
+                            <ng-container *ngFor="let img of getProductImages(product)">
+                                <img [src]="img" alt="Product" width="75" height="75" class="img-thumbnail m-1" />
+                            </ng-container>
+                        </div>
+                    </mat-menu>
                     <td>{{ product.prdtName }}</td>
                     <td>{{ product.prdtBaseUom }}</td>
-                    <td>{{ product.prdtDescription }}</td>
+                    <td class="ellipsis" matTooltip="{{ product.prdtDescription }}  ">{{ product.prdtDescription }}</td>
                     <td>
                         <span class="status-indicator">
                             <span class="dot" [ngClass]="product.status === 'Active' ? 'dot-green' : 'dot-red'"></span>
@@ -140,7 +157,6 @@
                     </td>
                 </tr>
             </tbody>
-
 
             <ng-template #noData>
                 <tbody>

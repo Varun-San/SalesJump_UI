@@ -117,10 +117,24 @@
                 <tr *ngFor="let retailer of retailerList; let i = index"
                     (click)="selectedRetailerDetails = { retailerDetails: retailer, index: i }">
                     <td>{{ i + 1 }}</td>
-                    <td>
-                        <img *ngIf="retailer.imageBase64?.length" [src]="retailer.imageBase64" alt="Retailer Pic"
-                            width="50" class="img-thumbnail" />
+                    <!-- Retailer Thumbnail Images (show max 3, click to expand all) -->
+                    <td class="text-center ellipsis" [matMenuTriggerFor]="retailerImageMenu">
+                        <ng-container *ngIf="getRetailerImages(retailer).length > 0; else noImage">
+                            <img *ngFor="let img of getRetailerImages(retailer) | slice:0:3" [src]="img"
+                                alt="Retailer Pic" width="50" height="50" class="img-thumbnail me-1" />
+                        </ng-container>
+                        <ng-template #noImage>
+                            <span>No Image</span>
+                        </ng-template>
                     </td>
+                    <!-- Mat Menu Tooltip with Full Image List -->
+                    <mat-menu #retailerImageMenu="matMenu" class="image-tooltip-menu">
+                        <div class="tooltip-images p-2">
+                            <ng-container *ngFor="let img of getRetailerImages(retailer)">
+                                <img [src]="img" alt="Retailer Pic" width="75" height="75" class="img-thumbnail m-1" />
+                            </ng-container>
+                        </div>
+                    </mat-menu>
                     <td>{{ retailer.code }}</td>
                     <td>{{ retailer.name }}</td>
                     <td>{{ retailer.route }}</td>
@@ -155,7 +169,6 @@
                 </tr>
             </tfoot>
         </table>
-
     </div>
 </div>
 

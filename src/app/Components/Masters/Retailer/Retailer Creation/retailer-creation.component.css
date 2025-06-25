@@ -95,3 +95,20 @@ table td {
 .dot-red {
     background-color: red;
 }
+
+.image-tooltip-menu .tooltip-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+    max-width: 400px;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+.image-tooltip-menu img {
+    border: 1px solid #000;
+    border-radius: 4px;
+    object-fit: cover;
+}

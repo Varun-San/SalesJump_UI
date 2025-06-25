@@ -135,23 +135,34 @@ export class AddProductComponent {
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SAVING THE DATA'S <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   saveProduct() {
-    if (
-      !this.prdtCode ||
-      !this.prdtName ||
-      !this.prdtShortName ||
-      !this.prdtBaseUom ||
-      !this.prdtUom ||
-      !this.prdtConvFactor ||
-      !this.prdtCategory ||
-      !this.prdtGroup ||
-      !this.prdtHSNCode ||
-      !this.prdtDescription ||
-      !this.imageFiles.length || // Ensure there are images selected
-      !this.prdtErpCode ||
-      this.rows.some((row) => !row.tax || !row.state) ||
-      !this.PrdtType
-    ) {
-      alert('Please fill all required fields.');
+    const missingFields: string[] = [];
+
+    if (!this.prdtCode) missingFields.push('Product Code');
+    if (!this.prdtName) missingFields.push('Product Name');
+    if (!this.prdtShortName) missingFields.push('Short Name');
+    if (!this.prdtBaseUom) missingFields.push('Base UOM');
+    if (!this.prdtUom) missingFields.push('UOM');
+    if (!this.prdtConvFactor) missingFields.push('Conversion Factor');
+    if (!this.prdtCategory) missingFields.push('Category');
+    if (!this.prdtGroup) missingFields.push('Group');
+    if (!this.prdtHSNCode) missingFields.push('HSN Code');
+    if (!this.prdtDescription) missingFields.push('Description');
+    if (!this.imageFiles || !this.imageFiles.length)
+      missingFields.push('At least one Image');
+    if (!this.prdtErpCode) missingFields.push('ERP Code');
+    if (!this.PrdtType) missingFields.push('Product Type');
+
+    // Check tax rows
+    const invalidTaxRows = this.rows.some(
+      (row, index) => !row.tax || !row.state
+    );
+    if (invalidTaxRows) missingFields.push('All Tax Rows (tax and state)');
+
+    if (missingFields.length > 0) {
+      alert(
+        'Please fill the following required fields:\n\n' +
+          missingFields.join('\n')
+      );
       return;
     }
 

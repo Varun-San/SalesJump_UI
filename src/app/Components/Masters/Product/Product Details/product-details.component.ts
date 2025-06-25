@@ -8,7 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-product-details',
@@ -23,6 +23,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     RouterLink,
     MatTooltipModule,
     RouterOutlet,
+    MatTooltip,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
@@ -91,6 +92,7 @@ export class ProductDetailsComponent {
     prdtOrderConvQty: '';
     prdtTarget: '';
     prdtUnitWeight: '';
+    imageBase64: [];
   }[] = [];
 
   ngOnInit() {
@@ -120,6 +122,7 @@ export class ProductDetailsComponent {
           prdtTarget: product.prdtTarget || '',
           prdtUnitWeight: product.prdtUnitWeight || '',
           status: product.status || 'Active',
+          imageBase64: product.imageBase64 || '',
         }));
 
         console.log('Loaded Products:', this.productList);
@@ -178,5 +181,11 @@ export class ProductDetailsComponent {
     }
 
     this.selectedProductDetails = null;
+  }
+
+  getProductImages(product: any): string[] {
+    return product.imageBase64?.length
+      ? product.imageBase64
+      : product.prdtImage || [];
   }
 }

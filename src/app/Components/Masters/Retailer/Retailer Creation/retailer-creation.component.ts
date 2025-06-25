@@ -204,6 +204,13 @@ export class RetailerCreationComponent {
     this.activeFilters[type] = '';
     this.tempFilters[type] = '';
   }
+
+  getRetailerImages(retailer: any): string[] {
+    if (!retailer.imageBase64) return [];
+    return Array.isArray(retailer.imageBase64)
+      ? retailer.imageBase64
+      : [retailer.imageBase64];
+  }
 }
 interface Retailer {
   name: string;

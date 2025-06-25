@@ -86,13 +86,15 @@ import { FixedRateCardComponent } from './Components/Masters/Product/Fixed Rate 
 import { DistributorComponent } from './Components/Masters/Distributor/distributor.component';
 import { DistributorMasterComponent } from './Components/Masters/Distributor/Distributor Master/distributor-master.component';
 import { AddDistributorComponent } from './Components/Masters/Distributor/Distributor Master/Add Distributor/add-distributor.component';
+import { FieldForceTabComponent } from './Components/Masters/Field Force/field-force-tab.component';
+import { FieldForceComponent } from './Components/Masters/Field Force/Field Force/field-force.component';
 
 export const routes: Routes = [
   {
     // Default route
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full', // Ensure that the redirect is only happening at the root
+    pathMatch: 'full',
   },
   {
     // login-Page
@@ -448,6 +450,16 @@ export const routes: Routes = [
                     component: AddRouteListComponent,
                   },
                 ],
+              },
+            ],
+          },
+          {
+            path: 'field-force-t',
+            component: FieldForceTabComponent,
+            children: [
+              {
+                path: 'field-force',
+                component: FieldForceComponent,
               },
             ],
           },

@@ -94,4 +94,26 @@ table td {
 
 .dot-red {
     background-color: red;
-}   
+}
+
+/* Target the tooltip image container */
+.tooltip-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+    max-width: 400px;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+/* Style individual images inside the menu */
+.image-tooltip img {
+    border: 1px solid #000;
+    border-radius: 4px;
+    width: 75px;
+    /* Match the HTML size */
+    height: 75px;
+    object-fit: cover;
+}

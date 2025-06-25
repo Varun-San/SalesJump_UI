@@ -199,6 +199,11 @@ export class BreadcrumbService {
       label: 'Gamification',
       subs: ['competitions', 'formula', 'rewards', 'levels'],
     },
+    {
+      base: '/master/field-force-t',
+      label: 'Field Force',
+      subs: [],
+    },
   ];
 
   private superAdmin = [
@@ -254,7 +259,6 @@ export class BreadcrumbService {
       return [
         { label: 'Setup', route: '#' },
         { label: 'Configuration', route: '#' },
-        { label: 'General Settings', route: '/configuration/general-settings' },
       ];
     }
 
@@ -262,7 +266,6 @@ export class BreadcrumbService {
       return [
         { label: 'Setup', route: '#' },
         { label: 'Configuration', route: '#' },
-        { label: 'User Settings', route: '/configuration/user-settings' },
       ];
     }
 
