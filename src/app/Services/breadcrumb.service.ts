@@ -279,6 +279,9 @@ export class BreadcrumbService {
         { label: 'Configuration', route: '/configuration' },
       ];
     }
+    if (route.includes('/master')) {
+      return [{ label: 'Master', route: '/master' }];
+    }
     return null;
   }
 }
