@@ -1,0 +1,225 @@
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isAddRouteList" class="card shadow p-3" id="Add-Division">
+    <div class="row">
+        <div class="col-4 border_right">
+            <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+                <h6 class="mb-0 me-2 fw-500">Employee Details</h6>
+            </div>
+            <div class="profile-sec mt-1">
+                <img class="profile-img" src="/Assets/profile-image.jpg" alt="">
+                <p class="mt-1">
+                    <label for="upload">
+                        Choose Profile Picture
+                    </label>
+                    <input type="file" name="upload" id="upload" style="display: none;">
+                </p>
+            </div>
+            <div class="fields">
+                <div class="mb-3 pe-2">
+                    <label for="type" class="form-label">Status <span style="color: #FF004D;">*</span></label>
+                    <ng-select id="type" [items]="statusOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="employee.status" placeholder="Select an option">
+                    </ng-select>
+                </div>
+                <div class="mb-3 pe-2">
+                    <label for="type" class="form-label">Type <span style="color: #FF004D;">*</span></label>
+                    <ng-select id="type" [items]="typeOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="employee.type" placeholder="Select an option">
+                    </ng-select>
+                </div>
+                <div class="mb-3 pe-2">
+                    <label for="type" class="form-label">Level <span style="color: #FF004D;">*</span></label>
+                    <ng-select id="type" [items]="levelOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="employee.level" placeholder="Select an option">
+                    </ng-select>
+                </div>
+                <div class="pe-2">
+                    <label class="form-label">JoiningDate <span style="color: #FF004D;">*</span></label>
+                    <mat-form-field appearance="outline" class=" w-100">
+                        <input matInput [matDatepicker]="cal" [(ngModel)]="employee.joiningDate">
+                        <!-- Custom calendar icon, click opens the datepicker -->
+                        <img src="Assets/AddCurrency/Calendar.svg" alt="Calendar Icon" (click)="cal.open()"
+                            class="calendar-icon" />
+                        <mat-datepicker #cal></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="mb-3 pe-2">
+                    <label for="type" class="form-label">Reporting To <span style="color: #FF004D;">*</span></label>
+                    <ng-select id="type" [items]="reportingOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="employee.reportingTo" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+                <h6 class="mb-0 me-2 fw-500">Account settings </h6>
+                <div class="flex-grow-1">
+                    <hr class="mt-3 mb-0" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label for="userName" class="form-label">User Name <span style="color: #FF004D;">*</span></label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text" id="inputGroup-sizing-default">SANS-</span>
+                        <input type="text" class="form-control" id="userName" [(ngModel)]="employee.userName" />
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Auto Generate
+                        </label>
+                    </div>
+                </div>
+                <div class="col-6 mb-3">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input id="email" type="text" class="form-control" [(ngModel)]="employee.email" />
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password <span style="color: #FF004D;">*</span></label>
+                        <div class="password-wrapper">
+                            <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"
+                                name="password" [(ngModel)]="employee.password" />
+                            <img [src]="showPassword ? 'Assets/LoginPageImages/Show_Password.svg' : 'Assets/LoginPageImages/Hide_Password.svg'"
+                                alt="Toggle Password" (click)="togglePassword()" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Confirm Password <span
+                                class="text-danger">*</span></label>
+                        <div class="password-wrapper">
+                            <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control" id="password"
+                                name="password" [(ngModel)]="employee.confirmPassword" />
+                            <img [src]="showConfirmPassword ? 'Assets/LoginPageImages/Show_Password.svg' : 'Assets/LoginPageImages/Hide_Password.svg'"
+                                alt="Toggle Password" (click)="toggleConfirmPassword()" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+                <h6 class="mb-2 me-2 fw-500">Profile settings </h6>
+                <div class="flex-grow-1">
+                    <hr class="mt-3 mb-0" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name <span
+                                style="color: #FF004D;">*</span></label>
+                        <input id="firstName" type="text" class="form-control" [(ngModel)]="employee.firstName" />
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input id="lastName" type="text" class="form-control" [(ngModel)]="employee.lastName" />
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="employeeID" class="form-label">Employee ID <span
+                                style="color: #FF004D;">*</span></label>
+                        <input id="employeeID" type="text" class="form-control" [(ngModel)]="employee.employeeID" />
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Date of Birth</label>
+                    <mat-form-field appearance="outline" class=" w-100">
+                        <input matInput [matDatepicker]="cal2" [(ngModel)]="employee.dateOfBirth">
+                        <img src="Assets/AddCurrency/Calendar.svg" alt="Calendar Icon" (click)="cal2.open()"
+                            class="calendar-icon" />
+                        <mat-datepicker #cal2></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="designation" class="form-label">Designation <span
+                            style="color: #FF004D;">*</span></label>
+                    <ng-select id="designation" [items]="designationOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="employee.designation" placeholder="Select an option">
+                    </ng-select>
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="division" class="form-label">Division <span style="color: #FF004D;">*</span></label>
+                    <ng-select id="division" [items]="divisionOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="employee.division" placeholder="Select an option">
+                    </ng-select>
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="department" class="form-label">Department</label>
+                    <ng-select id="department" [items]="departmentOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="employee.department" placeholder="Select an option">
+                    </ng-select>
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="state" class="form-label">State <span style="color: #FF004D;">*</span></label>
+                    <ng-select id="state" [items]="stateOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="employee.state" placeholder="Select an option">
+                    </ng-select>
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="headQuarters" class="form-label">Head Quarters <span
+                            style="color: #FF004D;">*</span></label>
+                    <ng-select id="headQuarters" [items]="headQuartersOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="employee.headQuarters" placeholder="Select an option">
+                    </ng-select>
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="territory" class="form-label">Territory <span style="color: #FF004D;">*</span></label>
+                    <ng-select id="territory" [items]="territoryOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="employee.territory" placeholder="Select an option">
+                    </ng-select>
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="district" class="form-label">District</label>
+                    <ng-select id="district" [items]="districtOptions" bindLabel="label" bindValue="value"
+                        [(ngModel)]="employee.district" placeholder="Select an option">
+                    </ng-select>
+                </div>
+            </div>
+            <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+                <h6 class="mb-2 me-2 fw-500">Contact settings </h6>
+                <div class="flex-grow-1">
+                    <hr class="mt-3 mb-0" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label for="mobile" class="form-label">Mobile Phone <span style="color: #FF004D;">*</span></label>
+                    <input id="mobile" type="text" class="form-control" [(ngModel)]="employee.mobile" />
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="doorNo" class="form-label">Door No. & Street</label>
+                    <input id="doorNo" type="text" class="form-control" [(ngModel)]="employee.doorNo" />
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="area" class="form-label">Area & Locality</label>
+                    <input id="area" type="text" class="form-control" [(ngModel)]="employee.area" />
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input id="city" type="text" class="form-control" [(ngModel)]="employee.city" />
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="pincode" class="form-label">Pincode</label>
+                    <input id="pincode" type="text" class="form-control" [(ngModel)]="employee.pincode" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer bg-white">
+        <div class="d-flex justify-content-end gap-2">
+            <button class="btn btn-outline-secondary" (click)="closeCard()">
+                Cancel
+            </button>
+            <button class="btn btn-success" (click)="saveEmployeeList()">Save</button>
+        </div>
+    </div>
+</div>

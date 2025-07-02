@@ -6,7 +6,7 @@ body {
 }
 
 .page_left {
-  margin-left: 40px;
+  margin-left: 45px;
 }
 
 * {
@@ -264,5 +264,11 @@ table td {
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  background-color: red !important;
+  box-shadow: 0 0 0px 1000px #ffffffe0 inset !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+html {
+  font-size: 87.5%;
+  /* 62.5% of default 16px = 10px */
 }

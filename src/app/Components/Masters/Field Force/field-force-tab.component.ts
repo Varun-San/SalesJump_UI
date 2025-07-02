@@ -28,7 +28,7 @@ export class FieldForceTabComponent {
   tabItems = [
     {
       label: 'Field Force',
-      path: '/master/field-force-t/field-force',
+      path: '/master/field-force/field-force-t',
     },
   ];
 

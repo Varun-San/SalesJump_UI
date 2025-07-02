@@ -68,8 +68,8 @@
             </div>
 
             <!-- Add HO User Button Section -->
-            <div class="col-3 d-flex gap-3 align-items-center text-end">
-                <div class="col-7">
+            <div class="col-3 d-flex gap-3 align-items-center justify-content-end text-end">
+                <div>
                     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu Button"
                         class="bordered-icon-button">
                         <img src="Assets/Menu.svg" alt="menu">
@@ -80,7 +80,7 @@
                         <button mat-menu-item>Option 3</button>
                     </mat-menu>
                 </div>
-                <div class="col-5">
+                <div>
                     <button class="btn filter-btn d-flex align-items-center justify-content-center text-black"
                         style="background-color: #1997ce; color: white !important"
                         [routerLink]="['/master/basic_details/work-type/add-work-type']"

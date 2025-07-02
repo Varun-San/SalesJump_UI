@@ -88,6 +88,8 @@ import { DistributorMasterComponent } from './Components/Masters/Distributor/Dis
 import { AddDistributorComponent } from './Components/Masters/Distributor/Distributor Master/Add Distributor/add-distributor.component';
 import { FieldForceTabComponent } from './Components/Masters/Field Force/field-force-tab.component';
 import { FieldForceComponent } from './Components/Masters/Field Force/Field Force/field-force.component';
+import { PageNotFoundComponent } from './Components/Page Not Found/page-not-found.component';
+import { AddEmployeeComponent } from './Components/Masters/Field Force/Field Force/Add Employee/add-employee.component';
 
 export const routes: Routes = [
   {
@@ -454,12 +456,16 @@ export const routes: Routes = [
             ],
           },
           {
-            path: 'field-force-t',
+            path: 'field-force',
             component: FieldForceTabComponent,
             children: [
               {
-                path: 'field-force',
+                path: 'field-force-t',
                 component: FieldForceComponent,
+              },
+              {
+                path: 'add-employee-ff',
+                component: AddEmployeeComponent,
               },
             ],
           },
@@ -529,6 +535,14 @@ export const routes: Routes = [
           },
         ],
       },
+      {
+        path: '**',
+        component: PageNotFoundComponent,
+      },
     ],
+  },
+  {
+    path: '**',
+    redirectTo: 'login',
   },
 ];

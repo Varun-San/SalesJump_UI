@@ -1,0 +1,97 @@
+.page_left {
+    margin-left: 45px;
+}
+
+/* search icon */
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #949494;
+    /* Adjust color as needed */
+    pointer-events: none;
+    /* Prevent click events */
+}
+
+/* border for icon menu */
+.bordered-icon-button {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* optional: rounded corners */
+    padding: 4px;
+    /* optional: spacing inside the button */
+}
+
+.red-close {
+    filter: invert(26%) sepia(99%) saturate(7477%) hue-rotate(358deg) brightness(95%) contrast(119%);
+}
+
+thead>tr>td {
+    font-weight: 600;
+    color: #2e3032;
+}
+
+.status-indicator .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-indicator.active .dot {
+    background-color: #28a745;
+    /* Green */
+}
+
+.status-indicator.inactive .dot {
+    background-color: #dc3545;
+    /* Red */
+}
+
+.status-indicator.pending .dot {
+    background-color: #ffc107;
+    /* Yellow */
+}
+
+.remaining-count {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.tooltip-custom {
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.remaining-count[_ngcontent-ng-c1938014055] {
+    color: #1997ce !important;
+}
+
+table td,
+table th {
+    white-space: nowrap;
+    /* prevents text wrap */
+}
+
+table th,
+table td {
+    max-width: 200px;
+    width: 100px;
+}
+
+.status-indicator .dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.dot-green {
+    background-color: green;
+}
+
+.dot-red {
+    background-color: red;
+}
