@@ -21,6 +21,7 @@
     /* optional: rounded corners */
     padding: 4px;
     /* optional: spacing inside the button */
+
 }
 
 .red-close {
@@ -94,4 +95,31 @@ table td {
 
 .dot-red {
     background-color: red;
+}
+
+
+.table-scroll-wrapper {
+    max-height: 500px;
+    
+    /* or any height you want */
+    overflow-y: auto;
+    /* vertical scroll */
+    overflow-x: auto;
+    /* horizontal scroll if table is wide */
+    width: 200%;
+    border: 10px solid #ccc;
+}
+
+.table {
+    min-width: 90px;
+    /* adjust as needed for column spacing */
+    table-layout: fixed;
+    /* makes columns consistent */
+}
+
+.table th,
+.table td {
+    white-space: nowrap;
+    /* prevents text wrapping for long content */
+    text-align: left;
 }

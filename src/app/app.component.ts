@@ -10,14 +10,13 @@ import { filter } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
+  validPaths: string[] = [];
+
   constructor(private primeng: PrimeNG, private router: Router) {
     this.trackRouteChanges();
   }
 
-  ngOnInit() {
-    this.primeng.ripple.set(true);
-  }
   title = 'SALES_JUMP';
 
   trackRouteChanges() {

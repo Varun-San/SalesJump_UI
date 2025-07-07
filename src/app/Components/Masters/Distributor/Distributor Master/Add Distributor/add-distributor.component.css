@@ -2,16 +2,6 @@
     margin-left: 55px;
 }
 
-#Add-Division {
-    position: absolute;
-    top: 60px;
-    left: 52%;
-    transform: translateX(-50%);
-    z-index: 9999;
-    width: 1500px;
-    height: 90vh;
-}
-
 hr {
     border-top: 2px solid #000000;
 }
@@ -130,32 +120,7 @@ label {
     /* Optional: light background */
 }
 
-@media screen and (max-width: 1609px) {
 
-    #Add-Division {
-        position: absolute;
-        top: 60px;
-        left: 52%;
-        transform: translateX(-50%);
-        z-index: 1;
-        width: 1520px;
-        height: auto;
-        overflow: visible !important;
-    }
-}
-
-@media screen and (min-width: 1610px) {
-    #Add-Division {
-        position: absolute;
-        top: 60px;
-        left: 52%;
-        transform: translateX(-50%);
-        z-index: 1;
-        width: 1440px;
-        height: 90vh;
-        overflow: visible !important;
-    }
-}
 
 
 /* ! ~ NG SELECT DROPDOWN SELECT */
@@ -234,4 +199,31 @@ label {
 
 ::ng-deep .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value .ng-value-icon:hover {
     background-color: #1997ce !important;
+}
+
+@media screen and (max-width: 1609px) {
+
+    #Add-Division {
+        position: absolute;
+        top: 60px;
+        left: 52%;
+        transform: translateX(-50%);
+        z-index: 1;
+        width: 1510px;
+        height: auto;
+        overflow: visible !important;
+    }
+}
+
+@media screen and (min-width: 1610px) {
+    #Add-Division {
+        position: absolute;
+        top: 60px;
+        left: 52%;
+        transform: translateX(-50%);
+        z-index: 1;
+        width: 1440px;
+        height: 90vh;
+        overflow: visible !important;
+    }
 }

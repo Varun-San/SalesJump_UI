@@ -200,7 +200,7 @@ export class BreadcrumbService {
       subs: ['competitions', 'formula', 'rewards', 'levels'],
     },
     {
-      base: '/master/field-force-t',
+      base: '/master/field-force',
       label: 'Field Force',
       subs: [],
     },

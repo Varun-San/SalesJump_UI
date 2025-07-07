@@ -537,12 +537,12 @@ export const routes: Routes = [
       },
       {
         path: '**',
-        component: PageNotFoundComponent,
+        redirectTo: 'login',
       },
     ],
   },
   {
     path: '**',
-    redirectTo: 'login',
+    component: PageNotFoundComponent,
   },
 ];

@@ -68,7 +68,8 @@
 }
 
 .password-wrapper input {
-  padding-right: 40px; /* Make space for the icon */
+  padding-right: 40px;
+  /* Make space for the icon */
 }
 
 .password-wrapper img {
