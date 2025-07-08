@@ -1,0 +1,88 @@
+<div class="card-style">
+    <div class="row d-flex align-items-center">
+        <div class="col-4">
+            <label class="form-label">File Upload <span class="text-danger">*</span></label>
+            <div class="position-relative">
+                <input type="text" class="form-control pe-5" [(ngModel)]="circularList.prdtImage" readonly />
+                <img src="Assets/Add Product Details/ProductImageUpload.svg" alt="Upload Icon" class="input-icon"
+                    (click)="triggerFileUpload()" />
+                <input type="file" #fileInput accept="image/*" (change)="onImageSelected($event)" hidden />
+            </div>
+        </div>
+        <div class="col-4">
+            <label for="erp-code" class="form-label">Subject</label>
+            <input id="erp-code" type="text" class="form-control" [(ngModel)]="circularList.subject" />
+        </div>
+        <div class="col-4">
+            <button class="btn btn-primary" style="margin-top: 1.9rem !important;" (click)="Save()">Upload</button>
+        </div>
+    </div>
+    <div class="col-12 mt-3" *ngIf="imagePreviews.length">
+        <label class="form-label">Preview Images</label>
+        <div class="d-flex flex-wrap gap-3">
+            <div *ngFor="let img of imagePreviews; let i = index" class="position-relative me-2 mb-2">
+                <img [src]="img" class="img-thumbnail" style="max-width: 150px; max-height: 150px;" />
+                <button type="button" class="btn btn-sm position-absolute top-0 end-0 p-0 bg-transparent border-0"
+                    (click)="removeImage(i)">
+                    <img src="Assets/Add Product Details/Minus_Fill.svg" alt="Remove"
+                        style="width: 30px; height: 30px;" />
+                </button>
+            </div>
+
+            <!-- Add more (+) -->
+            <button type="button" class="btn btn-outline-primary d-flex align-items-center justify-content-center"
+                style="width: 30px; height: 30px;" (click)="triggerFileUpload()">
+                +
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mt-3">
+            <table class="table table-borderless">
+                <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Subject</th>
+                        <th>File Name</th>
+                        <th>Upload Date</th>
+                        <th>Download</th>
+                        <th class="text-center">
+                            <img src="Assets/AdminMasters/Dashboard.svg" alt="Dashboard" height="25" width="25" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="savedCirculars.length; else noCircular">
+                    <tr *ngFor="let item of savedCirculars; let i = index" style="border-bottom: 1px solid #d9d9d9;">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ item.subject }}</td>
+                        <td>{{ item.prdtImage }}</td>
+                        <td>{{ item.uploadDate }}</td>
+                        <td>
+                            <a *ngFor="let img of item.imageBase64; let imgIndex = index" [href]="img"
+                                [download]="'Image_' + (i + 1) + '_' + imgIndex + '.png'"
+                                style="color: #1997CE; text-decoration: none; margin-right: 10px; display: inline-block;">
+                                Download
+                            </a>
+
+                        </td>
+                        <td class="text-center">
+                            <button mat-icon-button>
+                                <img src="Assets/Menu.svg" alt="menu" />
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <ng-template #noCircular>
+                    <tbody>
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">No Circular available.</td>
+                        </tr>
+                    </tbody>
+                </ng-template>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<router-outlet></router-outlet>

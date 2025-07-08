@@ -159,6 +159,12 @@ table td {
   width: 100px;
 }
 
+thead>tr>th {
+  font-weight: 500;
+  color: #2e3032;
+}
+
+
 /* Style for menu items */
 .mat-mdc-menu-panel {
   background-color: white !important;

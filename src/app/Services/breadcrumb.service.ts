@@ -204,6 +204,11 @@ export class BreadcrumbService {
       label: 'Field Force',
       subs: [],
     },
+    {
+      base: '/master/circular',
+      label: 'Circular',
+      subs: [],
+    },
   ];
 
   private superAdmin = [

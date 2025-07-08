@@ -90,6 +90,8 @@ import { FieldForceTabComponent } from './Components/Masters/Field Force/field-f
 import { FieldForceComponent } from './Components/Masters/Field Force/Field Force/field-force.component';
 import { PageNotFoundComponent } from './Components/Page Not Found/page-not-found.component';
 import { AddEmployeeComponent } from './Components/Masters/Field Force/Field Force/Add Employee/add-employee.component';
+import { CiruclarComponent } from './Components/Masters/Circular/ciruclar.component';
+import { CircularListComponent } from './Components/Masters/Circular/Circular-List/circular-list.component';
 
 export const routes: Routes = [
   {
@@ -466,6 +468,16 @@ export const routes: Routes = [
               {
                 path: 'add-employee-ff',
                 component: AddEmployeeComponent,
+              },
+            ],
+          },
+          {
+            path: 'circular',
+            component: CiruclarComponent,
+            children: [
+              {
+                path: 'circular-list',
+                component: CircularListComponent,
               },
             ],
           },
