@@ -95,8 +95,8 @@
 
     <!-- Table Section -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <td>Product Code</td>
                     <td>ERP Code</td>
@@ -115,7 +115,8 @@
 
             <tbody *ngIf="productList.length > 0; else noData">
                 <tr *ngFor="let product of productList; let i = index"
-                    (click)="selectedProductDetails = { productDetails: product, index: i }">
+                    (click)="selectedProductDetails = { productDetails: product, index: i }"
+                    style="border-bottom: 1px solid #d9d9d9;">
 
                     <td>{{ product.prdtCode }}</td>
                     <td>{{ product.prdtErpCode }}</td>
@@ -160,7 +161,7 @@
 
             <ng-template #noData>
                 <tbody>
-                    <tr>
+                    <tr style="border-bottom: 1px solid #d9d9d9;">
                         <td colspan="9" class="text-center text-muted">No Product available.</td>
                     </tr>
                 </tbody>

@@ -90,8 +90,8 @@
     </div>
     <!-- Table -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered align-middle">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <th>Area Code</th>
                     <th>Area Name</th>
@@ -106,7 +106,8 @@
                 </tr>
             </thead>
             <tbody *ngIf="areaList.length > 0; else noData">
-                <tr *ngFor="let area of areaList;  let i = index" (click)="selectedArea = { area: area, index: i }">
+                <tr *ngFor="let area of areaList;  let i = index" (click)="selectedArea = { area: area, index: i }"
+                    style="border-bottom: 1px solid #d9d9d9;">
                     <td>{{ area.areaCode }}</td>
                     <td>{{ area.areaName }}</td>
                     <td>{{ area.state }}</td>
@@ -124,7 +125,7 @@
             </tbody>
             <ng-template #noData>
                 <tbody>
-                    <tr>
+                    <tr style="border-bottom: 1px solid #d9d9d9;">
                         <td colspan="6" class="text-center text-muted">No area Available.</td>
                     </tr>
                 </tbody>

@@ -95,8 +95,8 @@
 
     <!-- Table Section -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <td>Work Type Code</td>
                     <td>Work Type Name</td>
@@ -112,7 +112,7 @@
             </thead>
 
             <tbody *ngIf="workTypeList.length > 0; else noData">
-                <tr *ngFor="let work of workTypeList; let i = index">
+                <tr *ngFor="let work of workTypeList; let i = index" style="border-bottom: 1px solid #d9d9d9;">
                     <td>SIP {{ i+100 }}</td>
                     <td>{{ work.workType }}</td>
                     <td>{{ work.workTypeShortName }}</td>
@@ -133,8 +133,8 @@
 
             <ng-template #noData>
                 <tbody>
-                    <tr>
-                        <td colspan="6" class="text-center text-muted">No Work tyep available.</td>
+                    <tr style="border-bottom: 1px solid #d9d9d9;">
+                        <td colspan="6" class="text-center text-muted">No Work type available.</td>
                     </tr>
                 </tbody>
             </ng-template>

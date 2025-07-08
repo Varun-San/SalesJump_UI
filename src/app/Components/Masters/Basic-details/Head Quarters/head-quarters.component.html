@@ -94,8 +94,8 @@
     </div>
     <!-- Table -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered align-middle">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <td>Head Quarters Id</td>
                     <td>Head Quarters Name</td>
@@ -111,7 +111,7 @@
             </thead>
             <!-- Show table if data exists -->
             <tbody *ngIf="headQuartersList.length > 0  else noData">
-                <tr *ngFor="let hq of headQuartersList; let index = index">
+                <tr *ngFor="let hq of headQuartersList; let index = index" style="border-bottom: 1px solid #d9d9d9;">
                     <td>{{hq.id}}</td>
                     <td>{{ hq.name }}</td>
                     <td>{{ hq.type }}</td>
@@ -141,7 +141,7 @@
             <!-- Fallback when no data is available -->
             <ng-template #noData>
                 <tbody>
-                    <tr>
+                    <tr style="border-bottom: 1px solid #d9d9d9;">
                         <td colspan="6" class="text-center text-muted">No head quarters available.</td>
                     </tr>
                 </tbody>

@@ -95,8 +95,8 @@
 
     <!-- Table Section -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <td>Material Code</td>
                     <td>ERP Code</td>
@@ -113,7 +113,8 @@
 
             <tbody *ngIf="materialList.length > 0; else noData">
                 <tr *ngFor="let material of materialList; let i = index"
-                    (click)="selectedMaterial = { material: material, index: i }">
+                    (click)="selectedMaterial = { material: material, index: i }"
+                    style="border-bottom: 1px solid #d9d9d9;">
                     <td>{{ 'SIP ' + (i + 101) }}</td>
                     <td>{{ material.erp_Code }}</td>
                     <td>{{ material.material_Name }}</td>
@@ -134,8 +135,8 @@
 
             <ng-template #noData>
                 <tbody>
-                    <tr>
-                        <td colspan="5" class="text-center text-muted">No Material available.</td>
+                    <tr style="border-bottom: 1px solid #d9d9d9;">
+                        <td colspan="7" class="text-center text-muted">No Material available.</td>
                     </tr>
                 </tbody>
             </ng-template>

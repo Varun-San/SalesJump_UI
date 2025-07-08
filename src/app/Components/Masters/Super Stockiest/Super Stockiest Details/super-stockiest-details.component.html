@@ -95,8 +95,8 @@
 
     <!-- Table Section -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <td>Sl.No</td>
                     <td>Supplier Name</td>
@@ -111,7 +111,8 @@
                 </tr>
             </thead>
             <tbody *ngIf="superStockiestList.length > 0; else noSuperStockiest">
-                <tr *ngFor="let stockiest of superStockiestList; let i = index">
+                <tr *ngFor="let stockiest of superStockiestList; let i = index"
+                    style="border-bottom: 1px solid #d9d9d9;">
                     <td>{{ i + 1 }}</td>
                     <td>{{ stockiest.name }}</td>
                     <td>{{ stockiest.contactPerson }}</td>
@@ -126,7 +127,7 @@
             </tbody>
             <ng-template #noSuperStockiest>
                 <tbody>
-                    <tr>
+                    <tr style="border-bottom: 1px solid #d9d9d9;">
                         <td colspan="6" class="text-center text-muted">No Super Stockiest available.</td>
                     </tr>
                 </tbody>

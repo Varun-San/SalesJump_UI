@@ -95,8 +95,8 @@
 
     <!-- Table Section -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <th>Sl.No</th>
                     <th>Route Code</th>
@@ -112,7 +112,7 @@
             </thead>
 
             <tbody *ngIf="routeList.length > 0; else noRoute">
-                <tr *ngFor="let route of routeList; let i = index">
+                <tr *ngFor="let route of routeList; let i = index" style="border-bottom: 1px solid #d9d9d9;">
                     <td>{{ i + 1 }}</td>
                     <td>SIP {{ i + 101 }}</td>
                     <td>{{ route.routeName }}</td>
@@ -130,7 +130,7 @@
 
             <ng-template #noRoute>
                 <tbody>
-                    <tr>
+                    <tr style="border-bottom: 1px solid #d9d9d9;">
                         <td colspan="8" class="text-center text-muted">No Route available.</td>
                     </tr>
                 </tbody>

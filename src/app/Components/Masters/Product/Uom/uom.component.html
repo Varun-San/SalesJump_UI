@@ -95,8 +95,8 @@
 
     <!-- Table Section -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <td>Sl No</td>
                     <td>UOM Name</td>
@@ -108,7 +108,8 @@
                 </tr>
             </thead>
             <tbody *ngIf="uomList.length > 0; else noData">
-                <tr *ngFor="let uom of uomList; let i = index" (click)="selectedUom = { uom: uom, index: i }">
+                <tr *ngFor="let uom of uomList; let i = index" (click)="selectedUom = { uom: uom, index: i }"
+                    style="border-bottom: 1px solid #d9d9d9;">
                     <td>{{ uom.add_Uom_Slno }}</td>
                     <td>{{ uom.add_Uom_Name }}</td>
                     <td class="text-center">
@@ -121,7 +122,7 @@
 
             <ng-template #noData>
                 <tbody>
-                    <tr>
+                    <tr style="border-bottom: 1px solid #d9d9d9;">
                         <td colspan="3" class="text-center text-muted">No UOM available.</td>
                     </tr>
                 </tbody>

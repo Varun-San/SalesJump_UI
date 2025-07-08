@@ -91,8 +91,8 @@
     </div>
     <!-- Table -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered align-middle">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <th>District Code</th>
                     <th>District Name</th>
@@ -108,7 +108,8 @@
             </thead>
             <tbody *ngIf="districtList.length > 0; else noData">
                 <tr *ngFor="let district of districtList;  let i = index"
-                    (click)="selectedDistrict = { district: district, index: i }">
+                    (click)="selectedDistrict = { district: district, index: i }"
+                    style="border-bottom: 1px solid #d9d9d9;">
                     <td>{{ district.districtCode }}</td>
                     <td>{{ district.districtName }}</td>
                     <td>{{ district.state }}</td>
@@ -126,7 +127,7 @@
             </tbody>
             <ng-template #noData>
                 <tbody>
-                    <tr>
+                    <tr style="border-bottom: 1px solid #d9d9d9;"s>
                         <td colspan="6" class="text-center text-muted">No district Available.</td>
                     </tr>
                 </tbody>

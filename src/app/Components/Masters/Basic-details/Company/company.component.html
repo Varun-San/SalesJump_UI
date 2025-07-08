@@ -36,8 +36,8 @@
 
   <!-- Table Section -->
   <div class="col-12 mt-3">
-    <table class="table table-bordered">
-      <thead class="table-light">
+    <table class="table table-borderless">
+      <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
         <tr>
           <th>Company Name</th>
           <th>Alias Name</th>
@@ -52,7 +52,8 @@
         </tr>
       </thead>
       <tbody *ngIf="companyList.length > 0; else noData">
-        <tr *ngFor="let company of companyList; let i = index" (click)="selectedCompany = { company, index: i }">
+        <tr *ngFor="let company of companyList; let i = index" (click)="selectedCompany = { company, index: i }"
+          style="border-bottom: 1px solid #d9d9d9;">
           <td>{{ company.company_Name }}</td>
           <td>{{ company.alias_Name }}</td>
           <td>{{ company.company_City }}</td>
@@ -85,7 +86,7 @@
 
       <ng-template #noData>
         <tbody>
-          <tr>
+          <tr style="border-bottom: 1px solid #d9d9d9;">
             <td colspan="6" class="text-center text-muted">No Company available.</td>
           </tr>
         </tbody>

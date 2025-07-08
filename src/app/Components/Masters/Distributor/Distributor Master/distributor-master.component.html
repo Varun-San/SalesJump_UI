@@ -95,8 +95,8 @@
 
     <!-- Table Section -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <th>Sl.No</th>
                     <th>Distributor Code</th>
@@ -111,7 +111,8 @@
             </thead>
 
             <tbody *ngIf="distributorList.length > 0; else noDistributor">
-                <tr *ngFor="let distributor of distributorList; let i = index">
+                <tr *ngFor="let distributor of distributorList; let i = index"
+                    style="border-bottom: 1px solid #d9d9d9;">
                     <td>{{ i + 1 }}</td>
                     <td>SIP {{ i + 101 }}</td>
                     <td>{{ distributor.erpCode }}</td>
@@ -130,7 +131,7 @@
 
             <ng-template #noDistributor>
                 <tbody>
-                    <tr>
+                    <tr style="border-bottom: 1px solid #d9d9d9;">
                         <td colspan="7" class="text-center text-muted">No Distributor available.</td>
                     </tr>
                 </tbody>

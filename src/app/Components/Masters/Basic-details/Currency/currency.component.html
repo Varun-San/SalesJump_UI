@@ -37,8 +37,8 @@
 
     <!-- Table Section -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <th>Currency Name</th>
                     <th>Country</th>
@@ -52,7 +52,7 @@
                 </tr>
             </thead>
             <tbody *ngIf="CurrencyList.length > 0; else noData">
-                <tr *ngFor="let currency of CurrencyList">
+                <tr *ngFor="let currency of CurrencyList" style="border-bottom: 1px solid #d9d9d9;">
                     <td>{{ currency.currencyName }}</td>
                     <td>{{ currency.country }}</td>
                     <td>{{ currency.symbol }}</td>
@@ -73,7 +73,7 @@
             </tbody>
             <ng-template #noData>
                 <tbody>
-                    <tr>
+                    <tr style="border-bottom: 1px solid #d9d9d9;">
                         <td colspan="7" class="text-center text-muted">No currencies available.</td>
                     </tr>
                 </tbody>

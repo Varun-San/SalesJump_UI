@@ -91,8 +91,8 @@
     </div>
     <!-- Table -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered align-middle">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <th>Territory Code</th>
                     <th>Territory Name</th>
@@ -108,7 +108,8 @@
             </thead>
             <tbody *ngIf="territoryList.length > 0; else noData">
                 <tr *ngFor="let territory of territoryList;  let i = index"
-                    (click)="selectedTerritory = { territory: territory, index: i }">
+                    (click)="selectedTerritory = { territory: territory, index: i }"
+                    style="border-bottom: 1px solid #d9d9d9;">
                     <td>{{ territory.territoryCode }}</td>
                     <td>{{ territory.territoryName }}</td>
                     <td>{{ territory.zone }}</td>
@@ -127,7 +128,7 @@
             </tbody>
             <ng-template #noData>
                 <tbody>
-                    <tr>
+                    <tr style="border-bottom: 1px solid #d9d9d9;">
                         <td colspan="6" class="text-center text-muted">No territory Available.</td>
                     </tr>
                 </tbody>

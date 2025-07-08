@@ -98,17 +98,7 @@ table td {
 }
 
 
-.table-scroll-wrapper {
-    max-height: 500px;
-    
-    /* or any height you want */
-    overflow-y: auto;
-    /* vertical scroll */
-    overflow-x: auto;
-    /* horizontal scroll if table is wide */
-    width: 200%;
-    border: 10px solid #ccc;
-}
+
 
 .table {
     min-width: 90px;

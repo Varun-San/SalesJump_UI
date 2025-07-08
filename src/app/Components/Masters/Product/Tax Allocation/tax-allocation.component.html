@@ -87,8 +87,8 @@
 
     <!-- Table Section -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <td>Product Name</td>
                     <td>Country</td>
@@ -97,7 +97,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr style="border-bottom: 1px solid #d9d9d9;">
                     <td> <img src="Assets/Tax Allocation/Green Plus.svg" alt=""> Red Tooth Paste 250gm</td>
                     <td>
                         <ng-select [items]="countryList" bindLabel="name" bindValue="name"
@@ -113,7 +113,7 @@
                         </ng-select>
                     </td>
                 </tr>
-                <tr>
+                <tr style="border-bottom: 1px solid #d9d9d9;">
                     <td rowspan="3"> <img src="Assets/Tax Allocation/Red Minus.svg" alt=""> Zabardast Paste 250gm
                         <button class="btn btn-success">+ Row</button>
                     </td>
@@ -135,7 +135,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+                <tr style="border-bottom: 1px solid #d9d9d9;">
                     <td>
                         <ng-select [items]="countryList" bindLabel="name" bindValue="name"
                             [(ngModel)]="selectedCountry">
@@ -154,7 +154,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+                <tr style="border-bottom: 1px solid #d9d9d9;">
                     <td>
                         <ng-select [items]="countryList" bindLabel="name" bindValue="name"
                             [(ngModel)]="selectedCountry">
@@ -173,7 +173,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+                <tr style="border-bottom: 1px solid #d9d9d9;">
                     <td> <img src="Assets/Tax Allocation/Red Minus.svg" alt=""> Takkatvar 20Gm <button
                             class="btn btn-success"> + Row</button> </td>
                     <td>

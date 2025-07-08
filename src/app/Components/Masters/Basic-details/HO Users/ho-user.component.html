@@ -94,8 +94,8 @@
 
     <!-- Table Section -->
     <div class="col-12 mt-3">
-        <table class="table table-bordered align-middle">
-            <thead class="table-light">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
                 <tr>
                     <td>Name</td>
                     <td>User Name</td>
@@ -109,7 +109,7 @@
                 </tr>
             </thead>
             <tbody *ngIf="HoUserList.length > 0; else noData">
-                <tr *ngFor="let hq of HoUserList; let i = index">
+                <tr *ngFor="let hq of HoUserList; let i = index" style="border-bottom: 1px solid #d9d9d9;">
                     <td>{{ hq.Name }}</td>
                     <td>{{ hq.Ho_UserId }}</td>
                     <td>
@@ -143,7 +143,7 @@
             </tbody>
             <ng-template #noData>
                 <tbody>
-                    <tr>
+                    <tr style="border-bottom: 1px solid #d9d9d9;">
                         <td colspan="5" class="text-center text-muted">No HO Users available.</td>
                     </tr>
                 </tbody>
