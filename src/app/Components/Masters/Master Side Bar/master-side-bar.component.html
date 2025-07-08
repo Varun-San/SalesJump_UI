@@ -7,142 +7,139 @@
         <input type="text" class="form-control ps-5" placeholder="Search" />
       </div>
     </div>
-    <!-- Master List -->
-    <!-- Sidebar: Vertical Tabs (Left Side) -->
-    <div class="row col-12">
-      <div class="col-4 border_right">
-        <ul class="nav flex-column nav-tabs " id="nav_tab_vertical">
-          <li class="nav-item" *ngFor="let tab of tabs">
-            <a class="nav-link d-flex justify-content-between align-items-center border cursor-pointer border_bottom"
-              [class.active]="tab === activeTab" (click)="setActiveTab(tab)" href="javascript:void(0)">
-              {{ tab }}
-              <img *ngIf="tab === activeTab" src="Assets/GeneralSettings/Down Arrow Outline.svg" alt="Arrow Icon"
-                style="width: 16px; height: 16px; margin-left: 8px" />
-            </a>
-          </li>
-        </ul>
-      </div>
-      <!-- Content Area (Right Side) -->
-      <div class="col-7 mt-3">
-        <div class="tab-content p-3">
-          <div [ngSwitch]="activeTab">
-            <!-- !Basic Details -->
-            <div *ngSwitchCase="'Basic Details'">
-              <h4>Basic Details</h4>
-              <mat-chip-set>
-                <mat-chip *ngFor="let basic of BasicDetails_label"
-                  [ngClass]="{ 'active-chip': activeChip_Basic === basic.name }" (click)="activeChip_Basic = basic.name"
-                  routerLink="{{ basic.route }}">
-                  {{ basic.name }}
-                </mat-chip>
-              </mat-chip-set>
-            </div>
-            <!-- !Geography -->
-            <div *ngSwitchCase="'Geography'">
-              <h4>Geography</h4>
-              <mat-chip-set>
-                <mat-chip *ngFor="let Geo of Geography_label" [ngClass]="{
+  </div>
+</div>
+<div class="row">
+  <div class="col-4 border_right">
+    <ul class="nav flex-column nav-tabs " id="nav_tab_vertical">
+      <li class="nav-item" *ngFor="let tab of tabs">
+        <a class="nav-link d-flex justify-content-between align-items-center border cursor-pointer"
+          [class.active]="tab === activeTab" (click)="setActiveTab(tab)" href="javascript:void(0)">
+          {{ tab }}
+          <img *ngIf="tab === activeTab" src="Assets/GeneralSettings/Down Arrow Outline.svg" alt="Arrow Icon"
+            style="width: 16px; height: 16px; margin-left: 8px" />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-8 mt-3">
+    <div class="tab-content p-3">
+      <div [ngSwitch]="activeTab">
+        <!-- !Basic Details -->
+        <div *ngSwitchCase="'Basic Details'">
+          <h4>Basic Details</h4>
+          <mat-chip-set>
+            <mat-chip *ngFor="let basic of BasicDetails_label"
+              [ngClass]="{ 'active-chip': activeChip_Basic === basic.name }" (click)="activeChip_Basic = basic.name"
+              routerLink="{{ basic.route }}">
+              {{ basic.name }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+        <!-- !Geography -->
+        <div *ngSwitchCase="'Geography'">
+          <h4>Geography</h4>
+          <mat-chip-set>
+            <mat-chip *ngFor="let Geo of Geography_label" [ngClass]="{
                     'active-chip': activeChip_Geography === Geo.name
                   }" (click)="activeChip_Geography = Geo.name" routerLink="{{ Geo.route }}">
-                  {{ Geo.name }}
-                </mat-chip>
-              </mat-chip-set>
-            </div>
-            <!-- !Merchandising -->
-            <div *ngSwitchCase="'Merchandising'">
-              <h4>Merchandising</h4>
-            </div>
-            <!-- !Product -->
-            <div *ngSwitchCase="'Product'">
-              <h4>Product</h4>
-              <mat-chip-set>
-                <mat-chip *ngFor="let Pro of Product_label" [ngClass]="{
+              {{ Geo.name }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+        <!-- !Merchandising -->
+        <div *ngSwitchCase="'Merchandising'">
+          <h4>Merchandising</h4>
+        </div>
+        <!-- !Product -->
+        <div *ngSwitchCase="'Product'">
+          <h4>Product</h4>
+          <mat-chip-set>
+            <mat-chip *ngFor="let Pro of Product_label" [ngClass]="{
                     'active-chip': activeChip_Product === Pro.name
                   }" (click)="activeChip_Product = Pro.name" routerLink="{{ Pro.route }}">
-                  {{ Pro.name }}
-                </mat-chip>
-              </mat-chip-set>
-            </div>
-            <!-- !Employee -->
-            <div *ngSwitchCase="'Employee'">
-              <h4>Employee</h4>
-            </div>
-            <!-- !Retailer -->
-            <div *ngSwitchCase="'Retailer'">
-              <h4>Retailer</h4>
-              <mat-chip-set>
-                <mat-chip *ngFor="let Pro of Retailer_label" [ngClass]="{
+              {{ Pro.name }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+        <!-- !Employee -->
+        <div *ngSwitchCase="'Employee'">
+          <h4>Employee</h4>
+        </div>
+        <!-- !Retailer -->
+        <div *ngSwitchCase="'Retailer'">
+          <h4>Retailer</h4>
+          <mat-chip-set>
+            <mat-chip *ngFor="let Pro of Retailer_label" [ngClass]="{
                     'active-chip': activeChip_Retailer === Pro.name
                   }" (click)="activeChip_Retailer = Pro.name" routerLink="{{ Pro.route }}">
-                  {{ Pro.name }}
-                </mat-chip>
-              </mat-chip-set>
-            </div>
-            <!-- !Super Stockiest -->
-            <div *ngSwitchCase="'Super Stockiest'">
-              <h4>Super Stockiest</h4>
-              <mat-chip-set>
-                <mat-chip *ngFor="let Pro of superStockiest_label" [ngClass]="{
+              {{ Pro.name }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+        <!-- !Super Stockiest -->
+        <div *ngSwitchCase="'Super Stockiest'">
+          <h4>Super Stockiest</h4>
+          <mat-chip-set>
+            <mat-chip *ngFor="let Pro of superStockiest_label" [ngClass]="{
                     'active-chip': activeChip_SuperStockiest === Pro.name
                   }" (click)="activeChip_SuperStockiest = Pro.name" routerLink="{{ Pro.route }}">
-                  {{ Pro.name }}
-                </mat-chip>
-              </mat-chip-set>
-            </div>
-            <!-- !Route -->
-            <div *ngSwitchCase="'Route'">
-              <h4>Route</h4>
-              <mat-chip-set>
-                <mat-chip *ngFor="let Pro of route_label" [ngClass]="{
+              {{ Pro.name }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+        <!-- !Route -->
+        <div *ngSwitchCase="'Route'">
+          <h4>Route</h4>
+          <mat-chip-set>
+            <mat-chip *ngFor="let Pro of route_label" [ngClass]="{
                     'active-chip': activeChip_route === Pro.name
                   }" (click)="activeChip_route = Pro.name" routerLink="{{ Pro.route }}">
-                  {{ Pro.name }}
-                </mat-chip>
-              </mat-chip-set>
-            </div>
-            <!-- !Distributor -->
-            <div *ngSwitchCase="'Distributor'">
-              <h4>Distributor</h4>
-              <mat-chip-set>
-                <mat-chip *ngFor="let Pro of distributor_label" [ngClass]="{
+              {{ Pro.name }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+        <!-- !Distributor -->
+        <div *ngSwitchCase="'Distributor'">
+          <h4>Distributor</h4>
+          <mat-chip-set>
+            <mat-chip *ngFor="let Pro of distributor_label" [ngClass]="{
                     'active-chip': activeChip_distributor === Pro.name
                   }" (click)="activeChip_distributor = Pro.name" routerLink="{{ Pro.route }}">
-                  {{ Pro.name }}
-                </mat-chip>
-              </mat-chip-set>
-            </div>
-            <!-- !Tax -->
-            <div *ngSwitchCase="'Tax'">
-              <h4>Tax</h4>
-            </div>
-            <!-- !HO Creation -->
-            <div *ngSwitchCase="'HO Creation'">
-              <h4>HO Creation</h4>
-            </div>
-            <!-- !Competitor -->
-            <div *ngSwitchCase="'Competitor'">
-              <h4>Competitor</h4>
-            </div>
-            <!-- !Van Sales -->
-            <div *ngSwitchCase="'Van Sales'">
-              <h4>Van Sales</h4>
-            </div>
-            <!-- !Gamificaiton -->
-            <div *ngSwitchCase="'Gamification'">
-              <h4>Gamificaiton</h4>
-              <mat-chip-set>
-                <mat-chip *ngFor="let Gam of Gamification_label" [ngClass]="{
+              {{ Pro.name }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+        <!-- !Tax -->
+        <div *ngSwitchCase="'Tax'">
+          <h4>Tax</h4>
+        </div>
+        <!-- !HO Creation -->
+        <div *ngSwitchCase="'HO Creation'">
+          <h4>HO Creation</h4>
+        </div>
+        <!-- !Competitor -->
+        <div *ngSwitchCase="'Competitor'">
+          <h4>Competitor</h4>
+        </div>
+        <!-- !Van Sales -->
+        <div *ngSwitchCase="'Van Sales'">
+          <h4>Van Sales</h4>
+        </div>
+        <!-- !Gamificaiton -->
+        <div *ngSwitchCase="'Gamification'">
+          <h4>Gamificaiton</h4>
+          <mat-chip-set>
+            <mat-chip *ngFor="let Gam of Gamification_label" [ngClass]="{
                     'active-chip': activeChip_Gamification === Gam.name
                   }" (click)="activeChip_Gamification = Gam.name" routerLink="{{ Gam.route }}">
-                  {{ Gam.name }}
-                </mat-chip>
-              </mat-chip-set>
-            </div>
-            <!-- !Default -->
-            <div *ngSwitchDefault>
-              <h4>Select another Tab</h4>
-            </div>
-          </div>
+              {{ Gam.name }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+        <!-- !Default -->
+        <div *ngSwitchDefault>
+          <h4>Select another Tab</h4>
         </div>
       </div>
     </div>

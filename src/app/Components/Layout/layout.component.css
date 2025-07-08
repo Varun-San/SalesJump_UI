@@ -72,15 +72,16 @@
 .navbar-brand {
   margin-right: 0 !important;
 }
+
 .hover-popup {
   position: absolute;
-  top: 25px; /* Offset slightly from top of nav item */
-  left: 65px; /* Matches your .page_left margin */
-  z-index: 1050;
-  background: #ffffff;
-  padding: 25px;
+  top: 25px;
+  left: 67px;
+  z-index: 5 !important;
+  background: white;
+  padding: 10px;
   border-radius: 10px;
-  min-width: 750px;
+  min-width: 515px;
   width: auto;
   overflow-y: none;
   transition: all 0.2s ease-in-out;
@@ -92,8 +93,10 @@
   left: 15px;
   top: 45%;
   transform: translateY(-50%);
-  color: #a0a0a0; /* Adjust color as needed */
-  pointer-events: none; /* Prevent click events */
+  color: #a0a0a0;
+  /* Adjust color as needed */
+  pointer-events: none;
+  /* Prevent click events */
 }
 
 .breadcrumb_style {
