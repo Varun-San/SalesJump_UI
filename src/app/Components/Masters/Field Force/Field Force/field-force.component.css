@@ -113,3 +113,25 @@ table td {
     /* prevents text wrapping for long content */
     text-align: left;
 }
+
+.table-scroll-wrapper {
+    max-height: 400px;
+    /* or any desired height */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+    /* match table-light bg */
+    z-index: 2;
+}
+
+.table tfoot td {
+    background-color: #fff;
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+}

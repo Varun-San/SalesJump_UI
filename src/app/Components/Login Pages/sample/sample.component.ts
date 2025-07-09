@@ -75,6 +75,10 @@ export class SampleComponent implements OnInit, OnDestroy {
   }
 
   // ! HARD CODED LOGIN USERS
+  errorMessage: string = '';
+  clearError() {
+    this.errorMessage = '';
+  }
   LoginObject: any = {
     username: '',
     password: '',
@@ -108,7 +112,7 @@ export class SampleComponent implements OnInit, OnDestroy {
 
       sessionStorage.setItem('authData', JSON.stringify(authData));
 
-      //  Navigate based on role
+      // Navigate based on role
       const targetUrl =
         user.role === 1
           ? '/master/basic_details/company'
@@ -118,7 +122,7 @@ export class SampleComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl(targetUrl);
       }, 200);
     } else {
-      alert('Invalid Credentials');
+      this.errorMessage = 'Invalid username or password';
     }
   }
 }

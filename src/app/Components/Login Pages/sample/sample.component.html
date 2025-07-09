@@ -18,18 +18,20 @@
                 <div class="mb-3">
                   <label for="username" class="form-label labels">User Name</label>
                   <input type="text" class="form-control" [(ngModel)]="LoginObject.username" name="username"
-                    id="username" />
+                    id="username" (input)="clearError()" />
                 </div>
                 <div class="mb-3">
                   <label for="password" class="form-label labels">Password</label>
                   <div class="password-wrapper">
                     <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"
-                      [(ngModel)]="LoginObject.password" name="password" />
-
+                      [(ngModel)]="LoginObject.password" name="password" (input)="clearError()" />
                     <img
                       [src]="showPassword ? 'Assets/LoginPageImages/Show_Password.svg' : 'Assets/LoginPageImages/Hide_Password.svg'"
                       alt="Toggle Password" (click)="togglePassword()" />
                   </div>
+                </div>
+                <div *ngIf="errorMessage" style="color: red; text-align: center; margin-bottom: 10px;">
+                  {{ errorMessage }}
                 </div>
                 <div class="text-end mb-4">
                   <a [routerLink]="'/forgotpassword'" style="text-decoration: none; color: #1997ce">
