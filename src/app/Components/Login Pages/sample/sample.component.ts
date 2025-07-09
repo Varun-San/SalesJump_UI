@@ -74,6 +74,9 @@ export class SampleComponent implements OnInit, OnDestroy {
     this.currentSlide = index;
   }
 
+  redirect() {
+    this.router.navigate(['/auth/forgotpassword']);
+  }
   // ! HARD CODED LOGIN USERS
   errorMessage: string = '';
   clearError() {

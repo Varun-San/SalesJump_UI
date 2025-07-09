@@ -13,7 +13,7 @@ export class PageNotFoundComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('auth/login');
       sessionStorage.clear();
     }, 1000);
   }

@@ -3,7 +3,8 @@
   <div class="col-5">
     <div class="col-12 d-flex flex-column justify-content-center align-items-center">
       <div>
-        <img src="Assets/Verification/Password Reset.png" alt="image" style="height: 110px; width: auto; padding: 10px;" />
+        <img src="Assets/Verification/Password Reset.png" alt="image"
+          style="height: 110px; width: auto; padding: 10px;" />
       </div>
       <div>
         <h4>Password Reset</h4>
@@ -21,7 +22,7 @@
                 (keydown)="onOtpKeyDown($event, i)" *ngFor="let item of otpArray; let i = index" />
             </div>
             <button type="submit" class="btn w-100 mt-3" style="background-color: #1997ce; color: white; padding: 9px"
-              [routerLink]="'/newpassword'">
+              [routerLink]="'/auth/newpassword'">
               Confirm
             </button>
 
@@ -29,7 +30,7 @@
               <a [routerLink]="'/home'" style="text-decoration: none; color: #000000">
                 Didn't recieve email?
               </a>
-              <a [routerLink]="'/home'" style="text-decoration: none; color: #000000">
+              <a [routerLink]="'/auth/login'" style="text-decoration: none; color: #000000">
                 Back to Login
               </a>
             </div>

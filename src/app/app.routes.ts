@@ -95,35 +95,16 @@ import { CircularListComponent } from './Components/Masters/Circular/Circular-Li
 
 export const routes: Routes = [
   {
-    // Default route
+    path: 'auth',
+    loadChildren: () =>
+      import('./Components/Login Pages/login-pages.module').then(
+        (m) => m.LoginPagesModule
+      ),
+  },
+  {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'auth/login',
     pathMatch: 'full',
-  },
-  {
-    // login-Page
-    path: 'login',
-    component: SampleComponent,
-  },
-  {
-    // Forgot-Password
-    path: 'forgotpassword',
-    component: ForgotPasswordComponent,
-  },
-  {
-    // Verification
-    path: 'verification',
-    component: VerificationComponent,
-  },
-  {
-    // New-Password
-    path: 'newpassword',
-    component: NewPasswordComponent,
-  },
-  {
-    // All-Done
-    path: 'password_alldone',
-    component: AlldoneComponent,
   },
   {
     // Routes for the layout section (without "layout" prefix)
@@ -553,8 +534,5 @@ export const routes: Routes = [
       },
     ],
   },
-  {
-    path: '**',
-    component: PageNotFoundComponent,
-  },
+  
 ];

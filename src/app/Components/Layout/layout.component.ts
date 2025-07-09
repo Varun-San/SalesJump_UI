@@ -91,7 +91,7 @@ export class LayoutComponent implements OnInit {
 
   logout() {
     sessionStorage.removeItem('authData');
-    this.router.navigate(['/login']);
+    this.router.navigate(['auth/login']);
   }
 
   getHeaderText() {
