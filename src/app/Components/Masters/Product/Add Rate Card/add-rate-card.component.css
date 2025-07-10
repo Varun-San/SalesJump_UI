@@ -77,9 +77,6 @@ label {
     padding: 10px;
 }
 
-::ng-deep .ng-select.ng-select-single .ng-select-container {
-    height: 40px;
-}
 
 ::ng-deep .date-picker-container {
     display: flex;
@@ -113,17 +110,41 @@ label {
 
 .calendar-icon {
     position: absolute;
+    top: 0%;
+    padding: 5px;
     right: 0px;
-    padding: 12px;
-    top: 35%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 36px;
     cursor: pointer;
-    z-index: 5;
+    z-index: 1;
     background-color: #2E3032;
-    border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+}
+
+::ng-deep .mdc-notched-outline {
+    height: 90% !important;
+}
+
+::ng-deep .mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input,
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+    height: 35px !important;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    width: 18.4rem;
+}
+
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--invalid .mat-mdc-notch-piece {
+    border-color: rgb(255, 24, 24) !important;
+}
+
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mat-mdc-notch-piece {
+    border-color: #d9d9d9 !important;
 }
 
 ::ng-deep .mat-mdc-text-field-wrapper {
@@ -153,13 +174,6 @@ label {
     display: none !important;
 }
 
-::ng-deep .mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input,
-.mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
-    height: auto;
-    position: absolute;
-    top: 8px;
-    left: 8px;
-}
 
 /* ? Calender Styles */
 

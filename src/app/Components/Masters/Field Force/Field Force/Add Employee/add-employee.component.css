@@ -76,12 +76,12 @@
 .calendar-icon {
     position: absolute;
     top: 0%;
-    padding: 7px;
+    padding: 5px;
     right: 0px;
     width: 38px;
-    height: 30px;
+    height: 36px;
     cursor: pointer;
-    z-index: 2;
+    z-index: 1;
     background-color: #2E3032;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -92,7 +92,7 @@
 }
 
 ::ng-deep .mdc-notched-outline {
-    height: 75% !important;
+    height: 90% !important;
 }
 
 ::ng-deep .mat-mdc-text-field-wrapper {
@@ -124,10 +124,15 @@
 
 ::ng-deep .mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input,
 .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
-    height: auto;
+    height: 35px !important;
     position: absolute;
-    top: 5px;
-    left: 12px;
+    top: 0px;
+    left: 10px;
+    width: 30rem;
+}
+
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mat-mdc-notch-piece {
+    border-color: #d9d9d9 !important;
 }
 
 /* ? Calender Styles */

@@ -43,6 +43,8 @@ export class MasterSideBarComponent {
     this.activeChip_route = this.getActiveChip(this.route_label) || '';
     this.activeChip_distributor =
       this.getActiveChip(this.distributor_label) || '';
+    this.activeChip_fieldForce =
+      this.getActiveChip(this.fieldForce_label) || '';
     this.activeTab = this.getActiveTabFromUrl(currentUrl) || this.tabs[0];
   }
 
@@ -61,6 +63,7 @@ export class MasterSideBarComponent {
     Competitor: 'competitor',
     'Van Sales': 'van-sales',
     Gamification: 'gamification',
+    'Field Force': 'field-force',
   };
   getActiveTabFromUrl(url: string): string | null {
     for (const [tab, pathFragment] of Object.entries(this.tabUrlMap)) {
@@ -73,19 +76,20 @@ export class MasterSideBarComponent {
   // Master list with routes
   list = [
     { name: 'Basic Details', route: '/master' },
-    { name: 'Geography', route: '/masters' },
-    { name: 'Merchandising', route: '/masters' },
-    { name: 'Product', route: '/masters' },
-    { name: 'Employee', route: '/masters' },
-    { name: 'Retailer', route: '/masters' },
-    { name: 'Super Stockiest', route: '/masters' },
-    { name: 'Route', route: '/masters' },
-    { name: 'Distributor', route: '/masters' },
-    { name: 'Tax', route: '/masters' },
-    { name: 'HO Creation', route: '/masters' },
-    { name: 'Competitor', route: '/masters' },
-    { name: 'Van Sales', route: '/masters' },
-    { name: 'Gamification', route: '/masters' },
+    { name: 'Geography', route: '/master' },
+    { name: 'Merchandising', route: '/master' },
+    { name: 'Product', route: '/master' },
+    { name: 'Employee', route: '/master' },
+    { name: 'Retailer', route: '/master' },
+    { name: 'Super Stockiest', route: '/master' },
+    { name: 'Route', route: '/master' },
+    { name: 'Distributor', route: '/master' },
+    { name: 'Tax', route: '/master' },
+    { name: 'HO Creation', route: '/master' },
+    { name: 'Competitor', route: '/master' },
+    { name: 'Van Sales', route: '/master' },
+    { name: 'Field Force', route: '/master' },
+    { name: 'Gamification', route: '/master' },
   ];
 
   // Function to handle navigation
@@ -108,6 +112,7 @@ export class MasterSideBarComponent {
     'HO Creation',
     'Competitor',
     'Van Sales',
+    'Field Force',
     'Gamification',
   ];
 
@@ -184,12 +189,18 @@ export class MasterSideBarComponent {
   activeChip_route: string = '';
   route_label = [{ name: 'Route List', route: 'master/route/route-list' }];
 
+  // !  FIELD FORCE
+  activeChip_fieldForce: string = '';
+  fieldForce_label = [
+    { name: 'Field Force', route: 'master/field-force/field-force-t' },
+  ];
+
   // !  DISTRIBUTORS
   activeChip_distributor: string = '';
   distributor_label = [
     {
       name: 'Distributor Master',
-      route: 'master/distributor/distributor-master'
+      route: 'master/distributor/distributor-master',
     },
   ];
 }

@@ -137,6 +137,17 @@
             </mat-chip>
           </mat-chip-set>
         </div>
+        <!-- !  Field Force -->
+        <div *ngSwitchCase="'Field Force'">
+          <h4>Field Force</h4>
+          <mat-chip-set>
+            <mat-chip *ngFor="let fields of fieldForce_label" [ngClass]="{
+                    'active-chip': activeChip_fieldForce === fields.name
+                  }" (click)="activeChip_fieldForce = fields.name" routerLink="{{ fields.route }}">
+              {{ fields.name }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
         <!-- !Default -->
         <div *ngSwitchDefault>
           <h4>Select another Tab</h4>
