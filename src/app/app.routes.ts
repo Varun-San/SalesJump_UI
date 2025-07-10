@@ -1,16 +1,11 @@
+import { BasicDetailsModule } from './Components/Masters/Basic-details/basic-details.module';
 import { Routes } from '@angular/router';
-import { SampleComponent } from './Components/Login Pages/sample/sample.component';
-import { ForgotPasswordComponent } from './Components/Login Pages/forgot-password/forgot-password.component';
-import { VerificationComponent } from './Components/Login Pages/verification/verification.component';
-import { NewPasswordComponent } from './Components/Login Pages/new-password/new-password.component';
-import { AlldoneComponent } from './Components/Login Pages/alldone/alldone.component';
 import { ConfigurationComponent } from './Components/Setup/Configuration/configuration.component';
 import { UserWiseSettingsComponent } from './Components/Setup/Configuration/User Wise Settings/user-wise-settings.component';
 import { GeneralSettingsComponent } from './Components/Setup/Configuration/General Settings/general-settings.component';
 import { LayoutComponent } from './Components/Layout/layout.component';
 import { MastersComponent } from './Components/Masters/masters.component';
 import { BasicDetailsComponent } from './Components/Masters/Basic-details/basic-details.component';
-import { Component } from '@angular/core';
 import { CompanyComponent } from './Components/Masters/Basic-details/Company/company.component';
 import { DivisionComponent } from './Components/Masters/Basic-details/Division/division.component';
 import { DesignationComponent } from './Components/Masters/Basic-details/Designation/designation.component';
@@ -126,382 +121,315 @@ export const routes: Routes = [
           },
         ],
       },
+      //  ! BASIC DETAILS ROUTES
       {
         path: 'master',
-        component: MastersComponent,
-        children: [
-          {
-            path: 'basic_details',
-            component: BasicDetailsComponent,
-            children: [
-              {
-                path: 'company',
-                component: CompanyComponent,
-                children: [
-                  {
-                    path: 'add-company',
-                    component: AddCompanyComponent,
-                  },
-                ],
-              },
-              {
-                path: 'currency',
-                component: CurrencyComponent,
-                children: [
-                  {
-                    path: 'add-currency',
-                    component: AddCurrencyComponent,
-                  },
-                ],
-              },
-              {
-                path: 'division',
-                component: DivisionComponent,
-                children: [
-                  {
-                    path: 'add-division',
-                    component: AddDivisionComponent,
-                  },
-                ],
-              },
-              {
-                path: 'designation',
-                component: DesignationComponent,
-                children: [
-                  {
-                    path: 'add-designation',
-                    component: AddDesignationComponent,
-                  },
-                  {
-                    path: 'menu-rights',
-                    component: MenuRightsComponent,
-                  },
-                ],
-              },
-              {
-                path: 'head-quarters',
-                component: HeadQuartersComponent,
-              },
-              {
-                path: 'work-type',
-                component: WorkTypeComponent,
-                children: [
-                  {
-                    path: 'add-work-type',
-                    component: AddWorkTypeComponent,
-                  },
-                ],
-              },
-              {
-                path: 'ho-user',
-                component: HoUserComponent,
-              },
-              {
-                path: 'add-headquarters',
-                component: AddHeadQuartersComponent,
-              },
-              {
-                path: 'add-ho-user',
-                component: AddHoUserComponent,
-              },
-            ],
-          },
-          {
-            path: 'geography',
-            component: GeographyComponent,
-            children: [
-              {
-                path: 'area',
-                component: AreaComponent,
-                children: [
-                  {
-                    path: 'add-area',
-                    component: AddAreaComponent,
-                  },
-                ],
-              },
-              {
-                path: 'zone',
-                component: ZoneComponent,
-                children: [
-                  {
-                    path: 'add-zone',
-                    component: AddZoneComponent,
-                  },
-                ],
-              },
-              {
-                path: 'territory',
-                component: TerritoryComponent,
-                children: [
-                  {
-                    path: 'add-territory',
-                    component: AddTerritoryComponent,
-                  },
-                ],
-              },
-              {
-                path: 'district',
-                component: DistrictComponent,
-                children: [
-                  {
-                    path: 'add-district',
-                    component: AddDistrictComponent,
-                  },
-                ],
-              },
-              {
-                path: 'town',
-                component: TownComponent,
-                children: [
-                  {
-                    path: 'add-town',
-                    component: AddTownComponent,
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            path: 'product',
-            component: ProductComponent,
-            children: [
-              {
-                path: 'product-details',
-                component: ProductDetailsComponent,
-                children: [
-                  {
-                    path: 'add-product',
-                    component: AddProductComponent,
-                  },
-                ],
-              },
-              {
-                path: 'category',
-                component: CategoryComponent,
-                children: [
-                  {
-                    path: 'add-category',
-                    component: AddCategoryComponent,
-                  },
-                ],
-              },
-              {
-                path: 'brand',
-                component: BrandComponent,
-                children: [
-                  {
-                    path: 'add-brand',
-                    component: AddBrandComponent,
-                  },
-                ],
-              },
-              {
-                path: 'uom',
-                component: UomComponent,
-                children: [
-                  {
-                    path: 'add-uom',
-                    component: AddUomComponent,
-                  },
-                ],
-              },
-              {
-                path: 'tax-allocation',
-                component: TaxAllocationComponent,
-              },
-              {
-                path: 'rate-entry',
-                component: RateEntryComponent,
-              },
-              {
-                path: 'pop-material',
-                component: PopMaterialComponent,
-                children: [
-                  {
-                    path: 'add-material',
-                    component: AddMaterialComponent,
-                  },
-                ],
-              },
-              {
-                path: 'rate-card',
-                component: RateCardComponent,
-              },
-              {
-                path: 'fixed-rate-card',
-                component: FixedRateCardComponent,
-                children: [
-                  {
-                    path: 'add-rate-card',
-                    component: AddRateCardComponent,
-                  },
-                  {
-                    path: 'assign-product',
-                    component: AssignProductComponent,
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            path: 'retailer',
-            component: ReatilerComponent,
-            children: [
-              {
-                path: 'retailer-category',
-                component: RetailerCategoryComponent,
-                children: [
-                  {
-                    path: 'add-category-retailer',
-                    component: AddCategoryRetailerComponent,
-                  },
-                ],
-              },
-              {
-                path: 'retailer-class',
-                component: ClassComponent,
-                children: [
-                  {
-                    path: 'add-class-retailer',
-                    component: AddClassRetailerComponent,
-                  },
-                ],
-              },
-              {
-                path: 'retailer-outlet-type',
-                component: OutletTypeComponent,
-                children: [
-                  {
-                    path: 'add-routlet-type',
-                    component: AddOutletTypeComponent,
-                  },
-                ],
-              },
-              {
-                path: 'retailer-creation',
-                component: RetailerCreationComponent,
-                children: [
-                  {
-                    path: 'add-creation-retailer',
-                    component: AddCreationRetailerComponent,
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            path: 'distributor',
-            component: DistributorComponent,
-            children: [
-              {
-                path: 'distributor-master',
-                component: DistributorMasterComponent,
-                children: [
-                  {
-                    path: 'add-distributor',
-                    component: AddDistributorComponent,
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            path: 'super-stockiest',
-            component: SuperStockiestComponent,
-            children: [
-              {
-                path: 'super-stockiest-details',
-                component: SuperStockiestDetailsComponent,
-                children: [
-                  {
-                    path: 'add-super-sockiest',
-                    component: AddSuperSockiestDetailsComponent,
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            path: 'route',
-            component: RouteComponent,
-            children: [
-              {
-                path: 'route-list',
-                component: RouteListComponent,
-                children: [
-                  {
-                    path: 'add-route-list',
-                    component: AddRouteListComponent,
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            path: 'field-force',
-            component: FieldForceTabComponent,
-            children: [
-              {
-                path: 'field-force-t',
-                component: FieldForceComponent,
-              },
-              {
-                path: 'add-employee-ff',
-                component: AddEmployeeComponent,
-              },
-            ],
-          },
-          {
-            path: 'circular',
-            component: CiruclarComponent,
-            children: [
-              {
-                path: 'circular-list',
-                component: CircularListComponent,
-              },
-            ],
-          },
-          {
-            path: 'gamification',
-            component: GamificationComponent,
-            children: [
-              {
-                path: 'competitions',
-                component: CompetitionsComponent,
-                children: [
-                  {
-                    path: 'add-competitions',
-                    component: AddCompetitionsComponent,
-                    children: [
-                      {
-                        path: 'player-selection',
-                        component: PlayerSelectionComponent,
-                      },
-                      {
-                        path: 'team-head',
-                        component: TeamHeadComponent,
-                      },
-                    ],
-                  },
-                ],
-              },
-              {
-                path: 'formula',
-                component: FormulaComponent,
-              },
-              {
-                path: 'rewards',
-                component: RewardsComponent,
-              },
-              {
-                path: 'levels',
-                component: LevelsComponent,
-              },
-            ],
-          },
-        ],
+        loadChildren: () =>
+          import(
+            './Components/Masters/Basic-details/basic-details.module'
+          ).then((m) => m.BasicDetailsModule),
       },
+
+      //  ! CIRCULAR ROUTES
+      {
+        path: 'master',
+        loadChildren: () =>
+          import('./Components/Masters/Circular/circular.module').then(
+            (m) => m.CircularModule
+          ),
+      },
+
+      // {
+      //   path: 'master',
+      //   component: MastersComponent,
+      //   children: [
+      //     {
+      //       path: 'geography',
+      //       component: GeographyComponent,
+      //       children: [
+      //         {
+      //           path: 'area',
+      //           component: AreaComponent,
+      //           children: [
+      //             {
+      //               path: 'add-area',
+      //               component: AddAreaComponent,
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           path: 'zone',
+      //           component: ZoneComponent,
+      //           children: [
+      //             {
+      //               path: 'add-zone',
+      //               component: AddZoneComponent,
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           path: 'territory',
+      //           component: TerritoryComponent,
+      //           children: [
+      //             {
+      //               path: 'add-territory',
+      //               component: AddTerritoryComponent,
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           path: 'district',
+      //           component: DistrictComponent,
+      //           children: [
+      //             {
+      //               path: 'add-district',
+      //               component: AddDistrictComponent,
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           path: 'town',
+      //           component: TownComponent,
+      //           children: [
+      //             {
+      //               path: 'add-town',
+      //               component: AddTownComponent,
+      //             },
+      //           ],
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       path: 'product',
+      //       component: ProductComponent,
+      //       children: [
+      //         {
+      //           path: 'product-details',
+      //           component: ProductDetailsComponent,
+      //           children: [
+      //             {
+      //               path: 'add-product',
+      //               component: AddProductComponent,
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           path: 'category',
+      //           component: CategoryComponent,
+      //           children: [
+      //             {
+      //               path: 'add-category',
+      //               component: AddCategoryComponent,
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           path: 'brand',
+      //           component: BrandComponent,
+      //           children: [
+      //             {
+      //               path: 'add-brand',
+      //               component: AddBrandComponent,
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           path: 'uom',
+      //           component: UomComponent,
+      //           children: [
+      //             {
+      //               path: 'add-uom',
+      //               component: AddUomComponent,
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           path: 'tax-allocation',
+      //           component: TaxAllocationComponent,
+      //         },
+      //         {
+      //           path: 'rate-entry',
+      //           component: RateEntryComponent,
+      //         },
+      //         {
+      //           path: 'pop-material',
+      //           component: PopMaterialComponent,
+      //           children: [
+      //             {
+      //               path: 'add-material',
+      //               component: AddMaterialComponent,
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           path: 'rate-card',
+      //           component: RateCardComponent,
+      //         },
+      //         {
+      //           path: 'fixed-rate-card',
+      //           component: FixedRateCardComponent,
+      //           children: [
+      //             {
+      //               path: 'add-rate-card',
+      //               component: AddRateCardComponent,
+      //             },
+      //             {
+      //               path: 'assign-product',
+      //               component: AssignProductComponent,
+      //             },
+      //           ],
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       path: 'retailer',
+      //       component: ReatilerComponent,
+      //       children: [
+      //         {
+      //           path: 'retailer-category',
+      //           component: RetailerCategoryComponent,
+      //           children: [
+      //             {
+      //               path: 'add-category-retailer',
+      //               component: AddCategoryRetailerComponent,
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           path: 'retailer-class',
+      //           component: ClassComponent,
+      //           children: [
+      //             {
+      //               path: 'add-class-retailer',
+      //               component: AddClassRetailerComponent,
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           path: 'retailer-outlet-type',
+      //           component: OutletTypeComponent,
+      //           children: [
+      //             {
+      //               path: 'add-routlet-type',
+      //               component: AddOutletTypeComponent,
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           path: 'retailer-creation',
+      //           component: RetailerCreationComponent,
+      //           children: [
+      //             {
+      //               path: 'add-creation-retailer',
+      //               component: AddCreationRetailerComponent,
+      //             },
+      //           ],
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       path: 'distributor',
+      //       component: DistributorComponent,
+      //       children: [
+      //         {
+      //           path: 'distributor-master',
+      //           component: DistributorMasterComponent,
+      //           children: [
+      //             {
+      //               path: 'add-distributor',
+      //               component: AddDistributorComponent,
+      //             },
+      //           ],
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       path: 'super-stockiest',
+      //       component: SuperStockiestComponent,
+      //       children: [
+      //         {
+      //           path: 'super-stockiest-details',
+      //           component: SuperStockiestDetailsComponent,
+      //           children: [
+      //             {
+      //               path: 'add-super-sockiest',
+      //               component: AddSuperSockiestDetailsComponent,
+      //             },
+      //           ],
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       path: 'route',
+      //       component: RouteComponent,
+      //       children: [
+      //         {
+      //           path: 'route-list',
+      //           component: RouteListComponent,
+      //           children: [
+      //             {
+      //               path: 'add-route-list',
+      //               component: AddRouteListComponent,
+      //             },
+      //           ],
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       path: 'field-force',
+      //       component: FieldForceTabComponent,
+      //       children: [
+      //         {
+      //           path: 'field-force-t',
+      //           component: FieldForceComponent,
+      //         },
+      //         {
+      //           path: 'add-employee-ff',
+      //           component: AddEmployeeComponent,
+      //         },
+      //       ],
+      //     },
+
+      //     {
+      //       path: 'gamification',
+      //       component: GamificationComponent,
+      //       children: [
+      //         {
+      //           path: 'competitions',
+      //           component: CompetitionsComponent,
+      //           children: [
+      //             {
+      //               path: 'add-competitions',
+      //               component: AddCompetitionsComponent,
+      //               children: [
+      //                 {
+      //                   path: 'player-selection',
+      //                   component: PlayerSelectionComponent,
+      //                 },
+      //                 {
+      //                   path: 'team-head',
+      //                   component: TeamHeadComponent,
+      //                 },
+      //               ],
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           path: 'formula',
+      //           component: FormulaComponent,
+      //         },
+      //         {
+      //           path: 'rewards',
+      //           component: RewardsComponent,
+      //         },
+      //         {
+      //           path: 'levels',
+      //           component: LevelsComponent,
+      //         },
+      //       ],
+      //     },
+      //   ],
+      // },
       {
         path: 'field-setup',
         component: FieldSetupComponent,
@@ -534,5 +462,8 @@ export const routes: Routes = [
       },
     ],
   },
-  
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+  },
 ];

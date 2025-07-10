@@ -7,7 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-sample',
   standalone: true,
-  imports: [ButtonModule, CommonModule, FormsModule, RouterLink],
+  imports: [ButtonModule, CommonModule, FormsModule],
   templateUrl: './sample.component.html',
   styleUrl: './sample.component.css',
 })
