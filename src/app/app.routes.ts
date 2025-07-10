@@ -139,6 +139,15 @@ export const routes: Routes = [
           ),
       },
 
+      //  !  DISTRIBUTOR ROUTES
+      {
+        path: 'master',
+        loadChildren: () =>
+          import('./Components/Masters/Distributor/distributor.module').then(
+            (m) => m.DistributorModule
+          ),
+      },
+
       // {
       //   path: 'master',
       //   component: MastersComponent,
@@ -327,22 +336,7 @@ export const routes: Routes = [
       //         },
       //       ],
       //     },
-      //     {
-      //       path: 'distributor',
-      //       component: DistributorComponent,
-      //       children: [
-      //         {
-      //           path: 'distributor-master',
-      //           component: DistributorMasterComponent,
-      //           children: [
-      //             {
-      //               path: 'add-distributor',
-      //               component: AddDistributorComponent,
-      //             },
-      //           ],
-      //         },
-      //       ],
-      //     },
+      //
       //     {
       //       path: 'super-stockiest',
       //       component: SuperStockiestComponent,
