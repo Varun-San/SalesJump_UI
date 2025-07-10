@@ -148,6 +148,15 @@ export const routes: Routes = [
           ),
       },
 
+      //  !  FIELD FORCE ROUTES
+      {
+        path: 'master',
+        loadChildren: () =>
+          import('./Components/Masters/Field Force/field-force.module').then(
+            (m) => m.FieldForceModule
+          ),
+      },
+
       // {
       //   path: 'master',
       //   component: MastersComponent,
@@ -366,20 +375,6 @@ export const routes: Routes = [
       //               component: AddRouteListComponent,
       //             },
       //           ],
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       path: 'field-force',
-      //       component: FieldForceTabComponent,
-      //       children: [
-      //         {
-      //           path: 'field-force-t',
-      //           component: FieldForceComponent,
-      //         },
-      //         {
-      //           path: 'add-employee-ff',
-      //           component: AddEmployeeComponent,
       //         },
       //       ],
       //     },
