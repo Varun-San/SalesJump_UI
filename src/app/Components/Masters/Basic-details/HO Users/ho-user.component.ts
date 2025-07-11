@@ -27,6 +27,21 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrl: './ho-user.component.css',
 })
 export class HoUserComponent {
+  array = Array;
+  hoveredIndex: string | null = null;
+  hoverTimeout: any;
+
+  onMouseEnter(index: string) {
+    clearTimeout(this.hoverTimeout);
+    this.hoveredIndex = index;
+  }
+
+  onMouseLeave() {
+    this.hoverTimeout = setTimeout(() => {
+      this.hoveredIndex = null;
+    }, 150);
+  }
+
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ICONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   faSearch = faSearch;
 

@@ -53,8 +53,11 @@ export class AddWorkTypeComponent {
   }
 
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NAVIGATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-  closeCard() {
-    this.router.navigate(['/master/basic_details/work-type']);
+  
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/basic_details/work-type']);
+    });
   }
 
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SAVE OR UPDATE WORK TYPE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

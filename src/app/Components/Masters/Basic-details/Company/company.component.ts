@@ -29,6 +29,20 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrl: './company.component.css',
 })
 export class CompanyComponent {
+  hoveredIndex: number | null = null;
+  hoverTimeout: any;
+
+  onMouseEnter(i: number) {
+    clearTimeout(this.hoverTimeout);
+    this.hoveredIndex = i;
+  }
+
+  onMouseLeave() {
+    this.hoverTimeout = setTimeout(() => {
+      this.hoveredIndex = null;
+    }, 150); // short delay to allow hover between trigger and tooltip
+  }
+
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ICONS & FLAGS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   Array = Array;

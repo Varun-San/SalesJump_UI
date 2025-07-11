@@ -104,3 +104,58 @@ table td {
 .remaining-count {
   color: #1997ce !important;
 }
+
+/* Wrapper for +X more and tooltip */
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip Box */
+.custom-tooltip {
+  position: absolute;
+  top: 33px;
+  /* distance from +X more */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2e2e2e;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  max-width: 270px;
+  width: 240px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  white-space: normal;
+  pointer-events: auto;
+}
+
+/* Arrow/Cone for Tooltip */
+::ng-deep .custom-tooltip::after {
+  content: "";
+  position: absolute;
+  top: -24px;
+  /* adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 13px;
+  border-style: solid;
+  border-color: transparent transparent #2e2e2e transparent;
+  z-index: 4;
+}
+
+/* Tooltip Heading */
+.tooltip-heading {
+  color: #1997CE;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* Tooltip Content */
+.tooltip-items {
+  color: white;
+  font-weight: 400;
+}

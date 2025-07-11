@@ -106,7 +106,7 @@
       </thead>
       <tbody *ngIf="divisionList.length > 0; else noData">
         <tr *ngFor="let division of divisionList;  let i = index"
-          (click)="selectedDivision = { division: division, index: i }">
+          (click)="selectedDivision = { division: division, index: i }" style="border-bottom: 1px solid #d9d9d9;">
           <td>{{ division.divisionPrefix }}</td>
           <td>{{ division.divisionName }}</td>
           <td>{{ division.productWiseCount }}</td>

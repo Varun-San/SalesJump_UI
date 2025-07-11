@@ -62,9 +62,20 @@
               <span>{{ company.company_State[0] }}</span>
               <ng-container *ngIf="company.company_State.length > 1">
                 ,
-                <span class="remaining-count" [matTooltip]="company.company_State.slice(1).join(', ')"
-                  matTooltipPosition="above" matTooltipClass="tooltip-custom">
-                  +{{ company.company_State.length - 1 }} more
+                <span class="tooltip-wrapper">
+                  <span class="remaining-count" (mouseenter)="onMouseEnter(i)" (mouseleave)="onMouseLeave()">
+                    +{{ company.company_State.length - 1 }} more
+                  </span>
+
+                  <div class="custom-tooltip" *ngIf="hoveredIndex === i" (mouseenter)="onMouseEnter(i)"
+                    (mouseleave)="onMouseLeave()">
+                    <div class="tooltip-heading">
+                      States ({{ company.company_State.length }})
+                    </div>
+                    <div class="tooltip-items">
+                      {{ company.company_State.slice(1).join(', ') }}
+                    </div>
+                  </div>
                 </span>
               </ng-container>
             </ng-container>

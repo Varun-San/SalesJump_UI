@@ -55,10 +55,11 @@ export class AddHeadQuartersComponent {
   }
 
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NAVIGATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-  closeCard() {
-    this.router.navigate(['/master/basic_details/head-quarters']);
+  closeCard(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/master/basic_details/head-quarters']);
+    });
   }
-
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SAVE OR UPDATE HEADQUARTERS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   saveHeadquarters() {
     if (

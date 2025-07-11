@@ -113,19 +113,29 @@
                     <td>{{ hq.Name }}</td>
                     <td>{{ hq.Ho_UserId }}</td>
                     <td>
-                        <!-- Check if 'hq.type' is an array -->
-                        <span>{{ hq.type[0] }}</span>
+                        <ng-container *ngIf="array.isArray(hq.type) && hq.type.length > 0">
+                            <span>{{ hq.type[0] }}</span>
+                            <ng-container *ngIf="hq.type.length > 1">
+                                ,
+                                <span class="tooltip-wrapper">
+                                    <span class="remaining-count" (mouseenter)="onMouseEnter(i + '-type')"
+                                        (mouseleave)="onMouseLeave()">
+                                        +{{ hq.type.length - 1 }} more
+                                    </span>
 
-                        <!-- Show the "+ more" only if 'hq.type' is an array and has more than 1 element -->
-                        <ng-container *ngIf="hq.type && hq.type.length > 1">
-                            ,
-                            <span class="remaining-count" [matTooltip]="hq.type.slice(1).join(', ')"
-                                matTooltipPosition="above" matTooltipClass="tooltip-custom">
-                                +{{ hq.type.length - 1 }} more
-                            </span>
+                                    <div class="custom-tooltip" *ngIf="hoveredIndex === i + '-type'"
+                                        (mouseenter)="onMouseEnter(i + '-type')" (mouseleave)="onMouseLeave()">
+                                        <div class="tooltip-heading">
+                                            Types ({{ hq.type.length }})
+                                        </div>
+                                        <div class="tooltip-items">
+                                            {{ hq.type.slice(1).join(', ') }}
+                                        </div>
+                                    </div>
+                                </span>
+                            </ng-container>
                         </ng-container>
                     </td>
-
                     <td>
                         <span class="status-indicator">
                             <span class="dot"
