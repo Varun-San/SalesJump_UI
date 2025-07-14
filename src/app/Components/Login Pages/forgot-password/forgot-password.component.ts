@@ -1,7 +1,7 @@
 import { CommonModule, NgIf } from '@angular/common';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Button } from 'primeng/button';
 
 @Component({
@@ -12,6 +12,7 @@ import { Button } from 'primeng/button';
   styleUrls: ['./forgot-password.component.css'],
 })
 export class ForgotPasswordComponent implements OnInit, OnDestroy {
+  router = inject(Router);
   slides = [
     {
       image: 'Assets/LoginPageImages/leadforce.png',

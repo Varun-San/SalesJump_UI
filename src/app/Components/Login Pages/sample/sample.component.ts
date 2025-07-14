@@ -7,7 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-sample',
   standalone: true,
-  imports: [ButtonModule, CommonModule, FormsModule, RouterLink],
+  imports: [ButtonModule, CommonModule, FormsModule],
   templateUrl: './sample.component.html',
   styleUrl: './sample.component.css',
 })
@@ -74,6 +74,9 @@ export class SampleComponent implements OnInit, OnDestroy {
     this.currentSlide = index;
   }
 
+  redirect() {
+    this.router.navigate(['/auth/forgotpassword']);
+  }
   // ! HARD CODED LOGIN USERS
   errorMessage: string = '';
   clearError() {
