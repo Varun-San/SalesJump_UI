@@ -1,92 +1,7 @@
-import { BasicDetailsModule } from './Components/Masters/Basic-details/basic-details.module';
 import { Routes } from '@angular/router';
-import { ConfigurationComponent } from './Components/Setup/Configuration/configuration.component';
-import { UserWiseSettingsComponent } from './Components/Setup/Configuration/User Wise Settings/user-wise-settings.component';
-import { GeneralSettingsComponent } from './Components/Setup/Configuration/General Settings/general-settings.component';
 import { LayoutComponent } from './Components/Layout/layout.component';
-import { MastersComponent } from './Components/Masters/masters.component';
-import { BasicDetailsComponent } from './Components/Masters/Basic-details/basic-details.component';
-import { CompanyComponent } from './Components/Masters/Basic-details/Company/company.component';
-import { DivisionComponent } from './Components/Masters/Basic-details/Division/division.component';
-import { DesignationComponent } from './Components/Masters/Basic-details/Designation/designation.component';
-import { HeadQuartersComponent } from './Components/Masters/Basic-details/Head Quarters/head-quarters.component';
-import { WorkTypeComponent } from './Components/Masters/Basic-details/Work Type/work-type.component';
-import { HoUserComponent } from './Components/Masters/Basic-details/HO Users/ho-user.component';
-import { AddDivisionComponent } from './Components/Masters/Basic-details/Add Division/add-division.component';
-import { AddDesignationComponent } from './Components/Masters/Basic-details/Add Designation/add-designation.component';
-import { MenuRightsComponent } from './Components/Masters/Basic-details/Designation/Menu Rights/menu-rights.component';
-import { AddHeadQuartersComponent } from './Components/Masters/Basic-details/Add Head Quarters/add-head-quarters.component';
-import { AddHoUserComponent } from './Components/Masters/Basic-details/Add Ho User/add-ho-user.component';
-import { CurrencyComponent } from './Components/Masters/Basic-details/Currency/currency.component';
-import { GeographyComponent } from './Components/Masters/Geography/geography.component';
-import { AreaComponent } from './Components/Masters/Geography/Area/area.component';
-import { ZoneComponent } from './Components/Masters/Geography/Zone/zone.component';
-import { TerritoryComponent } from './Components/Masters/Geography/Territory/territory.component';
-import { DistrictComponent } from './Components/Masters/Geography/District/district.component';
-import { TownComponent } from './Components/Masters/Geography/Town/town.component';
-import { AddWorkTypeComponent } from './Components/Masters/Basic-details/Add Work Type/add-work-type.component';
-import { AddCurrencyComponent } from './Components/Masters/Basic-details/Add Currency/add-currency.component';
-import { ProductComponent } from './Components/Masters/Product/product.component';
-import { ProductDetailsComponent } from './Components/Masters/Product/Product Details/product-details.component';
-import { CategoryComponent } from './Components/Masters/Product/Category/category.component';
-import { BrandComponent } from './Components/Masters/Product/Brand/brand.component';
-import { UomComponent } from './Components/Masters/Product/Uom/uom.component';
-import { TaxAllocationComponent } from './Components/Masters/Product/Tax Allocation/tax-allocation.component';
-import { RateEntryComponent } from './Components/Masters/Product/Rate Entry/rate-entry.component';
-import { PopMaterialComponent } from './Components/Masters/Product/Pop Material/pop-material.component';
-import { RateCardComponent } from './Components/Masters/Product/Rate Card/rate-card.component';
-import { AddProductComponent } from './Components/Masters/Product/Add Product/add-product.component';
-import { AddCategoryComponent } from './Components/Masters/Product/Add Category/add-category.component';
-import { AddBrandComponent } from './Components/Masters/Product/Add Brand/add-brand.component';
-import { AddUomComponent } from './Components/Masters/Product/Add Uom/add-uom.component';
-import { AddCompanyComponent } from './Components/Masters/Basic-details/Add Company/add-company.component';
-import { AddAreaComponent } from './Components/Masters/Geography/Add Area/add-area.component';
-import { AddZoneComponent } from './Components/Masters/Geography/Add Zone/add-zone.component';
-import { AddTerritoryComponent } from './Components/Masters/Geography/Add Territory/add-territory.component';
-import { AddDistrictComponent } from './Components/Masters/Geography/Add District/add-district.component';
-import { AddTownComponent } from './Components/Masters/Geography/Add Town/add-town.component';
-import { AddMaterialComponent } from './Components/Masters/Product/Add Material/add-material.component';
-import { AddRateCardComponent } from './Components/Masters/Product/Add Rate Card/add-rate-card.component';
-import { AssignProductComponent } from './Components/Masters/Product/Assign Product/assign-product.component';
-import { GamificationComponent } from './Components/Masters/Gamification/gamification.component';
-import { CompetitionsComponent } from './Components/Masters/Gamification/Competitions/competitions.component';
-import { FormulaComponent } from './Components/Masters/Gamification/Formula/formula.component';
-import { RewardsComponent } from './Components/Masters/Gamification/Rewards/rewards.component';
-import { LevelsComponent } from './Components/Masters/Gamification/Levels/levels.component';
-import { AddCompetitionsComponent } from './Components/Masters/Gamification/Competitions/Add Competitions/add-competitions.component';
-import { PlayerSelectionComponent } from './Components/Masters/Gamification/Competitions/Add Competitions/Player Selection/player-selection.component';
-import { TeamHeadComponent } from './Components/Masters/Gamification/Competitions/Add Competitions/Team Head/team-head.component';
 import { authGuard } from './Guard/auth.guard';
-import { FieldSetupComponent } from './Components/Field Setup/field-setup.component';
-import { GeneralSettingsFsComponent } from './Components/Field Setup/General Settings FS/general-settings-fs.component';
-import { UserSettingsFsComponent } from './Components/Field Setup/User Settings FS/user-settings-fs.component';
-import { AddFieldComponent } from './Components/Field Setup/General Settings FS/Add Field/add-field.component';
-import { SingleSelectionNewValueComponent } from './Components/Field Setup/General Settings FS/Add Field/Single Selection New Value/single-selection-new-value.component';
-import { ReatilerComponent } from './Components/Masters/Retailer/reatiler.component';
-import { ClassComponent } from './Components/Masters/Retailer/Class/class.component';
-import { OutletTypeComponent } from './Components/Masters/Retailer/Outlet Type/outlet-type.component';
-import { RetailerCreationComponent } from './Components/Masters/Retailer/Retailer Creation/retailer-creation.component';
-import { RetailerCategoryComponent } from './Components/Masters/Retailer/Retailer Category/retailer-category.component';
-import { AddOutletTypeComponent } from './Components/Masters/Retailer/Outlet Type/Add Outlet Type/add-outlet-type.component';
-import { AddClassRetailerComponent } from './Components/Masters/Retailer/Class/Add Class/add-class-retailer.component';
-import { AddCategoryRetailerComponent } from './Components/Masters/Retailer/Retailer Category/Add Category/add-category-retailer.component';
-import { AddCreationRetailerComponent } from './Components/Masters/Retailer/Retailer Creation/Add Retailer Creation/add-creation-retailer.component';
-import { SuperStockiestComponent } from './Components/Masters/Super Stockiest/super-stockiest.component';
-import { SuperStockiestDetailsComponent } from './Components/Masters/Super Stockiest/Super Stockiest Details/super-stockiest-details.component';
-import { AddSuperSockiestDetailsComponent } from './Components/Masters/Super Stockiest/Super Stockiest Details/Add Super Sockiest Details/add-super-sockiest-details.component';
-import { RouteComponent } from './Components/Masters/Route Module/route.component';
-import { RouteListComponent } from './Components/Masters/Route Module/Route List/route-list.component';
-import { AddRouteListComponent } from './Components/Masters/Route Module/Route List/Add Route List/add-route-list.component';
-import { FixedRateCardComponent } from './Components/Masters/Product/Fixed Rate Card/fixed-rate-card.component';
-import { DistributorComponent } from './Components/Masters/Distributor/distributor.component';
-import { DistributorMasterComponent } from './Components/Masters/Distributor/Distributor Master/distributor-master.component';
-import { AddDistributorComponent } from './Components/Masters/Distributor/Distributor Master/Add Distributor/add-distributor.component';
-import { FieldForceTabComponent } from './Components/Masters/Field Force/field-force-tab.component';
-import { FieldForceComponent } from './Components/Masters/Field Force/Field Force/field-force.component';
 import { PageNotFoundComponent } from './Components/Page Not Found/page-not-found.component';
-import { AddEmployeeComponent } from './Components/Masters/Field Force/Field Force/Add Employee/add-employee.component';
-import { CiruclarComponent } from './Components/Masters/Circular/ciruclar.component';
-import { CircularListComponent } from './Components/Masters/Circular/Circular-List/circular-list.component';
 
 export const routes: Routes = [
   {
@@ -107,20 +22,15 @@ export const routes: Routes = [
     component: LayoutComponent,
     canActivate: [authGuard],
     children: [
+      //  ! FIELD SETUP CONFIGURATION ROUTES
       {
-        path: 'configuration',
-        component: ConfigurationComponent,
-        children: [
-          {
-            path: 'general-settings',
-            component: GeneralSettingsComponent,
-          },
-          {
-            path: 'user-settings',
-            component: UserWiseSettingsComponent,
-          },
-        ],
+        path: 'field-setup',
+        loadChildren: () =>
+          import('./Components/Field Setup/field-setup.module').then(
+            (m) => m.FieldSetupModule
+          ),
       },
+      //  ? MASTERS MODULE
       //  ! BASIC DETAILS ROUTES
       {
         path: 'master',
@@ -139,7 +49,7 @@ export const routes: Routes = [
           ),
       },
 
-      //  !  DISTRIBUTOR ROUTES
+      //  ! DISTRIBUTOR ROUTES
       {
         path: 'master',
         loadChildren: () =>
@@ -148,7 +58,7 @@ export const routes: Routes = [
           ),
       },
 
-      //  !  FIELD FORCE ROUTES
+      //  ! FIELD FORCE ROUTES
       {
         path: 'master',
         loadChildren: () =>
@@ -211,31 +121,13 @@ export const routes: Routes = [
           ).then((m) => m.SuperStockiestModule),
       },
 
+      //  ! CONFIGURATION ROUTES
       {
-        path: 'field-setup',
-        component: FieldSetupComponent,
-        children: [
-          {
-            path: 'fs-general-settings',
-            component: GeneralSettingsFsComponent,
-            children: [
-              {
-                path: 'add-field',
-                component: AddFieldComponent,
-                children: [
-                  {
-                    path: 'new-single-selection-value',
-                    component: SingleSelectionNewValueComponent,
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            path: 'fs-user-settings',
-            component: UserSettingsFsComponent,
-          },
-        ],
+        path: 'configuration',
+        loadChildren: () =>
+          import('./Components/Setup/Configuration/configuration.module').then(
+            (m) => m.ConfigurationModule
+          ),
       },
       {
         path: '**',
