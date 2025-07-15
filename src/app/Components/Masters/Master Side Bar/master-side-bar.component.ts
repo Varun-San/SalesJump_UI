@@ -62,7 +62,6 @@ export class MasterSideBarComponent {
     'HO Creation': 'ho-creation',
     Competitor: 'competitor',
     'Van Sales': 'van-sales',
-    Gamification: 'gamification',
     'Field Force': 'field-force',
   };
   getActiveTabFromUrl(url: string): string | null {
@@ -89,7 +88,6 @@ export class MasterSideBarComponent {
     { name: 'Competitor', route: '/master' },
     { name: 'Van Sales', route: '/master' },
     { name: 'Field Force', route: '/master' },
-    { name: 'Gamification', route: '/master' },
   ];
 
   // Function to handle navigation
@@ -101,19 +99,22 @@ export class MasterSideBarComponent {
   tabs = [
     'Basic Details',
     'Geography',
-    'Merchandising',
     'Product',
+    'Merchandising',
     'Employee',
     'Retailer',
     'Super Stockiest',
     'Route',
-    'Distributor',
+    // 'Distributor',
     'Tax',
     'HO Creation',
     'Competitor',
     'Van Sales',
-    'Field Force',
-    'Gamification',
+    // 'Field Force',
+    'Scheme',
+    'Expense',
+    'Communication',
+    'Custom Forms',
   ];
 
   activeTab = this.tabs[0];
