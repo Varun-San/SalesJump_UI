@@ -54,3 +54,8 @@
   opacity: 1;
   background-color: #fff;
 }
+
+.full-height-box {
+  position: relative;
+  height: 89vh;
+}   

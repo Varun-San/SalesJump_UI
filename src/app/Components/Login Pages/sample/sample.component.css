@@ -29,12 +29,6 @@
   opacity: 1;
 }
 
-.carousel-slide img {
-  max-width: 50%;
-  height: auto;
-  border-radius: 10px;
-}
-
 .navigation-lines {
   display: flex;
   gap: 10px;
@@ -95,4 +89,9 @@
   line-height: 1.6;
   border: var(--bs-border-width) solid #d9d9d9;
   border-radius: 3px;
+}
+
+.full-height-box {
+  position: relative;
+  height: 89vh;
 }
