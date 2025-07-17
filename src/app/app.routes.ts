@@ -121,6 +121,15 @@ export const routes: Routes = [
           ).then((m) => m.SuperStockiestModule),
       },
 
+      //  ! LEAVE MASTER ROUTES
+      {
+        path: 'master',
+        loadChildren: () =>
+          import(
+            './Components/Masters/Leave Master/leave-master-main.module'
+          ).then((m) => m.LeaveMasterMainModule),
+      },
+
       //  ! CONFIGURATION ROUTES
       {
         path: 'configuration',

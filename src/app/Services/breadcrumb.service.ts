@@ -190,6 +190,11 @@ export class BreadcrumbService {
       subs: ['route-list'],
     },
     {
+      base: '/master/leave-master',
+      label: 'Leave Master',
+      subs: ['leave-type'],
+    },
+    {
       base: '/master/distributor',
       label: 'Distributor',
       subs: ['distributor-master'],

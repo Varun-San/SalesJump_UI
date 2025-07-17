@@ -35,8 +35,8 @@ export class MasterSideBarComponent {
     this.activeChip_Basic = this.getActiveChip(this.BasicDetails_label) || '';
     this.activeChip_Geography = this.getActiveChip(this.Geography_label) || '';
     this.activeChip_Product = this.getActiveChip(this.Product_label) || '';
-    this.activeChip_Gamification =
-      this.getActiveChip(this.Gamification_label) || '';
+    this.activeChip_leaveMaster =
+      this.getActiveChip(this.LeaveMaster_label) || '';
     this.activeChip_Retailer = this.getActiveChip(this.Retailer_label) || '';
     this.activeChip_SuperStockiest =
       this.getActiveChip(this.superStockiest_label) || '';
@@ -63,6 +63,7 @@ export class MasterSideBarComponent {
     Competitor: 'competitor',
     'Van Sales': 'van-sales',
     'Field Force': 'field-force',
+    'Leave Master': 'leave-master',
   };
   getActiveTabFromUrl(url: string): string | null {
     for (const [tab, pathFragment] of Object.entries(this.tabUrlMap)) {
@@ -88,6 +89,7 @@ export class MasterSideBarComponent {
     { name: 'Competitor', route: '/master' },
     { name: 'Van Sales', route: '/master' },
     { name: 'Field Force', route: '/master' },
+    { name: 'Leave Master', route: '/master' },
   ];
 
   // Function to handle navigation
@@ -115,6 +117,7 @@ export class MasterSideBarComponent {
     'Expense',
     'Communication',
     'Custom Forms',
+    'Leave Master',
   ];
 
   activeTab = this.tabs[0];
@@ -159,13 +162,10 @@ export class MasterSideBarComponent {
     { name: 'Fixed Rate Card', route: '/master/product/fixed-rate-card' },
   ];
 
-  //! Gamification
-  activeChip_Gamification: string = '';
-  Gamification_label = [
-    { name: 'Competitions', route: '/master/gamification/competitions' },
-    { name: 'Formula', route: '/master/gamification/formula' },
-    { name: 'Rewards', route: '/master/gamification/rewards' },
-    { name: 'Levels', route: '/master/gamification/levels' },
+  //! Leave Master
+  activeChip_leaveMaster: string = '';
+  LeaveMaster_label = [
+    { name: 'Leave Type', route: '/master/leave-master/leave-type' },
   ];
 
   // !  RETAILER
@@ -175,6 +175,15 @@ export class MasterSideBarComponent {
     { name: 'Class', route: 'master/retailer/retailer-class' },
     { name: 'Retailer Creation', route: 'master/retailer/retailer-creation' },
     { name: 'Category', route: 'master/retailer/retailer-category' },
+  ];
+
+  //! Gamification
+  activeChip_Gamification: string = '';
+  Gamification_label = [
+    { name: 'Competitions', route: '/master/gamification/competitions' },
+    { name: 'Formula', route: '/master/gamification/formula' },
+    { name: 'Rewards', route: '/master/gamification/rewards' },
+    { name: 'Levels', route: '/master/gamification/levels' },
   ];
 
   // !  SUPER STOCKIEST

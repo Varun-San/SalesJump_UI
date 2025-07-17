@@ -1,0 +1,37 @@
+<!-- Floating Card (only shows on add-division route) -->
+<div *ngIf="isAddClassRetailer" class="card shadow p-4" id="Add-Division">
+    <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
+        <h5 class="mb-0 me-2">{{ editMode ? 'Edit Leave Type' : 'Add Leave Type'
+            }}</h5>
+        <div class="flex-grow-1">
+            <hr class="mt-3 mb-0" />
+        </div>
+    </div>
+
+    <div class="card-body p-0 mt-1">
+        <div class="col-12">
+            <div class="mb-3">
+                <label class="form-label">Leave Type Short Name <span class="text-danger"
+                        style="color: #FF004D">*</span></label>
+                <input type="text" class="form-control" [(ngModel)]="leave_short_Name" placeholder="Short Name" />
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                <label class="form-label">Leave Type Name <span class="text-danger"
+                        style="color: #FF004D">*</span></label>
+                <input type="number" class="form-control" [(ngModel)]="leave_Name" placeholder="Name" />
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer bg-white mt-3">
+        <div class="d-flex justify-content-end gap-2 mt-3">
+            <button class="btn btn-outline-secondary" (click)="closeCard()">
+                Cancel
+            </button>
+            <button class="btn btn-success" (click)="saveLeaveType()">Save</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="isAddClassRetailer" class="card shadow p-3" id="Add-Division2"></div>

@@ -126,17 +126,17 @@
         <div *ngSwitchCase="'Van Sales'">
           <h4>Van Sales</h4>
         </div>
-        <!-- !Gamificaiton -->
-        <!-- <div *ngSwitchCase="'Gamification'">
-          <h4>Gamificaiton</h4>
+        <!-- !Leave Master -->
+        <div *ngSwitchCase="'Leave Master'">
+          <h4>Leave Master</h4>
           <mat-chip-set>
-            <mat-chip *ngFor="let Gam of Gamification_label" [ngClass]="{
-                    'active-chip': activeChip_Gamification === Gam.name
-                  }" (click)="activeChip_Gamification = Gam.name" routerLink="{{ Gam.route }}">
-              {{ Gam.name }}
+            <mat-chip *ngFor="let leav of LeaveMaster_label" [ngClass]="{
+                    'active-chip': activeChip_leaveMaster === leav.name
+                  }" (click)="activeChip_leaveMaster = leav.name" routerLink="{{ leav.route }}">
+              {{ leav.name }}
             </mat-chip>
           </mat-chip-set>
-        </div> -->
+        </div>
         <!-- !  Field Force -->
         <div *ngSwitchCase="'Field Force'">
           <h4>Field Force</h4>

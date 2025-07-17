@@ -1,0 +1,149 @@
+<div class="row page_left">
+    <div class="col-12 mt-3">
+        <div class="col-12 d-flex align-items-center justify-content-between">
+            <!-- Search and Filter Section -->
+            <div class="col-9 d-flex align-items-center gap-3">
+                <div class="position-relative col-4">
+                    <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
+                    <input type="text" class="form-control ps-5" placeholder="Search" />
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn border filter-btn d-flex align-items-center justify-content-center text-black"
+                        (click)="toggleFilterPopup()">
+                        <img src="Assets/AdminMasters/bars-filter.svg" alt="Filter Icon" height="16" width="16"
+                            class="me-2" />
+                        Filter
+                    </button>
+
+                    <!-- Filter Popup -->
+                    <div class="bg-white border rounded p-3 shadow" style="position: absolute; top: 45px; z-index: 1050"
+                        *ngIf="showFilterPopup">
+                        <label class="form-label fw-semibold">Status</label>
+                        <select class="form-select mb-3" [(ngModel)]="tempFilters.status">
+                            <option value="" disabled>Select status</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+
+                        <!-- Optional Role Filter (if needed, otherwise you can remove) -->
+                        <label class="form-label fw-semibold">Role</label>
+                        <select class="form-select mb-3" [(ngModel)]="tempFilters.role">
+                            <option value="" disabled>Select role</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Executive">Executive</option>
+                        </select>
+
+                        <div class="d-flex justify-content-end gap-2 mt-2">
+                            <button class="btn btn-outline-secondary btn-sm" (click)="cancelFilter()">Cancel</button>
+                            <button class="btn btn-primary btn-sm" (click)="applyFilters()">Apply</button>
+                        </div>
+                    </div>
+                    <!-- Selected Filters -->
+                    <div class="d-flex flex-wrap align-items-center gap-2">
+                        <ng-container *ngIf="activeFilters.status">
+                            <div class="border rounded-pill px-3 py-1 d-flex align-items-center gap-2">
+                                <span>Status</span>
+                                <span class="fw-semibold">{{ activeFilters.status }}</span>
+                                <button type="button" class="btn-close btn-close-sm red-close" aria-label="Close"
+                                    (click)="clearFilter('status')"></button>
+                            </div>
+                        </ng-container>
+
+                        <ng-container *ngIf="activeFilters.role">
+                            <div class="border rounded-pill px-3 py-1 d-flex align-items-center gap-2">
+                                <span>Role</span>
+                                <span class="fw-semibold">{{ activeFilters.role }}</span>
+                                <button type="button" class="btn-close btn-close-sm red-close" aria-label="Close"
+                                    (click)="clearFilter('role')"></button>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Outlet Button Section -->
+            <div class="col-3 d-flex gap-3 align-items-center justify-content-end text-end">
+                <div>
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu Button"
+                        class="bordered-icon-button">
+                        <img src="Assets/Menu.svg" alt="menu">
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>Option 1</button>
+                        <button mat-menu-item>Option 2</button>
+                        <button mat-menu-item>Option 3</button>
+                    </mat-menu>
+                </div>
+                <div>
+                    <button class="btn filter-btn d-flex align-items-center justify-content-center text-black"
+                        style="background-color: #1997ce; color: white !important"
+                        [routerLink]="['/master/leave-master/leave-type/add-leave-type']"
+                        routerLinkActive="router-link-active">
+                        <img src="Assets/AdminMasters/Add.svg" alt="Add Icon" height="16" width="16" class="me-2" />
+                        Leave Type
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="col-12 mt-3">
+        <table class="table table-borderless">
+            <colgroup>
+                <col style="width: 15%" />
+                <col style="width: 15%" />
+                <col style="width: 30%" />
+                <col style="width: 3%" />
+            </colgroup>
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
+                <tr>
+                    <td>Sl.NO</td>
+                    <td>Leave Type Short Name</td>
+                    <td>Leave Type Name</td>
+                    <td class="text-center">
+                        <img src="Assets/AdminMasters/Dashboard.svg" alt="Dashboard" height="25" width="25" />
+                    </td>
+                </tr>
+            </thead>
+            <tbody *ngIf="LeaveList.length > 0; else noData">
+                <tr *ngFor="let leave of LeaveList; let i = index" style="border-bottom: 1px solid #d9d9d9;">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ leave.leave_short_Name }}</td>
+                    <td>{{ leave.leave_Name }}</td>
+                    <td class="text-center">
+                        <button mat-icon-button [matMenuTriggerFor]="menuTable" (click)="openMenu(leave, i)">
+                            <img src="Assets/Menu.svg" alt="menu">
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <ng-template #noData>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #d9d9d9;">
+                        <td colspan="4" class="text-center text-muted">No Leave Types available.</td>
+                    </tr>
+                </tbody>
+            </ng-template>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="text-start fw-bold">
+                        Total Records: {{ LeaveList.length }}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<!-- Mat-Menu for Table Actions -->
+<mat-menu #menuTable="matMenu" class="custom-menu bg-white">
+    <ng-container *ngFor="let option of menuOptions">
+        <button mat-menu-item (click)="handleMenuAction(option.action)" [disabled]="!selectedLeave">
+            {{ option.label }}
+        </button>
+    </ng-container>
+</mat-menu>
+
+
+<router-outlet></router-outlet>
