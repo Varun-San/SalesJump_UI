@@ -292,6 +292,9 @@ export class BreadcrumbService {
     if (route.includes('/master')) {
       return [{ label: 'Master', route: '/master' }];
     }
+    if (route.includes('/upload')) {
+      return [{ label: 'Upload', route: '/upload' }];
+    }
     return null;
   }
 }

@@ -21,6 +21,11 @@
         (mouseleave)="hoveredItem = null">
         <app-master-side-bar></app-master-side-bar>
       </div>
+      <!-- Show UploadComponent on hover -->
+      <div class="hover-popup" *ngIf="hoveredItem === 'Upload'" (mouseenter)="hoveredItem = 'Upload'"
+        (mouseleave)="hoveredItem = null">
+        <app-upload-side-bar></app-upload-side-bar>
+      </div>
       <!-- Show ConfigurationComponent on Hover  -->
       <div class="hover-popup" *ngIf="hoveredItem === 'Settings'" (mouseenter)="hoveredItem = 'Settings'"
         (mouseleave)="hoveredItem = null">
