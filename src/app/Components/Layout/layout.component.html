@@ -9,40 +9,37 @@
 
     <!-- Dynamic Menu Items -->
     <!-- Sidebar Nav -->
-    <li class="nav-item" *ngFor="let item of menuItems" (mouseenter)="onMouseEnter(item.label)"
-      (mouseleave)="onMouseLeave()">
-
-      <a class="nav-link text-white fw-bold " [routerLink]="item.route" routerLinkActive="router-link-active"
-        matTooltip="{{ item.label }}">
+    <li class="nav-item" *ngFor="let item of menuItems; let i = index" (mouseenter)="onPopupMouseEnter(item.label)"
+      (mouseleave)="onPopupMouseLeave()">
+      <a class="nav-link text-white fw-bold" [routerLink]="item.route" routerLinkActive="router-link-active"
+        (mouseenter)="onTooltipEnter($event, i, item.label)" (mouseleave)="onTooltipLeave()">
         <img [src]="item.icon" [alt]="item.label" width="24" height="24" />
       </a>
+      <!-- Tooltip -->
+      <div class="custom-tooltip-menu" *ngIf="hoveredIndex === i && showCustomTooltip(item.label)"
+        [ngStyle]="{ top: tooltipTop + 'px', left: tooltipLeft + 'px' }"
+        (mouseenter)="onTooltipEnter($event, i, item.label)" (mouseleave)="onTooltipLeave()">
+        {{ item.label }}
+      </div>
 
-      <!-- Master -->
-      <div class="hover-popup" *ngIf="hoveredItem === 'Master'" (mouseenter)="onMouseEnter('Master')"
-        (mouseleave)="onMouseLeave()">
+      <!-- Popups -->
+      <div class="hover-popup" *ngIf="hoveredItem === 'Master'" (mouseenter)="onPopupMouseEnter('Master')"
+        (mouseleave)="onPopupMouseLeave()">
         <app-master-side-bar></app-master-side-bar>
       </div>
-
-      <!-- Upload -->
-      <div class="hover-popup" *ngIf="hoveredItem === 'Upload'" (mouseenter)="onMouseEnter('Upload')"
-        (mouseleave)="onMouseLeave()">
+      <div class="hover-popup" *ngIf="hoveredItem === 'Upload'" (mouseenter)="onPopupMouseEnter('Upload')"
+        (mouseleave)="onPopupMouseLeave()">
         <app-upload-side-bar></app-upload-side-bar>
       </div>
-
-      <!-- Settings -->
-      <div class="hover-popup" *ngIf="hoveredItem === 'Settings'" (mouseenter)="onMouseEnter('Settings')"
-        (mouseleave)="onMouseLeave()">
+      <div class="hover-popup" *ngIf="hoveredItem === 'Settings'" (mouseenter)="onPopupMouseEnter('Settings')"
+        (mouseleave)="onPopupMouseLeave()">
         <app-settings-side-bar></app-settings-side-bar>
       </div>
-
-      <!-- Field Setup -->
-      <div class="hover-popup" *ngIf="hoveredItem === 'Field Setup'" (mouseenter)="onMouseEnter('Field Setup')"
-        (mouseleave)="onMouseLeave()">
+      <div class="hover-popup" *ngIf="hoveredItem === 'Field Setup'" (mouseenter)="onPopupMouseEnter('Field Setup')"
+        (mouseleave)="onPopupMouseLeave()">
         <app-field-setup-side-bar></app-field-setup-side-bar>
       </div>
     </li>
-
-
   </ul>
 </nav>
 

@@ -111,3 +111,30 @@
 .inactive-breadcrumb {
   color: #000000 !important;
 }
+
+.custom-tooltip-menu {
+  top: 274.75px;
+  left: 81px !important;
+  position: fixed;
+  background-color: #2e2e2e;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: auto;
+  transform: translateY(-50%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+::ng-deep .custom-tooltip-menu::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -12px;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent #2e2e2e transparent transparent;
+}

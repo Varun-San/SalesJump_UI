@@ -27,6 +27,7 @@ import { UploadSideBarComponent } from '../Upload/Upload Side Bar/upload-side-ba
 })
 export class LayoutComponent implements OnInit {
   menuItems: any[] = [];
+
   // ! HANDLING THE MENU ITEMS BASED ON THE LOGIN CREDENTIALS
   ngOnInit(): void {
     const authData = JSON.parse(sessionStorage.getItem('authData') || '{}');
@@ -40,34 +41,70 @@ export class LayoutComponent implements OnInit {
   }
 
   faSearch = faSearch;
-  hoveredItem: string | null = null;
-  hideTimeout: any = null;
 
-  // Trigger hover with delay
-  onMouseEnter(itemLabel: string): void {
-    // Cancel any hide timeout when re-entering
-    if (this.hideTimeout) {
-      clearTimeout(this.hideTimeout);
-      this.hideTimeout = null;
+  // ! HANDLING POPUP ON HOVER
+  hoveredItem: string | null = null;
+  popupHideTimeout: any = null;
+
+  onPopupMouseEnter(itemLabel: string): void {
+    if (this.popupHideTimeout) {
+      clearTimeout(this.popupHideTimeout);
+      this.popupHideTimeout = null;
     }
     this.hoveredItem = itemLabel;
   }
 
-  onMouseLeave(): void {
-    // Start a timer to hide the popup after 2 seconds
-    this.hideTimeout = setTimeout(() => {
+  onPopupMouseLeave(): void {
+    this.popupHideTimeout = setTimeout(() => {
       this.hoveredItem = null;
-    }, 200); // 2000ms = 2 sec
+    }, 200); // 200ms delay
   }
 
+  // ! HANDLING THE TOOLTIP IN MENUS
+  hoveredIndex: number | null = null;
+  tooltipTop = 0;
+  tooltipLeft = 0;
+  tooltipLabel = '';
+  tooltipHideTimeout: any = null;
+
+  onTooltipEnter(event: MouseEvent, index: number, label: string): void {
+    clearTimeout(this.tooltipHideTimeout);
+    this.tooltipLabel = label;
+    this.hoveredIndex = index;
+
+    const target = (event.target as HTMLElement).closest('a')!;
+    const rect = target.getBoundingClientRect();
+    this.tooltipTop = rect.top + rect.height / 2;
+    this.tooltipLeft = rect.right + 8;
+  }
+
+  onTooltipLeave(): void {
+    this.tooltipHideTimeout = setTimeout(() => {
+      this.hoveredIndex = null;
+    }, 150);
+  }
+
+  showCustomTooltip(label: string): boolean {
+    return [
+      'Home',
+      'Entry',
+      'Master',
+      'Upload',
+      'Reports',
+      'Settings',
+      'Field Setup',
+      'Gamification',
+      'Approval',
+    ].includes(label);
+  }
+
+  // ! CONSTRUCTOR
   constructor(
     private router: Router,
     private breadcrumbService: BreadcrumbService
   ) {}
 
-  togglePopup(item: string): void {
-    this.hoveredItem = this.hoveredItem === item ? null : item;
-  }
+  // ! HANDLING ADMIN MENUS
   adminMenu = [
     {
       label: 'Home',
@@ -99,6 +136,7 @@ export class LayoutComponent implements OnInit {
     },
   ];
 
+  // ! HANDLING SUPER ADMIN MENUS
   superAdminMenu = [
     { label: 'Menu Add', route: '#', icon: 'Assets/LayoutIcons/Menu_Add.svg' },
     {
