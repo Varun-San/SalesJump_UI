@@ -41,6 +41,24 @@ export class LayoutComponent implements OnInit {
 
   faSearch = faSearch;
   hoveredItem: string | null = null;
+  hideTimeout: any = null;
+
+  // Trigger hover with delay
+  onMouseEnter(itemLabel: string): void {
+    // Cancel any hide timeout when re-entering
+    if (this.hideTimeout) {
+      clearTimeout(this.hideTimeout);
+      this.hideTimeout = null;
+    }
+    this.hoveredItem = itemLabel;
+  }
+
+  onMouseLeave(): void {
+    // Start a timer to hide the popup after 2 seconds
+    this.hideTimeout = setTimeout(() => {
+      this.hoveredItem = null;
+    }, 200); // 2000ms = 2 sec
+  }
 
   constructor(
     private router: Router,

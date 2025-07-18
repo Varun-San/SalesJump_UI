@@ -105,18 +105,6 @@ table td {
   color: #1997ce !important;
 }
 
-::ng-deep .mat-mdc-tooltip-surface {
-  padding: 14px 10px !important;
-  min-width: 85px !important;
-  max-width: 200px !important;
-  min-height: 35px !important;
-  max-height: 50vh !important;
-  overflow: hidden !important;
-  background-color: #2E3032 !important;
-  color: #FFFFFF !important;
-  font-size: 12px !important;
-  font-weight: 500 !important;
-}
 
 .tooltip-wrapper {
   position: relative;
