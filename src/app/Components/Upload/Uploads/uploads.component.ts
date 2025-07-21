@@ -27,7 +27,7 @@ export class UploadsComponent {
   tabItems = [
     {
       label: 'Proudct Upload',
-      path: '#',
+      path: 'product-upload',
     },
     {
       label: 'Proudct Rate Upload',

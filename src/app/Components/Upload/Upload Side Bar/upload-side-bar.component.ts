@@ -66,46 +66,46 @@ export class UploadSideBarComponent {
   //! Basic Details Options--
   activeChip_Upload: string = '';
   Upload_label = [
-    { name: 'Product Upload', route: '/master/basic_details/company' },
+    { name: 'Product Upload', route: '/upload/product-upload' },
     {
       name: 'Product Rate Upload',
-      route: '/master/basic_details/company',
+      route: '#',
     },
     {
       name: 'Distributor Upload',
-      route: '/master/basic_details/company',
+      route: '#',
     },
     {
       name: 'Route Upload',
-      route: '/master/basic_details/company',
+      route: '#',
     },
     {
       name: 'Target Upload',
-      route: '/master/basic_details/company',
+      route: '#',
     },
     {
       name: 'Primary Target Upload',
-      route: '/master/basic_details/company',
+      route: '#',
     },
     {
       name: 'Pending Bills Upload',
-      route: '/master/basic_details/company',
+      route: '#',
     },
     {
       name: 'Pending Bills Upload',
-      route: '/master/basic_details/company',
+      route: '#',
     },
     {
       name: 'Master Upload',
-      route: '/master/basic_details/company',
+      route: '#',
     },
     {
       name: 'Bulk User Upload',
-      route: '/master/basic_details/company',
+      route: '#',
     },
     {
       name: 'Tour Plan Upload',
-      route: '/master/basic_details/company',
+      route: '#',
     },
   ];
 }
