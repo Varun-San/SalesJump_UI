@@ -1,0 +1,14 @@
+<div class="row page_left">
+    <div class="tab-scroll-wrapper">
+        <ul class="nav nav-tabs" id="nav_tab_horizontal">
+            <li class="nav-item" *ngFor="let tab of tabItems">
+                <a class="nav-link" [routerLink]="[tab.path]" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }">
+                    {{ tab.label }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

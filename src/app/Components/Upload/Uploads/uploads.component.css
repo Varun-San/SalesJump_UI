@@ -1,0 +1,82 @@
+.nav-tabs .nav-link.active {
+  border: none !important;
+  background-color: transparent !important;
+  border-bottom: 2px solid #1997ce !important;
+}
+
+.row>* {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.page_left {
+  margin-left: 55px;
+}
+
+.border_right {
+  border-right: 1px solid black;
+}
+
+.nav-link {
+  color: black;
+}
+
+/* ✅ Styles for vertical (sidebar) tabs */
+#nav_tab_vertical .nav-link.active {
+  background-color: #e6f7ff !important;
+  color: #1997ce;
+  border-bottom: none !important;
+}
+
+/* ✅ Styles for horizontal (top) tabs */
+#nav_tab_horizontal .nav-link.active {
+  border-bottom: 2px solid #1997ce !important;
+  color: #1997ce;
+}
+
+.nav-tabs .nav-link {
+  margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+  border: none;
+  border-top-left-radius: var(--bs-nav-tabs-border-radius);
+}
+
+
+/* Tabs should take as much space as needed */
+#nav_tab_horizontal {
+  display: inline-flex;
+  width: max-content;
+  border-bottom: 1px solid #ddd;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* !  TAB SCROLL UI CSS PROPERTY */
+
+.tab-scroll-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: 100%;
+  padding-bottom: 5px;
+  scrollbar-width: none;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+.tab-scroll-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tab-scroll-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.tab-scroll-wrapper::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+}
+
+.tab-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

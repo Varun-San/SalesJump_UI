@@ -32,11 +32,6 @@ export const routes: Routes = [
           ),
       },
 
-      {
-        path: 'upload',
-        component: UploadComponent,
-      },
-
       //  ? MASTERS MODULE
       //  ! BASIC DETAILS ROUTES
       {
@@ -145,6 +140,16 @@ export const routes: Routes = [
             (m) => m.ConfigurationModule
           ),
       },
+
+      //  ? UPLOADS MODULE
+      {
+        path: 'upload',
+        loadChildren: () =>
+          import('./Components/Upload/Uploads/uploads.module').then(
+            (m) => m.UploadsModule
+          ),
+      },
+
       {
         path: '**',
         redirectTo: 'login',
