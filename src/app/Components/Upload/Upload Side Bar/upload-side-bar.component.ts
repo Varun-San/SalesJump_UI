@@ -69,7 +69,7 @@ export class UploadSideBarComponent {
     { name: 'Product Upload', route: '/upload/product-upload' },
     {
       name: 'Product Rate Upload',
-      route: '#',
+      route: '/upload/product-rate-upload',
     },
     {
       name: 'Distributor Upload',

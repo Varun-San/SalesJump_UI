@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { LayoutComponent } from './Components/Layout/layout.component';
 import { authGuard } from './Guard/auth.guard';
 import { PageNotFoundComponent } from './Components/Page Not Found/page-not-found.component';
-import { UploadComponent } from './Components/Upload/upload.component';
 
 export const routes: Routes = [
   {

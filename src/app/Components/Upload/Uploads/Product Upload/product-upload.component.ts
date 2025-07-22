@@ -45,11 +45,6 @@ export class ProductUploadComponent {
     document.body.removeChild(link);
   }
 
-  //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SAVE OR UPDATE HEADQUARTERS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-  saveHeadquarters(): void {
-    console.log('Saving:', this.formData);
-  }
-
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HANDLING THE UPLOAD BOTH DRAG AND CLICK <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   uploadedFileName: string = '';
   uploadedFile: File | null = null;
@@ -111,7 +106,7 @@ export class ProductUploadComponent {
     if (file.type === 'text/csv') {
       this.analyzeCSV(file);
     } else {
-      this.analyzeExcel(file); // Add this method
+      this.analyzeExcel(file);
     }
 
     console.log('File ready to upload:', file);
