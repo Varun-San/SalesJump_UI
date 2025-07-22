@@ -13,19 +13,19 @@
 
                 <input type="file" hidden #fileInput (change)="onFileSelected($event)" accept=".xlsx,.xls,.csv" />
 
-                <button class="btn btn-primary mb-2 d-flex align-items-center gap-2" (click)="fileInput.click()">
+                <button class="btn btn-primary d-flex align-items-center gap-2 mt-3" (click)="fileInput.click()">
                     <span>
                         <!-- Replace with your actual upload.svg content or link to sprite/icon -->
-                        <img src="Assets/LayoutIcons/Upload.svg" alt="Upload Icon">
+                        <img src="Assets/LayoutIcons/Upload.svg" alt="Upload Icon" width="24" height="24">
                     </span>
                     Upload or Drop File
                 </button>
 
-                <div class="mt-2 text-success d-flex align-items-center gap-2" *ngIf="uploadedFileName">
-                    <strong>Selected:</strong> {{ uploadedFileName }}
+                <div class="mt-2 text-black d-flex align-items-center gap-2" *ngIf="uploadedFileName">
+                    <strong style="color: #1997ce;">Selected:</strong> {{ uploadedFileName }}
                     <span role="button" (click)="removeFile()" style="cursor: pointer;" title="Remove file">
-                        <img src="Assets/LayoutIcons/Delete.svg" alt="Delete Icon" width="18" height="18"
-                            style="color: red !important;" />
+                        <img src="Assets/LayoutIcons/Delete.svg" alt="Delete Icon" class="mb-1" width="24"
+                            height="24" />
                     </span>
                 </div>
             </div>
@@ -56,12 +56,25 @@
                     </div>
                 </div>
 
-                <div class="upload-details">
-                    <p>1) File Name</p>
-                    <p>2) File Size</p>
-                    <p>3) File Analysis</p>
-                    <p>4) Status</p>
+                <!-- Show actual details if available -->
+                <div class="upload-details" *ngIf="fileDetails; else uploadDetailsFallback">
+                    <p>1) File Name: {{ fileDetails.name }}</p>
+                    <p>2) File Size: {{ fileDetails.size }}</p>
+                    <p>3) File Analysis: {{ fileDetails.analysis }}</p>
+                    <p>4) Status: {{ fileDetails.status }}</p>
                 </div>
+
+                <!-- Fallback when fileDetails is null -->
+                <ng-template #uploadDetailsFallback>
+                    <div class="upload-details">
+                        <p>1) File Name</p>
+                        <p>2) File Size</p>
+                        <p>3) File Analysis</p>
+                        <p>4) Status</p>
+                    </div>
+                </ng-template>
+
+
             </div>
 
             <!-- Bottom Section: Download stays at bottom -->
