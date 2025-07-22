@@ -6,24 +6,23 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import * as XLSX from 'xlsx';
 
 @Component({
-  selector: 'app-product-upload',
-  standalone: true,
+  selector: 'app-product-rate-upload',
   imports: [CommonModule, RouterModule, FormsModule, NgSelectModule],
-  templateUrl: './product-upload.component.html',
-  styleUrls: ['./product-upload.component.css'],
+  templateUrl: './product-rate-upload.component.html',
+  styleUrl: './product-rate-upload.component.css',
 })
-export class ProductUploadComponent {
+export class ProductRateUploadComponent {
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ROUTE CHECK <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   get isAddHeadquartersRoute(): boolean {
-    return this.router.url.includes('/upload/product-upload');
+    return this.router.url.includes('upload/product-rate-upload');
   }
 
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORM DATA <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-  formData: ProductUpload = {
-    selectDivision: null,
+  formData: states = {
+    selectState: null,
   };
 
-  divisionOptions = ['Division A', 'Division B', 'Division C'];
+  sateOptions = ['Tamil Nadu', 'Andhra Pradesh', 'Kerala', 'Karnataka'];
 
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CONSTRUCTOR & INITIALIZATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   constructor(private router: Router) {}
@@ -161,6 +160,6 @@ export class ProductUploadComponent {
 }
 
 //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> INTERFACE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-interface ProductUpload {
-  selectDivision: string | null;
+interface states {
+  selectState: string | null;
 }

@@ -31,7 +31,7 @@ export class UploadsComponent {
     },
     {
       label: 'Proudct Rate Upload',
-      path: '#',
+      path: 'product-rate-upload',
     },
     {
       label: 'Distributor Upload',
