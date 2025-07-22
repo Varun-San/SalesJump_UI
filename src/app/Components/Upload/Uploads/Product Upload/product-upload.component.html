@@ -1,11 +1,10 @@
 <div *ngIf="isAddHeadquartersRoute" class="card shadow p-4" id="Add-Division">
     <div class="row">
-        <!-- Outer Column (Drag Zone) -->
+        <!-- Left Column (Drag Zone) -->
         <div class="col-12 col-sm-6 col-md-6 border_right column-1" (drop)="onFileDrop($event)"
             (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"
             [ngClass]="{ 'drag-active-column': isDragging }" style="position: relative;">
 
-            <!-- Inner Box (Upload UI with dashed border only) -->
             <div class="d-flex flex-column justify-content-center align-items-center p-4">
 
                 <h5 class="mb-2">Upload File</h5>
@@ -15,7 +14,6 @@
 
                 <button class="btn btn-primary d-flex align-items-center gap-2 mt-3" (click)="fileInput.click()">
                     <span>
-                        <!-- Replace with your actual upload.svg content or link to sprite/icon -->
                         <img src="Assets/LayoutIcons/Upload.svg" alt="Upload Icon" width="24" height="24">
                     </span>
                     Upload or Drop File
@@ -31,8 +29,6 @@
             </div>
         </div>
 
-
-        <!-- Right Column: Flex Column Layout -->
         <div class="col-12 col-sm-6 col-md-6 d-flex flex-column" style="height: 77vh;">
             <div>
                 <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center mb-4">
@@ -73,11 +69,8 @@
                         <p>4) Status</p>
                     </div>
                 </ng-template>
-
-
             </div>
 
-            <!-- Bottom Section: Download stays at bottom -->
             <div class="mt-auto">
                 <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
                     <h5 class="mb-0 me-2">Download Sample File</h5>
