@@ -73,39 +73,39 @@ export class UploadSideBarComponent {
     },
     {
       name: 'Distributor Upload',
-      route: '#',
+      route: '/upload/distributor-upload',
+    },
+    {
+      name: 'Retailer Upload',
+      route: '/upload/retailer-upload',
     },
     {
       name: 'Route Upload',
-      route: '#',
+      route: '/upload/route-upload',
     },
     {
       name: 'Target Upload',
-      route: '#',
+      route: '/upload/target-upload',
     },
     {
       name: 'Primary Target Upload',
-      route: '#',
+      route: '/upload/primary-target-upload',
     },
     {
       name: 'Pending Bills Upload',
-      route: '#',
-    },
-    {
-      name: 'Pending Bills Upload',
-      route: '#',
+      route: '/upload/pending-bills-upload',
     },
     {
       name: 'Master Upload',
-      route: '#',
+      route: '/upload/master-upload',
     },
     {
       name: 'Bulk User Upload',
-      route: '#',
+      route: '/upload/bulk-user-upload',
     },
     {
       name: 'Tour Plan Upload',
-      route: '#',
+      route: '/upload/tour-plan-upload',
     },
   ];
 }

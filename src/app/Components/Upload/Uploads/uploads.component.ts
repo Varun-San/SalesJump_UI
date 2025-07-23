@@ -35,39 +35,39 @@ export class UploadsComponent {
     },
     {
       label: 'Distributor Upload',
-      path: '#',
+      path: 'distributor-upload',
     },
     {
       label: 'Route Upload',
-      path: '#',
+      path: 'route-upload',
     },
     {
       label: 'Retailer Upload',
-      path: '#',
+      path: 'retailer-upload',
     },
     {
       label: 'Target Upload',
-      path: '#',
+      path: 'target-upload',
     },
     {
       label: 'Primary Target Upload',
-      path: '#',
+      path: 'primary-target-upload',
     },
     {
       label: 'Pending Bills Upload',
-      path: '#',
+      path: 'pending-bills-upload',
     },
     {
       label: 'Master Upload',
-      path: '#',
+      path: 'master-upload',
     },
     {
       label: 'Bulk User Upload',
-      path: '#',
+      path: 'bulk-user-upload',
     },
     {
       label: 'Tour Plan Upload',
-      path: '#',
+      path: 'tour-plan-upload',
     },
   ];
 

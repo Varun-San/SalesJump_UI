@@ -57,7 +57,7 @@ export class LayoutComponent implements OnInit {
   onPopupMouseLeave(): void {
     this.popupHideTimeout = setTimeout(() => {
       this.hoveredItem = null;
-    }, 200); // 200ms delay
+    }, 300); // 200ms delay
   }
 
   // ! HANDLING THE TOOLTIP IN MENUS

@@ -6,15 +6,15 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import * as XLSX from 'xlsx';
 
 @Component({
-  selector: 'app-distributor-upload',
+  selector: 'app-route-upload',
   imports: [CommonModule, RouterModule, FormsModule, NgSelectModule],
-  templateUrl: './distributor-upload.component.html',
-  styleUrl: './distributor-upload.component.css',
+  templateUrl: './route-upload.component.html',
+  styleUrl: './route-upload.component.css',
 })
-export class DistributorUploadComponent {
+export class RouteUploadComponent {
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ROUTE CHECK <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   get isAddHeadquartersRoute(): boolean {
-    return this.router.url.includes('/upload/distributor-upload');
+    return this.router.url.includes('/upload/route-upload');
   }
 
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORM DATA <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -30,7 +30,7 @@ export class DistributorUploadComponent {
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NAVIGATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   closeCard(): void {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/upload/distributor-upload']);
+      this.router.navigate(['/upload/route-upload']);
     });
   }
 
