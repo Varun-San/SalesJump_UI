@@ -30,7 +30,7 @@ export class ProductRateUploadComponent {
   //! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NAVIGATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   closeCard(): void {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/upload/product-upload']);
+      this.router.navigate(['/upload/product-rate-upload']);
     });
   }
 
