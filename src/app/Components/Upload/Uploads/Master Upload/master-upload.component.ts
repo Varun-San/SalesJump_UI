@@ -84,13 +84,13 @@ export class MasterUploadComponent {
     'Distributor Closing Stock':
       'Assets/Sample-files/Distributor Closing Stock.xlsx',
     'Outlet Upload': 'Assets/Sample-files/Outlet Upload.xlsx',
-    'Route ': 'Assets/Sample-files/Route.xlsx',
+    Route: 'Assets/Sample-files/Route.xlsx',
     'Sales and Credit Note Register':
       'Assets/Sample-files/Sales and Credit Note Register.xlsx',
     'Sales Register': 'Assets/Sample-files/Sales Register.xlsx',
     'Scheme Maping': 'Assets/Sample-files/Scheme Mapping.xlsx',
     'Supplier Upload': 'Assets/Sample-files/Supplier Upload.xlsx',
-    'Tax ': 'Assets/Sample-files/Tax.xlsx',
+    Tax: 'Assets/Sample-files/Tax.xlsx',
     'Territory Upload': 'Assets/Sample-files/Territory Upload.xlsx',
     'TP Upload': 'Assets/Sample-files/TP Upload.xlsx',
   };

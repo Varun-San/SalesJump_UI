@@ -64,6 +64,11 @@ hr {
         height: auto;
         overflow: visible !important;
     }
+
+    .table-master {
+        max-height: 150px;
+        overflow-y: auto;
+    }
 }
 
 /* For screens 1537px and above (desktop and larger) */
@@ -77,5 +82,10 @@ hr {
         width: 95vw;
         height: auto;
         overflow: visible !important;
+    }
+
+    .table-master {
+        max-height: 190px;
+        overflow-y: auto;
     }
 }

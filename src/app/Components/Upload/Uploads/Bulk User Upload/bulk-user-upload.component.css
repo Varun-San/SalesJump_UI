@@ -1,0 +1,86 @@
+.page_left {
+    margin-left: 55px;
+}
+
+hr {
+    border-top: 2px solid #000000;
+}
+
+/* ! COLUMN 1 */
+
+.column-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ! ~~~~~ BORDER RIGHT ~~~~~~ */
+.border_right {
+    height: auto;
+    border-right: 1px solid #d9d9d9;
+}
+
+/* ! CSS FOR NG DROP DOWN */
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+    background-color: hsl(0, 0%, 89%) !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+::ng-deep .ng-dropdown-panel-items.scroll-host {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected .ng-option-label {
+    font-weight: 600;
+    color: #1997CE !important;
+}
+
+::ng-deep .ng-select .ng-select-container .ng-value-container .ng-input>input {
+    color: black !important;
+}
+
+/* ! UPLOAD DETAILS FONT STYLE */
+.upload-details>p {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.note>p {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ! HANDLING THE STYLE OF DRAG AND UPLOAD */
+.drag-active-column {
+    border-color: #1997CE;
+    background-color: #0ba9ec31;
+}
+
+/* For screens up to 1536px wide (laptop resolution) */
+@media screen and (max-width: 1536px) {
+    #Add-Division {
+        position: absolute;
+        top: 115px;
+        left: 52.1%;
+        transform: translateX(-50%);
+        z-index: 1;
+        width: 94.9vw;
+        height: auto;
+        overflow: visible !important;
+    }
+}
+
+/* For screens 1537px and above (desktop and larger) */
+@media screen and (min-width: 1537px) {
+    #Add-Division {
+        position: absolute;
+        top: 118px;
+        left: 52%;
+        transform: translateX(-50%);
+        z-index: 1;
+        width: 95vw;
+        height: auto;
+        overflow: visible !important;
+    }
+}
