@@ -1,0 +1,24 @@
+.page_left {
+    margin-left: 55px;
+}
+
+/* search icon */
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #949494;
+    pointer-events: none;
+}
+
+thead>tr>td {
+    font-weight: 600;
+    color: #2e3032;
+}
+
+.custom-td {
+    font-size: 14px;
+    font-weight: 500;
+    color: #909090;
+}

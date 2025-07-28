@@ -95,6 +95,8 @@ export class LayoutComponent implements OnInit {
       'Field Setup',
       'Gamification',
       'Approval',
+      'Menu Creation',
+      'Menu Permission',
     ].includes(label);
   }
 
@@ -138,10 +140,14 @@ export class LayoutComponent implements OnInit {
 
   // ! HANDLING SUPER ADMIN MENUS
   superAdminMenu = [
-    { label: 'Menu Add', route: '#', icon: 'Assets/LayoutIcons/Menu_Add.svg' },
+    {
+      label: 'Menu Creation',
+      route: 'menu-creation/',
+      icon: 'Assets/LayoutIcons/Menu_Add.svg',
+    },
     {
       label: 'Menu Permission',
-      route: '#',
+      route: 'menu-permission',
       icon: 'Assets/LayoutIcons/Menu_Permission.svg',
     },
     {

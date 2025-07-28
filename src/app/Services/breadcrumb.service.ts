@@ -218,9 +218,14 @@ export class BreadcrumbService {
 
   private superAdmin = [
     {
-      base: '/field-setup/',
+      base: '/field-setup',
       label: 'Field Setup',
       subs: ['fs-general-settings', 'fs-user-settings', 'add-field'],
+    },
+    {
+      base: '/menu-creation',
+      label: 'Menu Creation',
+      subs: [''],
     },
   ];
 
@@ -238,16 +243,6 @@ export class BreadcrumbService {
         const pathSegments = route.replace(group.base, '').split('/');
         const breadcrumbs = [{ label: group.label, route: group.base }];
         let currentRoute = group.base;
-
-        for (const segment of pathSegments) {
-          if (!segment) continue;
-          currentRoute += segment;
-          breadcrumbs.push({
-            label: this.formatLabel(segment),
-            route: currentRoute,
-          });
-          currentRoute += '/';
-        }
 
         return breadcrumbs;
       }

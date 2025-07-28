@@ -22,6 +22,15 @@ export const routes: Routes = [
     component: LayoutComponent,
     canActivate: [authGuard],
     children: [
+      //  ! MENU CREATION ROUTES
+      {
+        path: 'menu-creation',
+        loadChildren: () =>
+          import('./Components/Menu Creation/menu-creation.module').then(
+            (m) => m.MenuCreationModule
+          ),
+      },
+
       //  ! FIELD SETUP CONFIGURATION ROUTES
       {
         path: 'field-setup',
