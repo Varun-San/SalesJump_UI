@@ -31,6 +31,15 @@ export const routes: Routes = [
           ),
       },
 
+      //  ! MENU PERMISSION ROUTES
+      {
+        path: 'menu-permission',
+        loadChildren: () =>
+          import('./Components/Menu Permission/menu-permission.module').then(
+            (m) => m.MenuPermissionModule
+          ),
+      },
+
       //  ! FIELD SETUP CONFIGURATION ROUTES
       {
         path: 'field-setup',

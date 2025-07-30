@@ -1,0 +1,190 @@
+.page_left {
+    margin-left: 55px;
+}
+
+#Add-Division {
+    position: absolute;
+    top: 60px;
+    left: 52%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: 1500px;
+    height: 90vh;
+}
+
+hr {
+    border-top: 2px solid #000000;
+}
+
+.input-toggle {
+    font-size: 18px;
+}
+
+
+/* ! NG SELECT DROP DOWN STYLE */
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+    background-color: hsl(0, 0%, 89%) !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+::ng-deep .ng-dropdown-panel-items.scroll-host {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected .ng-option-label {
+    font-weight: 600;
+    color: #1997CE !important;
+}
+
+::ng-deep .ng-select .ng-select-container .ng-value-container .ng-input>input {
+    color: black !important;
+}
+
+@keyframes slideInFromRight {
+    0% {
+        opacity: 1;
+        transform: translateX(100%);
+        /* Fully off-screen right */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%);
+        /* Your final transform */
+    }
+}
+
+/* For screens up to 1536px wide (laptop resolution) */
+@media screen and (max-width: 1536px) {
+    #Add-Division {
+        position: absolute;
+        top: 115px;
+        left: 52.1%;
+        transform: translateX(-50%);
+        z-index: 1;
+        width: 94.9vw;
+        height: auto;
+        overflow: visible !important;
+    }
+}
+
+/* For screens 1537px and above (desktop and larger) */
+@media screen and (min-width: 1537px) {
+    #Add-Division {
+        position: absolute;
+        top: 200px;
+        left: 52%;
+        transform: translateX(-50%);
+        z-index: 1;
+        width: 95vw;
+        height: auto;
+        overflow: visible !important;
+    }
+}
+
+.border {
+    border: none !important;
+}
+
+.border_left {
+    height: auto;
+    border-left: 1px solid #d9d9d9;
+}
+
+.border_right {
+    height: auto;
+    border-right: 1px solid #d9d9d9;
+}
+
+.custom-border {
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.nav-tabs {
+    border: none !important;
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.nav-tabs .nav-link.active {
+    border: none !important;
+    background-color: transparent !important;
+    border-bottom: 2px solid #1997ce !important;
+}
+
+.page_left {
+    margin-left: 55px;
+}
+
+.nav-link {
+    color: black;
+}
+
+/* ✅ Styles for vertical (sidebar) tabs */
+#nav_tab_vertical .nav-link.active {
+    background-color: #e6f7ff !important;
+    color: #1997ce;
+    /* font-weight: bold; */
+    /* border-left: 3px solid #1997ce !important; */
+    border-bottom: none !important;
+}
+
+/* ✅ Styles for horizontal (top) tabs */
+#nav_tab_horizontal .nav-link.active {
+    border-bottom: 2px solid #1997ce !important;
+    /* background-color: #ddeff8 !important; */
+    color: #1997ce;
+}
+
+.nav-tabs .nav-link {
+    margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+    border: var(--bs-nav-tabs-border-width) solid transparent;
+    border-top-left-radius: var(--bs-nav-tabs-border-radius);
+    /* border-top-right-radius: var(--bs-nav-tabs-border-radius); */
+}
+
+.toogle_switch {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+/* Border for Bottom in content area */
+/* Dashed border */
+.border_bottom_dashed_div {
+    border-right: 1px solid grey;
+}
+
+/* Radio Button Css */
+.mat-mdc-radio-button~.mat-mdc-radio-button {
+    margin-left: 16px;
+}
+
+/* Solid border */
+.border_bottom_solid_div {
+    border-bottom: 1px solid grey;
+}
+
+
+/* ! ACCORDION STYLES */
+.accordion-item:first-of-type>.accordion-header .accordion-button {
+    border-top-left-radius: var(--bs-accordion-inner-border-radius);
+    border-top-right-radius: var(--bs-accordion-inner-border-radius);
+}
+
+.accordion-button:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: 0 0 0 0.15rem #1997ce !important;
+
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: transparent !important;
+}
+
+.overall-head {
+    display: flex;
+    justify-content: space-between;
+}

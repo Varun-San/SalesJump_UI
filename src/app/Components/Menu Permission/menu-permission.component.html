@@ -1,0 +1,274 @@
+<div class="row page_left">
+    <div class="col-4">
+        <div class="mb-1">
+            <label class="form-label">Company Selection <span class="text-danger">*</span></label>
+            <ng-select [(ngModel)]="formData.companySelection" [items]="companyOptions"
+                [placeholder]="'Select a Options'" [searchable]="true">
+            </ng-select>
+        </div>
+    </div>
+    <div class="col-12 mt-2">
+        <!-- Search -->
+        <div class="position-relative col-12">
+            <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
+            <input type="text" class="form-control ps-5" placeholder="Search" />
+        </div>
+    </div>
+</div>
+
+
+<!-- ! <------ CARD SHADOW -----> -->
+<div class="card shadow p-4" id="Add-Division">
+    <div class="row">
+        <!-- Sidebar: Vertical Tabs (Left Side) -->
+        <div class="col-2 p-0 ps-2">
+            <ul class="nav flex-column nav-tabs" id="nav_tab_vertical">
+                <li class="nav-item custom-border" *ngFor="let tab of tabs">
+                    <a class="nav-link d-flex justify-content-between align-items-center border"
+                        [class.active]="tab === activeTab" (click)="setActiveTab(tab)" href="javascript:void(0)">
+                        {{ tab }}
+                        <img *ngIf="tab === activeTab" src="Assets/GeneralSettings/Down Arrow Outline.svg" alt="adfasdf"
+                            style="width: 16px; height: 16px; margin-left: 8px" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Content Area (Right Side) -->
+        <div class="col-10 p-0 border_left">
+            <div class="tab-content ps-2">
+                <div [ngSwitch]="activeTab">
+                    <!-- ! ----------------------------------------------  MASTER ------------------------------------------! -->
+                    <div *ngSwitchCase="'Master'">
+                        <!-- Basic Details Section -->
+                        <div class="border_bottom_solid_div mb-1">
+                            <div class="col-2 overall-head d-flex align-items-center justify-content-between mb-1">
+                                <span class="text-muted">Basic Details</span>
+                                <div class="form-check form-switch m-0">
+                                    <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                        [checked]="parentToggles.BasicDetails"
+                                        (change)="toggleParent('BasicDetails')" />
+                                </div>
+                            </div>
+
+                            <div *ngFor="let group of getChunkedMasters(BasicDetails, 4); trackBy: trackByIndex">
+                                <div class="row">
+                                    <div *ngFor="let master of group; trackBy: trackByTitle"
+                                        class="col-lg-3 col-md-6 col-12 mb-1 ">
+                                        <div
+                                            class="d-flex justify-content-between align-items-center  p-3 border_bottom_dashed_div">
+                                            <span class="fw-medium">{{ master.title }}</span>
+                                            <div class="form-check form-switch m-0">
+                                                <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                                    [(ngModel)]="master.checked"
+                                                    (change)="toggleChildLazy('BasicDetails')" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Geography Section -->
+                        <div class="border_bottom_solid_div mb-1">
+                            <div class="col-2 overall-head d-flex align-items-center justify-content-between mb-1 mt-3">
+                                <span class="text-muted">Geography</span>
+                                <div class="form-check form-switch m-0">
+                                    <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                        [checked]="parentToggles.Geography" (change)="toggleParent('Geography')" />
+                                </div>
+                            </div>
+
+                            <div *ngFor="let group of getChunkedMasters(Geography, 4); trackBy: trackByIndex">
+                                <div class="row">
+                                    <div *ngFor="let master of group; trackBy: trackByTitle"
+                                        class="col-lg-3 col-md-6 col-12 mb-1 ">
+                                        <div class="d-flex justify-content-between align-items-center  p-3 border_bottom_dashed_div">
+                                            <span class="fw-medium">{{ master.title }}</span>
+                                            <div class="form-check form-switch m-0">
+                                                <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                                    [(ngModel)]="master.checked"
+                                                    (change)="toggleChildLazy('Geography')" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Section -->
+                        <div class="border_bottom_solid_div mb-1">
+                            <div class="col-2 overall-head d-flex align-items-center justify-content-between mb-1 mt-3">
+                                <span class="text-muted">Product</span>
+                                <div class="form-check form-switch m-0">
+                                    <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                        [checked]="parentToggles.Product" (change)="toggleParent('Product')" />
+                                </div>
+                            </div>
+
+                            <div *ngFor="let group of getChunkedMasters(Product, 4); trackBy: trackByIndex">
+                                <div class="row">
+                                    <div *ngFor="let master of group; trackBy: trackByTitle"
+                                        class="col-lg-3 col-md-6 col-12 mb-1 ">
+                                        <div class="d-flex justify-content-between align-items-center  p-3 border_bottom_dashed_div">
+                                            <span class="fw-medium">{{ master.title }}</span>
+                                            <div class="form-check form-switch m-0">
+                                                <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                                    [(ngModel)]="master.checked"
+                                                    (change)="toggleChildLazy('Product')" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Retailer Section -->
+                        <div class="border_bottom_solid_div mb-1">
+                            <div class="col-2 overall-head d-flex align-items-center justify-content-between mb-1 mt-3">
+                                <span class="text-muted">Retailer</span>
+                                <div class="form-check form-switch m-0">
+                                    <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                        [checked]="parentToggles.Retailer" (change)="toggleParent('Retailer')" />
+                                </div>
+                            </div>
+
+                            <div *ngFor="let group of getChunkedMasters(Retailer, 4); trackBy: trackByIndex">
+                                <div class="row">
+                                    <div *ngFor="let master of group; trackBy: trackByTitle"
+                                        class="col-lg-3 col-md-6 col-12 mb-1 ">
+                                        <div class="d-flex justify-content-between align-items-center  p-3 border_bottom_dashed_div">
+                                            <span class="fw-medium">{{ master.title }}</span>
+                                            <div class="form-check form-switch m-0">
+                                                <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                                    [(ngModel)]="master.checked"
+                                                    (change)="toggleChildLazy('Retailer')" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SuperStockiest Section -->
+                        <div class="border_bottom_solid_div mb-1">
+                            <div class="col-2 overall-head d-flex align-items-center justify-content-between mb-1 mt-3">
+                                <span class="text-muted">SuperStockiest</span>
+                                <div class="form-check form-switch m-0">
+                                    <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                        [checked]="parentToggles.SuperStockiest"
+                                        (change)="toggleParent('SuperStockiest')" />
+                                </div>
+                            </div>
+
+                            <div *ngFor="let group of getChunkedMasters(SuperStockiest, 4); trackBy: trackByIndex">
+                                <div class="row">
+                                    <div *ngFor="let master of group; trackBy: trackByTitle"
+                                        class="col-lg-3 col-md-6 col-12 mb-1 ">
+                                        <div class="d-flex justify-content-between align-items-center  p-3 border_bottom_dashed_div">
+                                            <span class="fw-medium">{{ master.title }}</span>
+                                            <div class="form-check form-switch m-0">
+                                                <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                                    [(ngModel)]="master.checked"
+                                                    (change)="toggleChildLazy('SuperStockiest')" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Route Section -->
+                        <div class="border_bottom_solid_div mb-1">
+                            <div class="col-2 overall-head d-flex align-items-center justify-content-between mb-1 mt-3">
+                                <span class="text-muted">Route</span>
+                                <div class="form-check form-switch m-0">
+                                    <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                        [checked]="parentToggles.Route" (change)="toggleParent('Route')" />
+                                </div>
+                            </div>
+
+                            <div *ngFor="let group of getChunkedMasters(Route, 4); trackBy: trackByIndex">
+                                <div class="row">
+                                    <div *ngFor="let master of group; trackBy: trackByTitle"
+                                        class="col-lg-3 col-md-6 col-12 mb-1 ">
+                                        <div class="d-flex justify-content-between align-items-center  p-3 border_bottom_dashed_div">
+                                            <span class="fw-medium">{{ master.title }}</span>
+                                            <div class="form-check form-switch m-0">
+                                                <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                                    [(ngModel)]="master.checked" (change)="toggleChildLazy('Route')" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- LeaveMaster Section -->
+                        <div class="border_bottom_solid_div mb-1">
+                            <div class="col-2 overall-head d-flex align-items-center justify-content-between mb-1 mt-3">
+                                <span class="text-muted">LeaveMaster</span>
+                                <div class="form-check form-switch m-0">
+                                    <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                        [checked]="parentToggles.LeaveMaster" (change)="toggleParent('LeaveMaster')" />
+                                </div>
+                            </div>
+
+                            <div *ngFor="let group of getChunkedMasters(LeaveMaster, 4); trackBy: trackByIndex">
+                                <div class="row">
+                                    <div *ngFor="let master of group; trackBy: trackByTitle"
+                                        class="col-lg-3 col-md-6 col-12 mb-1 ">
+                                        <div class="d-flex justify-content-between align-items-center  p-3 border_bottom_dashed_div">
+                                            <span class="fw-medium">{{ master.title }}</span>
+                                            <div class="form-check form-switch m-0">
+                                                <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                                    [(ngModel)]="master.checked"
+                                                    (change)="toggleChildLazy('LeaveMaster')" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- ! ----------------------------------------------  Upload ------------------------------------------! -->
+
+                    <div *ngSwitchCase="'Upload'">
+                        <!-- Upload Section -->
+                        <div class="border_bottom_solid_div mb-1">
+                            <div class="col-2 overall-head d-flex align-items-center justify-content-between mb-1">
+                                <span class="text-muted">Upload</span>
+                                <div class="form-check form-switch m-0">
+                                    <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                        [checked]="parentToggles.Upload" (change)="toggleParent('Upload')" />
+                                </div>
+                            </div>
+
+                            <div *ngFor="let group of getChunkedMasters(Upload, 4); trackBy: trackByIndex">
+                                <div class="row">
+                                    <div *ngFor="let master of group; trackBy: trackByTitle"
+                                        class="col-lg-3 col-md-6 col-12 mb-1">
+                                        <div class="d-flex justify-content-between align-items-center p-3 border_bottom_dashed_div">
+                                            <span class="fw-medium">{{ master.title }}</span>
+                                            <div class="form-check form-switch m-0">
+                                                <input type="checkbox" class="form-check-input" style="width: 30px;"
+                                                    [(ngModel)]="master.checked" (change)="toggleChildLazy('Upload')" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- !Default -->
+                    <div *ngSwitchDefault>
+                        <p>Switch another tab</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

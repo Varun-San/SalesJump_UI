@@ -227,6 +227,11 @@ export class BreadcrumbService {
       label: 'Menu Creation',
       subs: [''],
     },
+    {
+      base: '/menu-permission',
+      label: 'Menu Permission',
+      subs: [''],
+    },
   ];
 
   getBreadcrumbs(route: string): { label: string; route: string }[] | null {
