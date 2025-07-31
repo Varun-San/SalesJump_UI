@@ -73,24 +73,6 @@ export class MasterSideBarComponent {
     }
     return null;
   }
-  // Master list with routes
-  list = [
-    { name: 'Basic Details', route: '/master' },
-    { name: 'Geography', route: '/master' },
-    { name: 'Merchandising', route: '/master' },
-    { name: 'Product', route: '/master' },
-    { name: 'Employee', route: '/master' },
-    { name: 'Retailer', route: '/master' },
-    { name: 'Super Stockiest', route: '/master' },
-    { name: 'Route', route: '/master' },
-    { name: 'Distributor', route: '/master' },
-    { name: 'Tax', route: '/master' },
-    { name: 'HO Creation', route: '/master' },
-    { name: 'Competitor', route: '/master' },
-    { name: 'Van Sales', route: '/master' },
-    { name: 'Field Force', route: '/master' },
-    { name: 'Leave Master', route: '/master' },
-  ];
 
   // Function to handle navigation
   navigateTo(route: string) {

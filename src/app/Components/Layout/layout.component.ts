@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BreadcrumbService } from '../../Services/breadcrumb.service';
 import { FieldSetupSideBarComponent } from '../Field Setup/Field Setup Side Bar/field-setup-side-bar.component';
 import { UploadSideBarComponent } from '../Upload/Upload Side Bar/upload-side-bar.component';
+import { AdminEntrySideBarComponent } from "../Admin Entry/Admin Entry Side Bar/admin-entry-side-bar.component";
 @Component({
   selector: 'app-layout',
   standalone: true,
@@ -21,7 +22,8 @@ import { UploadSideBarComponent } from '../Upload/Upload Side Bar/upload-side-ba
     FontAwesomeModule,
     FieldSetupSideBarComponent,
     UploadSideBarComponent,
-  ],
+    AdminEntrySideBarComponent
+],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
 })
@@ -118,7 +120,7 @@ export class LayoutComponent implements OnInit {
       route: 'master/',
       icon: 'Assets/LayoutIcons/Master.svg',
     },
-    { label: 'Entry', route: '#', icon: 'Assets/LayoutIcons/Entry.svg' },
+    { label: 'Entry', route: 'entry/', icon: 'Assets/LayoutIcons/Entry.svg' },
     {
       label: 'Upload',
       route: 'upload/',

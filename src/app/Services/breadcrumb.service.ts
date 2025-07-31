@@ -214,6 +214,11 @@ export class BreadcrumbService {
       label: 'Circular',
       subs: [],
     },
+    {
+      base: '/entry/leave',
+      label: 'Leave',
+      subs: ['leave_entry', 'leave-eligibility'],
+    },
   ];
 
   private superAdmin = [
@@ -290,7 +295,10 @@ export class BreadcrumbService {
       ];
     }
     if (route.includes('/master')) {
-      return [{ label: 'Master', route: '/master' }];
+      return [{ label: 'Master', route: '/master/basic_details' }];
+    }
+    if (route.includes('/entry')) {
+      return [{ label: 'Entry', route: '/entry/leave/' }];
     }
     if (route.includes('/upload')) {
       return [{ label: 'Upload', route: '/upload' }];

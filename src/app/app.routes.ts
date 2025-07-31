@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LayoutComponent } from './Components/Layout/layout.component';
 import { authGuard } from './Guard/auth.guard';
 import { PageNotFoundComponent } from './Components/Page Not Found/page-not-found.component';
+import { AdminEntryComponent } from './Components/Admin Entry/admin-entry.component';
 
 export const routes: Routes = [
   {
@@ -164,6 +165,16 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./Components/Upload/Uploads/uploads.module').then(
             (m) => m.UploadsModule
+          ),
+      },
+
+      //  ? ENTRY MODULE
+      //  ! LEAVE MODULE
+      {
+        path: 'entry',
+        loadChildren: () =>
+          import('./Components/Admin Entry/Leave/leave.module').then(
+            (m) => m.LeaveModule
           ),
       },
 

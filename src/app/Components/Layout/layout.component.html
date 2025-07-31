@@ -23,18 +23,27 @@
       </div>
 
       <!-- Popups -->
+      <!-- !  Master   -->
       <div class="hover-popup" *ngIf="hoveredItem === 'Master'" (mouseenter)="onPopupMouseEnter('Master')"
         (mouseleave)="onPopupMouseLeave()">
         <app-master-side-bar></app-master-side-bar>
       </div>
+      <!-- !  Upload   -->
       <div class="hover-popup" *ngIf="hoveredItem === 'Upload'" (mouseenter)="onPopupMouseEnter('Upload')"
         (mouseleave)="onPopupMouseLeave()">
         <app-upload-side-bar></app-upload-side-bar>
       </div>
+      <!-- !  Settings   -->
       <div class="hover-popup" *ngIf="hoveredItem === 'Settings'" (mouseenter)="onPopupMouseEnter('Settings')"
         (mouseleave)="onPopupMouseLeave()">
         <app-settings-side-bar></app-settings-side-bar>
       </div>
+      <!-- !  Entry   -->
+      <div class="hover-popup" *ngIf="hoveredItem === 'Entry'" (mouseenter)="onPopupMouseEnter('Entry')"
+        (mouseleave)="onPopupMouseLeave()">
+        <app-admin-entry-side-bar></app-admin-entry-side-bar>
+      </div>
+      <!-- !  Field Setup   -->
       <div class="hover-popup" *ngIf="hoveredItem === 'Field Setup'" (mouseenter)="onPopupMouseEnter('Field Setup')"
         (mouseleave)="onPopupMouseLeave()">
         <app-field-setup-side-bar></app-field-setup-side-bar>
