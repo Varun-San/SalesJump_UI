@@ -1,0 +1,245 @@
+/* ! ~~~~~ PAGE MARGIN ~~~~~~ */
+.page_left {
+    margin-left: 55px;
+}
+
+/* ! ~~~~~ CDK OVERLAY CONTAINER ~~~~~~ */
+::ng-deep .cdk-overlay-container {
+    z-index: 999999 !important;
+    position: fixed !important;
+}
+
+/* ! ~~~~~ LABEL STYLE ~~~~~~ */
+label {
+    color: #909090
+}
+
+/* ! ~~~~~ CUSTOM DROPDOWN (MULTISELECT) ~~~~~~ */
+.custom-multiselect {
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.multiselect-wrapper {
+    position: relative;
+}
+
+.form-select {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+.form-select:focus {
+    border-color: #1997ce;
+    box-shadow: 0 0 5px #d1d1d1;
+}
+
+.selected-items {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.badge {
+    background-color: #1997ce !important;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 50px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.badge .remove {
+    margin-left: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ! ~~~~~ NG SELECT INPUT ~~~~~~ */
+::ng-deep .ng-select .ng-select-container .ng-value-container .ng-input>input {
+    color: black !important;
+    padding: 10px;
+}
+
+/* ! ~~~~~ DATE PICKER FIELD + ICON ~~~~~~ */
+::ng-deep .date-picker-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+::ng-deep .date-picker-container input {
+    flex-grow: 1;
+}
+
+::ng-deep .calendar-icon {
+    cursor: pointer;
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
+}
+
+.date-picker-container {
+    width: 100%;
+}
+
+.mat-form-field-wrapper {
+    padding-right: 48px;
+}
+
+.calendar-icon {
+    position: absolute;
+    top: 0%;
+    padding: 9px;
+    right: 0px;
+    width: 38px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 1;
+    background-color: #2E3032;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+}
+
+/* ! ~~~~~ FORM FIELD & MATERIAL CUSTOMIZATION ~~~~~~ */
+::ng-deep .mdc-notched-outline {
+    height: 90% !important;
+}
+
+::ng-deep .mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input,
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+    height: 35px !important;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    width: 18.4rem;
+}
+
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--invalid .mat-mdc-notch-piece {
+    border-color: rgb(255, 24, 24) !important;
+}
+
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mat-mdc-notch-piece {
+    border-color: #d9d9d9 !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+    height: 40px !important;
+    flex: auto;
+    will-change: auto;
+}
+
+::ng-deep .mdc-text-field {
+    display: inline-flex;
+    align-items: baseline;
+    padding: 0 0px !important;
+    position: relative;
+    overflow: hidden;
+    will-change: opacity, transform, color;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline {
+    border-color: #ccc;
+}
+
+::ng-deep .mat-mdc-form-field-bottom-align {
+    display: none !important;
+}
+
+/* ! ~~~~~ CALENDAR & DATEPICKER ~~~~~~ */
+::ng-deep .mat-calendar-header {
+    padding: 0px !important;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar {
+    width: 300px !important;
+    height: 350px !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline {
+    border-color: #ccc;
+}
+
+::ng-deep .mat-datepicker-content {
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3) !important;
+    background-color: #fcfcfc !important;
+    color: #1997ce !important;
+}
+
+::ng-deep .mat-calendar-body-selected {
+    background-color: #1997ce !important;
+    color: #ffffff !important;
+    box-shadow: inset 0 0 0 1px #ffffff !important;
+}
+
+::ng-deep .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+    border-color: #1997ce !important;
+    background-color: white !important;
+}
+
+/* ! ~~~~~ NG SELECT DROPDOWN STYLE ~~~~~~ */
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+    background-color: hsl(0, 0%, 89%) !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+::ng-deep .ng-dropdown-panel-items.scroll-host {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected .ng-option-label {
+    font-weight: 600;
+    color: #1997CE !important;
+}
+
+::ng-deep .ng-select .ng-select-container .ng-value-container .ng-input>input {
+    color: black !important;
+}
+
+/* ! ~~~~~ BORDER RIGHT ~~~~~~ */
+.border_right {
+    height: auto;
+    border-right: 1px solid #d9d9d9;
+}
+
+/* ! ~~~~~ RESPONSIVE: LAPTOP (<=1536px) ~~~~~~ */
+@media screen and (max-width: 1536px) {
+    #isLeaveEntry {
+        position: absolute;
+        top: 115px;
+        left: 52.1%;
+        transform: translateX(-50%);
+        z-index: 1;
+        width: 94.9vw;
+        height: auto;
+        overflow: visible !important;
+    }
+}
+
+/* ! ~~~~~ RESPONSIVE: DESKTOP (>=1537px) ~~~~~~ */
+@media screen and (min-width: 1537px) {
+    #isLeaveEntry {
+        position: absolute;
+        top: 118px;
+        left: 52%;
+        transform: translateX(-50%);
+        z-index: 1;
+        width: 95vw;
+        height: 83vh;
+        overflow: visible !important;
+    }
+}
