@@ -1,1 +1,118 @@
-<p>leave-eligibility works!</p>
+<div class="row page_left">
+    <div class="col-3 mt-3">
+        <ul class="nav" id="nav_tab_vertical" style="width: 303px;">
+            <li class="nav-item" *ngFor="let tab of tabs">
+                <a class="nav-link d-flex justify-content-between align-items-center cursor-pointer"
+                    [class.active]="tab === activeTab" (click)="setActiveTab(tab)" href="javascript:void(0)">
+                    {{ tab }}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Content Area (Down Side) -->
+    <div class="col-12">
+        <div class="tab-content mt-3">
+            <div class="card shadow p-3" *ngIf="currentTabConfig" style="height: 550px;">
+                <div class="card-body p-0 mt-1">
+                    <div class="col-12">
+                        <div class="row">
+                            <!-- Dynamic Dropdowns for current tab -->
+                            <div class="col-5" *ngFor="let field of currentTabConfig.fields">
+                                <div class="mb-3">
+                                    <label [for]="field.id" class="form-label">
+                                        {{ field.label }}
+                                        <span *ngIf="field.required" class="text-danger">*</span>
+                                    </label>
+                                    <ng-select [id]="field.id" [items]="field.items" bindLabel="label" bindValue="value"
+                                        [(ngModel)]="getFormModel()[field.id]" placeholder="Select an option">
+                                    </ng-select>
+                                </div>
+                            </div>
+
+                            <!-- Table Section: Different table for each tab -->
+                            <div class="col-12 mt-3 scrollable-table-container">
+                                <table class="table table-borderless table">
+                                    <colgroup>
+                                        <!-- Role Eligibility -->
+                                        <ng-container *ngIf="activeTab === 'Role Eligibility'">
+                                            <col style="width: 20%;" />
+                                            <ng-container *ngFor="let lt of leaveTypes">
+                                                <col style="width: 13%;" />
+                                            </ng-container>
+                                        </ng-container>
+
+                                        <!-- Field Force Eligibility -->
+                                        <ng-container *ngIf="activeTab === 'Field Force Eligibility'">
+                                            <col style="width: 4%;" />
+                                            <col style="width: 15%;" />
+                                            <col style="width: 15%;" />
+                                            <col style="width: 10%;" />
+                                            <col style="width: 10%;" />
+                                            <col style="width: 10%;" />
+                                            <ng-container *ngFor="let lt of leaveTypes">
+                                                <col style="width: 7%;" />
+                                            </ng-container>
+                                        </ng-container>
+                                    </colgroup>
+
+                                    <thead class="table-light" style="border-bottom: 1px solid #d9d9d9 !important; ">
+                                        <tr *ngIf="activeTab === 'Role Eligibility'">
+                                            <th>Designation</th>
+                                            <th *ngFor="let lt of leaveTypes">{{ lt.label }}</th>
+                                        </tr>
+                                        <tr *ngIf="activeTab === 'Field Force Eligibility'">
+                                            <th>Sl.No</th>
+                                            <th>Field Force Name</th>
+                                            <th>Designation</th>
+                                            <th>Head Quarters</th>
+                                            <th>Employee Code</th>
+                                            <th>Joining Date</th>
+                                            <th *ngFor="let lt of leaveTypes">{{ lt.label }}</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <!-- Role Eligibility editable input rows -->
+                                        <ng-container *ngIf="activeTab === 'Role Eligibility'">
+                                            <tr *ngFor="let desig of designations"
+                                                style="border-bottom: 1px solid #d9d9d9 !important;  ">
+                                                <td>{{ desig }}</td>
+                                                <td *ngFor="let lt of leaveTypes">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="leaveData[desig][lt.key]"
+                                                        [name]="formatName(desig, lt.key)" />
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+
+                                        <!-- Field Force Eligibility read & Editable rows -->
+                                        <ng-container *ngIf="activeTab === 'Field Force Eligibility'">
+                                            <tr *ngFor="let person of fieldForceData"
+                                                style="border-bottom: 1px solid #d9d9d9 !important;">
+                                                <td>{{ person.slNo }}</td>
+                                                <td>{{ person.fieldForceName }}</td>
+                                                <td>{{ person.designation }}</td>
+                                                <td>{{ person.headQuarters }}</td>
+                                                <td>{{ person.employeeCode }}</td>
+                                                <td>{{ person.joiningDate }}</td>
+                                                <td *ngFor="let lt of leaveTypes">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="editableLeaveData[person.slNo][lt.key]"
+                                                        [name]="formatName(person.fieldForceName + '_' + person.slNo, lt.key)" />
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 mt-3 d-flex justify-content-end">
+                        <button class="btn btn-primary" (click)="save()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

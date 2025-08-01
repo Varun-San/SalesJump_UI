@@ -1,0 +1,154 @@
+.page_left {
+    margin-left: 55px;
+}
+
+hr {
+    border-top: 2px solid #000000;
+}
+
+label {
+    color: #909090
+}
+
+.border_right {
+    margin-top: 10px;
+    height: 85vh;
+    border-right: 1px solid #d9d9d9;
+}
+
+.border_bottom {
+    border-bottom: 1px solid #d9d9d9 !important;
+}
+
+.cursor-pointer:hover {
+    color: #6d6d6d;
+}
+
+/* active tabs */
+.nav-link {
+    color: black;
+}
+
+/* Styles for vertical (sidebar) tabs */
+#nav_tab_vertical .nav-link.active {
+    background-color: #1997CE !important;
+    color: white;
+    border-radius: 5px;
+}
+
+#nav_tab_vertical {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+/* Styles for horizontal (top) tabs */
+#nav_tab_horizontal .nav-link.active {
+    border-bottom: 2px solid #1997ce !important;
+    /* background-color: #ddeff8 !important; */
+    color: #1997ce;
+
+}
+
+.nav-tabs .nav-link {
+    margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+    border: var(--bs-nav-tabs-border-width) solid transparent;
+    border-top-left-radius: var(--bs-nav-tabs-border-radius);
+    /* border-top-right-radius: var(--bs-nav-tabs-border-radius); */
+}
+
+.page_left {
+    margin-left: 55px;
+}
+
+hr {
+    border-top: 2px solid #000000;
+}
+
+label {
+    color: #909090
+}
+
+/* ! ~ NG SELECT DROPDOWN SELECT */
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected {
+    font-weight: 600;
+    color: #1997CE !important;
+    background-color: rgb(221 221 221) !important;
+}
+
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+    background-color: #ccc !important;
+}
+
+::ng-deep .ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container {
+    border-color: #1997Ce;
+    box-shadow:
+        inset 0 1px 1px rgba(0, 0, 0, 0.075),
+        0 0 3px #1997Ce;
+}
+
+::ng-deep .ng-select .ng-select-container .ng-value-container .ng-input>input {
+    color: #000000;
+}
+
+::ng-deep ng-select .ng-value-icon {
+    order: 0;
+    margin-right: 0;
+    margin-left: 0.25rem;
+}
+
+
+
+.scrollable-table-container {
+    max-height: 400px;
+    /* Set fixed max height for vertical scroll */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    /* Optional: also keep horizontal scroll if wide */
+    overflow-x: auto;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+
+/* Improve table text spacing & alignment */
+table.table {
+    border-collapse: collapse;
+    border-spacing: 0 8px;
+    width: 100%;
+}
+
+/* Style to add horizontal padding in table cells to increase readability */
+table.table th,
+table.table td {
+    padding: 8px 12px;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Optional: striped rows for clarity */
+table.table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Make input fields wider within table cells */
+.form-control {
+    width: 90%;
+    min-width: 80px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Responsive scrollbar appearance (optional) */
+.scrollable-table-container::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+.scrollable-table-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}

@@ -1,6 +1,6 @@
 <div class="row page_left">
-    <div class="col-3 mt-3 ms-3">
-        <ul class="nav" id="nav_tab_vertical">
+    <div class="col-3 mt-3">
+        <ul class="nav" id="nav_tab_vertical" style="width: 315px;;">
             <li class="nav-item" *ngFor="let tab of tabs">
                 <a class="nav-link d-flex justify-content-between align-items-center cursor-pointer"
                     [class.active]="tab === activeTab" (click)="setActiveTab(tab)" href="javascript:void(0)">
@@ -11,7 +11,7 @@
     </div>
     <!-- Content Area (Right Side) -->
     <div class="col-12">
-        <div class="tab-content p-3">
+        <div class="tab-content mt-3">
             <div class="card shadow p-3" *ngIf="currentTabConfig" style="height: 550px;">
                 <div class="card-header bg-white border-0 p-0 mb-2 d-flex align-items-center">
                     <h5 class="mb-0 me-2">Add {{ currentTabConfig.name }}</h5>
