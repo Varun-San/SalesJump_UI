@@ -66,12 +66,12 @@
                             *ngIf="selectedSheetData.length > 0">
                             <thead class="table-light">
                                 <tr>
-                                    <th *ngFor="let col of selectedSheetData[0]">{{ col }}</th>
+                                    <th class="ellipsis" *ngFor="let col of selectedSheetData[0]">{{ col }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let row of selectedSheetData.slice(1)">
-                                    <td *ngFor="let cell of row">{{ cell }}</td>
+                                <tr class="ellipsis" *ngFor="let row of selectedSheetData.slice(1)">
+                                    <td class="ellipsis" *ngFor="let cell of row">{{ cell }}</td>
                                 </tr>
                             </tbody>
                         </table>
