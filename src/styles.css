@@ -14,6 +14,8 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Work Sans", sans-serif !important;
+  scrollbar-width: thin;
+  scrollbar-color: #8f8f8f #f3f3f3 !important;
 }
 
 
