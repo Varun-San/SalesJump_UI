@@ -3,6 +3,7 @@ import { LayoutComponent } from './Components/Layout/layout.component';
 import { authGuard } from './Guard/auth.guard';
 import { PageNotFoundComponent } from './Components/Page Not Found/page-not-found.component';
 import { AdminEntryComponent } from './Components/Admin Entry/admin-entry.component';
+import { AdminApprovalsComponent } from './Components/Admin Approvals/admin-approvals.component';
 
 export const routes: Routes = [
   {
@@ -176,6 +177,11 @@ export const routes: Routes = [
           import('./Components/Admin Entry/Leave/leave.module').then(
             (m) => m.LeaveModule
           ),
+      },
+
+      {
+        path: 'approvals',
+        component: AdminApprovalsComponent,
       },
 
       {

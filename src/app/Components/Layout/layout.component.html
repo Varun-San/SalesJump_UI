@@ -43,6 +43,11 @@
         (mouseleave)="onPopupMouseLeave()">
         <app-admin-entry-side-bar></app-admin-entry-side-bar>
       </div>
+      <!-- !  Approvals   -->
+      <div class="hover-popup" *ngIf="hoveredItem === 'Approval'" (mouseenter)="onPopupMouseEnter('Approval')"
+        (mouseleave)="onPopupMouseLeave()">
+        <app-admin-approval-side-bar></app-admin-approval-side-bar>
+      </div>
       <!-- !  Field Setup   -->
       <div class="hover-popup" *ngIf="hoveredItem === 'Field Setup'" (mouseenter)="onPopupMouseEnter('Field Setup')"
         (mouseleave)="onPopupMouseLeave()">
