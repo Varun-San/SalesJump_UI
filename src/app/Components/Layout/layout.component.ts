@@ -10,7 +10,7 @@ import { BreadcrumbService } from '../../Services/breadcrumb.service';
 import { FieldSetupSideBarComponent } from '../Field Setup/Field Setup Side Bar/field-setup-side-bar.component';
 import { UploadSideBarComponent } from '../Upload/Upload Side Bar/upload-side-bar.component';
 import { AdminEntrySideBarComponent } from '../Admin Entry/Admin Entry Side Bar/admin-entry-side-bar.component';
-import { AdminApprovalSideBarComponent } from "../Admin Approvals/Admin Approval Side Bar/admin-approval-side-bar.component";
+import { AdminApprovalSideBarComponent } from '../Admin Approvals/Admin Approval Side Bar/admin-approval-side-bar.component';
 @Component({
   selector: 'app-layout',
   standalone: true,
@@ -24,8 +24,8 @@ import { AdminApprovalSideBarComponent } from "../Admin Approvals/Admin Approval
     FieldSetupSideBarComponent,
     UploadSideBarComponent,
     AdminEntrySideBarComponent,
-    AdminApprovalSideBarComponent
-],
+    AdminApprovalSideBarComponent,
+  ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
 })
@@ -130,7 +130,7 @@ export class LayoutComponent implements OnInit {
     },
     {
       label: 'Approval',
-      route: 'approvals/',
+      route: 'admin-approval/',
       icon: 'Assets/LayoutIcons/Approval.svg',
     },
     { label: 'Reports', route: '#', icon: 'Assets/LayoutIcons/Reports.svg' },

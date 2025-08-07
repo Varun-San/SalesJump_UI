@@ -66,8 +66,14 @@ export class AdminApprovalSideBarComponent {
   //! Leave Options--
   activeChip_Leave: string = '';
   Leave_label = [
-    { name: 'Leave Approval', route: '/entry/leave/leave_entry' },
-    { name: 'Leave Cancellation', route: '/entry/leave/leave_eligibility' },
+    {
+      name: 'Leave Approval',
+      route: '/admin-approval/admin-leave-approval/leave-approval',
+    },
+    {
+      name: 'Leave Cancellation',
+      route: '/admin-approval/admin-leave-approval/cancellation',
+    },
   ];
 
   // ! Tour Plan Options ---

@@ -300,8 +300,10 @@ export class BreadcrumbService {
     if (route.includes('/entry')) {
       return [{ label: 'Entry', route: '/entry/leave/' }];
     }
-    if (route.includes('/approvals')) {
-      return [{ label: 'Approvals', route: '/approvals' }];
+    if (route.includes('/admin-approval')) {
+      return [
+        { label: 'Approvals', route: '/admin-approval/admin-leave-approval' },
+      ];
     }
     if (route.includes('/upload')) {
       return [{ label: 'Upload', route: '/upload' }];
