@@ -219,6 +219,11 @@ export class BreadcrumbService {
       label: 'Leave',
       subs: ['leave_entry', 'leave-eligibility'],
     },
+    {
+      base: '/admin-approval/admin-leave-approval',
+      label: 'Leave',
+      subs: ['leave_entry', 'leave-eligibility'],
+    },
   ];
 
   private superAdmin = [
@@ -302,7 +307,7 @@ export class BreadcrumbService {
     }
     if (route.includes('/admin-approval')) {
       return [
-        { label: 'Approvals', route: '/admin-approval/admin-leave-approval' },
+        { label: 'Approval', route: '/admin-approval/admin-leave-approval' },
       ];
     }
     if (route.includes('/upload')) {

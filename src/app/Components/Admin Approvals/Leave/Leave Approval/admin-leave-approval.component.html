@@ -1,1 +1,93 @@
-<p>admin-leave-approval works!</p>
+<div class="row page_left">
+    <!-- Table -->
+    <div class="col-12 mt-3">
+        <table class="table table-borderless">
+            <thead class="table-light" style="border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Field Force Name</th>
+                    <th>Designation</th>
+                    <th>Head Quarters</th>
+                    <th>Employee Code</th>
+                    <th>From Date</th>
+                    <th>To Date</th>
+                    <th>Leave Type</th>
+                    <th>Leave Days</th>
+                    <th>Session</th>
+                    <th>Reason</th>
+                    <th class="text-center">
+                        <div>
+                            <img src="Assets/AdminMasters/Dashboard.svg" alt="Dashboard" height="25px " width="25px" />
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #d9d9d9;">
+                    <td>1</td>
+                    <td>Rahul Sharma</td>
+                    <td>Medical Rep</td>
+                    <td>Delhi</td>
+                    <td>EMP1001</td>
+                    <td>2025-08-01</td>
+                    <td>2025-08-04</td>
+                    <td>Annual Leave</td>
+                    <td>4</td>
+                    <td>Full Day</td>
+                    <td>Family Event</td>
+                    <td class="text-center">
+                        <img src="Assets/Menu.svg" alt="menu" height="25px" width="25px">
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px solid #d9d9d9;">
+                    <td>2</td>
+                    <td>Pooja Verma</td>
+                    <td>Sr. Sales Executive</td>
+                    <td>Mumbai</td>
+                    <td>EMP1052</td>
+                    <td>2025-08-05</td>
+                    <td>2025-08-05</td>
+                    <td>Casual Leave</td>
+                    <td>1</td>
+                    <td>First Half</td>
+                    <td>Medical Appointment</td>
+                    <td class="text-center">
+                        <img src="Assets/Menu.svg" alt="menu" height="25px" width="25px">
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px solid #d9d9d9;">
+                    <td>3</td>
+                    <td>Amit Singh</td>
+                    <td>Area Manager</td>
+                    <td>Bangalore</td>
+                    <td>EMP1103</td>
+                    <td>2025-08-03</td>
+                    <td>2025-08-06</td>
+                    <td>Sick Leave</td>
+                    <td>4</td>
+                    <td>Full Day</td>
+                    <td>Fever</td>
+                    <td class="text-center">
+                        <img src="Assets/Menu.svg" alt="menu" height="25px" width="25px">
+                    </td>
+                </tr>
+            </tbody>
+
+
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="text-start fw-bold">
+                        Total Records: 3
+                    </td>
+                </tr>
+            </tfoot>
+
+        </table>
+    </div>
+</div>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>Option 1</button>
+    <button mat-menu-item>Option 2</button>
+    <button mat-menu-item>Option 3</button>
+</mat-menu>
+<router-outlet></router-outlet>
