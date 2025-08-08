@@ -252,21 +252,40 @@ export class BreadcrumbService {
       }
     }
 
+    // Approvals routes - handle first so dynamicGroups doesn't override
+    if (route.startsWith('/admin-approval')) {
+      const breadcrumbs = [{ label: 'Approvals', route: '/admin-approval' }];
+
+      if (route.startsWith('/admin-approval/admin-leave-approval')) {
+        breadcrumbs.push({
+          label: 'Leave',
+          route: '/admin-approval/admin-leave-approval',
+        });
+      }
+
+      // If deeper path exists (like /cancellation)
+      const parts = route.split('/').filter((p) => p);
+      if (parts.length > 3) {
+        const lastPart = parts[parts.length - 1];
+        breadcrumbs.push({
+          label: this.formatLabel(lastPart),
+          route,
+        });
+      }
+
+      return breadcrumbs;
+    }
+
     // Super Admin routes
     for (const group of this.superAdmin) {
       if (route.startsWith(group.base)) {
-        const pathSegments = route.replace(group.base, '').split('/');
-        const breadcrumbs = [{ label: group.label, route: group.base }];
-        let currentRoute = group.base;
-
-        return breadcrumbs;
+        return [{ label: group.label, route: group.base }];
       }
     }
 
-    // Dynamic routes for Master (Basic Details, Geography, Product, etc.)
+    // Dynamic routes
     for (const group of this.dynamicGroups) {
       if (route.startsWith(group.base)) {
-        // Show only 'Master' and the group label (e.g., 'Basic Details', 'Geography', etc.)
         return [
           { label: 'Master', route: '#' },
           { label: group.label, route: group.base },
@@ -274,21 +293,19 @@ export class BreadcrumbService {
       }
     }
 
-    // Config routes (unchanged)
+    // Config & other rules ...
     if (route.includes('/general-settings')) {
       return [
         { label: 'Setup', route: '#' },
         { label: 'Configuration', route: '#' },
       ];
     }
-
     if (route.includes('/user-settings')) {
       return [
         { label: 'Setup', route: '#' },
         { label: 'Configuration', route: '#' },
       ];
     }
-
     if (
       route.includes('/configuration') &&
       !route.includes('/general-settings') &&
@@ -304,11 +321,6 @@ export class BreadcrumbService {
     }
     if (route.includes('/entry')) {
       return [{ label: 'Entry', route: '/entry/leave/' }];
-    }
-    if (route.includes('/admin-approval')) {
-      return [
-        { label: 'Approval', route: '/admin-approval/admin-leave-approval' },
-      ];
     }
     if (route.includes('/upload')) {
       return [{ label: 'Upload', route: '/upload' }];
