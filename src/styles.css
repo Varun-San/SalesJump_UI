@@ -276,3 +276,7 @@ html {
   font-size: 87.5%;
   /* 62.5% of default 16px = 10px */
 }
+
+.txt-color-org {
+  color: #1997ce !important;
+}

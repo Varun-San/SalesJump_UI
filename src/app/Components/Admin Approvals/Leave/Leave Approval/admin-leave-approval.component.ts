@@ -18,7 +18,6 @@ import { FormsModule } from '@angular/forms';
     MatMenuModule,
     MatIconModule,
     FormsModule,
-    RouterLink,
     RouterOutlet,
   ],
   templateUrl: './admin-leave-approval.component.html',
