@@ -187,6 +187,14 @@ export const routes: Routes = [
           ).then((m) => m.AdminApprovalsLeaveModule),
       },
 
+      {
+        path: 'admin-approval',
+        loadChildren: () =>
+          import(
+            './Components/Admin Approvals/Tour Plan/admin-approvals-tourplan.module'
+          ).then((m) => m.AdminApprovalsTourplanModule),
+      },
+
       // { path: 'approvals', component: AdminApprovalsComponent },
 
       {
