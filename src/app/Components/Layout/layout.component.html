@@ -53,6 +53,11 @@
         (mouseleave)="onPopupMouseLeave()">
         <app-field-setup-side-bar></app-field-setup-side-bar>
       </div>
+      <!-- !  Admin Reports   -->
+      <div class="hover-popup" *ngIf="hoveredItem === 'Reports'" (mouseenter)="onPopupMouseEnter('Reports')"
+        (mouseleave)="onPopupMouseLeave()">
+        <app-admin-reports-sidebar></app-admin-reports-sidebar>
+      </div>
     </li>
   </ul>
 </nav>

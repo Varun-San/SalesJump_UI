@@ -11,6 +11,7 @@ import { FieldSetupSideBarComponent } from '../Field Setup/Field Setup Side Bar/
 import { UploadSideBarComponent } from '../Upload/Upload Side Bar/upload-side-bar.component';
 import { AdminEntrySideBarComponent } from '../Admin Entry/Admin Entry Side Bar/admin-entry-side-bar.component';
 import { AdminApprovalSideBarComponent } from '../Admin Approvals/Admin Approval Side Bar/admin-approval-side-bar.component';
+import { AdminReportsSidebarComponent } from "../Admin Reports/Admin Reports Sidebar/admin-reports-sidebar.component";
 @Component({
   selector: 'app-layout',
   standalone: true,
@@ -25,7 +26,8 @@ import { AdminApprovalSideBarComponent } from '../Admin Approvals/Admin Approval
     UploadSideBarComponent,
     AdminEntrySideBarComponent,
     AdminApprovalSideBarComponent,
-  ],
+    AdminReportsSidebarComponent
+],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
 })
@@ -133,7 +135,11 @@ export class LayoutComponent implements OnInit {
       route: 'admin-approval/',
       icon: 'Assets/LayoutIcons/Approval.svg',
     },
-    { label: 'Reports', route: '#', icon: 'Assets/LayoutIcons/Reports.svg' },
+    {
+      label: 'Reports',
+      route: 'admin-reports',
+      icon: 'Assets/LayoutIcons/Reports.svg',
+    },
     {
       label: 'Settings',
       route: 'configuration',

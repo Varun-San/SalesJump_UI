@@ -219,11 +219,6 @@ export class BreadcrumbService {
       label: 'Leave',
       subs: ['leave_entry', 'leave-eligibility'],
     },
-    {
-      base: '/admin-approval/admin-leave-approval',
-      label: 'Leave',
-      subs: ['leave_entry', 'leave-eligibility'],
-    },
   ];
 
   private superAdmin = [
@@ -260,6 +255,30 @@ export class BreadcrumbService {
         breadcrumbs.push({
           label: 'Leave',
           route: '/admin-approval/admin-leave-approval',
+        });
+      }
+
+      // If deeper path exists (like /cancellation)
+      const parts = route.split('/').filter((p) => p);
+      if (parts.length > 3) {
+        const lastPart = parts[parts.length - 1];
+        breadcrumbs.push({
+          label: this.formatLabel(lastPart),
+          route,
+        });
+      }
+
+      return breadcrumbs;
+    }
+
+    // Reports routes - handle first so dynamicGroups doesn't override
+    if (route.startsWith('/admin-reports')) {
+      const breadcrumbs = [{ label: 'Reports', route: '/admin-reports' }];
+
+      if (route.startsWith('/admin-reports/admin-reports-leave')) {
+        breadcrumbs.push({
+          label: 'Leave',
+          route: '/admin-reports/admin-reports-leave',
         });
       }
 
@@ -324,6 +343,9 @@ export class BreadcrumbService {
     }
     if (route.includes('/upload')) {
       return [{ label: 'Upload', route: '/upload' }];
+    }
+    if (route.includes('/admin-reports')) {
+      return [{ label: 'Reports', route: '/admin-reports' }];
     }
     return null;
   }

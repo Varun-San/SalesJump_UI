@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LayoutComponent } from './Components/Layout/layout.component';
 import { authGuard } from './Guard/auth.guard';
 import { PageNotFoundComponent } from './Components/Page Not Found/page-not-found.component';
+import { AdminReportsComponent } from './Components/Admin Reports/admin-reports.component';
 
 export const routes: Routes = [
   {
@@ -193,6 +194,14 @@ export const routes: Routes = [
           import(
             './Components/Admin Approvals/Tour Plan/admin-approvals-tourplan.module'
           ).then((m) => m.AdminApprovalsTourplanModule),
+      },
+
+      {
+        path: 'admin-reports',
+        loadChildren: () =>
+          import(
+            './Components/Admin Reports/Admin Report Leave/admin-report-leave.module'
+          ).then((m) => m.AdminReportLeaveModule),
       },
 
       // { path: 'approvals', component: AdminApprovalsComponent },
