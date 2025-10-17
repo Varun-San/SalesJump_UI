@@ -39,6 +39,17 @@
                         </mat-chip>
                     </mat-chip-set>
                 </div>
+                <!-- !Leave -->
+                <div *ngSwitchCase="'Resources'">
+                    <h4>Resources</h4>
+                    <mat-chip-set>
+                        <mat-chip *ngFor="let basic of resources_label"
+                            [ngClass]="{ 'active-chip': activeChip_Resources === basic.name }"
+                            (click)="activeChip_Resources = basic.name" routerLink="{{ basic.route }}">
+                            {{ basic.name }}
+                        </mat-chip>
+                    </mat-chip-set>
+                </div>
                 <!-- !Default -->
                 <div *ngSwitchDefault>
                     <h4>Select another Tab</h4>

@@ -9,7 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-admin-report-leave',
+  selector: 'app-admin-report-resources',
   imports: [
     RouterModule,
     CommonModule,
@@ -20,23 +20,15 @@ import { MatButtonModule } from '@angular/material/button';
     MatMenuModule,
     MatIconModule,
   ],
-  templateUrl: './admin-report-leave.component.html',
-  styleUrl: './admin-report-leave.component.css',
+  templateUrl: './admin-report-resources.component.html',
+  styleUrl: './admin-report-resources.component.css',
 })
-export class AdminReportLeaveComponent {
+export class AdminReportResourcesComponent {
   // ! TABS CONTROL FOR THE NAV
   tabItems = [
     {
-      label: 'Availability Status',
-      path: '/admin-reports/admin-reports-leave/availability-status',
-    },
-    {
-      label: 'Leave Card',
-      path: '/admin-reports/admin-reports-leave/leave-card',
-    },
-    {
-      label: 'Leave Status',
-      path: '/admin-reports/admin-reports-leave/leave-status',
+      label: 'My Resources',
+      path: '/admin-reports/admin-reports-resources/my-resources',
     },
   ];
 
@@ -55,7 +47,7 @@ export class AdminReportLeaveComponent {
   // Tabs
 
   // Master list merged into tabs
-  tabs = ['Availability Status', 'Leave Card', 'Leave Status'];
+  tabs = ['My Resources'];
 
   activeTab = this.tabs[0]; // Default active tab
 

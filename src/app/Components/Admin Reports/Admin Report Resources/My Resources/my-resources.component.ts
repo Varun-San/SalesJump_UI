@@ -9,10 +9,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { A11yModule } from "@angular/cdk/a11y";
+import { A11yModule } from '@angular/cdk/a11y';
 
 @Component({
-  selector: 'app-leave-status',
+  selector: 'app-my-resources',
   imports: [
     CommonModule,
     FontAwesomeModule,
@@ -23,12 +23,13 @@ import { A11yModule } from "@angular/cdk/a11y";
     FormsModule,
     RouterLink,
     MatTooltipModule,
-    A11yModule
-],
-  templateUrl: './leave-status.component.html',
-  styleUrl: './leave-status.component.css',
+    A11yModule,
+  ],
+  templateUrl: './my-resources.component.html',
+  styleUrl: './my-resources.component.css',
 })
-export class LeaveStatusComponent {
+export class MyResourcesComponent {
+  data: ResourceRow[] = DUMMY_RESOURCES;
   array = Array;
   hoveredIndex: string | null = null;
   hoverTimeout: any;
@@ -169,3 +170,48 @@ export class LeaveStatusComponent {
     this.tempFilters[type] = '';
   }
 }
+
+export interface ResourceRow {
+  fieldForce: string;
+  stateName: string;
+  distributor: string;
+  route: string;
+  retailer: string;
+}
+export const DUMMY_RESOURCES: ResourceRow[] = [
+  {
+    fieldForce: 'Anita Sharma',
+    stateName: 'Maharashtra',
+    distributor: 'Sunrise Distributors Pvt Ltd',
+    route: 'Pune – Kothrud',
+    retailer: 'Sai Supermart',
+  },
+  {
+    fieldForce: 'Rahul Verma',
+    stateName: 'Karnataka',
+    distributor: 'BluePeak Traders',
+    route: 'Bengaluru – Indiranagar',
+    retailer: 'Metro Fresh Store',
+  },
+  {
+    fieldForce: 'Meera Nair',
+    stateName: 'Kerala',
+    distributor: 'Coconut Coast Supply Co',
+    route: 'Kochi – Fort Kochi',
+    retailer: 'Harbor General Stores',
+  },
+  {
+    fieldForce: 'Sandeep Singh',
+    stateName: 'Punjab',
+    distributor: 'GreenFields Wholesale',
+    route: 'Ludhiana – Sarabha Nagar',
+    retailer: 'City Corner Mart',
+  },
+  {
+    fieldForce: 'Priya Iyer',
+    stateName: 'Tamil Nadu',
+    distributor: 'Marina Trade Links',
+    route: 'Chennai – T Nagar',
+    retailer: 'Lakshmi Provisions',
+  },
+];

@@ -271,18 +271,23 @@ export class BreadcrumbService {
       return breadcrumbs;
     }
 
-    // Reports routes - handle first so dynamicGroups doesn't override
+    // Reports routes - keep one block only
     if (route.startsWith('/admin-reports')) {
       const breadcrumbs = [{ label: 'Reports', route: '/admin-reports' }];
 
-      if (route.startsWith('/admin-reports/admin-reports-leave')) {
+      // Check more specific sections first
+      if (route.startsWith('/admin-reports/admin-reports-resources')) {
+        breadcrumbs.push({
+          label: 'My Resources',
+          route: '/admin-reports/admin-reports-resources',
+        });
+      } else if (route.startsWith('/admin-reports/admin-reports-leave')) {
         breadcrumbs.push({
           label: 'Leave',
           route: '/admin-reports/admin-reports-leave',
         });
       }
 
-      // If deeper path exists (like /cancellation)
       const parts = route.split('/').filter((p) => p);
       if (parts.length > 3) {
         const lastPart = parts[parts.length - 1];

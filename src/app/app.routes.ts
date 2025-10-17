@@ -204,6 +204,14 @@ export const routes: Routes = [
           ).then((m) => m.AdminReportLeaveModule),
       },
 
+      {
+        path: 'admin-reports',
+        loadChildren: () =>
+          import(
+            './Components/Admin Reports/Admin Report Resources/admin-report-resources.module'
+          ).then((m) => m.AdminReportResourcesModule),
+      },
+
       // { path: 'approvals', component: AdminApprovalsComponent },
 
       {

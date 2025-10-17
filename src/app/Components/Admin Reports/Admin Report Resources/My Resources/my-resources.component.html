@@ -1,0 +1,68 @@
+<div class="row page_left">
+    <div class="col-12 mt-3">
+        <div class="col-12 d-flex align-items-center justify-content-between">
+            <!-- Search and Filter Section -->
+            <div class="col-9 d-flex align-items-center gap-3">
+                <div class="position-relative col-4">
+                    <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
+                    <input type="text" class="form-control ps-5" placeholder="Search" />
+                </div>
+            </div>
+
+            <!-- Add HO User Button Section -->
+            <div class="col-3 d-flex gap-3 align-items-center justify-content-end text-end">
+                <div>
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu Button"
+                        class="bordered-icon-button">
+                        <img src="Assets/Menu.svg" alt="menu">
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>Option 1</button>
+                        <button mat-menu-item>Option 2</button>
+                        <button mat-menu-item>Option 3</button>
+                    </mat-menu>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="col-12 mt-3">
+        <div class="table-responsive" style="max-height: 420px; overflow-y: auto; border: 1px solid #d9d9d9;">
+            <table class="table table-borderless m-0" style="table-layout: fixed; width: 100%;">
+                <thead class="table-light"
+                    style="position: sticky; top: 0; z-index: 2; border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9;">
+                    <tr>
+                        <th style="width: 60px;">Field Force</th>
+                        <th style="width: 110px;">State Name</th>
+                        <th style="width: 160px;">Distributor</th>
+                        <th style="width: 140px;">Route</th>
+                        <th style="width: 160px;">Retailer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of data">
+                        <td>{{ row.fieldForce }}</td>
+                        <td>{{ row.stateName }}</td>
+                        <td>{{ row.distributor }}</td>
+                        <td>{{ row.route }}</td>
+                        <td>{{ row.retailer }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!-- Mat-Menu for Table -->
+<mat-menu #menuTable="matMenu" class="custom-menu bg-white">
+    <ng-container *ngFor="let option of menuOptions">
+        <button mat-menu-item *ngIf="option.route" [routerLink]="option.route">
+            {{ option.label }}
+        </button>
+        <button mat-menu-item *ngIf="!option.route" (click)="onMenuAction(option.label)">
+            {{ option.label }}
+        </button>
+    </ng-container>
+</mat-menu>

@@ -1,1 +1,45 @@
-<p>leave-card works!</p>
+<div class="row">
+    <div *ngIf="isAddHeadquartersRoute" class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+        <div class="card shadow p-4 col-6" id="Add-Division">
+            <div class="card-body p-0 mt-1 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                <div class="row">
+                    <!-- Select Division -->
+                    <div class="col-12 col-sm-6 col-md-4 mb-3">
+                        <label class="form-label">Select Division <span class="text-danger">*</span></label>
+                        <ng-select [items]="divisionOptions" placeholder="Select Division"
+                            [(ngModel)]="formData.selectDivision">
+                        </ng-select>
+                    </div>
+
+                    <!-- Select Field Force -->
+                    <div class="col-12 col-sm-6 col-md-4 mb-3">
+                        <label class="form-label">Select Field Force <span class="text-danger">*</span></label>
+                        <ng-select [items]="fieldForceOptions" placeholder="Select Field Force"
+                            [(ngModel)]="formData.selectFieldForce">
+                        </ng-select>
+                    </div>
+
+                    <!-- Select Manager -->
+                    <div class="col-12 col-sm-6 col-md-4 mb-3">
+                        <label class="form-label">Select Manager <span class="text-danger">*</span></label>
+                        <ng-select [items]="managerOptions" placeholder="Select Manager"
+                            [(ngModel)]=" formData.selectManager">
+                        </ng-select>
+                    </div>
+
+                    <!-- Select Year -->
+                    <div class="col-12 col-sm-6 col-md-4 mb-3">
+                        <label class="form-label">Select Year <span class="text-danger">*</span></label>
+                        <ng-select [items]="yearOptions" placeholder="Select Year" [(ngModel)]="formData.selectYear">
+                        </ng-select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-start gap-2 mt-3">
+                <!-- <button class="btn btn-outline-secondary" (click)="closeCard()">Cancel</button> -->
+                <button class="btn btn-success" (click)="saveLeaveCard()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -33,6 +33,7 @@ export class AdminReportsSidebarComponent {
   ngOnInit() {
     const currentUrl = this.router.url;
     this.activeChip_Leave = this.getActiveChip(this.leave_label) || '';
+    this.activeChip_Resources = this.getActiveChip(this.resources_label) || '';
     this.activeTab = this.getActiveTabFromUrl(currentUrl) || this.tabs[0];
   }
 
@@ -40,7 +41,7 @@ export class AdminReportsSidebarComponent {
     Leave: 'admin-reports-leave',
     'Tour Plan': '',
     Attendance: '',
-    Resources: '',
+    Resources: 'admin-reports-resources',
     'Primary Order': '',
     'Secondary Order': '',
     Inventory: '',
@@ -102,6 +103,15 @@ export class AdminReportsSidebarComponent {
     {
       name: 'Leave Status',
       route: '/admin-reports/admin-reports-leave/leave-status',
+    },
+  ];
+
+  //! Resources Options--
+  activeChip_Resources: string = '';
+  resources_label = [
+    {
+      name: 'My Resources',
+      route: '/admin-reports/admin-reports-resources/my-resources',
     },
   ];
 }
